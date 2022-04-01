@@ -1,0 +1,16 @@
+PODS:
+  - Mediasoup-Client-Swift (0.1.0)
+
+DEPENDENCIES:
+  - Mediasoup-Client-Swift (from `../`)
+
+EXTERNAL SOURCES:
+  Mediasoup-Client-Swift:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Mediasoup-Client-Swift: 2a1e9a85a78cd15ca970ed7673cc9cb22fbdfd1e
+
+PODFILE CHECKSUM: d4fe3294dd9c7fc46519b6a7b26527f1f545e8d3
+
+COCOAPODS: 1.11.2

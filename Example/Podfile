@@ -1,0 +1,6 @@
+platform :ios, '14.0'
+
+target 'MediasoupExample' do
+	use_frameworks!
+	pod 'Mediasoup-Client-Swift', :path => '../'
+end

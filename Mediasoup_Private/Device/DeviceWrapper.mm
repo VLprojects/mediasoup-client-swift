@@ -26,6 +26,10 @@
 	}
 }
 
+- (BOOL)isLoaded {
+	return _device->IsLoaded();
+}
+
 - (void)loadWithRouterRTPCapabilities:(NSString *)routerRTPCapabilities
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 
@@ -37,10 +41,25 @@
 	}, error);
 }
 
-- (NSString *_Nullable)getSCTPCapabilitiesWithError:(out NSError *__autoreleasing _Nullable *_Nullable)error {
-	return mediasoupTryWithResult(^{
+- (NSString *_Nullable)sctpCapabilitiesWithError:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+	return mediasoupTryWithResult(^ NSString * {
 		nlohmann::json const capabilities = self->_device->GetSctpCapabilities();
 		return [NSString stringWithCString:capabilities.dump().c_str() encoding:NSUTF8StringEncoding];
+	}, error);
+}
+
+- (NSString *_Nullable)rtpCapabilitiesWithError:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+	return mediasoupTryWithResult(^ NSString * {
+		nlohmann::json const capabilities = self->_device->GetRtpCapabilities();
+		return [NSString stringWithCString:capabilities.dump().c_str() encoding:NSUTF8StringEncoding];
+	}, error);
+}
+
+- (BOOL)canProduce:(MediasoupClientMediaKind _Nonnull)mediaKind
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	return mediasoupTryWithBool(^ BOOL {
+		return self->_device->CanProduce(std::string([mediaKind UTF8String]));
 	}, error);
 }
 

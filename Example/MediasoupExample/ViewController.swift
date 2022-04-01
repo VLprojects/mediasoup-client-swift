@@ -8,11 +8,26 @@ final class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-
 		let device = Device()
 		do {
+			print("isLoaded: \(device.isLoaded())")
+
 			try device.load(with: "{}")
-			label.text = try device.getSCTPCapabilities()
+			print("isLoaded: \(device.isLoaded())")
+
+			let canProduceVideo = try device.canProduce(.video)
+			print("can produce video: \(canProduceVideo)")
+
+			let canProduceAudio = try device.canProduce(.audio)
+			print("can produce audio: \(canProduceAudio)")
+
+			let sctpCapabilities = try device.sctpCapabilities()
+			print("SCTP capabilities: \(sctpCapabilities)")
+
+			let rtpCapabilities = try device.rtpCapabilities()
+			print("RTP capabilities: \(rtpCapabilities)")
+
+			label.text = "OK"
 		} catch let error as MediasoupError {
 			switch error {
 				case let .unsupported(message):

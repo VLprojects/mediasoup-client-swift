@@ -39,4 +39,8 @@ void mediasoupTry(
 	void (^_Nonnull throwingBlock)(void),
 	NSError *__autoreleasing _Nullable *_Nullable error);
 
+BOOL mediasoupTryWithBool(
+	BOOL (^_Nonnull throwingBlock)(void),
+	NSError *__autoreleasing _Nullable *_Nullable error);
+
 #endif /* MediasoupErrorHandler_h */

@@ -9,15 +9,31 @@ public class Device {
 		self.device = DeviceWrapper()
 	}
 
+	public func isLoaded() -> Bool {
+		return device.isLoaded()
+	}
+
 	public func load(with routerRTPCapabilities: String) throws {
 		try convertMediasoupErrors {
 			try device.load(with: routerRTPCapabilities)
 		}
 	}
 
-	public func getSCTPCapabilities() throws -> String {
+	public func rtpCapabilities() throws -> String {
 		try convertMediasoupErrors {
-			try device.getSCTPCapabilities()
+			try device.rtpCapabilities()
+		}
+	}
+
+	public func sctpCapabilities() throws -> String {
+		try convertMediasoupErrors {
+			try device.sctpCapabilities()
+		}
+	}
+
+	public func canProduce(_ mediaKind: MediaKind) throws -> Bool {
+		try convertMediasoupErrors {
+			try device.canProduce(mediaKind.mediaClientValue)
 		}
 	}
 }

@@ -1,0 +1,4 @@
+build_*/
+depot_tools/
+webrtc/
+libmediasoupclient/

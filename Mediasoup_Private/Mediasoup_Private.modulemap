@@ -1,0 +1,4 @@
+module Mediasoup_Private {
+	private header "PrivateHeaders/DeviceWrapper.h"
+	private header "PrivateHeaders/MediasoupClientError.h"
+}

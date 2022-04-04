@@ -1,11 +1,16 @@
+#import <Device.hpp>
+#import <peerconnection/RTCPeerConnectionFactory+Private.h>
+#import <peerconnection/RTCPeerConnectionFactoryBuilder+DefaultComponents.h>
 #import "DeviceWrapper.h"
-#import "Device.hpp"
 #import "../MediasoupClientError/MediasoupClientErrorHandler.h"
 
 
 @interface DeviceWrapper() {
 	mediasoupclient::Device *_device;
+	mediasoupclient::PeerConnection::Options *_pcOptions;
 }
+@property(nonatomic, strong) RTCPeerConnectionFactoryBuilder *pcFactoryBuilder;
+@property(nonatomic, strong) RTCPeerConnectionFactory *pcFactory;
 @end
 
 
@@ -15,15 +20,23 @@
 	self = [super init];
 	if (self != nil) {
 		_device = new mediasoupclient::Device();
+
+		self.pcFactoryBuilder = [RTCPeerConnectionFactoryBuilder defaultBuilder];
+		self.pcFactory = [self.pcFactoryBuilder createPeerConnectionFactory];
+		_pcOptions = new mediasoupclient::PeerConnection::Options();
+		_pcOptions->factory = self.pcFactory.nativeFactory;
 	}
 	return self;
 }
 
 - (void)dealloc {
-	if (_device) {
-		delete _device;
-		_device = NULL;
-	}
+	delete _device;
+	delete _pcOptions;
+
+	// Properties are released explicitly to manage deallocation order.
+	// PeerConnection must be released before PeerConnectionBuilder.
+	self.pcFactoryBuilder = nil;
+	self.pcFactory = nil;
 }
 
 - (BOOL)isLoaded {
@@ -34,10 +47,9 @@
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 
 	mediasoupTry(^{
-		auto routerRTPCapabilitiesJSON = nlohmann::json::parse(std::string([routerRTPCapabilities UTF8String]));
-		mediasoupclient::PeerConnection::Options *pcOptions = nil;
-////		const auto pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>([nativePCOptions pointerValue]);
-		self->_device->Load(routerRTPCapabilitiesJSON, pcOptions);
+		auto routerRTPCapabilitiesString = std::string(routerRTPCapabilities.UTF8String);
+		auto routerRTPCapabilitiesJSON = nlohmann::json::parse(routerRTPCapabilitiesString);
+		self->_device->Load(routerRTPCapabilitiesJSON, self->_pcOptions);
 	}, error);
 }
 

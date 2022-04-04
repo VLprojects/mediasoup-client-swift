@@ -51,7 +51,7 @@
 		FF89EFC327F5696600EEF5CD /* MediasoupClientErrorHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupClientErrorHandler.h; sourceTree = "<group>"; };
 		FF89EFD027F5C79000EEF5CD /* Mediasoup_Private.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = Mediasoup_Private.modulemap; sourceTree = "<group>"; };
 		FF89EFD427F6AEBB00EEF5CD /* MediasoupClientErrorConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasoupClientErrorConverter.swift; sourceTree = "<group>"; };
-		FF89EFD627F6AFBD00EEF5CD /* Mediasoup-Client-Swift.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = "Mediasoup-Client-Swift.podspec"; sourceTree = "<group>"; };
+		FF89EFD627F6AFBD00EEF5CD /* Mediasoup-Client-Swift.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = "Mediasoup-Client-Swift.podspec"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FFC2452027F6E8DF008F61DE /* MediaKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaKind.swift; sourceTree = "<group>"; };
 		FFC2452227F6E931008F61DE /* MediasoupClientMediaKind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupClientMediaKind.h; sourceTree = "<group>"; };
 		FFC2452327F6E9DB008F61DE /* MediasoupClientMediaKind.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupClientMediaKind.mm; sourceTree = "<group>"; };
@@ -374,6 +374,8 @@
 					"${SRCROOT}/Mediasoup/dependencies/libmediasoupclient/deps/libsdptransform/include",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/third_party/abseil-cpp",
+					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/api",
+					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/base",
 				);
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 VLProjects. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -462,6 +464,8 @@
 					"${SRCROOT}/Mediasoup/dependencies/libmediasoupclient/deps/libsdptransform/include",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/third_party/abseil-cpp",
+					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/api",
+					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/base",
 				);
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 VLProjects. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

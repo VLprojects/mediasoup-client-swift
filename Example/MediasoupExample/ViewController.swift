@@ -4,6 +4,7 @@ import Mediasoup
 
 final class ViewController: UIViewController {
 	@IBOutlet var label: UILabel!
+	private var device: Device?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -45,6 +46,11 @@ final class ViewController: UIViewController {
 			}
 		} catch {
 			label.text = error.localizedDescription
+		}
+
+		self.device = device
+		DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+			self.device = nil
 		}
 	}
 }

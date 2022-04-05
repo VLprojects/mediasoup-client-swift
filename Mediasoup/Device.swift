@@ -36,13 +36,16 @@ public class Device {
 			try device.canProduce(mediaKind.mediaClientValue)
 		}
 	}
+
+	public func createSendTransport(id: String, iceParameters: String, iceCandidates: String,
+		dtlsParameters: String, sctpParameters: String, appData: String) throws -> SendTransport {
+
+		return try convertMediasoupErrors {
+			let transport = try device.createSendTransport(withId: id, iceParameters: iceParameters,
+				iceCandidates: iceCandidates, dtlsParameters: dtlsParameters,
+				sctpParameters: sctpParameters, appData: appData)
+
+			return SendTransport(transport: transport)
+		}
+	}
 }
-//-(void)load:(NSString *)routerRtpCapabilities;
-//-(bool)isLoaded;
-//-(NSString *)getRtpCapabilities;
-//-(NSString *)getSctpCapabilities;
-//-(bool)canProduce:(NSString *)kind;
-//-(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters;
-//-(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters appData:(NSString *)appData;
-//-(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters;
-//-(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters appData:(NSString *)appData;

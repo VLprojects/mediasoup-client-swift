@@ -3,6 +3,8 @@
 #import <peerconnection/RTCPeerConnectionFactoryBuilder+DefaultComponents.h>
 #import "DeviceWrapper.h"
 #import "../MediasoupClientError/MediasoupClientErrorHandler.h"
+#import "../Transport/SendTransportWrapper.hpp"
+#import "../Transport/SendTransportListenerAdapter.hpp"
 
 
 @interface DeviceWrapper() {
@@ -73,6 +75,42 @@
 	return mediasoupTryWithBool(^ BOOL {
 		return self->_device->CanProduce(std::string([mediaKind UTF8String]));
 	}, error);
+}
+
+- (SendTransportWrapper *_Nullable)createSendTransportWithId:(NSString *_Nonnull)transportId
+	iceParameters:(NSString *_Nonnull)iceParameters
+	iceCandidates:(NSString *_Nonnull)iceCandidates
+	dtlsParameters:(NSString *_Nonnull)dtlsParameters
+	sctpParameters:(NSString *_Nullable)sctpParameters
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	//	mediasoupTryWithResult(^(SendTransportWrapper *){
+	//	}, error)
+
+	try {
+		auto idString = std::string(transportId.UTF8String);
+		auto iceParametersString = std::string(iceParameters.UTF8String);
+		auto iceParametersJSON = nlohmann::json::parse(iceParametersString);
+		auto iceCandidatesString = std::string(iceCandidates.UTF8String);
+		auto iceCandidatesJSON = nlohmann::json::parse(iceCandidatesString);
+		auto dtlsParametersString = std::string(dtlsParameters.UTF8String);
+		auto dtlsParametersJSON = nlohmann::json::parse(dtlsParametersString);
+
+		nlohmann::json sctpParametersJSON;
+		if (sctpParameters != nil) {
+			auto sctpParametersString = std::string(sctpParameters.UTF8String);
+			sctpParametersJSON = nlohmann::json::parse(sctpParametersString);
+		}
+		auto listenerAdapter = new SendTransportListenerAdapter();
+		auto transport = _device->CreateSendTransport(listenerAdapter, idString, iceParametersJSON,
+			iceCandidatesJSON, dtlsParametersJSON, sctpParametersJSON);
+		auto transportWrapper = [[SendTransportWrapper alloc] initWithTransport:transport listenerAdapter:listenerAdapter];
+		return transportWrapper;
+	} catch(const std::exception &e) {
+		*error = mediasoupError(MediasoupClientErrorCodeInvalidParameters, &e);
+		return nil;
+	}
 }
 
 @end

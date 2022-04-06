@@ -4,18 +4,33 @@
 #import <Foundation/Foundation.h>
 
 
+@class SendTransportWrapper;
+
+
 @protocol SendTransportWrapperDelegate
-- (void)onConnect:(NSString *)transportId
-	dtlsParameters:(NSString *)dtlsParameters;
+- (void)onConnect:(SendTransportWrapper *_Nonnull)transport
+	dtlsParameters:(NSString *_Nonnull)dtlsParameters;
 
-- (void)onConnectionStateChange:(NSString *)transportId
-	connectionState:(NSString *)connectionState;
+- (void)onConnectionStateChange:(SendTransportWrapper *_Nonnull)transport
+	connectionState:(NSString *_Nonnull)connectionState;
 
-- (void)onProduce:(NSString *)transportId
-	kind:(NSString *)kind
-	rtpParameters:(NSString *)rtpParameters
-	appData:(NSString *)appData
-	callback:(void(^)(NSString *))callback;
+- (void)onProduce:(SendTransportWrapper *_Nonnull)transport
+	kind:(NSString *_Nonnull)kind
+	rtpParameters:(NSString *_Nonnull)rtpParameters
+	appData:(NSString *_Nonnull)appData
+	callback:(void(^_Nonnull)(NSString *_Nullable))callback;
+
+- (void)onProduceData:(SendTransportWrapper *_Nonnull)transport
+	sctpParameters:(NSString *_Nonnull)sctpParameters
+	label:(NSString *_Nonnull)label
+	protocol:(NSString *_Nonnull)protocol
+	appData:(NSString *_Nonnull)appData
+	callback:(void(^_Nonnull)(NSString *_Nullable))callback;
+
+//	kind:(NSString *_Nonnull)kind
+//	rtpParameters:(NSString *_Nonnull)rtpParameters
+//	appData:(NSString *_Nonnull)appData
+//	callback:(void(^_Nonnull)(NSString *_Nullable))callback;
 
 @end
 

@@ -38,7 +38,7 @@ public class Device {
 	}
 
 	public func createSendTransport(id: String, iceParameters: String, iceCandidates: String,
-		dtlsParameters: String, sctpParameters: String, appData: String) throws -> SendTransport {
+		dtlsParameters: String, sctpParameters: String?, appData: String?) throws -> SendTransport {
 
 		return try convertMediasoupErrors {
 			let transport = try device.createSendTransport(withId: id, iceParameters: iceParameters,

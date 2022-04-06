@@ -1,8 +1,21 @@
 import Foundation
 
 
-public protocol SendTransportDelegate: AnyObject {
-	func onConnect()
-	func onConnectionStateChange()
-	func onProduce()
+public protocol SendTransportDelegate: TransportDelegate {
+	func onProduce(
+		transport: Transport,
+		kind: String,
+		rtpParameters: String,
+		appData: String,
+		callback: @escaping (String?) -> Void
+	)
+
+	func onProduceData(
+		transport: Transport,
+		sctpParameters: String,
+		label: String,
+		protocol dataProtocol: String,
+		appData: String,
+		callback: @escaping (String?) -> Void
+	)
 }

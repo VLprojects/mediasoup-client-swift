@@ -12,8 +12,8 @@
 
 @implementation SendTransportWrapper
 
-- (instancetype)initWithTransport:(mediasoupclient::SendTransport *)transport
-	listenerAdapter:(SendTransportListenerAdapter *)listenerAdapter {
+- (instancetype)initWithTransport:(mediasoupclient::SendTransport *_Nonnull)transport
+	listenerAdapter:(SendTransportListenerAdapter *_Nonnull)listenerAdapter {
 
 	self = [super init];
 
@@ -31,21 +31,53 @@
 	// TODO: delete _listenerAdapter
 }
 
-- (void)onConnect:(NSString *)transportId dtlsParameters:(NSString *)dtlsParameters {
-	[self.delegate onConnect:transportId dtlsParameters:dtlsParameters];
+- (void)onConnect:(SendTransportListenerAdapter *_Nonnull)adapter
+	dtlsParameters:(NSString *_Nonnull)dtlsParameters {
+
+	if (adapter != _listenerAdapter) {
+		return;
+	}
+
+	[self.delegate onConnect:self dtlsParameters:dtlsParameters];
 }
 
-- (void)onConnectionStateChange:(NSString *)transportId connectionState:(NSString *)connectionState {
-	[self.delegate onConnectionStateChange:transportId connectionState:connectionState];
+- (void)onConnectionStateChange:(SendTransportListenerAdapter *_Nonnull)adapter
+	connectionState:(NSString *_Nonnull)connectionState {
+
+	if (adapter != _listenerAdapter) {
+		return;
+	}
+
+	[self.delegate onConnectionStateChange:self connectionState:connectionState];
 }
 
-- (void)onProduce:(NSString *)transportId
-	kind:(NSString *)kind
-	rtpParameters:(NSString *)rtpParameters
-	appData:(NSString *)appData
-	callback:(void(^)(NSString *))callback {
+- (void)onProduce:(SendTransportListenerAdapter *_Nonnull)adapter
+	kind:(NSString *_Nonnull)kind
+	rtpParameters:(NSString *_Nonnull)rtpParameters
+	appData:(NSString *_Nonnull)appData
+	callback:(void(^_Nonnull)(NSString *_Nullable))callback {
 
-	[self.delegate onProduce:transportId kind:kind rtpParameters:rtpParameters appData:appData callback:callback];
+	if (adapter != _listenerAdapter) {
+		return;
+	}
+
+	[self.delegate onProduce:self kind:kind rtpParameters:rtpParameters appData:appData
+		callback:callback];
+}
+
+- (void)onProduceData:(SendTransportListenerAdapter *_Nonnull)adapter
+	sctpParameters:(NSString *_Nonnull)sctpParameters
+	label:(NSString *_Nonnull)label
+	protocol:(NSString *_Nonnull)protocol
+	appData:(NSString *_Nonnull)appData
+	callback:(void(^_Nonnull)(NSString *_Nullable))callback {
+
+	if (adapter != _listenerAdapter) {
+		return;
+	}
+
+	[self.delegate onProduceData:self sctpParameters:sctpParameters label:label protocol:protocol
+		appData:appData callback:callback];
 }
 
 @end

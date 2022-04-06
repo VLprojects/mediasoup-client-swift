@@ -30,6 +30,8 @@
 		FF7FA6A227FAB803000B6470 /* SendTransportListenerAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF7FA6A127FAB803000B6470 /* SendTransportListenerAdapter.mm */; };
 		FF7FA6A427FAB838000B6470 /* SendTransportListenerAdapter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FF7FA6A327FAB829000B6470 /* SendTransportListenerAdapter.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 		FF7FA6BD27FB0FB7000B6470 /* SendTransportWrapperDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = FF7FA6BC27FB0F93000B6470 /* SendTransportWrapperDelegate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		FF7FA6C227FD5EA5000B6470 /* TransportDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FA6C127FD5EA5000B6470 /* TransportDelegate.swift */; };
+		FF7FA6C427FD5ECD000B6470 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FA6C327FD5ECD000B6470 /* Transport.swift */; };
 		FF89EFBD27F460F700EEF5CD /* MediasoupClientError.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89EFBC27F460F700EEF5CD /* MediasoupClientError.m */; };
 		FF89EFBF27F461DB00EEF5CD /* MediasoupError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89EFBE27F461DB00EEF5CD /* MediasoupError.swift */; };
 		FF89EFC027F462F200EEF5CD /* MediasoupClientError.h in Headers */ = {isa = PBXBuildFile; fileRef = FF89EFBB27F460A100EEF5CD /* MediasoupClientError.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -58,8 +60,9 @@
 		FF7FA6A127FAB803000B6470 /* SendTransportListenerAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SendTransportListenerAdapter.mm; sourceTree = "<group>"; };
 		FF7FA6A327FAB829000B6470 /* SendTransportListenerAdapter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SendTransportListenerAdapter.hpp; sourceTree = "<group>"; };
 		FF7FA6BC27FB0F93000B6470 /* SendTransportWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendTransportWrapperDelegate.h; sourceTree = "<group>"; };
-		FF7FA6BE27FBFB08000B6470 /* TransportListenerAdapterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportListenerAdapterDelegate.h; sourceTree = "<group>"; };
 		FF7FA6BF27FBFDF3000B6470 /* SendTransportListenerAdapterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendTransportListenerAdapterDelegate.h; sourceTree = "<group>"; };
+		FF7FA6C127FD5EA5000B6470 /* TransportDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportDelegate.swift; sourceTree = "<group>"; };
+		FF7FA6C327FD5ECD000B6470 /* Transport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transport.swift; sourceTree = "<group>"; };
 		FF89EFBB27F460A100EEF5CD /* MediasoupClientError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupClientError.h; sourceTree = "<group>"; };
 		FF89EFBC27F460F700EEF5CD /* MediasoupClientError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediasoupClientError.m; sourceTree = "<group>"; };
 		FF89EFBE27F461DB00EEF5CD /* MediasoupError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasoupError.swift; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				FF89EFBE27F461DB00EEF5CD /* MediasoupError.swift */,
 				FF7FA69427FAA930000B6470 /* SendTransport.swift */,
 				FF7FA69027FAA8E9000B6470 /* SendTransportDelegate.swift */,
+				FF7FA6C127FD5EA5000B6470 /* TransportDelegate.swift */,
+				FF7FA6C327FD5ECD000B6470 /* Transport.swift */,
 			);
 			path = Mediasoup;
 			sourceTree = "<group>";
@@ -132,7 +137,6 @@
 				FF7FA69B27FAACFF000B6470 /* SendTransportWrapper.hpp */,
 				FF7FA69927FAACEE000B6470 /* SendTransportWrapper.mm */,
 				FF7FA6BC27FB0F93000B6470 /* SendTransportWrapperDelegate.h */,
-				FF7FA6BE27FBFB08000B6470 /* TransportListenerAdapterDelegate.h */,
 			);
 			path = Transport;
 			sourceTree = "<group>";
@@ -312,6 +316,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFC2452127F6E8DF008F61DE /* MediaKind.swift in Sources */,
+				FF7FA6C427FD5ECD000B6470 /* Transport.swift in Sources */,
+				FF7FA6C227FD5EA5000B6470 /* TransportDelegate.swift in Sources */,
 				FF7FA6A227FAB803000B6470 /* SendTransportListenerAdapter.mm in Sources */,
 				FFC2452427F6E9DB008F61DE /* MediasoupClientMediaKind.mm in Sources */,
 				FF7FA69A27FAACEE000B6470 /* SendTransportWrapper.mm in Sources */,

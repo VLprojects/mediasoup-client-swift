@@ -14,11 +14,11 @@ class SendTransportListenerAdapter;
 
 @interface SendTransportWrapper : NSObject
 
-@property(nonatomic, weak) id<SendTransportWrapperDelegate> delegate;
+@property(nonatomic, nullable, weak) id<SendTransportWrapperDelegate> delegate;
 
 #ifdef __cplusplus
-- (instancetype)initWithTransport:(mediasoupclient::SendTransport *)transport
-	listenerAdapter:(SendTransportListenerAdapter *)listenerAdapter;
+- (instancetype _Nullable)initWithTransport:(mediasoupclient::SendTransport *_Nonnull)transport
+	listenerAdapter:(SendTransportListenerAdapter *_Nonnull)listenerAdapter;
 #endif
 
 @end

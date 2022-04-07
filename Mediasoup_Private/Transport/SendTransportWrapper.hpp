@@ -2,7 +2,6 @@
 #define SendTransportWrapper_h
 
 #import <Foundation/Foundation.h>
-#import "SendTransportWrapperDelegate.h"
 
 #ifdef __cplusplus
 namespace mediasoupclient {
@@ -10,6 +9,11 @@ namespace mediasoupclient {
 }
 class SendTransportListenerAdapter;
 #endif
+
+@class ProducerWrapper;
+@class RTCMediaStreamTrack;
+@class RTCRtpEncodingParameters;
+@protocol SendTransportWrapperDelegate;
 
 
 @interface SendTransportWrapper : NSObject
@@ -35,6 +39,12 @@ class SendTransportListenerAdapter;
 - (void)updateICEServers:(NSString *_Nonnull)iceServers
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
 	__attribute__((swift_error(nonnull_error)));
+
+- (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
+	encodings:(NSArray<RTCRtpEncodingParameters *> *_Nullable)encodings
+	codecOptions:(NSString *_Nullable)codecOptions
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 
 @end
 

@@ -1,4 +1,5 @@
 import Foundation
+import WebRTC
 import Mediasoup_Private
 
 
@@ -9,6 +10,16 @@ public class SendTransport {
 
 	internal init(transport: SendTransportWrapper) {
 		self.transport = transport
+	}
+
+	public func createProducer(for track: RTCMediaStreamTrack, encodings: [RTCRtpEncodingParameters]?,
+		codecOptions: String?, appData: String?) throws -> Producer {
+
+		return try convertMediasoupErrors {
+			let producer = try self.transport.createProducer(for: track, encodings: encodings,
+				codecOptions: codecOptions, appData: appData)
+			return Producer(producer: producer)
+		}
 	}
 }
 

@@ -1,7 +1,12 @@
 #import <Transport.hpp>
+#import <WebRTC/RTCMediaStreamTrack.h>
+#import <WebRTC/RTCRtpEncodingParameters.h>
 #import "SendTransportWrapper.hpp"
 #import "SendTransportListenerAdapter.hpp"
+#import "SendTransportWrapperDelegate.h"
 #import "../MediasoupClientError/MediasoupClientErrorHandler.h"
+#import "../Producer/ProducerListenerAdapter.hpp"
+#import "../Producer/ProducerWrapper.hpp"
 
 
 @interface SendTransportWrapper () <SendTransportListenerAdapterDelegate> {
@@ -75,6 +80,60 @@
 		auto iceServersString = std::string(iceServers.UTF8String);
 		auto iceServersJSON = nlohmann::json::parse(iceServersString);
 		self->_transport->UpdateIceServers(iceServersJSON);
+	}, error);
+}
+
+- (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
+	encodings:(NSArray<RTCRtpEncodingParameters *> *_Nullable)encodings
+	codecOptions:(NSString *_Nullable)codecOptions
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	return mediasoupTryWithResult(^ ProducerWrapper * {
+		std::vector<webrtc::RtpEncodingParameters> encodingsVector;
+		if (encodings != nullptr) {
+			encodingsVector.reserve(encodings.count);
+			// Build the equvilent c++ encoding from objective-c encoding
+			for (RTCRtpEncodingParameters *encoding in encodings) {
+				webrtc::RtpEncodingParameters nativeEncoding;
+				nativeEncoding.active = encoding.isActive;
+
+				if (encoding.maxBitrateBps != nil) {
+					nativeEncoding.max_bitrate_bps = absl::make_optional(encoding.maxBitrateBps.intValue);
+				}
+				if (encoding.minBitrateBps != nil) {
+					nativeEncoding.min_bitrate_bps = absl::make_optional(encoding.minBitrateBps.intValue);
+				}
+				if (encoding.maxFramerate != nil) {
+					nativeEncoding.max_framerate = absl::make_optional(encoding.maxFramerate.doubleValue);
+				}
+				if (encoding.numTemporalLayers != nil) {
+					nativeEncoding.num_temporal_layers = absl::make_optional(encoding.numTemporalLayers.intValue);
+				}
+				if (encoding.scaleResolutionDownBy != nil) {
+					nativeEncoding.scale_resolution_down_by = absl::make_optional(encoding.scaleResolutionDownBy.doubleValue);
+				}
+				encodingsVector.emplace_back(nativeEncoding);
+			}
+		}
+
+		nlohmann::json codecOptionsJson = nlohmann::json::object();
+		if (codecOptions != nullptr) {
+			codecOptionsJson = nlohmann::json::parse(std::string(codecOptions.UTF8String));
+		}
+
+		nlohmann::json appDataJson = nlohmann::json::object();
+		if (appData != nullptr) {
+			appDataJson = nlohmann::json::parse(std::string(appData.UTF8String));
+		}
+
+		// RTCMediaStreamTrack `hash` returns pointer to native track object.
+		auto mediaStreamTrack = (webrtc::MediaStreamTrackInterface *)[mediaTrack hash];
+
+		auto listenerAdapter = new ProducerListenerAdapter();
+
+		auto producer = self->_transport->Produce(listenerAdapter, mediaStreamTrack, &encodingsVector, &codecOptionsJson);
+		return [[ProducerWrapper alloc] initWithProducer:producer listenerAdapter:listenerAdapter];
 	}, error);
 }
 

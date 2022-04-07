@@ -6,7 +6,7 @@
 #import "SendTransportListenerAdapterDelegate.h"
 
 
-class SendTransportListenerAdapter : public mediasoupclient::SendTransport::Listener {
+class SendTransportListenerAdapter final : public mediasoupclient::SendTransport::Listener {
 public:
 	__weak id<SendTransportListenerAdapterDelegate> delegate;
 

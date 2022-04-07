@@ -1,6 +1,7 @@
 #import <Transport.hpp>
 #import "SendTransportWrapper.hpp"
 #import "SendTransportListenerAdapter.hpp"
+#import "../MediasoupClientError/MediasoupClientErrorHandler.h"
 
 
 @interface SendTransportWrapper () <SendTransportListenerAdapterDelegate> {
@@ -30,6 +31,54 @@
 	delete _transport;
 	// TODO: delete _listenerAdapter
 }
+
+#pragma mark - Public methods
+
+- (NSString *_Nonnull)id {
+	return [NSString stringWithUTF8String:_transport->GetId().c_str()];
+}
+
+- (BOOL)closed {
+	return _transport->IsClosed() == true;
+}
+
+- (NSString *_Nonnull)connectionState {
+	return [NSString stringWithUTF8String:_transport->GetConnectionState().c_str()];
+}
+
+- (NSString *_Nonnull)appData {
+	return [NSString stringWithUTF8String:_transport->GetAppData().dump().c_str()];
+}
+
+- (NSString *_Nonnull)stats {
+	return [NSString stringWithUTF8String:_transport->GetStats().dump().c_str()];
+}
+
+- (void)close {
+	_transport->Close();
+}
+
+- (void)restartICE:(NSString *_Nonnull)iceParameters
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	mediasoupTry(^{
+		auto iceParametersString = std::string(iceParameters.UTF8String);
+		auto iceParametersJSON = nlohmann::json::parse(iceParametersString);
+		self->_transport->RestartIce(iceParametersJSON);
+	}, error);
+}
+
+- (void)updateICEServers:(NSString *_Nonnull)iceServers
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	mediasoupTry(^{
+		auto iceServersString = std::string(iceServers.UTF8String);
+		auto iceServersJSON = nlohmann::json::parse(iceServersString);
+		self->_transport->UpdateIceServers(iceServersJSON);
+	}, error);
+}
+
+#pragma mark - SendTransportListenerAdapterDelegate methods
 
 - (void)onConnect:(SendTransportListenerAdapter *_Nonnull)adapter
 	dtlsParameters:(NSString *_Nonnull)dtlsParameters {

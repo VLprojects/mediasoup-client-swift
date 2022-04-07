@@ -13,6 +13,41 @@ public class SendTransport {
 }
 
 extension SendTransport: Transport {
+	public var id: String {
+		return transport.id
+	}
+
+	public var closed: Bool {
+		return transport.closed
+	}
+
+	public var connectionState: String {
+		return transport.connectionState
+	}
+
+	public var appData: String {
+		return transport.appData
+	}
+
+	public var stats: String {
+		return transport.stats
+	}
+
+	public func close() {
+		transport.close()
+	}
+
+	public func restartICE(with iceParameters: String) throws {
+		try convertMediasoupErrors {
+			try transport.restartICE(iceParameters)
+		}
+	}
+
+	public func updateICEServers(_ iceServers: String) throws {
+		try convertMediasoupErrors {
+			try transport.updateICEServers(iceServers)
+		}
+	}
 }
 
 extension SendTransport: SendTransportWrapperDelegate {

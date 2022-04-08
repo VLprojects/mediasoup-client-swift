@@ -1,20 +1,41 @@
 import UIKit
 import Mediasoup
+import AVFoundation
+import WebRTC
 
 
 final class ViewController: UIViewController {
 	@IBOutlet var label: UILabel!
+
+	private let peerConnectionFactory = RTCPeerConnectionFactory()
+	private var mediaStream: RTCMediaStream?
+	private var audioTrack: RTCAudioTrack?
+
 	private var device: Device?
 	private var sendTransport: SendTransport?
+	private var producer: Producer?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		guard AVCaptureDevice.authorizationStatus(for: .audio) == .authorized else {
+			self.label.text = "accept all permission requests and restart the app"
+			AVCaptureDevice.requestAccess(for: .audio) { _ in
+			}
+			return
+		}
+
+		mediaStream = peerConnectionFactory.mediaStream(withStreamId: TestData.MediaStream.mediaStreamId)
+		let audioTrack = peerConnectionFactory.audioTrack(withTrackId: TestData.MediaStream.audioTrackId)
+		mediaStream?.addAudioTrack(audioTrack)
+		self.audioTrack = audioTrack
+
 
 		let device = Device()
 		do {
 			print("isLoaded: \(device.isLoaded())")
 
-			try device.load(with: "{}")
+			try device.load(with: TestData.Device.rtpCapabilities)
 			print("isLoaded: \(device.isLoaded())")
 
 			let canProduceVideo = try device.canProduce(.video)
@@ -42,14 +63,23 @@ final class ViewController: UIViewController {
 			print("transport id: \(sendTransport.id)")
 			print("transport is closed: \(sendTransport.closed)")
 
-			try sendTransport.updateICEServers("[]")
-			print("ICE servers updated")
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+				let producer = try? sendTransport.createProducer(for: audioTrack, encodings: nil, codecOptions: nil, appData: nil)
+				self.producer = producer
+				producer?.delegate = self
+				print("producer created")
+			}
 
-			try sendTransport.restartICE(with: "{}")
-			print("ICE restarted")
+//			try sendTransport.updateICEServers("[]")
+//			print("ICE servers updated")
+//
+//			try sendTransport.restartICE(with: "{}")
+//			print("ICE restarted")
 
-			sendTransport.close()
-			print("transport is closed: \(sendTransport.closed)")
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+				sendTransport.close()
+				print("transport is closed: \(sendTransport.closed)")
+			}
 
 			label.text = "OK"
 		} catch let error as MediasoupError {
@@ -101,5 +131,12 @@ extension ViewController: SendTransportDelegate {
 
 	func onConnectionStateChange(transport: Transport, connectionState: String) {
 		print("on connection state change: \(connectionState)")
+	}
+}
+
+
+extension ViewController: ProducerDelegate {
+	func onTransportClose(in producer: Producer) {
+		print("on transport close in \(producer)")
 	}
 }

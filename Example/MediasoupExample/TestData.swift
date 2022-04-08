@@ -2,8 +2,20 @@ import Foundation
 
 
 enum TestData {
-	enum SendTransport {
-	}
+	enum MediaStream { }
+	enum Device { }
+	enum SendTransport { }
+}
+
+extension TestData.MediaStream {
+	static let mediaStreamId = "ARDAMS"
+	static let audioTrackId = "ARDAMSa0"
+}
+
+extension TestData.Device {
+	static let rtpCapabilities = """
+	{ \"headerExtensions\" : [ { \"preferredEncrypt\" : false, \"uri\" : \"urn:ietf:params:rtp-hdrext:sdes:mid\", \"preferredId\" : 1, \"kind\" : \"audio\", \"direction\" : \"sendrecv\" }, { \"preferredEncrypt\" : false, \"uri\" : \"urn:ietf:params:rtp-hdrext:sdes:mid\", \"preferredId\" : 1, \"kind\" : \"video\", \"direction\" : \"sendrecv\" }, { \"preferredEncrypt\" : false, \"uri\" : \"urn:ietf:params:rtp-hdrext:sdes:rtp-stream-id\", \"kind\" : \"video\", \"preferredId\" : 2, \"direction\" : \"recvonly\" }, { \"preferredEncrypt\" : false, \"uri\" : \"urn:ietf:params:rtp-hdrext:sdes:repaired-rtp-stream-id\", \"kind\" : \"video\", \"preferredId\" : 3, \"direction\" : \"recvonly\" }, { \"preferredEncrypt\" : false, \"uri\" : \"http:\\/\\/www.webrtc.org\\/experiments\\/rtp-hdrext\\/abs-send-time\", \"kind\" : \"audio\", \"preferredId\" : 4, \"direction\" : \"sendrecv\" }, { \"preferredId\" : 4, \"preferredEncrypt\" : false, \"uri\" : \"http:\\/\\/www.webrtc.org\\/experiments\\/rtp-hdrext\\/abs-send-time\", \"kind\" : \"video\", \"direction\" : \"sendrecv\" }, { \"preferredId\" : 5, \"preferredEncrypt\" : false, \"uri\" : \"http:\\/\\/www.ietf.org\\/id\\/draft-holmer-rmcat-transport-wide-cc-extensions-01\", \"kind\" : \"audio\", \"direction\" : \"recvonly\" }, { \"preferredId\" : 5, \"preferredEncrypt\" : false, \"uri\" : \"http:\\/\\/www.ietf.org\\/id\\/draft-holmer-rmcat-transport-wide-cc-extensions-01\", \"kind\" : \"video\", \"direction\" : \"sendrecv\" }, { \"preferredId\" : 6, \"preferredEncrypt\" : false, \"uri\" : \"http:\\/\\/tools.ietf.org\\/html\\/draft-ietf-avtext-framemarking-07\", \"kind\" : \"video\", \"direction\" : \"sendrecv\" }, { \"preferredEncrypt\" : false, \"uri\" : \"urn:ietf:params:rtp-hdrext:framemarking\", \"kind\" : \"video\", \"preferredId\" : 7, \"direction\" : \"sendrecv\" }, { \"preferredEncrypt\" : false, \"uri\" : \"urn:ietf:params:rtp-hdrext:ssrc-audio-level\", \"kind\" : \"audio\", \"preferredId\" : 10, \"direction\" : \"sendrecv\" }, { \"preferredEncrypt\" : false, \"uri\" : \"urn:3gpp:video-orientation\", \"kind\" : \"video\", \"preferredId\" : 11, \"direction\" : \"sendrecv\" }, { \"preferredId\" : 12, \"kind\" : \"video\", \"preferredEncrypt\" : false, \"direction\" : \"sendrecv\", \"uri\" : \"urn:ietf:params:rtp-hdrext:toffset\" } ], \"codecs\" : [ { \"channels\" : 2, \"clockRate\" : 48000, \"mimeType\" : \"audio\\/opus\", \"parameters\" : { }, \"kind\" : \"audio\", \"rtcpFeedback\" : [ { \"parameter\" : \"\", \"type\" : \"transport-cc\" } ], \"preferredPayloadType\" : 100 }, { \"parameters\" : { \"level-asymmetry-allowed\" : 1, \"profile-level-id\" : \"42e01f\", \"x-google-start-bitrate\" : 1000, \"packetization-mode\" : 1 }, \"clockRate\" : 90000, \"preferredPayloadType\" : 101, \"kind\" : \"video\", \"rtcpFeedback\" : [ { \"parameter\" : \"\", \"type\" : \"nack\" }, { \"parameter\" : \"pli\", \"type\" : \"nack\" }, { \"type\" : \"ccm\", \"parameter\" : \"fir\" }, { \"type\" : \"goog-remb\", \"parameter\" : \"\" }, { \"parameter\" : \"\", \"type\" : \"transport-cc\" } ], \"mimeType\" : \"video\\/H264\" }, { \"parameters\" : { \"apt\" : 101 }, \"preferredPayloadType\" : 102, \"kind\" : \"video\", \"clockRate\" : 90000, \"rtcpFeedback\" : [ ], \"mimeType\" : \"video\\/rtx\" }, { \"parameters\" : { \"x-google-start-bitrate\" : 1000 }, \"preferredPayloadType\" : 103, \"kind\" : \"video\", \"clockRate\" : 90000, \"rtcpFeedback\" : [ { \"parameter\" : \"\", \"type\" : \"nack\" }, { \"type\" : \"nack\", \"parameter\" : \"pli\" }, { \"type\" : \"ccm\", \"parameter\" : \"fir\" }, { \"parameter\" : \"\", \"type\" : \"goog-remb\" }, { \"type\" : \"transport-cc\", \"parameter\" : \"\" } ], \"mimeType\" : \"video\\/VP8\" }, { \"kind\" : \"video\", \"mimeType\" : \"video\\/rtx\", \"parameters\" : { \"apt\" : 103 }, \"preferredPayloadType\" : 104, \"clockRate\" : 90000, \"rtcpFeedback\" : [ ] } ]}
+	"""
 }
 
 extension TestData.SendTransport {

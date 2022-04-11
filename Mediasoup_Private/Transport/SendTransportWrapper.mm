@@ -133,7 +133,7 @@
 		auto listenerAdapter = new ProducerListenerAdapter();
 
 		auto producer = self->_transport->Produce(listenerAdapter, mediaStreamTrack, &encodingsVector, &codecOptionsJson);
-		return [[ProducerWrapper alloc] initWithProducer:producer listenerAdapter:listenerAdapter];
+		return [[ProducerWrapper alloc] initWithProducer:producer mediaStreamTrack:mediaTrack listenerAdapter:listenerAdapter];
 	}, error);
 }
 

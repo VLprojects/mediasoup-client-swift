@@ -14,4 +14,17 @@ internal extension MediaKind {
 			case .video: return .video
 		}
 	}
+
+	init?(stringValue: String) {
+		switch MediasoupClientMediaKind(rawValue: stringValue) {
+			case .audio:
+				self = .audio
+
+			case .video:
+				self = .video
+
+			default:
+				return nil
+		}
+	}
 }

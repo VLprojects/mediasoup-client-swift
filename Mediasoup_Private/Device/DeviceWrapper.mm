@@ -59,14 +59,14 @@
 	return mediasoupTryWithResult(^ NSString * {
 		nlohmann::json const capabilities = self->_device->GetSctpCapabilities();
 		return [NSString stringWithCString:capabilities.dump().c_str() encoding:NSUTF8StringEncoding];
-	}, error);
+	}, nil, error);
 }
 
 - (NSString *_Nullable)rtpCapabilitiesWithError:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 	return mediasoupTryWithResult(^ NSString * {
 		nlohmann::json const capabilities = self->_device->GetRtpCapabilities();
 		return [NSString stringWithCString:capabilities.dump().c_str() encoding:NSUTF8StringEncoding];
-	}, error);
+	}, nil, error);
 }
 
 - (BOOL)canProduce:(MediasoupClientMediaKind _Nonnull)mediaKind
@@ -85,8 +85,7 @@
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 
-	//	mediasoupTryWithResult(^(SendTransportWrapper *){
-	//	}, error)
+	auto listenerAdapter = new SendTransportListenerAdapter();
 
 	try {
 		auto idString = std::string(transportId.UTF8String);
@@ -102,12 +101,27 @@
 			auto sctpParametersString = std::string(sctpParameters.UTF8String);
 			sctpParametersJSON = nlohmann::json::parse(sctpParametersString);
 		}
-		auto listenerAdapter = new SendTransportListenerAdapter();
-		auto transport = _device->CreateSendTransport(listenerAdapter, idString, iceParametersJSON,
-			iceCandidatesJSON, dtlsParametersJSON, sctpParametersJSON);
+
+		nlohmann::json appDataJSON = nlohmann::json::object();
+		if (appData != nil) {
+			auto appDataString = std::string(appData.UTF8String);
+			appDataJSON = nlohmann::json::parse(appDataString);
+		}
+
+		auto transport = _device->CreateSendTransport(
+			listenerAdapter,
+			idString,
+			iceParametersJSON,
+			iceCandidatesJSON,
+			dtlsParametersJSON,
+			sctpParametersJSON,
+			self->_pcOptions,
+			appDataJSON
+		);
 		auto transportWrapper = [[SendTransportWrapper alloc] initWithTransport:transport listenerAdapter:listenerAdapter];
 		return transportWrapper;
 	} catch(const std::exception &e) {
+		delete listenerAdapter;
 		*error = mediasoupError(MediasoupClientErrorCodeInvalidParameters, &e);
 		return nil;
 	}

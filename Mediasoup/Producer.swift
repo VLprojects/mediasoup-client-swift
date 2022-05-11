@@ -4,7 +4,7 @@ import WebRTC
 
 
 public class Producer {
-	public var delegate: ProducerDelegate?
+	public weak var delegate: ProducerDelegate?
 
 	public var track: RTCMediaStreamTrack {
 		return producer.track

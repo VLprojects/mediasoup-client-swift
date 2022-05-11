@@ -1,6 +1,6 @@
 import Foundation
 
 
-public protocol ProducerDelegate {
+public protocol ProducerDelegate: AnyObject {
 	func onTransportClose(in producer: Producer)
 }

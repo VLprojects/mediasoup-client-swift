@@ -34,7 +34,7 @@
 
 - (void)dealloc {
 	delete _transport;
-	// TODO: delete _listenerAdapter
+	delete _listenerAdapter;
 }
 
 #pragma mark - Public methods
@@ -89,6 +89,8 @@
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 
+	auto listenerAdapter = new ProducerListenerAdapter();
+
 	return mediasoupTryWithResult(^ ProducerWrapper * {
 		std::vector<webrtc::RtpEncodingParameters> encodingsVector;
 		if (encodings != nullptr) {
@@ -130,10 +132,16 @@
 		// RTCMediaStreamTrack `hash` returns pointer to native track object.
 		auto mediaStreamTrack = (webrtc::MediaStreamTrackInterface *)[mediaTrack hash];
 
-		auto listenerAdapter = new ProducerListenerAdapter();
-
-		auto producer = self->_transport->Produce(listenerAdapter, mediaStreamTrack, &encodingsVector, &codecOptionsJson);
+		auto producer = self->_transport->Produce(
+			listenerAdapter,
+			mediaStreamTrack,
+			&encodingsVector,
+			&codecOptionsJson,
+			appDataJson
+		);
 		return [[ProducerWrapper alloc] initWithProducer:producer mediaStreamTrack:mediaTrack listenerAdapter:listenerAdapter];
+	}, ^ void {
+		delete listenerAdapter;
 	}, error);
 }
 

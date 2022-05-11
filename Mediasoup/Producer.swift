@@ -60,15 +60,18 @@ public class Producer {
 		producer.close()
 	}
 
-	func setMaxSpatialLayer(_ layer: UInt8) throws {
-		try producer.setMaxSpatialLayer(layer)
+	public func setMaxSpatialLayer(_ layer: Int) throws {
+		guard let typedLayer = UInt8(exactly: layer) else {
+			throw MediasoupError.invalidParameters("Layer index can not be negative")
+		}
+		try producer.setMaxSpatialLayer(typedLayer)
 	}
 
-	func replaceTrack(_ track: RTCMediaStreamTrack) throws {
+	public func replaceTrack(_ track: RTCMediaStreamTrack) throws {
 		try producer.replaceTrack(track)
 	}
 
-	func getStats() throws -> String {
+	public func getStats() throws -> String {
 		return try producer.getStats()
 	}
 }

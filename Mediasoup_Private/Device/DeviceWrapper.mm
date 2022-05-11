@@ -5,6 +5,8 @@
 #import "../MediasoupClientError/MediasoupClientErrorHandler.h"
 #import "../Transport/SendTransportWrapper.hpp"
 #import "../Transport/SendTransportListenerAdapter.hpp"
+#import "../Transport/ReceiveTransportWrapper.hpp"
+#import "../Transport/ReceiveTransportListenerAdapter.hpp"
 
 
 @interface DeviceWrapper() {
@@ -119,6 +121,60 @@
 			appDataJSON
 		);
 		auto transportWrapper = [[SendTransportWrapper alloc] initWithTransport:transport listenerAdapter:listenerAdapter];
+		return transportWrapper;
+	} catch(const std::exception &e) {
+		delete listenerAdapter;
+		*error = mediasoupError(MediasoupClientErrorCodeInvalidParameters, &e);
+		return nil;
+	}
+}
+
+- (ReceiveTransportWrapper *_Nullable)createReceiveTransportWithId:(NSString *_Nonnull)transportId
+	iceParameters:(NSString *_Nonnull)iceParameters
+	iceCandidates:(NSString *_Nonnull)iceCandidates
+	dtlsParameters:(NSString *_Nonnull)dtlsParameters
+	sctpParameters:(NSString *_Nullable)sctpParameters
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	auto listenerAdapter = new ReceiveTransportListenerAdapter();
+
+	try {
+		auto idString = std::string(transportId.UTF8String);
+		auto iceParametersString = std::string(iceParameters.UTF8String);
+		auto iceParametersJSON = nlohmann::json::parse(iceParametersString);
+		auto iceCandidatesString = std::string(iceCandidates.UTF8String);
+		auto iceCandidatesJSON = nlohmann::json::parse(iceCandidatesString);
+		auto dtlsParametersString = std::string(dtlsParameters.UTF8String);
+		auto dtlsParametersJSON = nlohmann::json::parse(dtlsParametersString);
+
+		nlohmann::json sctpParametersJSON;
+		if (sctpParameters != nil) {
+			auto sctpParametersString = std::string(sctpParameters.UTF8String);
+			sctpParametersJSON = nlohmann::json::parse(sctpParametersString);
+		}
+
+		nlohmann::json appDataJSON = nlohmann::json::object();
+		if (appData != nil) {
+			auto appDataString = std::string(appData.UTF8String);
+			appDataJSON = nlohmann::json::parse(appDataString);
+		}
+
+		auto transport = _device->CreateRecvTransport(
+			listenerAdapter,
+			idString,
+			iceParametersJSON,
+			iceCandidatesJSON,
+			dtlsParametersJSON,
+			sctpParametersJSON,
+			self->_pcOptions,
+			appDataJSON
+		);
+		auto transportWrapper = [[ReceiveTransportWrapper alloc]
+			initWithTransport:transport
+			pcFactory:self.pcFactory
+			listenerAdapter:listenerAdapter
+		];
 		return transportWrapper;
 	} catch(const std::exception &e) {
 		delete listenerAdapter;

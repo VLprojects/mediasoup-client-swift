@@ -5,6 +5,7 @@
 #import "MediasoupClientMediaKind.h"
 
 
+@class ReceiveTransportWrapper;
 @class SendTransportWrapper;
 
 
@@ -28,6 +29,14 @@
 	__attribute__((swift_error(nonnull_error)));
 
 - (SendTransportWrapper *_Nullable)createSendTransportWithId:(NSString *_Nonnull)transportId
+	iceParameters:(NSString *_Nonnull)iceParameters
+	iceCandidates:(NSString *_Nonnull)iceCandidates
+	dtlsParameters:(NSString *_Nonnull)dtlsParameters
+	sctpParameters:(NSString *_Nullable)sctpParameters
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
+
+- (ReceiveTransportWrapper *_Nullable)createReceiveTransportWithId:(NSString *_Nonnull)transportId
 	iceParameters:(NSString *_Nonnull)iceParameters
 	iceCandidates:(NSString *_Nonnull)iceCandidates
 	dtlsParameters:(NSString *_Nonnull)dtlsParameters

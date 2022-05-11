@@ -48,4 +48,17 @@ public class Device {
 			return SendTransport(transport: transport)
 		}
 	}
+
+	public func createReceiveTransport(id: String, iceParameters: String, iceCandidates: String,
+		dtlsParameters: String, sctpParameters: String? = nil, appData: String? = nil)
+		throws -> ReceiveTransport {
+
+		return try convertMediasoupErrors {
+			let transport = try device.createReceiveTransport(withId: id, iceParameters: iceParameters,
+				iceCandidates: iceCandidates, dtlsParameters: dtlsParameters,
+				sctpParameters: sctpParameters, appData: appData)
+
+			return ReceiveTransport(transport: transport)
+		}
+	}
 }

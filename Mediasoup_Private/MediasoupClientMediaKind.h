@@ -7,9 +7,4 @@ typedef NSString *MediasoupClientMediaKind NS_TYPED_ENUM;
 extern MediasoupClientMediaKind const MediasoupClientMediaKindAudio;
 extern MediasoupClientMediaKind const MediasoupClientMediaKindVideo;
 
-//typedef NS_ENUM(NSUInteger, MediasoupClientMediaKind) {
-//	MediasoupClientMediaKindAudio,
-//	MediasoupClientMediaKindVideo,
-//};
-
 #endif /* MediasoupClientMediaKind_h */

@@ -4,7 +4,7 @@ import Foundation
 public protocol SendTransportDelegate: TransportDelegate {
 	func onProduce(
 		transport: Transport,
-		kind: String,
+		kind: MediaKind,
 		rtpParameters: String,
 		appData: String,
 		callback: @escaping (String?) -> Void

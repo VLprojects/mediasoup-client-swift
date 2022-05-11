@@ -10,6 +10,11 @@ public class SendTransport {
 
 	internal init(transport: SendTransportWrapper) {
 		self.transport = transport
+		transport.delegate = self
+	}
+
+	deinit {
+		print("SendTransport deallocated")
 	}
 
 	public func createProducer(for track: RTCMediaStreamTrack, encodings: [RTCRtpEncodingParameters]?,
@@ -36,8 +41,8 @@ extension SendTransport: Transport {
 		return transport.closed
 	}
 
-	public var connectionState: String {
-		return transport.connectionState
+	public var connectionState: TransportConnectionState {
+		return TransportConnectionState(stringValue: transport.connectionState) ?? .failed
 	}
 
 	public var appData: String {
@@ -63,6 +68,10 @@ extension SendTransport: Transport {
 			try transport.updateICEServers(iceServers)
 		}
 	}
+
+	public func updateICETransportPolicy(_ transportPolicy: ICETransportPolicy) throws {
+		// TODO
+	}
 }
 
 extension SendTransport: SendTransportWrapperDelegate {
@@ -71,15 +80,20 @@ extension SendTransport: SendTransportWrapperDelegate {
 			return
 		}
 
-		delegate?.onConnect(transport: self)
+		delegate?.onConnect(transport: self, dtlsParameters: dtlsParameters)
 	}
 
-	public func onConnectionStateChange(_ transport: SendTransportWrapper, connectionState: String) {
-		guard transport == self.transport else {
+	public func onConnectionStateChange(
+		_ transport: SendTransportWrapper,
+		connectionState: MediasoupClientTransportConnectionState) {
+
+		guard transport == self.transport,
+			let state = TransportConnectionState(stringValue: connectionState.rawValue) else {
+
 			return
 		}
 
-		delegate?.onConnectionStateChange(transport: self, connectionState: connectionState)
+		delegate?.onConnectionStateChange(transport: self, connectionState: state)
 	}
 
 	public func onProduce(_ transport: SendTransportWrapper, kind: String, rtpParameters: String,
@@ -89,7 +103,12 @@ extension SendTransport: SendTransportWrapperDelegate {
 			return
 		}
 
-		delegate?.onProduce(transport: self, kind: kind, rtpParameters: rtpParameters,
+		guard let mediaKind = MediaKind(stringValue: kind) else {
+			print("Failed to parse media kins value: \(kind)")
+			return
+		}
+
+		delegate?.onProduce(transport: self, kind: mediaKind, rtpParameters: rtpParameters,
 			appData: appData, callback: callback)
 	}
 

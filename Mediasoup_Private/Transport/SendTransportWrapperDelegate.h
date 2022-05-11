@@ -2,6 +2,7 @@
 #define SendTransportWrapperDelegate_h
 
 #import <Foundation/Foundation.h>
+#import "MediasoupClientTransportConnectionState.h"
 
 
 @class SendTransportWrapper;
@@ -12,7 +13,7 @@
 	dtlsParameters:(NSString *_Nonnull)dtlsParameters;
 
 - (void)onConnectionStateChange:(SendTransportWrapper *_Nonnull)transport
-	connectionState:(NSString *_Nonnull)connectionState;
+	connectionState:(MediasoupClientTransportConnectionState _Nonnull)connectionState;
 
 - (void)onProduce:(SendTransportWrapper *_Nonnull)transport
 	kind:(NSString *_Nonnull)kind

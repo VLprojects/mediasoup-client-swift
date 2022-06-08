@@ -536,6 +536,7 @@
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/third_party/abseil-cpp",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/api",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/base",
+					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc",
 				);
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 VLProjects. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -628,6 +629,7 @@
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/third_party/abseil-cpp",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/api",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/base",
+					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc",
 				);
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 VLProjects. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

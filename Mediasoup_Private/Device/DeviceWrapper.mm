@@ -1,6 +1,14 @@
 #import <Device.hpp>
+#import <api/audio_codecs/builtin_audio_encoder_factory.h>
+#import <api/audio_codecs/builtin_audio_decoder_factory.h>
+#import <sdk/objc/native/api/audio_device_module.h>
+#import <sdk/objc/components/video_codec/RTCDefaultVideoDecoderFactory.h>
+#import <sdk/objc/components/video_codec/RTCDefaultVideoEncoderFactory.h>
+#import <sdk/objc/native/src/objc_video_encoder_factory.h>
+#import <sdk/objc/native/src/objc_video_decoder_factory.h>
+#import <peerconnection/RTCPeerConnectionFactory.h>
+#import <peerconnection/RTCPeerConnectionFactoryBuilder.h>
 #import <peerconnection/RTCPeerConnectionFactory+Private.h>
-#import <peerconnection/RTCPeerConnectionFactoryBuilder+DefaultComponents.h>
 #import "DeviceWrapper.h"
 #import "../MediasoupClientError/MediasoupClientErrorHandler.h"
 #import "../Transport/SendTransportWrapper.hpp"
@@ -15,6 +23,7 @@
 }
 @property(nonatomic, strong) RTCPeerConnectionFactoryBuilder *pcFactoryBuilder;
 @property(nonatomic, strong) RTCPeerConnectionFactory *pcFactory;
+@property(nonatomic, assign) rtc::scoped_refptr<webrtc::AudioDeviceModule> audioDeviceModule;
 @end
 
 
@@ -25,7 +34,24 @@
 	if (self != nil) {
 		_device = new mediasoupclient::Device();
 
-		self.pcFactoryBuilder = [RTCPeerConnectionFactoryBuilder defaultBuilder];
+		self.audioDeviceModule = webrtc::CreateAudioDeviceModule();
+
+		auto audioEncoderFactory = webrtc::CreateBuiltinAudioEncoderFactory();
+		auto audioDecoderFactory = webrtc::CreateBuiltinAudioDecoderFactory();
+		auto videoEncoderFactory = std::make_unique<webrtc::ObjCVideoEncoderFactory>(
+			[[RTCDefaultVideoEncoderFactory alloc] init]
+		);
+		auto videoDecoderFactory = std::make_unique<webrtc::ObjCVideoDecoderFactory>(
+			[[RTCDefaultVideoDecoderFactory alloc] init]
+		);
+
+		self.pcFactoryBuilder = [[RTCPeerConnectionFactoryBuilder alloc] init];
+		[self.pcFactoryBuilder setAudioEncoderFactory:audioEncoderFactory];
+		[self.pcFactoryBuilder setAudioDecoderFactory:audioDecoderFactory];
+		[self.pcFactoryBuilder setVideoEncoderFactory:std::move(videoEncoderFactory)];
+		[self.pcFactoryBuilder setVideoDecoderFactory:std::move(videoDecoderFactory)];
+		[self.pcFactoryBuilder setAudioDeviceModule:self.audioDeviceModule];
+
 		self.pcFactory = [self.pcFactoryBuilder createPeerConnectionFactory];
 		_pcOptions = new mediasoupclient::PeerConnection::Options();
 		_pcOptions->factory = self.pcFactory.nativeFactory;
@@ -41,6 +67,7 @@
 	// PeerConnection must be released before PeerConnectionBuilder.
 	self.pcFactoryBuilder = nil;
 	self.pcFactory = nil;
+	self.audioDeviceModule = nil;
 }
 
 - (BOOL)isLoaded {

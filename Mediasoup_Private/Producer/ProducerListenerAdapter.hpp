@@ -15,7 +15,7 @@ public:
 	ProducerListenerAdapter();
 	virtual ~ProducerListenerAdapter();
 
-	void OnTransportClose(mediasoupclient::Producer* producer) override;
+	void OnTransportClose(mediasoupclient::Producer *producer) override;
 };
 
 

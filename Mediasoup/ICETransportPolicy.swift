@@ -1,4 +1,5 @@
 import Foundation
+import WebRTC
 
 
 public enum ICETransportPolicy {
@@ -6,4 +7,17 @@ public enum ICETransportPolicy {
 	case relay
 	case noHost
 	case all
+
+	internal var rtcICETransportPolicy: RTCIceTransportPolicy {
+		switch self {
+			case .none:
+				return .none
+			case .relay:
+				return .relay
+			case .noHost:
+				return .noHost
+			case .all:
+				return .all
+		}
+	}
 }

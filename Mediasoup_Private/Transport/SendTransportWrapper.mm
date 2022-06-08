@@ -1,6 +1,8 @@
+#import <Foundation/Foundation.h>
 #import <Transport.hpp>
 #import <WebRTC/RTCMediaStreamTrack.h>
 #import <WebRTC/RTCRtpEncodingParameters.h>
+#import <peerconnection/RTCConfiguration+Private.h>
 #import "SendTransportWrapper.hpp"
 #import "SendTransportListenerAdapter.hpp"
 #import "SendTransportWrapperDelegate.h"
@@ -80,6 +82,15 @@
 		auto iceServersString = std::string(iceServers.UTF8String);
 		auto iceServersJSON = nlohmann::json::parse(iceServersString);
 		self->_transport->UpdateIceServers(iceServersJSON);
+	}, error);
+}
+
+- (void)updateICETransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
+	__attribute__((swift_error(nonnull_error))) {
+	mediasoupTry(^{
+		auto nativePolicy = [RTCConfiguration nativeTransportsTypeForTransportPolicy:iceTransportPolicy];
+		self->_transport->UpdateIceTransportType(nativePolicy);
 	}, error);
 }
 

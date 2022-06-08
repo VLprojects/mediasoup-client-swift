@@ -72,7 +72,9 @@ extension ReceiveTransport: Transport {
 	}
 
 	public func updateICETransportPolicy(_ transportPolicy: ICETransportPolicy) throws {
-		// TODO
+		try convertMediasoupErrors {
+			try transport.update(transportPolicy.rtcICETransportPolicy)
+		}
 	}
 }
 

@@ -1,0 +1,8 @@
+framework module Mediasoup {
+	export Mediasoup
+}
+
+module Mediasoup.Swift {
+    header "Mediasoup-Swift.h"
+    requires objc
+}

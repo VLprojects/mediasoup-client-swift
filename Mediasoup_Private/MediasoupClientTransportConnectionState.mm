@@ -1,0 +1,10 @@
+#import "MediasoupClientTransportConnectionState.h"
+
+
+MediasoupClientTransportConnectionState const MediasoupClientTransportConnectionStateNew = @"new";
+MediasoupClientTransportConnectionState const MediasoupClientTransportConnectionStateChecking = @"checking";
+MediasoupClientTransportConnectionState const MediasoupClientTransportConnectionStateConnected = @"connected";
+MediasoupClientTransportConnectionState const MediasoupClientTransportConnectionStateCompleted = @"completed";
+MediasoupClientTransportConnectionState const MediasoupClientTransportConnectionStateFailed = @"failed";
+MediasoupClientTransportConnectionState const MediasoupClientTransportConnectionStateDisconnected = @"disconnected";
+MediasoupClientTransportConnectionState const MediasoupClientTransportConnectionStateClosed = @"closed";

@@ -37,7 +37,7 @@
 
 - (void)dealloc {
 	delete _consumer;
-	// TODO: delete _listenerAdapter
+	delete _listenerAdapter;
 }
 
 #pragma mark - Public methods

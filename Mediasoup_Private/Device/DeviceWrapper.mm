@@ -21,9 +21,7 @@
 	mediasoupclient::Device *_device;
 	mediasoupclient::PeerConnection::Options *_pcOptions;
 }
-@property(nonatomic, strong) RTCPeerConnectionFactoryBuilder *pcFactoryBuilder;
 @property(nonatomic, strong) RTCPeerConnectionFactory *pcFactory;
-@property(nonatomic, assign) rtc::scoped_refptr<webrtc::AudioDeviceModule> audioDeviceModule;
 @end
 
 
@@ -34,8 +32,6 @@
 	if (self != nil) {
 		_device = new mediasoupclient::Device();
 
-		self.audioDeviceModule = webrtc::CreateAudioDeviceModule();
-
 		auto audioEncoderFactory = webrtc::CreateBuiltinAudioEncoderFactory();
 		auto audioDecoderFactory = webrtc::CreateBuiltinAudioDecoderFactory();
 		auto videoEncoderFactory = std::make_unique<webrtc::ObjCVideoEncoderFactory>(
@@ -45,14 +41,14 @@
 			[[RTCDefaultVideoDecoderFactory alloc] init]
 		);
 
-		self.pcFactoryBuilder = [[RTCPeerConnectionFactoryBuilder alloc] init];
-		[self.pcFactoryBuilder setAudioEncoderFactory:audioEncoderFactory];
-		[self.pcFactoryBuilder setAudioDecoderFactory:audioDecoderFactory];
-		[self.pcFactoryBuilder setVideoEncoderFactory:std::move(videoEncoderFactory)];
-		[self.pcFactoryBuilder setVideoDecoderFactory:std::move(videoDecoderFactory)];
-		[self.pcFactoryBuilder setAudioDeviceModule:self.audioDeviceModule];
+		auto pcFactoryBuilder = [[RTCPeerConnectionFactoryBuilder alloc] init];
+		[pcFactoryBuilder setAudioEncoderFactory:audioEncoderFactory];
+		[pcFactoryBuilder setAudioDecoderFactory:audioDecoderFactory];
+		[pcFactoryBuilder setVideoEncoderFactory:std::move(videoEncoderFactory)];
+		[pcFactoryBuilder setVideoDecoderFactory:std::move(videoDecoderFactory)];
+		[pcFactoryBuilder setAudioDeviceModule:webrtc::CreateAudioDeviceModule()];
 
-		self.pcFactory = [self.pcFactoryBuilder createPeerConnectionFactory];
+		self.pcFactory = [pcFactoryBuilder createPeerConnectionFactory];
 		_pcOptions = new mediasoupclient::PeerConnection::Options();
 		_pcOptions->factory = self.pcFactory.nativeFactory;
 	}
@@ -60,14 +56,9 @@
 }
 
 - (void)dealloc {
-	delete _device;
-	delete _pcOptions;
-
-	// Properties are released explicitly to manage deallocation order.
-	// PeerConnection must be released before PeerConnectionBuilder.
-	self.pcFactoryBuilder = nil;
 	self.pcFactory = nil;
-	self.audioDeviceModule = nil;
+	delete _pcOptions;
+	delete _device;
 }
 
 - (BOOL)isLoaded {

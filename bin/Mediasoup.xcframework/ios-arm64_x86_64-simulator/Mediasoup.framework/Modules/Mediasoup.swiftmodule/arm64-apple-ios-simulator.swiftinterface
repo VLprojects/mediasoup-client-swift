@@ -1,0 +1,229 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Mediasoup
+import Foundation
+@_exported import Mediasoup
+import Mediasoup_Private
+import Swift
+import WebRTC
+import _Concurrency
+public protocol ReceiveTransportDelegate : Mediasoup.TransportDelegate {
+}
+@_hasMissingDesignatedInitializers public class ReceiveTransport {
+  weak public var delegate: Mediasoup.ReceiveTransportDelegate?
+  @objc deinit
+  public func consume(consumerId: Swift.String, producerId: Swift.String, kind: Mediasoup.MediaKind, rtpParameters: Swift.String, appData: Swift.String?) throws -> Mediasoup.Consumer
+}
+extension Mediasoup.ReceiveTransport : Mediasoup.Transport {
+  public var id: Swift.String {
+    get
+  }
+  public var closed: Swift.Bool {
+    get
+  }
+  public var connectionState: Mediasoup.TransportConnectionState {
+    get
+  }
+  public var appData: Swift.String {
+    get
+  }
+  public var stats: Swift.String {
+    get
+  }
+  public func close()
+  public func restartICE(with iceParameters: Swift.String) throws
+  public func updateICEServers(_ iceServers: Swift.String) throws
+  public func updateICETransportPolicy(_ transportPolicy: Mediasoup.ICETransportPolicy) throws
+}
+extension Mediasoup.ReceiveTransport : Mediasoup_Private.ReceiveTransportWrapperDelegate {
+  @objc dynamic public func onConnect(_ transport: Mediasoup_Private.ReceiveTransportWrapper, dtlsParameters: Swift.String)
+  @objc dynamic public func onConnectionStateChange(_ transport: Mediasoup_Private.ReceiveTransportWrapper, connectionState: Mediasoup_Private.MediasoupClientTransportConnectionState)
+}
+public enum MediaKind {
+  case audio
+  case video
+  public static func == (a: Mediasoup.MediaKind, b: Mediasoup.MediaKind) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol Transport : AnyObject {
+  var id: Swift.String { get }
+  var closed: Swift.Bool { get }
+  var connectionState: Mediasoup.TransportConnectionState { get }
+  var appData: Swift.String { get }
+  var stats: Swift.String { get }
+  func close()
+  func restartICE(with iceParameters: Swift.String) throws
+  func updateICEServers(_ iceServers: Swift.String) throws
+  func updateICETransportPolicy(_ transportPolicy: Mediasoup.ICETransportPolicy) throws
+}
+public protocol TransportDelegate : AnyObject {
+  func onConnect(transport: Mediasoup.Transport, dtlsParameters: Swift.String)
+  func onConnectionStateChange(transport: Mediasoup.Transport, connectionState: Mediasoup.TransportConnectionState)
+}
+public enum TransportConnectionState {
+  case new
+  case checking
+  case connected
+  case completed
+  case failed
+  case disconnected
+  case closed
+  public static func == (a: Mediasoup.TransportConnectionState, b: Mediasoup.TransportConnectionState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class SendTransport {
+  weak public var delegate: Mediasoup.SendTransportDelegate?
+  @objc deinit
+  public func createProducer(for track: WebRTC.RTCMediaStreamTrack, encodings: [WebRTC.RTCRtpEncodingParameters]?, codecOptions: Swift.String?, appData: Swift.String?) throws -> Mediasoup.Producer
+}
+extension Mediasoup.SendTransport : Mediasoup.Transport {
+  public var id: Swift.String {
+    get
+  }
+  public var closed: Swift.Bool {
+    get
+  }
+  public var connectionState: Mediasoup.TransportConnectionState {
+    get
+  }
+  public var appData: Swift.String {
+    get
+  }
+  public var stats: Swift.String {
+    get
+  }
+  public func close()
+  public func restartICE(with iceParameters: Swift.String) throws
+  public func updateICEServers(_ iceServers: Swift.String) throws
+  public func updateICETransportPolicy(_ transportPolicy: Mediasoup.ICETransportPolicy) throws
+}
+extension Mediasoup.SendTransport : Mediasoup_Private.SendTransportWrapperDelegate {
+  @objc dynamic public func onConnect(_ transport: Mediasoup_Private.SendTransportWrapper, dtlsParameters: Swift.String)
+  @objc dynamic public func onConnectionStateChange(_ transport: Mediasoup_Private.SendTransportWrapper, connectionState: Mediasoup_Private.MediasoupClientTransportConnectionState)
+  @objc dynamic public func onProduce(_ transport: Mediasoup_Private.SendTransportWrapper, kind: Swift.String, rtpParameters: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
+  @objc dynamic public func onProduceData(_ transport: Mediasoup_Private.SendTransportWrapper, sctpParameters: Swift.String, label: Swift.String, protocol dataProtocol: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
+}
+public protocol ConsumerDelegate : AnyObject {
+  func onTransportClose(in consumer: Mediasoup.Consumer)
+}
+public protocol SendTransportDelegate : Mediasoup.TransportDelegate {
+  func onProduce(transport: Mediasoup.Transport, kind: Mediasoup.MediaKind, rtpParameters: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
+  func onProduceData(transport: Mediasoup.Transport, sctpParameters: Swift.String, label: Swift.String, protocol dataProtocol: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
+}
+public enum MediasoupError : Swift.Error {
+  case unsupported(Swift.String)
+  case invalidState(Swift.String)
+  case invalidParameters(Swift.String)
+  case mediasoup(Foundation.NSError)
+  case unknown(Swift.Error)
+}
+public protocol ProducerDelegate : AnyObject {
+  func onTransportClose(in producer: Mediasoup.Producer)
+}
+public enum ICETransportPolicy {
+  case none
+  case relay
+  case noHost
+  case all
+  public static func == (a: Mediasoup.ICETransportPolicy, b: Mediasoup.ICETransportPolicy) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class Producer {
+  weak public var delegate: Mediasoup.ProducerDelegate?
+  public var track: WebRTC.RTCMediaStreamTrack {
+    get
+  }
+  public var id: Swift.String {
+    get
+  }
+  public var localId: Swift.String {
+    get
+  }
+  public var closed: Swift.Bool {
+    get
+  }
+  public var paused: Swift.Bool {
+    get
+  }
+  final public let kind: Mediasoup.MediaKind
+  public var maxSpatialLayer: Swift.UInt8 {
+    get
+  }
+  public var appData: Swift.String {
+    get
+  }
+  public var rtpParameters: Swift.String {
+    get
+  }
+  public func pause()
+  public func resume()
+  public func close()
+  public func setMaxSpatialLayer(_ layer: Swift.Int) throws
+  public func replaceTrack(_ track: WebRTC.RTCMediaStreamTrack) throws
+  public func getStats() throws -> Swift.String
+  @objc deinit
+}
+extension Mediasoup.Producer : Mediasoup_Private.ProducerWrapperDelegate {
+  @objc dynamic public func onTransportClose(_ producer: Mediasoup_Private.ProducerWrapper)
+}
+public class Device {
+  public init()
+  public func isLoaded() -> Swift.Bool
+  public func load(with routerRTPCapabilities: Swift.String) throws
+  public func rtpCapabilities() throws -> Swift.String
+  public func sctpCapabilities() throws -> Swift.String
+  public func canProduce(_ mediaKind: Mediasoup.MediaKind) throws -> Swift.Bool
+  public func createSendTransport(id: Swift.String, iceParameters: Swift.String, iceCandidates: Swift.String, dtlsParameters: Swift.String, sctpParameters: Swift.String?, appData: Swift.String?) throws -> Mediasoup.SendTransport
+  public func createReceiveTransport(id: Swift.String, iceParameters: Swift.String, iceCandidates: Swift.String, dtlsParameters: Swift.String, sctpParameters: Swift.String? = nil, appData: Swift.String? = nil) throws -> Mediasoup.ReceiveTransport
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class Consumer {
+  weak public var delegate: Mediasoup.ConsumerDelegate?
+  public var track: WebRTC.RTCMediaStreamTrack {
+    get
+  }
+  public var id: Swift.String {
+    get
+  }
+  public var localId: Swift.String {
+    get
+  }
+  public var producerId: Swift.String {
+    get
+  }
+  public var closed: Swift.Bool {
+    get
+  }
+  public var paused: Swift.Bool {
+    get
+  }
+  final public let kind: Mediasoup.MediaKind
+  public var appData: Swift.String {
+    get
+  }
+  public var rtpParameters: Swift.String {
+    get
+  }
+  public func pause()
+  public func resume()
+  public func close()
+  @objc deinit
+}
+extension Mediasoup.Consumer : Mediasoup_Private.ConsumerWrapperDelegate {
+  @objc dynamic public func onTransportClose(_ consumer: Mediasoup_Private.ConsumerWrapper)
+}
+extension Mediasoup.MediaKind : Swift.Equatable {}
+extension Mediasoup.MediaKind : Swift.Hashable {}
+extension Mediasoup.TransportConnectionState : Swift.Equatable {}
+extension Mediasoup.TransportConnectionState : Swift.Hashable {}
+extension Mediasoup.ICETransportPolicy : Swift.Equatable {}
+extension Mediasoup.ICETransportPolicy : Swift.Hashable {}

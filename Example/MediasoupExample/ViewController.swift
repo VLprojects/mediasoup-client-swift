@@ -64,10 +64,12 @@ final class ViewController: UIViewController {
 			print("transport is closed: \(sendTransport.closed)")
 
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-				let producer = try? sendTransport.createProducer(for: audioTrack, encodings: nil, codecOptions: nil, appData: nil)
-				self.producer = producer
-				producer?.delegate = self
-				print("producer created")
+				if let producer = try? sendTransport.createProducer(for: audioTrack, encodings: nil, codecOptions: nil, appData: nil) {
+					self.producer = producer
+					producer.delegate = self
+					print("producer created")
+					producer.resume()
+				}
 			}
 
 //			try sendTransport.updateICEServers("[]")
@@ -76,7 +78,7 @@ final class ViewController: UIViewController {
 //			try sendTransport.restartICE(with: "{}")
 //			print("ICE restarted")
 
-			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
 				sendTransport.close()
 				print("transport is closed: \(sendTransport.closed)")
 			}
@@ -102,9 +104,9 @@ final class ViewController: UIViewController {
 		}
 
 		self.device = device
-		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 25) {
+			print("Deallocating SendTransport...")
 			self.sendTransport = nil
-			print("send transport deallocated")
 			self.device = nil
 			print("device deallocated")
 		}
@@ -113,7 +115,7 @@ final class ViewController: UIViewController {
 
 
 extension ViewController: SendTransportDelegate {
-	func onProduce(transport: Transport, kind: String, rtpParameters: String, appData: String,
+	func onProduce(transport: Transport, kind: MediaKind, rtpParameters: String, appData: String,
 		callback: @escaping (String?) -> Void) {
 
 		print("on produce \(kind)")
@@ -125,11 +127,11 @@ extension ViewController: SendTransportDelegate {
 		print("on produce data \(label)")
 	}
 
-	func onConnect(transport: Transport) {
+	func onConnect(transport: Transport, dtlsParameters: String) {
 		print("on connect")
 	}
 
-	func onConnectionStateChange(transport: Transport, connectionState: String) {
+	func onConnectionStateChange(transport: Transport, connectionState: TransportConnectionState) {
 		print("on connection state change: \(connectionState)")
 	}
 }

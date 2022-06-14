@@ -31,7 +31,6 @@ case $INPUT_STRING in
 			"$WORK_DIR/build_sim_arm64"
 			"$WORK_DIR/build_sim_fat"
 			"$WORK_DIR/build_sim_x86_64"
-			"$WEBRTC_DIR/out_ios_libs"
 		)
 		for COMPONENT in "${COMPONENTS[@]}"
 		do
@@ -98,28 +97,28 @@ esac
 echo 'Building WebRTC'
 cd $WEBRTC_DIR
 
-gn gen out_ios_libs/device/arm64_libs --ide=xcode --args='target_os="ios" target_environment="device" target_cpu="arm64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
-gn gen out_ios_libs/simulator/x64_libs --ide=xcode --args='target_os="ios" target_environment="simulator" target_cpu="x64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
-gn gen out_ios_libs/simulator/arm64_libs --ide=xcode --args='target_os="ios" target_environment="simulator" target_cpu="arm64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
+gn gen $BUILD_DIR/WebRTC/device/arm64 --ide=xcode --args='target_os="ios" target_environment="device" target_cpu="arm64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
+gn gen $BUILD_DIR/WebRTC/simulator/x64 --ide=xcode --args='target_os="ios" target_environment="simulator" target_cpu="x64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
+gn gen $BUILD_DIR/WebRTC/simulator/arm64 --ide=xcode --args='target_os="ios" target_environment="simulator" target_cpu="arm64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
 
-cd $WEBRTC_DIR/out_ios_libs
-ninja -C device/arm64_libs sdk
-ninja -C simulator/x64_libs sdk
-ninja -C simulator/arm64_libs sdk
+cd $BUILD_DIR/WebRTC
+ninja -C device/arm64 sdk
+ninja -C simulator/x64 sdk
+ninja -C simulator/arm64 sdk
 
-cd $WEBRTC_DIR/out_ios_libs
+cd $BUILD_DIR/WebRTC
 rm -rf simulator/WebRTC.framework
-cp -R simulator/arm64_libs/WebRTC.framework simulator/WebRTC.framework
+cp -R simulator/arm64/WebRTC.framework simulator/WebRTC.framework
 rm simulator/WebRTC.framework/WebRTC
 lipo -create \
-	simulator/arm64_libs/WebRTC.framework/WebRTC \
-	simulator/x64_libs/WebRTC.framework/WebRTC \
+	simulator/arm64/WebRTC.framework/WebRTC \
+	simulator/x64/WebRTC.framework/WebRTC \
 	-output simulator/WebRTC.framework/WebRTC
 
-cd $WEBRTC_DIR/out_ios_libs
+cd $BUILD_DIR/WebRTC
 rm -rf $OUTPUT_DIR/WebRTC.xcframework
 xcodebuild -create-xcframework \
-	-framework device/arm64_libs/WebRTC.framework \
+	-framework device/arm64/WebRTC.framework \
 	-framework simulator/WebRTC.framework \
 	-output $OUTPUT_DIR/WebRTC.xcframework
 
@@ -128,7 +127,7 @@ cd $WORK_DIR
 # Build mediasoup-client-ios
 cmake . -Bbuild_ios_arm64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$WEBRTC_DIR/out_ios_libs/device/arm64_libs/WebRTC.framework/WebRTC \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/device/arm64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
@@ -142,7 +141,7 @@ make -C build_ios_arm64
 
 cmake . -Bbuild_sim_x86_64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$WEBRTC_DIR/out_ios_libs/simulator/x64_libs/WebRTC.framework/WebRTC \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/x64_libs/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
@@ -156,7 +155,7 @@ make -C build_sim_x86_64
 
 cmake . -Bbuild_sim_arm64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$WEBRTC_DIR/out_ios_libs/simulator/arm64_libs/WebRTC.framework/WebRTC \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/arm64_libs/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \

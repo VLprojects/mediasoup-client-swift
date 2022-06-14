@@ -71,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF2E23D6285890310008DC19 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF3AEE0027F2CDD1001A81AB /* Mediasoup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mediasoup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF3AEE0B27F2D67E001A81AB /* DeviceWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceWrapper.mm; sourceTree = "<group>"; };
 		FF3AEE0D27F2D68B001A81AB /* DeviceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceWrapper.h; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 		FF3AEDF327F2C92E001A81AB = {
 			isa = PBXGroup;
 			children = (
+				FF2E23D6285890310008DC19 /* README.md */,
 				FF89EFD627F6AFBD00EEF5CD /* Mediasoup-Client-Swift.podspec */,
 				FF3AEE0227F2CDD1001A81AB /* Mediasoup */,
 				FF89EFCF27F5C51500EEF5CD /* Mediasoup_Private */,

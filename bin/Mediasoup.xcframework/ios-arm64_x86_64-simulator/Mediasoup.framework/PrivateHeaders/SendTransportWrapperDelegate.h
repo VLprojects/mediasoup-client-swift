@@ -27,12 +27,6 @@
 	protocol:(NSString *_Nonnull)protocol
 	appData:(NSString *_Nonnull)appData
 	callback:(void(^_Nonnull)(NSString *_Nullable))callback;
-
-//	kind:(NSString *_Nonnull)kind
-//	rtpParameters:(NSString *_Nonnull)rtpParameters
-//	appData:(NSString *_Nonnull)appData
-//	callback:(void(^_Nonnull)(NSString *_Nullable))callback;
-
 @end
 
 #endif /* SendTransportWrapperDelegate_h */

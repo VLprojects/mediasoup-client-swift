@@ -66,10 +66,6 @@
 	return [NSString stringWithUTF8String:_consumer->GetKind().c_str()];
 }
 
-//- (UInt8)maxSpatialLayer {
-//	return _producer->GetMaxSpatialLayer();
-//}
-
 - (NSString *_Nonnull)appData {
 	return [NSString stringWithUTF8String:_consumer->GetAppData().dump().c_str()];
 }
@@ -89,27 +85,6 @@
 - (void)close {
 	_consumer->Close();
 }
-
-//- (void)setMaxSpatialLayer:(UInt8)layer
-//	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
-//	__attribute__((swift_error(nonnull_error))) {
-//
-//	mediasoupTry(^{
-//		self->_producer->SetMaxSpatialLayer(layer);
-//	}, error);
-//}
-
-//- (void)replaceTrack:(RTCMediaStreamTrack *)track
-//	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
-//	__attribute__((swift_error(nonnull_error))) {
-//
-//	mediasoupTry(^{
-//		// RTCMediaStreamTrack `hash` returns pointer to native track object.
-//		auto mediaStreamTrack = (webrtc::MediaStreamTrackInterface *)[track hash];
-//		self->_producer->ReplaceTrack(mediaStreamTrack);
-//		self.track = track;
-//	}, error);
-//}
 
 - (NSString *_Nullable)getStatsWithError:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 	return nil;

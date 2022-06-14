@@ -32,10 +32,6 @@ public class Consumer {
 
 	public let kind: MediaKind
 
-//	public var maxSpatialLayer: UInt8 {
-//		return producer.maxSpatialLayer
-//	}
-
 	public var appData: String {
 		return consumer.appData
 	}
@@ -63,14 +59,6 @@ public class Consumer {
 	public func close() {
 		consumer.close()
 	}
-
-//	func setMaxSpatialLayer(_ layer: UInt8) throws {
-//		try producer.setMaxSpatialLayer(layer)
-//	}
-//
-//	func replaceTrack(_ track: RTCMediaStreamTrack) throws {
-//		try producer.replaceTrack(track)
-//	}
 
 	func getStats() throws -> String {
 		return try consumer.getStats()

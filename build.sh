@@ -27,10 +27,6 @@ case $INPUT_STRING in
 		declare -a COMPONENTS=(
 			"$OUTPUT_DIR"
 			"$BUILD_DIR"
-			"$WORK_DIR/build_ios_arm64"
-			"$WORK_DIR/build_sim_arm64"
-			"$WORK_DIR/build_sim_fat"
-			"$WORK_DIR/build_sim_x86_64"
 		)
 		for COMPONENT in "${COMPONENTS[@]}"
 		do
@@ -125,7 +121,7 @@ xcodebuild -create-xcframework \
 cd $WORK_DIR
 
 # Build mediasoup-client-ios
-cmake . -Bbuild_ios_arm64 \
+cmake . -B$BUILD_DIR/libmediasoupclient/device/arm64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
 	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/device/arm64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
@@ -137,11 +133,11 @@ cmake . -Bbuild_ios_arm64 \
 	-DIOS_ARCHS="arm64" \
 	-DPLATFORM=OS64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
-make -C build_ios_arm64
+make -C $BUILD_DIR/libmediasoupclient/device/arm64
 
-cmake . -Bbuild_sim_x86_64 \
+cmake . -B$BUILD_DIR/libmediasoupclient/simulator/x64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/x64_libs/WebRTC.framework/WebRTC \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/x64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
@@ -151,11 +147,11 @@ cmake . -Bbuild_sim_x86_64 \
 	-DIOS_ARCHS="x86_64" \
 	-DPLATFORM=SIMULATOR64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
-make -C build_sim_x86_64
+make -C $BUILD_DIR/libmediasoupclient/simulator/x64
 
-cmake . -Bbuild_sim_arm64 \
+cmake . -B$BUILD_DIR/libmediasoupclient/simulator/arm64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/arm64_libs/WebRTC.framework/WebRTC \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/arm64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
@@ -165,25 +161,25 @@ cmake . -Bbuild_sim_arm64 \
 	-DIOS_ARCHS="arm64"\
 	-DPLATFORM=SIMULATORARM64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
-make -C build_sim_arm64
+make -C $BUILD_DIR/libmediasoupclient/simulator/arm64
 
 # Create a FAT libmediasoup / libsdptransform library
-mkdir -p build_sim_fat
+mkdir -p $BUILD_DIR/libmediasoupclient/simulator/fat
 lipo -create \
-	build_sim_x86_64/libmediasoupclient/libmediasoupclient.a \
-	build_sim_arm64/libmediasoupclient/libmediasoupclient.a \
-	-output build_sim_fat/libmediasoupclient.a
+	$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libmediasoupclient.a \
+	$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libmediasoupclient.a \
+	-output $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a
 lipo -create \
-	build_sim_x86_64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	build_sim_arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	-output build_sim_fat/libsdptransform.a
+	$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libsdptransform/libsdptransform.a \
+	$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+	-output $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a
 xcodebuild -create-xcframework \
-	-library build_ios_arm64/libmediasoupclient/libmediasoupclient.a \
-	-library build_sim_fat/libmediasoupclient.a \
+	-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libmediasoupclient.a \
+	-library $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a \
 	-output $OUTPUT_DIR/mediasoupclient.xcframework
 xcodebuild -create-xcframework \
-	-library build_ios_arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	-library build_sim_fat/libsdptransform.a \
+	-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+	-library $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a \
 	-output $OUTPUT_DIR/sdptransform.xcframework
 
 cp $PATCHES_DIR/byte_order.h $WORK_DIR/webrtc/src/rtc_base/

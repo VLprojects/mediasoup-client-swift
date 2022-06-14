@@ -1,4 +1,5 @@
-# mediasoup-client-swift
+# Mediasoup-Client-Swift
+
 Swift wrapper for libmediasoupclient with iOS support
 
 ## Key features
@@ -46,90 +47,90 @@ Swift wrapper for libmediasoupclient with iOS support
    Given that you have a Mediasoup server and signaling is already set up in your app, here is an example of a minimalistic client implementation:
 
    ```Swift
-import UIKit
-import Mediasoup
-import AVFoundation
-import WebRTC
-
-final class MediasoupClient {
-	private let signaling: Signaling
-	private let pcFactory = RTCPeerConnectionFactory()
-	private var mediaStream: RTCMediaStream?
-	private var audioTrack: RTCAudioTrack?
-	private var device: Device?
-	private var sendTransport: SendTransport?
-	private var producer: Producer?
-
-	init(signaling: Signaling) {
-		self.signaling = signaling
-	}
-
-	func setupDevices() {
-		guard AVCaptureDevice.authorizationStatus(for: .audio) == .authorized else {
-			AVCaptureDevice.requestAccess(for: .audio) { _ in
-			}
-			return
-		}
-
-		mediaStream = pcFactory.mediaStream(withStreamId: Constants.mediaStreamId)
-		let audioTrack = pcFactory.audioTrack(withTrackId: Constants.audioTrackId)
-		mediaStream?.addAudioTrack(audioTrack)
-		self.audioTrack = audioTrack
-
-		let device = Device()
-		self.device = device
-		do {
-			try device.load(with: signaling.rtpCapabilities)
-			let sendTransport = try device.createSendTransport(
-				id: signaling.sendTransportId,
-				iceParameters: signaling.sendTransportICEParameters,
-				iceCandidates: signaling.sendTransportICECandidates,
-				dtlsParameters: signaling.sendTransportDTLSParameters,
-				sctpParameters: nil,
-				appData: nil
-			)
-			sendTransport.delegate = self
-			self.sendTransport = sendTransport
-
-			let producer = try sendTransport.createProducer(
-				for: audioTrack,
-				encodings: nil,
-				codecOptions: nil,
-				appData: nil
-			)
-			self.producer = producer
-			producer.delegate = self
-			producer.resume()
-		} catch let error as MediasoupError {
-			// Handle errors.
-		} catch {
-			// Handle errors.
-		}
-	}
-}
-
-extension MediasoupClient: SendTransportDelegate {
-	func onProduce(transport: Transport, kind: MediaKind, rtpParameters: String, appData: String, callback: @escaping (String?) -> Void) {
-		// Handle state changes.
-	}
-
-	func onProduceData(transport: Transport, sctpParameters: String, label: String, protocol dataProtocol: String, appData: String, callback: @escaping (String?) -> Void) {
-		// Handle state changes.
-	}
-
-	func onConnect(transport: Transport, dtlsParameters: String) {
-		// Handle state changes.
-	}
-
-	func onConnectionStateChange(transport: Transport, connectionState: TransportConnectionState) {
-		
-		// Handle state changes.
-	}
-}
-
-extension MediasoupClient: ProducerDelegate {
-	func onTransportClose(in producer: Producer) {
-		// Handle state changes.
-	}
-}
+   import UIKit
+   import Mediasoup
+   import AVFoundation
+   import WebRTC
+   
+   final class MediasoupClient {
+       private let signaling: Signaling
+       private let pcFactory = RTCPeerConnectionFactory()
+       private var mediaStream: RTCMediaStream?
+       private var audioTrack: RTCAudioTrack?
+       private var device: Device?
+       private var sendTransport: SendTransport?
+       private var producer: Producer?
+   
+       init(signaling: Signaling) {
+           self.signaling = signaling
+       }
+   
+       func setupDevices() {
+           guard AVCaptureDevice.authorizationStatus(for: .audio) == .authorized else {
+               AVCaptureDevice.requestAccess(for: .audio) { _ in
+               }
+               return
+           }
+   
+           mediaStream = pcFactory.mediaStream(withStreamId: Constants.mediaStreamId)
+           let audioTrack = pcFactory.audioTrack(withTrackId: Constants.audioTrackId)
+           mediaStream?.addAudioTrack(audioTrack)
+           self.audioTrack = audioTrack
+   
+           let device = Device()
+           self.device = device
+           do {
+               try device.load(with: signaling.rtpCapabilities)
+               let sendTransport = try device.createSendTransport(
+                   id: signaling.sendTransportId,
+                   iceParameters: signaling.sendTransportICEParameters,
+                   iceCandidates: signaling.sendTransportICECandidates,
+                   dtlsParameters: signaling.sendTransportDTLSParameters,
+                   sctpParameters: nil,
+                   appData: nil
+               )
+               sendTransport.delegate = self
+               self.sendTransport = sendTransport
+   
+               let producer = try sendTransport.createProducer(
+                   for: audioTrack,
+                   encodings: nil,
+                   codecOptions: nil,
+                   appData: nil
+               )
+               self.producer = producer
+               producer.delegate = self
+               producer.resume()
+           } catch let error as MediasoupError {
+               // Handle errors.
+           } catch {
+               // Handle errors.
+           }
+       }
+   }
+   
+   extension MediasoupClient: SendTransportDelegate {
+       func onProduce(transport: Transport, kind: MediaKind, rtpParameters: String, appData: String, callback: @escaping (String?) -> Void) {
+           // Handle state changes.
+       }
+   
+       func onProduceData(transport: Transport, sctpParameters: String, label: String, protocol dataProtocol: String, appData: String, callback: @escaping (String?) -> Void) {
+           // Handle state changes.
+       }
+   
+       func onConnect(transport: Transport, dtlsParameters: String) {
+           // Handle state changes.
+       }
+   
+       func onConnectionStateChange(transport: Transport, connectionState: TransportConnectionState) {
+           
+           // Handle state changes.
+       }
+   }
+   
+   extension MediasoupClient: ProducerDelegate {
+       func onTransportClose(in producer: Producer) {
+           // Handle state changes.
+       }
+   }
    ```

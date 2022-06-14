@@ -81,6 +81,12 @@ case $INPUT_STRING in
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_BUILD.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/abseil_optional.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/RTCPeerConnectionFactoryBuilder.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_h.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_mm.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_decoder_factory_h.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_h.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_decoder_factory_h.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
 		;;
 	*)
 		export PATH=$WORK_DIR/depot_tools:$PATH

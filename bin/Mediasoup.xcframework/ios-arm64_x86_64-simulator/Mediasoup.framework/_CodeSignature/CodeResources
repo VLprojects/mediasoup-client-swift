@@ -14,11 +14,11 @@
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		52+GRmTb+zd+xU7bpHjYLQRTDXA=
+		XWVq2Me1ULx9zKnjhTXvbJVka+E=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		qNVDalet+fCSbLOd73Q+x6aBDMY=
+		5ltOd7qvcHjFo3QYiHt4Sw3TGQU=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>PrivateHeaders/ConsumerWrapper.hpp</key>
 		<data>
-		nL+CHUL7dEoAFb/b8IqCmY+GsTQ=
+		g0unQxt8Bl97aHKwQmcBbKJBaVc=
 		</data>
 		<key>PrivateHeaders/ConsumerWrapperDelegate.h</key>
 		<data>
@@ -110,7 +110,7 @@
 		</data>
 		<key>PrivateHeaders/SendTransportWrapperDelegate.h</key>
 		<data>
-		9C4Sr45wfANTB3jrqTO/vOwk7vE=
+		izntbZyh/XSKpAaC0O3zu2IseAM=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -126,14 +126,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IXRHWo43u34TgJFksBmiJ7ddhfRmG76nbmBJ15fBpYU=
+			iltLYJdMJvMfnMhvuWdBXMaAGYBOblMjjzr9IkTBK9E=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			J7zlD0vFogBI9mIzl9ye/bVj7IU1/vBCH0esXxtK9Tw=
+			2oS6uy2DmzXqA+Ar2zaeLnhSKMrM1jE04jdzYFnes5U=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -196,7 +196,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			obQ87IEOkjkmyptt3BXEFY2zeFiCTE5yrGcna936zLI=
+			7bN3EJxpyglL/Pzsyf+Xc4bs5UfkrYm7LjhEoaIJM2M=
 			</data>
 		</dict>
 		<key>PrivateHeaders/ConsumerWrapperDelegate.h</key>
@@ -294,7 +294,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rg4Ifb0B5YKFnpCfwbxBamQJGsZycVT09jy7i/GkcPY=
+			W1U1tNcAX/9K4E/EeWLwN9/zpR3ER0/Eyl1B+/YBYic=
 			</data>
 		</dict>
 	</dict>

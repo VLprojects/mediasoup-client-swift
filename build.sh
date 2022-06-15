@@ -27,11 +27,6 @@ case $INPUT_STRING in
 		declare -a COMPONENTS=(
 			"$OUTPUT_DIR"
 			"$BUILD_DIR"
-			"$WORK_DIR/build_ios_arm64"
-			"$WORK_DIR/build_sim_arm64"
-			"$WORK_DIR/build_sim_fat"
-			"$WORK_DIR/build_sim_x86_64"
-			"$WEBRTC_DIR/out_ios_libs"
 		)
 		for COMPONENT in "${COMPONENTS[@]}"
 		do
@@ -81,6 +76,12 @@ case $INPUT_STRING in
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_BUILD.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/abseil_optional.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/RTCPeerConnectionFactoryBuilder.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_h.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_mm.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_decoder_factory_h.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_h.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_decoder_factory_h.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
 		;;
 	*)
 		export PATH=$WORK_DIR/depot_tools:$PATH
@@ -92,37 +93,37 @@ esac
 echo 'Building WebRTC'
 cd $WEBRTC_DIR
 
-gn gen out_ios_libs/device/arm64_libs --ide=xcode --args='target_os="ios" target_environment="device" target_cpu="arm64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
-gn gen out_ios_libs/simulator/x64_libs --ide=xcode --args='target_os="ios" target_environment="simulator" target_cpu="x64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
-gn gen out_ios_libs/simulator/arm64_libs --ide=xcode --args='target_os="ios" target_environment="simulator" target_cpu="arm64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
+gn gen $BUILD_DIR/WebRTC/device/arm64 --ide=xcode --args='target_os="ios" target_environment="device" target_cpu="arm64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
+gn gen $BUILD_DIR/WebRTC/simulator/x64 --ide=xcode --args='target_os="ios" target_environment="simulator" target_cpu="x64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
+gn gen $BUILD_DIR/WebRTC/simulator/arm64 --ide=xcode --args='target_os="ios" target_environment="simulator" target_cpu="arm64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
 
-cd $WEBRTC_DIR/out_ios_libs
-ninja -C device/arm64_libs sdk
-ninja -C simulator/x64_libs sdk
-ninja -C simulator/arm64_libs sdk
+cd $BUILD_DIR/WebRTC
+ninja -C device/arm64 sdk
+ninja -C simulator/x64 sdk
+ninja -C simulator/arm64 sdk
 
-cd $WEBRTC_DIR/out_ios_libs
+cd $BUILD_DIR/WebRTC
 rm -rf simulator/WebRTC.framework
-cp -R simulator/arm64_libs/WebRTC.framework simulator/WebRTC.framework
+cp -R simulator/arm64/WebRTC.framework simulator/WebRTC.framework
 rm simulator/WebRTC.framework/WebRTC
 lipo -create \
-	simulator/arm64_libs/WebRTC.framework/WebRTC \
-	simulator/x64_libs/WebRTC.framework/WebRTC \
+	simulator/arm64/WebRTC.framework/WebRTC \
+	simulator/x64/WebRTC.framework/WebRTC \
 	-output simulator/WebRTC.framework/WebRTC
 
-cd $WEBRTC_DIR/out_ios_libs
+cd $BUILD_DIR/WebRTC
 rm -rf $OUTPUT_DIR/WebRTC.xcframework
 xcodebuild -create-xcframework \
-	-framework device/arm64_libs/WebRTC.framework \
+	-framework device/arm64/WebRTC.framework \
 	-framework simulator/WebRTC.framework \
 	-output $OUTPUT_DIR/WebRTC.xcframework
 
 cd $WORK_DIR
 
 # Build mediasoup-client-ios
-cmake . -Bbuild_ios_arm64 \
+cmake . -B$BUILD_DIR/libmediasoupclient/device/arm64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$WEBRTC_DIR/out_ios_libs/device/arm64_libs/WebRTC.framework/WebRTC \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/device/arm64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
@@ -132,11 +133,11 @@ cmake . -Bbuild_ios_arm64 \
 	-DIOS_ARCHS="arm64" \
 	-DPLATFORM=OS64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
-make -C build_ios_arm64
+make -C $BUILD_DIR/libmediasoupclient/device/arm64
 
-cmake . -Bbuild_sim_x86_64 \
+cmake . -B$BUILD_DIR/libmediasoupclient/simulator/x64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$WEBRTC_DIR/out_ios_libs/simulator/x64_libs/WebRTC.framework/WebRTC \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/x64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
@@ -146,11 +147,11 @@ cmake . -Bbuild_sim_x86_64 \
 	-DIOS_ARCHS="x86_64" \
 	-DPLATFORM=SIMULATOR64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
-make -C build_sim_x86_64
+make -C $BUILD_DIR/libmediasoupclient/simulator/x64
 
-cmake . -Bbuild_sim_arm64 \
+cmake . -B$BUILD_DIR/libmediasoupclient/simulator/arm64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$WEBRTC_DIR/out_ios_libs/simulator/arm64_libs/WebRTC.framework/WebRTC \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/arm64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
@@ -160,25 +161,25 @@ cmake . -Bbuild_sim_arm64 \
 	-DIOS_ARCHS="arm64"\
 	-DPLATFORM=SIMULATORARM64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
-make -C build_sim_arm64
+make -C $BUILD_DIR/libmediasoupclient/simulator/arm64
 
 # Create a FAT libmediasoup / libsdptransform library
-mkdir -p build_sim_fat
+mkdir -p $BUILD_DIR/libmediasoupclient/simulator/fat
 lipo -create \
-	build_sim_x86_64/libmediasoupclient/libmediasoupclient.a \
-	build_sim_arm64/libmediasoupclient/libmediasoupclient.a \
-	-output build_sim_fat/libmediasoupclient.a
+	$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libmediasoupclient.a \
+	$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libmediasoupclient.a \
+	-output $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a
 lipo -create \
-	build_sim_x86_64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	build_sim_arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	-output build_sim_fat/libsdptransform.a
+	$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libsdptransform/libsdptransform.a \
+	$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+	-output $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a
 xcodebuild -create-xcframework \
-	-library build_ios_arm64/libmediasoupclient/libmediasoupclient.a \
-	-library build_sim_fat/libmediasoupclient.a \
+	-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libmediasoupclient.a \
+	-library $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a \
 	-output $OUTPUT_DIR/mediasoupclient.xcframework
 xcodebuild -create-xcframework \
-	-library build_ios_arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	-library build_sim_fat/libsdptransform.a \
+	-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+	-library $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a \
 	-output $OUTPUT_DIR/sdptransform.xcframework
 
 cp $PATCHES_DIR/byte_order.h $WORK_DIR/webrtc/src/rtc_base/

@@ -11,7 +11,7 @@ Swift wrapper for libmediasoupclient with iOS support
 
    * No crashes caused by unhandled C++ exceptions. Each throwing C++ function is properly wrapped and throws a catchable `Swift.Error`.  
 
-   * No implicitly-unwrapped parameters in public interface. All unsafe operations are hidden inside wrapper.
+   * No implicitly-unwrapped optionals in public interface. All unsafe operations are hidden inside wrapper.
 
    * No Objective-C entities in public interface. All you need is wrapped into normal Swift entities and protocols. There is no need to inherit `NSObject` in your delegates, no obscure `NSErrors`, almost no obscure `NSString` and `NSInteger` based "enums".
 
@@ -137,3 +137,25 @@ Swift wrapper for libmediasoupclient with iOS support
        }
    }
    ```
+
+## Dependencies
+
+Mediasoup-Client-Swift has almost no logic, it's only a convenient wrapper for other nice libraries. 
+
+* [WebRTC (version m93 with patches applied locally)](https://groups.google.com/g/discuss-webrtc/c/ws0_MYHIBOw)
+
+* [libmediasoupclient (version 3.1.5 patched fork)](https://github.com/VLprojects/libmediasoupclient) 
+
+## Roadmap
+
+* Upgrade WebRTC and libmediasoupclient to latest versions
+
+* Support integration via SPM
+
+* Add documentation for Mediasoup-Client-Swift public interface
+
+* Investigate and reduce the amount of WebRTC patches
+
+* Make the dependencies build script more flexible: add parametrization for included codecs and other WebRTC modules, build architectures and so on
+
+* Add data channel support

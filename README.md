@@ -1,3 +1,6 @@
+[![CocoaPods](https://img.shields.io/cocoapods/v/Mediasoup-Client-Swift?style=flat)](https://img.shields.io/cocoapods/v/Mediasoup-Client-Swift)
+[![CocoaPods](https://img.shields.io/cocoapods/l/Mediasoup-Client-Swift?style=flat)](https://img.shields.io/cocoapods/l/Mediasoup-Client-Swift)
+
 # Mediasoup-Client-Swift
 
 Swift wrapper for libmediasoupclient with iOS support
@@ -10,14 +13,14 @@ Swift wrapper for libmediasoupclient with iOS support
 
    * No implicitly-unwrapped parameters in public interface. All unsafe operations are hidden inside wrapper.
 
-   * No Objective-C entities in public interface. All you need is wrapped into normal Swift entities  and protocols. There is no need to inherit `NSObject` in your delegates, no obscure `NSErrors`, almost no obscure `NSString` and `NSInteger` based "enums".
+   * No Objective-C entities in public interface. All you need is wrapped into normal Swift entities and protocols. There is no need to inherit `NSObject` in your delegates, no obscure `NSErrors`, almost no obscure `NSString` and `NSInteger` based "enums".
 
 2. **Ease of integration**
 
    If you don't need to customize Mediasoup-Client-Swift itself or its dependencies, just add a line to your Podfile:
 
    ```Ruby
-   pod 'Mediasoup-Client-Swift', '0.1.0'
+   pod 'Mediasoup-Client-Swift', '0.1.2'
    ```
 
 3. **Ease of building from scratch**

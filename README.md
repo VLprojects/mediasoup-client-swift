@@ -28,11 +28,11 @@ Swift wrapper for libmediasoupclient with iOS support
 
 4. **Out-of-the box codecs support**
 
-   1. Hardware-accelerated H264 on supported iOS devices.
+   * Hardware-accelerated H264 on supported iOS devices.
 
-   2. VP8 software codec.
+   * VP8 software codec.
 
-   3. Other codecs can be added easily (look into `DeviceWrapper` initialization).
+   * Other codecs can be added easily (look into `DeviceWrapper` initialization).
 
 5. **TURN servers support**
 

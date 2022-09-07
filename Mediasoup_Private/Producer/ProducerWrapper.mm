@@ -73,6 +73,10 @@
 	return [NSString stringWithUTF8String:_producer->GetRtpParameters().dump().c_str()];
 }
 
+- (NSString *_Nonnull)stats {
+	return [NSString stringWithUTF8String:_producer->GetStats().dump().c_str()];
+}
+
 - (void)pause {
 	_producer->Pause();
 }

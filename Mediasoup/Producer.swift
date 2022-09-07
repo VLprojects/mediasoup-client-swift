@@ -40,6 +40,10 @@ public class Producer {
 		return producer.rtpParameters
 	}
 
+	public var stats: String {
+		return producer.stats
+	}
+
 	private let producer: ProducerWrapper
 
 	internal init(producer: ProducerWrapper, mediaKind: MediaKind) {

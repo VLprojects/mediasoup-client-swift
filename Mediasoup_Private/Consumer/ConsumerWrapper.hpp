@@ -26,6 +26,7 @@ class ConsumerListenerAdapter;
 @property(nonatomic, nonnull, readonly, getter = kind) NSString *kind;
 @property(nonatomic, nonnull, readonly, getter = appData) NSString *appData;
 @property(nonatomic, nonnull, readonly, getter = rtpParameters) NSString *rtpParameters;
+@property(nonatomic, nonnull, readonly, getter = stats) NSString *stats;
 
 #ifdef __cplusplus
 - (instancetype _Nullable)initWithConsumer:(mediasoupclient::Consumer *_Nonnull)consumer

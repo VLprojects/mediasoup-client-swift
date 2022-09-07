@@ -26,6 +26,7 @@ class ProducerListenerAdapter;
 @property(nonatomic, readonly, getter = maxSpatialLayer) UInt8 maxSpatialLayer;
 @property(nonatomic, nonnull, readonly, getter = appData) NSString *appData;
 @property(nonatomic, nonnull, readonly, getter = rtpParameters) NSString *rtpParameters;
+@property(nonatomic, nonnull, readonly, getter = stats) NSString *stats;
 
 #ifdef __cplusplus
 - (instancetype _Nullable)initWithProducer:(mediasoupclient::Producer *_Nonnull)producer

@@ -74,6 +74,10 @@
 	return [NSString stringWithUTF8String:_consumer->GetRtpParameters().dump().c_str()];
 }
 
+- (NSString *_Nonnull)stats {
+	return [NSString stringWithUTF8String:_consumer->GetStats().dump().c_str()];
+}
+
 - (void)pause {
 	_consumer->Pause();
 }

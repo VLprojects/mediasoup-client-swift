@@ -1,0 +1,11 @@
+--- webrtc/src/sdk/objc/components/video_codec/RTCH264ProfileLevelId.mm
++++ webrtc/src/sdk/objc/components/video_codec/RTCH264ProfileLevelId.mm
+@@ -28,7 +28,7 @@
+ 
+ NSString *const kRTCVideoCodecH264Name = @(cricket::kH264CodecName);
+ NSString *const kRTCLevel31ConstrainedHigh = @"640c1f";
+-NSString *const kRTCLevel31ConstrainedBaseline = @"42e01f";
++NSString *const kRTCLevel31ConstrainedBaseline = @"42e028";
+ NSString *const kRTCMaxSupportedH264ProfileLevelConstrainedHigh =
+     MaxSupportedProfileLevelConstrainedHigh();
+ NSString *const kRTCMaxSupportedH264ProfileLevelConstrainedBaseline =

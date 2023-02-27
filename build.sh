@@ -82,6 +82,7 @@ case $INPUT_STRING in
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_h.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_decoder_factory_h.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/minLevelBaselineProfile.patch
 		;;
 	*)
 		export PATH=$WORK_DIR/depot_tools:$PATH

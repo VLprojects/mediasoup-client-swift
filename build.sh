@@ -139,7 +139,7 @@ xcodebuild -create-xcframework \
 cd $WORK_DIR
 
 # Build mediasoup-client-ios
-cmake . -B$BUILD_DIR/libmediasoupclient/device/arm64 \
+cmake . -B $BUILD_DIR/libmediasoupclient/device/arm64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
 	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/device/arm64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
@@ -153,7 +153,7 @@ cmake . -B$BUILD_DIR/libmediasoupclient/device/arm64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 make -C $BUILD_DIR/libmediasoupclient/device/arm64
 
-cmake . -B$BUILD_DIR/libmediasoupclient/simulator/x64 \
+cmake . -B $BUILD_DIR/libmediasoupclient/simulator/x64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
 	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/x64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
@@ -167,7 +167,7 @@ cmake . -B$BUILD_DIR/libmediasoupclient/simulator/x64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
 make -C $BUILD_DIR/libmediasoupclient/simulator/x64
 
-cmake . -B$BUILD_DIR/libmediasoupclient/simulator/arm64 \
+cmake . -B $BUILD_DIR/libmediasoupclient/simulator/arm64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
 	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/arm64/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \

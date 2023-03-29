@@ -166,44 +166,41 @@ xcodebuild -create-xcframework \
 
 cd $WORK_DIR
 
+lmsc_cmake_arguments=(
+	"-DLIBWEBRTC_INCLUDE_PATH=\"$WEBRTC_DIR\""
+	'-DMEDIASOUP_LOG_TRACE=ON'
+	'-DMEDIASOUP_LOG_DEV=ON'
+	'-DCMAKE_CXX_FLAGS="-fvisibility=hidden"'
+	'-DLIBSDPTRANSFORM_BUILD_TESTS=OFF'
+	'-DCMAKE_OSX_DEPLOYMENT_TARGET=14'
+)
+for str in ${lmsc_cmake_arguments[@]}; do
+	lmsc_cmake_args+=" ${str}"
+done
+
 # Build mediasoup-client-ios
 cmake . -B $BUILD_DIR/libmediasoupclient/device/arm64 \
-	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
+	${lmsc_cmake_args} \
 	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/device/arm64/WebRTC.framework/WebRTC \
-	-DMEDIASOUP_LOG_TRACE=ON \
-	-DMEDIASOUP_LOG_DEV=ON \
-	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
-	-DLIBSDPTRANSFORM_BUILD_TESTS=OFF \
 	-DIOS_SDK=iphone \
-	-DCMAKE_OSX_DEPLOYMENT_TARGET=14 \
 	-DIOS_ARCHS="arm64" \
 	-DPLATFORM=OS64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 make -C $BUILD_DIR/libmediasoupclient/device/arm64
 
 cmake . -B $BUILD_DIR/libmediasoupclient/simulator/x64 \
-	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
+	${lmsc_cmake_args} \
 	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/x64/WebRTC.framework/WebRTC \
-	-DMEDIASOUP_LOG_TRACE=ON \
-	-DMEDIASOUP_LOG_DEV=ON \
-	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
-	-DLIBSDPTRANSFORM_BUILD_TESTS=OFF \
 	-DIOS_SDK=iphonesimulator \
-	-DCMAKE_OSX_DEPLOYMENT_TARGET=14 \
 	-DIOS_ARCHS="x86_64" \
 	-DPLATFORM=SIMULATOR64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
 make -C $BUILD_DIR/libmediasoupclient/simulator/x64
 
 cmake . -B $BUILD_DIR/libmediasoupclient/simulator/arm64 \
-	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
+	${lmsc_cmake_args} \
 	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/arm64/WebRTC.framework/WebRTC \
-	-DMEDIASOUP_LOG_TRACE=ON \
-	-DMEDIASOUP_LOG_DEV=ON \
-	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
-	-DLIBSDPTRANSFORM_BUILD_TESTS=OFF \
 	-DIOS_SDK=iphonesimulator \
-	-DCMAKE_OSX_DEPLOYMENT_TARGET=14 \
 	-DIOS_ARCHS="arm64"\
 	-DPLATFORM=SIMULATORARM64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"

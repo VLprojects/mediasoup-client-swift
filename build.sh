@@ -3,6 +3,26 @@
 # Stop script on errors.
 set -e
 
+# Check build time dependencies.
+if ! command -v python &> /dev/null
+then
+	echo 'python could not be found'
+	echo 'try next steps:'
+	echo '  * run "brew install pyenv"'
+	echo '  * run "pyenv install --list" and choose a recent 3.x version say 3.11.2'
+	echo '  * run "pyenv install 3.11.2"'
+	echo '  * run "pyenv global 3.11.2"'
+	echo $'  * run "echo \'eval "$(pyenv init --path)"\' >> ~/.zshrc"'
+	exit
+fi
+if ! command -v cmake &> /dev/null
+then
+	echo 'cmake could not be found'
+	echo 'try next steps:'
+	echo '  * run "brew install cmake"'
+	exit
+fi
+
 # Define working directories.
 export PROJECT_DIR=$(pwd)
 echo "PROJECT_DIR = $PROJECT_DIR"

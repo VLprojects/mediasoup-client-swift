@@ -37,8 +37,7 @@ echo "PATCHES_DIR = $PATCHES_DIR"
 export WEBRTC_DIR=$PROJECT_DIR/Mediasoup/dependencies/webrtc/src
 echo "WEBRTC_DIR = $WEBRTC_DIR"
 
-echo -e "Clear old build artifacts? (Y|n): \c"
-read -n 1 INPUT_STRING
+read -n 1 -p "Clear old build artifacts? (Y|n): " INPUT_STRING
 echo ""
 case $INPUT_STRING in
 	n|N)
@@ -65,8 +64,7 @@ case $INPUT_STRING in
 		;;
 esac
 
-echo -e "Refetch dependencies? (y|N): \c"
-read -n 1 INPUT_STRING
+read -n 1 -p "Refetch dependencies? (y|N): " INPUT_STRING
 echo ""
 case $INPUT_STRING in
 	y|Y)

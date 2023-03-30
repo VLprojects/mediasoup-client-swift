@@ -300,7 +300,7 @@ xcodebuild -create-xcframework \
 cd $WORK_DIR
 
 lmsc_cmake_arguments=(
-	"-DLIBWEBRTC_INCLUDE_PATH=\"$WEBRTC_DIR\""
+	"-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR"
 	'-DMEDIASOUP_LOG_TRACE=ON'
 	'-DMEDIASOUP_LOG_DEV=ON'
 	'-DCMAKE_CXX_FLAGS="-fvisibility=hidden"'

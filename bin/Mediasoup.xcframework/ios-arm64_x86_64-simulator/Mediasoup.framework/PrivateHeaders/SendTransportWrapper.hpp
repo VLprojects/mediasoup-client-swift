@@ -47,6 +47,7 @@ typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 - (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
 	encodings:(NSArray<RTCRtpEncodingParameters *> *_Nullable)encodings
 	codecOptions:(NSString *_Nullable)codecOptions
+	codec:(NSString *_Nullable)codec
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 

@@ -37,76 +37,209 @@ echo "PATCHES_DIR = $PATCHES_DIR"
 export WEBRTC_DIR=$PROJECT_DIR/Mediasoup/dependencies/webrtc/src
 echo "WEBRTC_DIR = $WEBRTC_DIR"
 
-read -n 1 -p "Clear old build artifacts? (Y|n): " INPUT_STRING
-echo ""
-case $INPUT_STRING in
-	n|N)
-		;;
-	*)
-		declare -a COMPONENTS=(
-			"$OUTPUT_DIR"
-			"$BUILD_DIR"
-		)
-		for COMPONENT in "${COMPONENTS[@]}"
-		do
-			if [ -d $COMPONENT ]
-			then
-				echo "Removing dir $COMPONENT"
-				rm -rf $COMPONENT
-			fi
-		done
+function clearArtifacts() {
+	declare -a COMPONENTS=(
+		"$OUTPUT_DIR"
+		"$BUILD_DIR"
+	)
+	for COMPONENT in "${COMPONENTS[@]}"
+	do
+		if [ -d $COMPONENT ]
+		then
+			echo "Removing dir $COMPONENT"
+			rm -rf $COMPONENT
+		fi
+	done
 
-		mkdir -p $OUTPUT_DIR
-		echo 'OUTPUT_DIR created'
+	mkdir -p $OUTPUT_DIR
+	echo 'OUTPUT_DIR created'
 
-		mkdir -p $BUILD_DIR
-		echo 'BUILD_DIR created'
-		;;
-esac
+	mkdir -p $BUILD_DIR
+	echo 'BUILD_DIR created'
+}
 
-read -n 1 -p "Refetch dependencies? (y|N): " INPUT_STRING
-echo ""
-case $INPUT_STRING in
-	y|Y)
-		echo 'Cloning libmediasoupclient'
-		cd $WORK_DIR
-		rm -rf libmediasoupclient
-		git clone https://github.com/VLprojects/libmediasoupclient.git
+while true
+do
+	read -n 1 -p "Clear old build artifacts? (Y|n): " INPUT_STRING
+	# echo ""
+	case $INPUT_STRING in
+		n|N)
+			echo ""
+			break
+			;;
+		y|Y|"")
+			echo ""
+			clearArtifacts
+			break
+			;;
+		*)
+			echo -ne "\r\033[0K\r"
+			tput bel
+			;;
+	esac
+done
 
-		echo 'Cloning depot_tools'
-		cd $WORK_DIR
-		git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-		export PATH=$WORK_DIR/depot_tools:$PATH
+function refetchLibmediasoupclient() {
+	echo 'Cloning libmediasoupclient'
+	cd $WORK_DIR
+	rm -rf libmediasoupclient
+	git clone --depth 1 https://github.com/VLprojects/libmediasoupclient.git
+}
 
-		echo 'Cloning WebRTC'
-		mkdir -p $WORK_DIR/webrtc
-		cd $WORK_DIR/webrtc
-		fetch --nohooks webrtc_ios
-		gclient sync
-		cd $WORK_DIR/webrtc/src
-		git checkout -b m93 refs/remotes/branch-heads/4577
-		gclient sync
+if [ -d $WORK_DIR/libmediasoupclient ]
+then
+	echo "libmediasoupclient is already on disk"
+	while true
+	do
+		read -n 1 -p "Refetch libmediasoupclient (y|N): " INPUT_STRING
+		case $INPUT_STRING in
+			n|N|"")
+				echo ""
+				break
+				;;
+			y|Y)
+				echo ""
+				refetchLibmediasoupclient
+				break
+				;;
+			*)
+				echo -ne "\r\033[0K\r"
+				tput bel
+				;;
+		esac
+	done
+else
+	refetchLibmediasoupclient
+fi
 
-		# Apply patches to make it buildable with Xcode.
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_decoder_factory.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_encoder_factory.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdp_video_format_utils.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_BUILD.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/abseil_optional.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/RTCPeerConnectionFactoryBuilder.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_h.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_mm.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_decoder_factory_h.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_h.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_decoder_factory_h.patch
-		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
-		;;
-	*)
-		export PATH=$WORK_DIR/depot_tools:$PATH
-		cd $WEBRTC_DIR
-		git restore rtc_base/byte_order.h
-		;;
-esac
+function refetchDepotTools() {
+	echo 'Cloning depot_tools'
+	cd $WORK_DIR
+	rm -rf depot_tools
+	git clone --depth 1 https://chromium.googlesource.com/chromium/tools/depot_tools.git
+}
+
+if [ -d $WORK_DIR/depot_tools ]
+then
+	echo "depot_tools is already on disk"
+	while true
+	do
+		read -n 1 -p "Refetch depot_tools (y|N): " INPUT_STRING
+		echo ""
+		case $INPUT_STRING in
+			n|N|"")
+				break
+				;;
+			y|Y)
+				refetchDepotTools
+				break
+				;;
+			*)
+				tput bel
+				;;
+		esac
+	done
+else
+	refetchDepotTools
+fi
+
+export PATH=$WORK_DIR/depot_tools:$PATH
+
+function patchWebRTC() {
+	echo 'Patching WebRTC for iOS platform support'
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_decoder_factory.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_encoder_factory.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdp_video_format_utils.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_BUILD.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/abseil_optional.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/RTCPeerConnectionFactoryBuilder.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_mm.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_decoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_decoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/BUILD_gn.patch
+}
+
+function refetchWebRTC() {
+	echo 'Cloning WebRTC'
+	rm -rf $WORK_DIR/webrtc
+	mkdir -p $WORK_DIR/webrtc
+	cd $WORK_DIR/webrtc
+
+	export DEPOT_TOOLS_UPDATE=0
+	gclient root
+	gclient config --spec \
+'solutions = [{
+	"name": "src",
+	"url": "https://webrtc.googlesource.com/src.git",
+	"deps_file": "DEPS",
+	"managed": False,
+	"custom_deps": {},
+}]
+target_os = ["ios"]'
+
+	# This command fetches only one specific WebRTC version.
+	gclient sync --no-history --revision src@branch-heads/4606
+
+	# Fetch all possible WebRTC versions so you can switch between them.
+	# Takes longer time and more disk space.
+	# gclient sync --nohooks --with_branch_heads --with_tags
+
+	# Checkout a new version for the first time
+	# git checkout -b m94 refs/remotes/branch-heads/4606
+
+	# Switch to WebRTC version that already was checked out previously.
+	# git checkout m94
+
+	# Run hooks after switching between WebRTC versions.
+	# cd $WORK_DIR/webrtc/src
+	# gclient sync --no-history -D
+}
+
+function resetWebRTC() {
+	cd $WORK_DIR/webrtc/src
+	git reset --hard
+	
+	cd $WORK_DIR/webrtc/src/third_party
+	git reset --hard
+}
+
+if [ -d $WORK_DIR/webrtc ]
+then
+	echo "WebRTC is already on disk"
+	while true
+	do
+		read -n 1 -p "Refetch WebRTC? (f)ull clone | (r)eset local changes | (N)o: " INPUT_STRING
+		echo ""
+		case $INPUT_STRING in
+			n|N|"")
+				break
+				;;
+			f|F)
+				refetchWebRTC
+				patchWebRTC
+				break
+				;;
+			r|R)
+				resetWebRTC
+				patchWebRTC
+				break
+				;;
+			*)
+				tput bel
+				;;
+		esac
+	done
+else
+	refetchWebRTC
+	patchWebRTC
+fi
+
+# This patch should be applied only after WebRTC is already built.
+cd $WEBRTC_DIR
+git restore rtc_base/byte_order.h
 
 echo 'Building WebRTC'
 cd $WEBRTC_DIR

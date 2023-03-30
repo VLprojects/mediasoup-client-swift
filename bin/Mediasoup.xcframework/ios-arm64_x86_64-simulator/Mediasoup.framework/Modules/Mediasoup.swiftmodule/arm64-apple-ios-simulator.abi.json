@@ -1801,7 +1801,7 @@
           {
             "kind": "Function",
             "name": "createProducer",
-            "printedName": "createProducer(for:encodings:codecOptions:appData:)",
+            "printedName": "createProducer(for:encodings:codecOptions:codec:appData:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1864,11 +1864,25 @@
                   }
                 ],
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:9Mediasoup13SendTransportC14createProducer3for9encodings12codecOptions7appDataAA0E0CSo19RTCMediaStreamTrackC_SaySo24RTCRtpEncodingParametersCGSgSSSgAQtKF",
-            "mangledName": "$s9Mediasoup13SendTransportC14createProducer3for9encodings12codecOptions7appDataAA0E0CSo19RTCMediaStreamTrackC_SaySo24RTCRtpEncodingParametersCGSgSSSgAQtKF",
+            "usr": "s:9Mediasoup13SendTransportC14createProducer3for9encodings12codecOptions0H07appDataAA0E0CSo19RTCMediaStreamTrackC_SaySo24RTCRtpEncodingParametersCGSgSSSgA2RtKF",
+            "mangledName": "$s9Mediasoup13SendTransportC14createProducer3for9encodings12codecOptions0H07appDataAA0E0CSo19RTCMediaStreamTrackC_SaySo24RTCRtpEncodingParametersCGSgSSSgA2RtKF",
             "moduleName": "Mediasoup",
             "declAttributes": [
               "AccessControl"

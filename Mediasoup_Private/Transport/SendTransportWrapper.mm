@@ -97,6 +97,7 @@
 - (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
 	encodings:(NSArray<RTCRtpEncodingParameters *> *_Nullable)encodings
 	codecOptions:(NSString *_Nullable)codecOptions
+	codec:(NSString *_Nullable)codec
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 
@@ -135,6 +136,12 @@
 			codecOptionsJson = nlohmann::json::parse(std::string(codecOptions.UTF8String));
 		}
 
+		nlohmann::json *codecJsonPtr = nullptr;
+		if (codec != nullptr) {
+			auto codecJson = nlohmann::json::parse(std::string(codec.UTF8String));
+			codecJsonPtr = &codecJson;
+		}
+
 		nlohmann::json appDataJson = nlohmann::json::object();
 		if (appData != nullptr) {
 			appDataJson = nlohmann::json::parse(std::string(appData.UTF8String));
@@ -148,7 +155,8 @@
 			mediaStreamTrack,
 			&encodingsVector,
 			&codecOptionsJson,
-			&appDataJson
+			codecJsonPtr,
+			appDataJson
 		);
 		return [[ProducerWrapper alloc] initWithProducer:producer mediaStreamTrack:mediaTrack listenerAdapter:listenerAdapter];
 	}, ^ void {

@@ -82,7 +82,7 @@ public enum TransportConnectionState {
 @_hasMissingDesignatedInitializers public class SendTransport {
   weak public var delegate: Mediasoup.SendTransportDelegate?
   @objc deinit
-  public func createProducer(for track: WebRTC.RTCMediaStreamTrack, encodings: [WebRTC.RTCRtpEncodingParameters]?, codecOptions: Swift.String?, appData: Swift.String?) throws -> Mediasoup.Producer
+  public func createProducer(for track: WebRTC.RTCMediaStreamTrack, encodings: [WebRTC.RTCRtpEncodingParameters]?, codecOptions: Swift.String?, codec: Swift.String?, appData: Swift.String?) throws -> Mediasoup.Producer
 }
 extension Mediasoup.SendTransport : Mediasoup.Transport {
   public var id: Swift.String {

@@ -148,7 +148,7 @@
 			mediaStreamTrack,
 			&encodingsVector,
 			&codecOptionsJson,
-			appDataJson
+			&appDataJson
 		);
 		return [[ProducerWrapper alloc] initWithProducer:producer mediaStreamTrack:mediaTrack listenerAdapter:listenerAdapter];
 	}, ^ void {

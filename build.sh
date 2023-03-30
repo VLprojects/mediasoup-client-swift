@@ -299,64 +299,97 @@ xcodebuild -create-xcframework \
 
 cd $WORK_DIR
 
-lmsc_cmake_arguments=(
-	"-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR"
-	'-DMEDIASOUP_LOG_TRACE=ON'
-	'-DMEDIASOUP_LOG_DEV=ON'
-	'-DCMAKE_CXX_FLAGS="-fvisibility=hidden"'
-	'-DLIBSDPTRANSFORM_BUILD_TESTS=OFF'
-	'-DCMAKE_OSX_DEPLOYMENT_TARGET=14'
-)
-for str in ${lmsc_cmake_arguments[@]}; do
-	lmsc_cmake_args+=" ${str}"
-done
+function rebuildLMSC() {
+	echo "Building libmediasoupclient"
+	rm -rf $BUILD_DIR/libmediasoupclient
+	rm -rf $OUTPUT_DIR/sdptransform.xcframework
+	rm -rf $OUTPUT_DIR/mediasoupclient.xcframework
 
-# Build mediasoup-client-ios
-cmake . -B $BUILD_DIR/libmediasoupclient/device/arm64 \
-	${lmsc_cmake_args} \
-	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/device/arm64/WebRTC.framework/WebRTC \
-	-DIOS_SDK=iphone \
-	-DIOS_ARCHS="arm64" \
-	-DPLATFORM=OS64 \
-	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
-make -C $BUILD_DIR/libmediasoupclient/device/arm64
+	lmsc_cmake_arguments=(
+		"-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR"
+		'-DMEDIASOUP_LOG_TRACE=ON'
+		'-DMEDIASOUP_LOG_DEV=ON'
+		'-DCMAKE_CXX_FLAGS="-fvisibility=hidden"'
+		'-DLIBSDPTRANSFORM_BUILD_TESTS=OFF'
+		'-DCMAKE_OSX_DEPLOYMENT_TARGET=14'
+	)
+	for str in ${lmsc_cmake_arguments[@]}; do
+		lmsc_cmake_args+=" ${str}"
+	done
 
-cmake . -B $BUILD_DIR/libmediasoupclient/simulator/x64 \
-	${lmsc_cmake_args} \
-	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/x64/WebRTC.framework/WebRTC \
-	-DIOS_SDK=iphonesimulator \
-	-DIOS_ARCHS="x86_64" \
-	-DPLATFORM=SIMULATOR64 \
-	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
-make -C $BUILD_DIR/libmediasoupclient/simulator/x64
+	# Build mediasoup-client-ios
+	cmake . -B $BUILD_DIR/libmediasoupclient/device/arm64 \
+		${lmsc_cmake_args} \
+		-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/device/arm64/WebRTC.framework/WebRTC \
+		-DIOS_SDK=iphone \
+		-DIOS_ARCHS="arm64" \
+		-DPLATFORM=OS64 \
+		-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+	make -C $BUILD_DIR/libmediasoupclient/device/arm64
 
-cmake . -B $BUILD_DIR/libmediasoupclient/simulator/arm64 \
-	${lmsc_cmake_args} \
-	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/arm64/WebRTC.framework/WebRTC \
-	-DIOS_SDK=iphonesimulator \
-	-DIOS_ARCHS="arm64"\
-	-DPLATFORM=SIMULATORARM64 \
-	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
-make -C $BUILD_DIR/libmediasoupclient/simulator/arm64
+	cmake . -B $BUILD_DIR/libmediasoupclient/simulator/x64 \
+		${lmsc_cmake_args} \
+		-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/x64/WebRTC.framework/WebRTC \
+		-DIOS_SDK=iphonesimulator \
+		-DIOS_ARCHS="x86_64" \
+		-DPLATFORM=SIMULATOR64 \
+		-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
+	make -C $BUILD_DIR/libmediasoupclient/simulator/x64
 
-# Create a FAT libmediasoup / libsdptransform library
-mkdir -p $BUILD_DIR/libmediasoupclient/simulator/fat
-lipo -create \
-	$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libmediasoupclient.a \
-	$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libmediasoupclient.a \
-	-output $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a
-lipo -create \
-	$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	-output $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a
-xcodebuild -create-xcframework \
-	-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libmediasoupclient.a \
-	-library $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a \
-	-output $OUTPUT_DIR/mediasoupclient.xcframework
-xcodebuild -create-xcframework \
-	-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	-library $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a \
-	-output $OUTPUT_DIR/sdptransform.xcframework
+	cmake . -B $BUILD_DIR/libmediasoupclient/simulator/arm64 \
+		${lmsc_cmake_args} \
+		-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/arm64/WebRTC.framework/WebRTC \
+		-DIOS_SDK=iphonesimulator \
+		-DIOS_ARCHS="arm64"\
+		-DPLATFORM=SIMULATORARM64 \
+		-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
+	make -C $BUILD_DIR/libmediasoupclient/simulator/arm64
+
+	# Create a FAT libmediasoup / libsdptransform library
+	mkdir -p $BUILD_DIR/libmediasoupclient/simulator/fat
+	lipo -create \
+		$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libmediasoupclient.a \
+		$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libmediasoupclient.a \
+		-output $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a
+	lipo -create \
+		$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libsdptransform/libsdptransform.a \
+		$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+		-output $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a
+	xcodebuild -create-xcframework \
+		-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libmediasoupclient.a \
+		-library $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a \
+		-output $OUTPUT_DIR/mediasoupclient.xcframework
+	xcodebuild -create-xcframework \
+		-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+		-library $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a \
+		-output $OUTPUT_DIR/sdptransform.xcframework
+}
+
+if [ -d $BUILD_DIR/libmediasoupclient ]
+then
+	echo "libmediasoupclient is already built"
+	while true
+	do
+		read -n 1 -p "Rebuild libmediasoupclient (y|N): " INPUT_STRING
+		case $INPUT_STRING in
+			n|N|"")
+				echo ""
+				break
+				;;
+			y|Y)
+				echo ""
+				rebuildLMSC
+				break
+				;;
+			*)
+				echo -ne "\r\033[0K\r"
+				tput bel
+				;;
+		esac
+	done
+else
+	rebuildLMSC
+fi
 
 cp $PATCHES_DIR/byte_order.h $WORK_DIR/webrtc/src/rtc_base/
 open $PROJECT_DIR/Mediasoup.xcodeproj

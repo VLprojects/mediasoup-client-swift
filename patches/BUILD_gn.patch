@@ -1,0 +1,11 @@
+--- webrtc/src/BUILD.gn
++++ webrtc/src/BUILD.gn
+@@ -122,7 +122,7 @@ config("common_inherited_config") {
+     defines = [ "WEBRTC_ENABLE_SYMBOL_EXPORT" ]
+   }
+   if (rtc_enable_objc_symbol_export) {
+-    defines = [ "WEBRTC_ENABLE_OBJC_SYMBOL_EXPORT" ]
++    defines += [ "WEBRTC_ENABLE_OBJC_SYMBOL_EXPORT" ]
+   }
+ 
+   if (build_with_mozilla) {

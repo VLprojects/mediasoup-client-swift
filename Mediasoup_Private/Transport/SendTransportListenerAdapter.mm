@@ -47,7 +47,7 @@ std::future<std::string> SendTransportListenerAdapter::OnProduce(
 		appData: appDataString callback: ^(NSString *id) {
 			try {
 				if (id == nil) {
-					auto ep = make_exception_ptr(MediaSoupClientError("TransportIdIsNil"));
+					auto ep = make_exception_ptr(MediaSoupClientError("ProducerIdIsNil"));
 					promise.set_exception(ep);
 				} else {
 					promise.set_value(std::string([id UTF8String]));
@@ -77,7 +77,7 @@ std::future<std::string> SendTransportListenerAdapter::OnProduceData(
 		protocol:protocolString appData:appDataString callback: ^(NSString *id) {
 			try {
 				if (id == nil) {
-					auto ep = make_exception_ptr(MediaSoupClientError("TransportIdIsNil"));
+					auto ep = make_exception_ptr(MediaSoupClientError("ProducerIdIsNil"));
 					promise.set_exception(ep);
 				} else {
 					promise.set_value(std::string([id UTF8String]));

@@ -6,7 +6,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 project(Project)
 
 # C++ requirements
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD REQUIRED ON)
 
 # build for iphone or simulator
@@ -38,10 +38,6 @@ set(LIBSDPTRANSFORM_BUILD_READMEHELPER OFF)
 # Set the sdk version and the min sdk version
 set(IPHONE_SDKVER "14.0")
 set(IPHONE_VERSION_MIN "14.0")
-
-# enable bitcode
-add_definitions(-DENABLE_BITCODE)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fembed-bitcode")
 
 message(STATUS "\n========== libmediasoupclient iOS Build Configuration ==========\n")
 message(STATUS "CMAKE_OSX_SYSROOT             = " ${CMAKE_OSX_SYSROOT})

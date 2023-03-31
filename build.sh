@@ -159,7 +159,6 @@ function patchWebRTC() {
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_h.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_decoder_factory_h.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/BUILD_gn.patch
 }
 
 function refetchWebRTC() {
@@ -180,18 +179,24 @@ function refetchWebRTC() {
 }]
 target_os = ["ios"]'
 
-	# This command fetches only one specific WebRTC version.
-	gclient sync --no-history --revision src@branch-heads/4606
+	# Fetch WebRTC m94 version.
+	# gclient sync --no-history --revision src@branch-heads/4606 
+	# Fetch WebRTC m112 version.
+	gclient sync --no-history --revision src@branch-heads/5615 
 
 	# Fetch all possible WebRTC versions so you can switch between them.
 	# Takes longer time and more disk space.
 	# gclient sync --nohooks --with_branch_heads --with_tags
 
 	# Checkout a new version for the first time
-	# git checkout -b m94 refs/remotes/branch-heads/4606
+	# cd $WORK_DIR/webrtc/src
+	# git reset --hard
+	# cd $WORK_DIR/webrtc/src/third_party
+	# git reset --hard
+	# git checkout -b m112 refs/remotes/branch-heads/5615
 
 	# Switch to WebRTC version that already was checked out previously.
-	# git checkout m94
+	# git checkout m112
 
 	# Run hooks after switching between WebRTC versions.
 	# cd $WORK_DIR/webrtc/src
@@ -246,19 +251,19 @@ cd $WEBRTC_DIR
 
 gn_arguments=(
 	'target_os="ios"'
-	'ios_deployment_target="13.0"'
+	'ios_deployment_target="14.0"'
 	'ios_enable_code_signing=false'
-	'use_xcode_clang=true'
 	'is_component_build=false'
-	'rtc_include_tests=false'
 	'is_debug=false'
 	'rtc_libvpx_build_vp9=true'
-	'enable_ios_bitcode=false'
 	'use_goma=false'
 	'rtc_enable_symbol_export=true'
+	'rtc_enable_objc_symbol_export=true'
+	'rtc_enable_protobuf=false'
+	'rtc_include_tests=false'
 	'rtc_include_builtin_audio_codecs=true'
 	'rtc_include_builtin_video_codecs=true'
-	'rtc_enable_protobuf=false'
+	'rtc_include_pulse_audio=false'
 	'use_rtti=true'
 	'use_custom_libcxx=false'
 	'enable_dsyms=true'
@@ -391,5 +396,4 @@ else
 	rebuildLMSC
 fi
 
-cp $PATCHES_DIR/byte_order.h $WORK_DIR/webrtc/src/rtc_base/
 open $PROJECT_DIR/Mediasoup.xcodeproj

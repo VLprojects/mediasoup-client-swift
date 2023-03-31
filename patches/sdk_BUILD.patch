@@ -1,9 +1,9 @@
 --- webrtc/src/sdk/BUILD.gn
 +++ webrtc/src/sdk/BUILD.gn
-@@ -1305,7 +1305,43 @@ if (is_ios || is_mac) {
+@@ -1359,7 +1359,41 @@ if (is_ios || is_mac) {
            "@rpath/$output_name.framework/$output_name",
          ]
- 
+
 +        public_deps = [
 +          "../third_party/abseil-cpp/absl/types:bad_optional_access",
 +        ]
@@ -33,8 +33,6 @@
 +          "../pc:libjingle_peerconnection",
 +          "../pc:peerconnection",
 +          "../pc:rtc_pc",
-+          "../pc:rtc_pc_base",
-+          "../rtc_base",
 +          "../video",
 +          "../api",
 +          "../logging",

@@ -50,7 +50,7 @@
 
 		self.pcFactory = [pcFactoryBuilder createPeerConnectionFactory];
 		_pcOptions = new mediasoupclient::PeerConnection::Options();
-		_pcOptions->factory = self.pcFactory.nativeFactory;
+		_pcOptions->factory = self.pcFactory.nativeFactory.get();
 	}
 	return self;
 }

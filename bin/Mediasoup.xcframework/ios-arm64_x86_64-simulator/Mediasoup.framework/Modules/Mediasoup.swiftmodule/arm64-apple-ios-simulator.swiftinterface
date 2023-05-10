@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
 // swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Mediasoup
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
@@ -12,7 +12,7 @@ import _StringProcessing
 public protocol ReceiveTransportDelegate : Mediasoup.TransportDelegate {
 }
 @_hasMissingDesignatedInitializers public class ReceiveTransport {
-  weak public var delegate: Mediasoup.ReceiveTransportDelegate?
+  weak public var delegate: (any Mediasoup.ReceiveTransportDelegate)?
   @objc deinit
   public func consume(consumerId: Swift.String, producerId: Swift.String, kind: Mediasoup.MediaKind, rtpParameters: Swift.String, appData: Swift.String?) throws -> Mediasoup.Consumer
 }
@@ -62,8 +62,8 @@ public protocol Transport : AnyObject {
   func updateICETransportPolicy(_ transportPolicy: Mediasoup.ICETransportPolicy) throws
 }
 public protocol TransportDelegate : AnyObject {
-  func onConnect(transport: Mediasoup.Transport, dtlsParameters: Swift.String)
-  func onConnectionStateChange(transport: Mediasoup.Transport, connectionState: Mediasoup.TransportConnectionState)
+  func onConnect(transport: any Mediasoup.Transport, dtlsParameters: Swift.String)
+  func onConnectionStateChange(transport: any Mediasoup.Transport, connectionState: Mediasoup.TransportConnectionState)
 }
 public enum TransportConnectionState {
   case new
@@ -80,7 +80,7 @@ public enum TransportConnectionState {
   }
 }
 @_hasMissingDesignatedInitializers public class SendTransport {
-  weak public var delegate: Mediasoup.SendTransportDelegate?
+  weak public var delegate: (any Mediasoup.SendTransportDelegate)?
   @objc deinit
   public func createProducer(for track: WebRTC.RTCMediaStreamTrack, encodings: [WebRTC.RTCRtpEncodingParameters]?, codecOptions: Swift.String?, codec: Swift.String?, appData: Swift.String?) throws -> Mediasoup.Producer
 }
@@ -115,15 +115,15 @@ public protocol ConsumerDelegate : AnyObject {
   func onTransportClose(in consumer: Mediasoup.Consumer)
 }
 public protocol SendTransportDelegate : Mediasoup.TransportDelegate {
-  func onProduce(transport: Mediasoup.Transport, kind: Mediasoup.MediaKind, rtpParameters: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
-  func onProduceData(transport: Mediasoup.Transport, sctpParameters: Swift.String, label: Swift.String, protocol dataProtocol: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
+  func onProduce(transport: any Mediasoup.Transport, kind: Mediasoup.MediaKind, rtpParameters: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
+  func onProduceData(transport: any Mediasoup.Transport, sctpParameters: Swift.String, label: Swift.String, protocol dataProtocol: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
 }
 public enum MediasoupError : Swift.Error {
   case unsupported(Swift.String)
   case invalidState(Swift.String)
   case invalidParameters(Swift.String)
   case mediasoup(Foundation.NSError)
-  case unknown(Swift.Error)
+  case unknown(any Swift.Error)
 }
 public protocol ProducerDelegate : AnyObject {
   func onTransportClose(in producer: Mediasoup.Producer)
@@ -140,7 +140,7 @@ public enum ICETransportPolicy {
   }
 }
 @_hasMissingDesignatedInitializers public class Producer {
-  weak public var delegate: Mediasoup.ProducerDelegate?
+  weak public var delegate: (any Mediasoup.ProducerDelegate)?
   public var track: WebRTC.RTCMediaStreamTrack {
     get
   }
@@ -192,7 +192,7 @@ public class Device {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class Consumer {
-  weak public var delegate: Mediasoup.ConsumerDelegate?
+  weak public var delegate: (any Mediasoup.ConsumerDelegate)?
   public var track: WebRTC.RTCMediaStreamTrack {
     get
   }

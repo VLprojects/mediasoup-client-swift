@@ -46,7 +46,9 @@
 		[pcFactoryBuilder setAudioDecoderFactory:audioDecoderFactory];
 		[pcFactoryBuilder setVideoEncoderFactory:std::move(videoEncoderFactory)];
 		[pcFactoryBuilder setVideoDecoderFactory:std::move(videoDecoderFactory)];
-		[pcFactoryBuilder setAudioDeviceModule:webrtc::CreateAudioDeviceModule()];
+		auto adm = webrtc::CreateAudioDeviceModule();
+		adm->StartPlayout()
+		[pcFactoryBuilder setAudioDeviceModule:adm];
 
 		self.pcFactory = [pcFactoryBuilder createPeerConnectionFactory];
 		_pcOptions = new mediasoupclient::PeerConnection::Options();

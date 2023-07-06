@@ -12,6 +12,7 @@ class ReceiveTransportListenerAdapter;
 #endif
 
 @class ConsumerWrapper;
+@class DataConsumerWrapper;
 @class RTCPeerConnectionFactory;
 @protocol ReceiveTransportWrapperDelegate;
 typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
@@ -50,6 +51,14 @@ typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 	producerId:(NSString *_Nonnull)producerId
 	kind:(MediasoupClientMediaKind _Nonnull)kind
 	rtpParameters:(NSString *_Nonnull)rtpParameters
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
+
+- (DataConsumerWrapper *_Nullable)createDataConsumerWithId:(NSString *_Nonnull)consumerId
+	producerId:(NSString *_Nonnull)producerId
+	streamId:(UInt16)streamId
+	label:(NSString *_Nonnull)label
+	protocol:(NSString *_Nullable)protocol
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 

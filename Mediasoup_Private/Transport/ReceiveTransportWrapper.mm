@@ -7,6 +7,8 @@
 #import "../MediasoupClientError/MediasoupClientErrorHandler.h"
 #import "../Consumer/ConsumerListenerAdapter.hpp"
 #import "../Consumer/ConsumerWrapper.hpp"
+#import "../DataConsumer/DataConsumerListenerAdapter.hpp"
+#import "../DataConsumer/DataConsumerWrapper.hpp"
 
 
 @interface ReceiveTransportWrapper () <ReceiveTransportListenerAdapterDelegate> {
@@ -134,6 +136,52 @@
 		return [[ConsumerWrapper alloc]
 			initWithConsumer:consumer
 			track:track
+			listenerAdapter:listenerAdapter
+		];
+	}, ^ void {
+		delete listenerAdapter;
+	}, error);
+}
+
+- (DataConsumerWrapper *_Nullable)createDataConsumerWithId:(NSString *_Nonnull)consumerId
+	producerId:(NSString *_Nonnull)producerId
+	streamId:(UInt16)streamId
+	label:(NSString *_Nonnull)label
+	protocol:(NSString *_Nullable)protocol
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
+{
+	auto listenerAdapter = new DataConsumerListenerAdapter();
+	return mediasoupTryWithResult(^ DataConsumerWrapper * {
+		auto consumerIdString = std::string(consumerId.UTF8String);
+		auto producerIdString = std::string(producerId.UTF8String);
+		auto labelString = std::string(label.UTF8String);
+
+		std::string protocolString;
+		if (protocol == nil) {
+			protocolString = std::string();
+		} else {
+			protocolString = std::string(protocol.UTF8String);
+		}
+
+		nlohmann::json appDataJSON;
+		if (appData == nullptr) {
+			appDataJSON = nlohmann::json::object();
+		} else {
+			appDataJSON = nlohmann::json::parse(std::string(appData.UTF8String));
+		}
+
+		auto consumer = self->_transport->ConsumeData(
+			listenerAdapter,
+			consumerIdString,
+			producerIdString,
+			streamId,
+			labelString,
+			protocolString,
+			appDataJSON
+		);
+		return [[DataConsumerWrapper alloc]
+			initWithDataConsumer:consumer
 			listenerAdapter:listenerAdapter
 		];
 	}, ^ void {

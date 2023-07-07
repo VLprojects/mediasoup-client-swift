@@ -116,9 +116,11 @@
 		auto rtpParametersString = std::string(rtpParameters.UTF8String);
 		nlohmann::json rtpParametersJSON = nlohmann::json::parse(rtpParametersString);
 
-		nlohmann::json appDataJson = nlohmann::json::object();
-		if (appData != nullptr) {
-			appDataJson = nlohmann::json::parse(std::string(appData.UTF8String));
+		nlohmann::json appDataJSON;
+		if (appData == nullptr) {
+			appDataJSON = nlohmann::json::object();
+		} else {
+			appDataJSON = nlohmann::json::parse(std::string(appData.UTF8String));
 		}
 
 		auto consumer = self->_transport->Consume(
@@ -126,7 +128,8 @@
 			consumerIdString,
 			producerIdString,
 			kindString,
-			&rtpParametersJSON
+			&rtpParametersJSON,
+			appDataJSON
 		);
 
 		auto nativeTrack = consumer->GetTrack();

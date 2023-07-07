@@ -15,6 +15,7 @@ public protocol ReceiveTransportDelegate : Mediasoup.TransportDelegate {
   weak public var delegate: Mediasoup.ReceiveTransportDelegate?
   @objc deinit
   public func consume(consumerId: Swift.String, producerId: Swift.String, kind: Mediasoup.MediaKind, rtpParameters: Swift.String, appData: Swift.String?) throws -> Mediasoup.Consumer
+  public func consumeData(consumerId: Swift.String, producerId: Swift.String, streamId: Swift.UInt16, label: Swift.String, protocol protocolName: Swift.String?, appData: Swift.String?) throws -> Mediasoup.DataConsumer
 }
 extension Mediasoup.ReceiveTransport : Mediasoup.Transport {
   public var id: Swift.String {
@@ -127,6 +128,51 @@ public enum MediasoupError : Swift.Error {
 }
 public protocol ProducerDelegate : AnyObject {
   func onTransportClose(in producer: Mediasoup.Producer)
+}
+@_hasMissingDesignatedInitializers public class DataConsumer {
+  weak public var delegate: Mediasoup.DataConsumerDelegate?
+  public var id: Swift.String {
+    get
+  }
+  public var localId: Swift.String {
+    get
+  }
+  public var producerId: Swift.String {
+    get
+  }
+  public var closed: Swift.Bool {
+    get
+  }
+  public var label: Swift.String {
+    get
+  }
+  public var dataProtocol: Swift.String {
+    get
+  }
+  public var appData: Swift.String {
+    get
+  }
+  public var sctpStreamParameters: Swift.String {
+    get
+  }
+  public func close()
+  @objc deinit
+}
+extension Mediasoup.DataConsumer : Mediasoup_Private.DataConsumerWrapperDelegate {
+  @objc dynamic public func onMessage(_ messageData: Foundation.Data, consumer: Mediasoup_Private.DataConsumerWrapper)
+  @objc dynamic public func onConnecting(_ consumer: Mediasoup_Private.DataConsumerWrapper)
+  @objc dynamic public func onOpen(_ consumer: Mediasoup_Private.DataConsumerWrapper)
+  @objc dynamic public func onClosing(_ consumer: Mediasoup_Private.DataConsumerWrapper)
+  @objc dynamic public func onClose(_ consumer: Mediasoup_Private.DataConsumerWrapper)
+  @objc dynamic public func onTransportClose(_ consumer: Mediasoup_Private.DataConsumerWrapper)
+}
+public protocol DataConsumerDelegate : AnyObject {
+  func onConnecting(consumer: Mediasoup.DataConsumer)
+  func onOpen(consumer: Mediasoup.DataConsumer)
+  func onClosing(consumer: Mediasoup.DataConsumer)
+  func onClose(consumer: Mediasoup.DataConsumer)
+  func onTransportClose(in consumer: Mediasoup.DataConsumer)
+  func onMessage(data: Foundation.Data, from consumer: Mediasoup.DataConsumer)
 }
 public enum ICETransportPolicy {
   case none

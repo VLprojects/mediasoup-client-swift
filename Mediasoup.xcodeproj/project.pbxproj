@@ -21,6 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		FF1E63582A5655830022A44A /* DataConsumerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FF1E63522A5655830022A44A /* DataConsumerWrapper.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		FF1E635A2A5655830022A44A /* DataConsumerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF1E63542A5655830022A44A /* DataConsumerWrapper.mm */; };
+		FF1E635B2A5655830022A44A /* DataConsumerWrapperDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = FF1E63552A5655830022A44A /* DataConsumerWrapperDelegate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		FF1E635D2A5655830022A44A /* DataConsumerListenerAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF1E63572A5655830022A44A /* DataConsumerListenerAdapter.mm */; };
+		FF1E635F2A566C500022A44A /* DataConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1E635E2A566C500022A44A /* DataConsumer.swift */; };
+		FF1E63612A566C640022A44A /* DataConsumerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1E63602A566C640022A44A /* DataConsumerDelegate.swift */; };
 		FF3AEE0C27F2D67E001A81AB /* DeviceWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF3AEE0B27F2D67E001A81AB /* DeviceWrapper.mm */; };
 		FF422680282B9603004D9974 /* ConsumerListenerAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF42267E282B958C004D9974 /* ConsumerListenerAdapter.mm */; };
 		FF49F0E82804049300B64D36 /* Consumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49F0E72804049300B64D36 /* Consumer.swift */; };
@@ -71,6 +77,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF1E63522A5655830022A44A /* DataConsumerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataConsumerWrapper.hpp; sourceTree = "<group>"; };
+		FF1E63532A5655830022A44A /* DataConsumerListenerAdapterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataConsumerListenerAdapterDelegate.h; sourceTree = "<group>"; };
+		FF1E63542A5655830022A44A /* DataConsumerWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DataConsumerWrapper.mm; sourceTree = "<group>"; };
+		FF1E63552A5655830022A44A /* DataConsumerWrapperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataConsumerWrapperDelegate.h; sourceTree = "<group>"; };
+		FF1E63562A5655830022A44A /* DataConsumerListenerAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataConsumerListenerAdapter.hpp; sourceTree = "<group>"; };
+		FF1E63572A5655830022A44A /* DataConsumerListenerAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DataConsumerListenerAdapter.mm; sourceTree = "<group>"; };
+		FF1E635E2A566C500022A44A /* DataConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataConsumer.swift; sourceTree = "<group>"; };
+		FF1E63602A566C640022A44A /* DataConsumerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataConsumerDelegate.swift; sourceTree = "<group>"; };
 		FF2E23D6285890310008DC19 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF3AEE0027F2CDD1001A81AB /* Mediasoup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mediasoup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF3AEE0B27F2D67E001A81AB /* DeviceWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceWrapper.mm; sourceTree = "<group>"; };
@@ -145,6 +159,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF1E63512A56555F0022A44A /* DataConsumer */ = {
+			isa = PBXGroup;
+			children = (
+				FF1E63562A5655830022A44A /* DataConsumerListenerAdapter.hpp */,
+				FF1E63572A5655830022A44A /* DataConsumerListenerAdapter.mm */,
+				FF1E63532A5655830022A44A /* DataConsumerListenerAdapterDelegate.h */,
+				FF1E63522A5655830022A44A /* DataConsumerWrapper.hpp */,
+				FF1E63542A5655830022A44A /* DataConsumerWrapper.mm */,
+				FF1E63552A5655830022A44A /* DataConsumerWrapperDelegate.h */,
+			);
+			path = DataConsumer;
+			sourceTree = "<group>";
+		};
 		FF3AEDF327F2C92E001A81AB = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +197,8 @@
 			children = (
 				FF49F0E72804049300B64D36 /* Consumer.swift */,
 				FF49F0E9280404E400B64D36 /* ConsumerDelegate.swift */,
+				FF1E635E2A566C500022A44A /* DataConsumer.swift */,
+				FF1E63602A566C640022A44A /* DataConsumerDelegate.swift */,
 				FF61457227F306BC0067B2C4 /* Device.swift */,
 				FFC5AC6F2824F8FB00C92A96 /* ICETransportPolicy.swift */,
 				FFC2452027F6E8DF008F61DE /* MediaKind.swift */,
@@ -224,6 +253,7 @@
 		FF89EFCF27F5C51500EEF5CD /* Mediasoup_Private */ = {
 			isa = PBXGroup;
 			children = (
+				FF1E63512A56555F0022A44A /* DataConsumer */,
 				FFB7DDB5282289AD00FE2CC2 /* Consumer */,
 				FF7FA6C827FE9661000B6470 /* Producer */,
 				FF7FA69827FAACB4000B6470 /* Transport */,
@@ -294,6 +324,7 @@
 				FF89EFC627F5B35900EEF5CD /* MediasoupClientErrorHandler.h in Headers */,
 				FFB7DDBB28228BE400FE2CC2 /* ReceiveTransportWrapperDelegate.h in Headers */,
 				FFB7DDB828228ABA00FE2CC2 /* ReceiveTransportWrapper.hpp in Headers */,
+				FF1E63582A5655830022A44A /* DataConsumerWrapper.hpp in Headers */,
 				FF89EFC027F462F200EEF5CD /* MediasoupClientError.h in Headers */,
 				FF7FA6A027FAAEF2000B6470 /* SendTransportWrapper.hpp in Headers */,
 				FF7FA6BD27FB0FB7000B6470 /* SendTransportWrapperDelegate.h in Headers */,
@@ -301,6 +332,7 @@
 				FF7FA6D427FF1A08000B6470 /* ProducerWrapperDelegate.h in Headers */,
 				FFB7DDBF28229BC100FE2CC2 /* ConsumerWrapperDelegate.h in Headers */,
 				FF7FA6CE27FE9A4B000B6470 /* ProducerWrapper.hpp in Headers */,
+				FF1E635B2A5655830022A44A /* DataConsumerWrapperDelegate.h in Headers */,
 				FFB7DDC22823989A00FE2CC2 /* ReceiveTransportListenerAdapter.hpp in Headers */,
 				FF61457527F30FDC0067B2C4 /* DeviceWrapper.h in Headers */,
 			);
@@ -425,6 +457,7 @@
 				FFB7DDB12822891C00FE2CC2 /* ReceiveTransport.swift in Sources */,
 				FFC2452127F6E8DF008F61DE /* MediaKind.swift in Sources */,
 				FF7FA6C427FD5ECD000B6470 /* Transport.swift in Sources */,
+				FF1E635D2A5655830022A44A /* DataConsumerListenerAdapter.mm in Sources */,
 				FF7FA6C227FD5EA5000B6470 /* TransportDelegate.swift in Sources */,
 				FFB7DDC3282398A500FE2CC2 /* ReceiveTransportListenerAdapter.mm in Sources */,
 				FF7FA6A227FAB803000B6470 /* SendTransportListenerAdapter.mm in Sources */,
@@ -438,6 +471,8 @@
 				FF89EFBF27F461DB00EEF5CD /* MediasoupError.swift in Sources */,
 				FFB7DDB728228A2100FE2CC2 /* ReceiveTransportWrapper.mm in Sources */,
 				FF7FA6D327FF18A5000B6470 /* ProducerDelegate.swift in Sources */,
+				FF1E635F2A566C500022A44A /* DataConsumer.swift in Sources */,
+				FF1E63612A566C640022A44A /* DataConsumerDelegate.swift in Sources */,
 				FF3AEE0C27F2D67E001A81AB /* DeviceWrapper.mm in Sources */,
 				FF422680282B9603004D9974 /* ConsumerListenerAdapter.mm in Sources */,
 				FF89EFD527F6AEBB00EEF5CD /* MediasoupClientErrorConverter.swift in Sources */,
@@ -447,6 +482,7 @@
 				FF89EFBD27F460F700EEF5CD /* MediasoupClientError.m in Sources */,
 				FFC5AC752825025100C92A96 /* MediasoupClientTransportConnectionState.mm in Sources */,
 				FF89EFC827F5B5E600EEF5CD /* Device.swift in Sources */,
+				FF1E635A2A5655830022A44A /* DataConsumerWrapper.mm in Sources */,
 				FF49F0E82804049300B64D36 /* Consumer.swift in Sources */,
 				FF7FA6D627FF1BA6000B6470 /* ProducerListenerAdapter.mm in Sources */,
 			);

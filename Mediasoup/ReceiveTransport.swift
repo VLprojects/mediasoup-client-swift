@@ -32,6 +32,27 @@ public class ReceiveTransport {
 			return Consumer(consumer: consumer, mediaKind: kind)
 		}
 	}
+
+	public func consumeData(
+		consumerId: String,
+		producerId: String,
+		streamId: UInt16,
+		label: String,
+		protocol protocolName: String?,
+		appData: String?
+	) throws -> DataConsumer {
+		return try convertMediasoupErrors {
+			let consumer = try self.transport.createDataConsumer(
+				withId: consumerId,
+				producerId: producerId,
+				streamId: streamId,
+				label: label,
+				protocol: protocolName,
+				appData: appData
+			)
+			return DataConsumer(consumer: consumer)
+		}
+	}
 }
 
 extension ReceiveTransport: Transport {

@@ -224,6 +224,80 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Function",
+            "name": "consumeData",
+            "printedName": "consumeData(consumerId:producerId:streamId:label:protocol:appData:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumer",
+                "printedName": "Mediasoup.DataConsumer",
+                "usr": "s:9Mediasoup12DataConsumerC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt16",
+                "printedName": "Swift.UInt16",
+                "usr": "s:s6UInt16V"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup16ReceiveTransportC11consumeData10consumerId08producerG006streamG05label8protocol03appE0AA0E8ConsumerCSS_SSs6UInt16VS2SSgAOtKF",
+            "mangledName": "$s9Mediasoup16ReceiveTransportC11consumeData10consumerId08producerG006streamG05label8protocol03appE0AA0E8ConsumerCSS_SSs6UInt16VS2SSgAOtKF",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
             "kind": "Var",
             "name": "id",
             "printedName": "id",
@@ -3010,6 +3084,862 @@
         "declKind": "Protocol",
         "usr": "s:9Mediasoup16ProducerDelegateP",
         "mangledName": "$s9Mediasoup16ProducerDelegateP",
+        "moduleName": "Mediasoup",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
+        "kind": "Import",
+        "name": "Mediasoup_Private",
+        "printedName": "Mediasoup_Private",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DataConsumer",
+        "printedName": "DataConsumer",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "delegate",
+            "printedName": "delegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WeakStorage",
+                "printedName": "Mediasoup.DataConsumerDelegate?"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup12DataConsumerC8delegateAA0bC8Delegate_pSgvp",
+            "mangledName": "$s9Mediasoup12DataConsumerC8delegateAA0bC8Delegate_pSgvp",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "ReferenceOwnership",
+              "AccessControl"
+            ],
+            "ownership": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Mediasoup.DataConsumerDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataConsumerDelegate",
+                        "printedName": "Mediasoup.DataConsumerDelegate",
+                        "usr": "s:9Mediasoup20DataConsumerDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC8delegateAA0bC8Delegate_pSgvg",
+                "mangledName": "$s9Mediasoup12DataConsumerC8delegateAA0bC8Delegate_pSgvg",
+                "moduleName": "Mediasoup",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Mediasoup.DataConsumerDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataConsumerDelegate",
+                        "printedName": "Mediasoup.DataConsumerDelegate",
+                        "usr": "s:9Mediasoup20DataConsumerDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC8delegateAA0bC8Delegate_pSgvs",
+                "mangledName": "$s9Mediasoup12DataConsumerC8delegateAA0bC8Delegate_pSgvs",
+                "moduleName": "Mediasoup",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC8delegateAA0bC8Delegate_pSgvM",
+                "mangledName": "$s9Mediasoup12DataConsumerC8delegateAA0bC8Delegate_pSgvM",
+                "moduleName": "Mediasoup",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup12DataConsumerC2idSSvp",
+            "mangledName": "$s9Mediasoup12DataConsumerC2idSSvp",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC2idSSvg",
+                "mangledName": "$s9Mediasoup12DataConsumerC2idSSvg",
+                "moduleName": "Mediasoup",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "localId",
+            "printedName": "localId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup12DataConsumerC7localIdSSvp",
+            "mangledName": "$s9Mediasoup12DataConsumerC7localIdSSvp",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC7localIdSSvg",
+                "mangledName": "$s9Mediasoup12DataConsumerC7localIdSSvg",
+                "moduleName": "Mediasoup",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "producerId",
+            "printedName": "producerId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup12DataConsumerC10producerIdSSvp",
+            "mangledName": "$s9Mediasoup12DataConsumerC10producerIdSSvp",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC10producerIdSSvg",
+                "mangledName": "$s9Mediasoup12DataConsumerC10producerIdSSvg",
+                "moduleName": "Mediasoup",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "closed",
+            "printedName": "closed",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup12DataConsumerC6closedSbvp",
+            "mangledName": "$s9Mediasoup12DataConsumerC6closedSbvp",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC6closedSbvg",
+                "mangledName": "$s9Mediasoup12DataConsumerC6closedSbvg",
+                "moduleName": "Mediasoup",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "label",
+            "printedName": "label",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup12DataConsumerC5labelSSvp",
+            "mangledName": "$s9Mediasoup12DataConsumerC5labelSSvp",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC5labelSSvg",
+                "mangledName": "$s9Mediasoup12DataConsumerC5labelSSvg",
+                "moduleName": "Mediasoup",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "dataProtocol",
+            "printedName": "dataProtocol",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup12DataConsumerC12dataProtocolSSvp",
+            "mangledName": "$s9Mediasoup12DataConsumerC12dataProtocolSSvp",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC12dataProtocolSSvg",
+                "mangledName": "$s9Mediasoup12DataConsumerC12dataProtocolSSvg",
+                "moduleName": "Mediasoup",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "appData",
+            "printedName": "appData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup12DataConsumerC03appB0SSvp",
+            "mangledName": "$s9Mediasoup12DataConsumerC03appB0SSvp",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC03appB0SSvg",
+                "mangledName": "$s9Mediasoup12DataConsumerC03appB0SSvg",
+                "moduleName": "Mediasoup",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sctpStreamParameters",
+            "printedName": "sctpStreamParameters",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup12DataConsumerC20sctpStreamParametersSSvp",
+            "mangledName": "$s9Mediasoup12DataConsumerC20sctpStreamParametersSSvp",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup12DataConsumerC20sctpStreamParametersSSvg",
+                "mangledName": "$s9Mediasoup12DataConsumerC20sctpStreamParametersSSvg",
+                "moduleName": "Mediasoup",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "close",
+            "printedName": "close()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup12DataConsumerC5closeyyF",
+            "mangledName": "$s9Mediasoup12DataConsumerC5closeyyF",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onMessage",
+            "printedName": "onMessage(_:consumer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumerWrapper",
+                "printedName": "Mediasoup_Private.DataConsumerWrapper",
+                "usr": "c:objc(cs)DataConsumerWrapper"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup12DataConsumerC9onMessage_8consumery10Foundation0B0V_So0bC7WrapperCtF",
+            "mangledName": "$s9Mediasoup12DataConsumerC9onMessage_8consumery10Foundation0B0V_So0bC7WrapperCtF",
+            "moduleName": "Mediasoup",
+            "objc_name": "onMessage:consumer:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onConnecting",
+            "printedName": "onConnecting(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumerWrapper",
+                "printedName": "Mediasoup_Private.DataConsumerWrapper",
+                "usr": "c:objc(cs)DataConsumerWrapper"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup12DataConsumerC12onConnectingyySo0bC7WrapperCF",
+            "mangledName": "$s9Mediasoup12DataConsumerC12onConnectingyySo0bC7WrapperCF",
+            "moduleName": "Mediasoup",
+            "objc_name": "onConnecting:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onOpen",
+            "printedName": "onOpen(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumerWrapper",
+                "printedName": "Mediasoup_Private.DataConsumerWrapper",
+                "usr": "c:objc(cs)DataConsumerWrapper"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup12DataConsumerC6onOpenyySo0bC7WrapperCF",
+            "mangledName": "$s9Mediasoup12DataConsumerC6onOpenyySo0bC7WrapperCF",
+            "moduleName": "Mediasoup",
+            "objc_name": "onOpen:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onClosing",
+            "printedName": "onClosing(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumerWrapper",
+                "printedName": "Mediasoup_Private.DataConsumerWrapper",
+                "usr": "c:objc(cs)DataConsumerWrapper"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup12DataConsumerC9onClosingyySo0bC7WrapperCF",
+            "mangledName": "$s9Mediasoup12DataConsumerC9onClosingyySo0bC7WrapperCF",
+            "moduleName": "Mediasoup",
+            "objc_name": "onClosing:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onClose",
+            "printedName": "onClose(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumerWrapper",
+                "printedName": "Mediasoup_Private.DataConsumerWrapper",
+                "usr": "c:objc(cs)DataConsumerWrapper"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup12DataConsumerC7onCloseyySo0bC7WrapperCF",
+            "mangledName": "$s9Mediasoup12DataConsumerC7onCloseyySo0bC7WrapperCF",
+            "moduleName": "Mediasoup",
+            "objc_name": "onClose:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onTransportClose",
+            "printedName": "onTransportClose(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumerWrapper",
+                "printedName": "Mediasoup_Private.DataConsumerWrapper",
+                "usr": "c:objc(cs)DataConsumerWrapper"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup12DataConsumerC16onTransportCloseyySo0bC7WrapperCF",
+            "mangledName": "$s9Mediasoup12DataConsumerC16onTransportCloseyySo0bC7WrapperCF",
+            "moduleName": "Mediasoup",
+            "objc_name": "onTransportClose:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:9Mediasoup12DataConsumerC",
+        "mangledName": "$s9Mediasoup12DataConsumerC",
+        "moduleName": "Mediasoup",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DataConsumerDelegate",
+        "printedName": "DataConsumerDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "onConnecting",
+            "printedName": "onConnecting(consumer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumer",
+                "printedName": "Mediasoup.DataConsumer",
+                "usr": "s:9Mediasoup12DataConsumerC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup20DataConsumerDelegateP12onConnecting8consumeryAA0bC0C_tF",
+            "mangledName": "$s9Mediasoup20DataConsumerDelegateP12onConnecting8consumeryAA0bC0C_tF",
+            "moduleName": "Mediasoup",
+            "genericSig": "<τ_0_0 where τ_0_0 : Mediasoup.DataConsumerDelegate>",
+            "sugared_genericSig": "<Self where Self : Mediasoup.DataConsumerDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onOpen",
+            "printedName": "onOpen(consumer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumer",
+                "printedName": "Mediasoup.DataConsumer",
+                "usr": "s:9Mediasoup12DataConsumerC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup20DataConsumerDelegateP6onOpen8consumeryAA0bC0C_tF",
+            "mangledName": "$s9Mediasoup20DataConsumerDelegateP6onOpen8consumeryAA0bC0C_tF",
+            "moduleName": "Mediasoup",
+            "genericSig": "<τ_0_0 where τ_0_0 : Mediasoup.DataConsumerDelegate>",
+            "sugared_genericSig": "<Self where Self : Mediasoup.DataConsumerDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onClosing",
+            "printedName": "onClosing(consumer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumer",
+                "printedName": "Mediasoup.DataConsumer",
+                "usr": "s:9Mediasoup12DataConsumerC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup20DataConsumerDelegateP9onClosing8consumeryAA0bC0C_tF",
+            "mangledName": "$s9Mediasoup20DataConsumerDelegateP9onClosing8consumeryAA0bC0C_tF",
+            "moduleName": "Mediasoup",
+            "genericSig": "<τ_0_0 where τ_0_0 : Mediasoup.DataConsumerDelegate>",
+            "sugared_genericSig": "<Self where Self : Mediasoup.DataConsumerDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onClose",
+            "printedName": "onClose(consumer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumer",
+                "printedName": "Mediasoup.DataConsumer",
+                "usr": "s:9Mediasoup12DataConsumerC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup20DataConsumerDelegateP7onClose8consumeryAA0bC0C_tF",
+            "mangledName": "$s9Mediasoup20DataConsumerDelegateP7onClose8consumeryAA0bC0C_tF",
+            "moduleName": "Mediasoup",
+            "genericSig": "<τ_0_0 where τ_0_0 : Mediasoup.DataConsumerDelegate>",
+            "sugared_genericSig": "<Self where Self : Mediasoup.DataConsumerDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onTransportClose",
+            "printedName": "onTransportClose(in:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumer",
+                "printedName": "Mediasoup.DataConsumer",
+                "usr": "s:9Mediasoup12DataConsumerC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup20DataConsumerDelegateP16onTransportClose2inyAA0bC0C_tF",
+            "mangledName": "$s9Mediasoup20DataConsumerDelegateP16onTransportClose2inyAA0bC0C_tF",
+            "moduleName": "Mediasoup",
+            "genericSig": "<τ_0_0 where τ_0_0 : Mediasoup.DataConsumerDelegate>",
+            "sugared_genericSig": "<Self where Self : Mediasoup.DataConsumerDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onMessage",
+            "printedName": "onMessage(data:from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataConsumer",
+                "printedName": "Mediasoup.DataConsumer",
+                "usr": "s:9Mediasoup12DataConsumerC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup20DataConsumerDelegateP9onMessage4data4fromy10Foundation0B0V_AA0bC0CtF",
+            "mangledName": "$s9Mediasoup20DataConsumerDelegateP9onMessage4data4fromy10Foundation0B0V_AA0bC0CtF",
+            "moduleName": "Mediasoup",
+            "genericSig": "<τ_0_0 where τ_0_0 : Mediasoup.DataConsumerDelegate>",
+            "sugared_genericSig": "<Self where Self : Mediasoup.DataConsumerDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:9Mediasoup20DataConsumerDelegateP",
+        "mangledName": "$s9Mediasoup20DataConsumerDelegateP",
         "moduleName": "Mediasoup",
         "genericSig": "<τ_0_0 : AnyObject>",
         "sugared_genericSig": "<Self : AnyObject>",

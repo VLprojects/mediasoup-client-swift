@@ -254,6 +254,7 @@ gn_arguments=(
 	'ios_deployment_target="14.0"'
 	'ios_enable_code_signing=false'
 	'is_component_build=false'
+	#'is_debug=true'
 	'is_debug=false'
 	'rtc_libvpx_build_vp9=true'
 	'use_goma=false'
@@ -312,11 +313,13 @@ function rebuildLMSC() {
 
 	lmsc_cmake_arguments=(
 		"-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR"
-		'-DMEDIASOUP_LOG_TRACE=ON'
-		'-DMEDIASOUP_LOG_DEV=ON'
+		'-DMEDIASOUPCLIENT_LOG_TRACE=ON'
+		'-DMEDIASOUPCLIENT_LOG_DEV=ON'
 		'-DCMAKE_CXX_FLAGS="-fvisibility=hidden"'
 		'-DLIBSDPTRANSFORM_BUILD_TESTS=OFF'
+		'-DMEDIASOUPCLIENT_BUILD_TESTS=OFF'
 		'-DCMAKE_OSX_DEPLOYMENT_TARGET=14'
+		# '-DCMAKE_BUILD_TYPE=Debug'
 	)
 	for str in ${lmsc_cmake_arguments[@]}; do
 		lmsc_cmake_args+=" ${str}"

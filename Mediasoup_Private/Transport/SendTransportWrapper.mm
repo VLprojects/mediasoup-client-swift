@@ -137,8 +137,9 @@
 		}
 
 		nlohmann::json *codecJsonPtr = nullptr;
+		nlohmann::json codecJson = nlohmann::json::object();
 		if (codec != nullptr) {
-			auto codecJson = nlohmann::json::parse(std::string(codec.UTF8String));
+			codecJson = nlohmann::json::parse(std::string(codec.UTF8String));
 			codecJsonPtr = &codecJson;
 		}
 

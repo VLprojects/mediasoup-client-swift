@@ -11,5 +11,4 @@ public protocol Transport: AnyObject {
 	func close()
 	func restartICE(with iceParameters: String) throws
 	func updateICEServers(_ iceServers: String) throws
-	func updateICETransportPolicy(_ transportPolicy: ICETransportPolicy) throws
 }

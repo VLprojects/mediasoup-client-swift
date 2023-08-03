@@ -89,16 +89,6 @@
 	}, error);
 }
 
-- (void)updateICETransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
-	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
-	__attribute__((swift_error(nonnull_error))) {
-
-	mediasoupTry(^{
-		auto nativePolicy = [RTCConfiguration nativeTransportsTypeForTransportPolicy:iceTransportPolicy];
-		self->_transport->UpdateIceTransportType(nativePolicy);
-	}, error);
-}
-
 - (ConsumerWrapper *_Nullable)createConsumerWithId:(NSString *_Nonnull)consumerId
 	producerId:(NSString *_Nonnull)producerId
 	kind:(MediasoupClientMediaKind _Nonnull)kind

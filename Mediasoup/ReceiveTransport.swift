@@ -91,12 +91,6 @@ extension ReceiveTransport: Transport {
 			try transport.updateICEServers(iceServers)
 		}
 	}
-
-	public func updateICETransportPolicy(_ transportPolicy: ICETransportPolicy) throws {
-		try convertMediasoupErrors {
-			try transport.update(transportPolicy.rtcICETransportPolicy)
-		}
-	}
 }
 
 extension ReceiveTransport: ReceiveTransportWrapperDelegate {

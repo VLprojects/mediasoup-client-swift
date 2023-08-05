@@ -16,6 +16,10 @@
 #import "../Transport/ReceiveTransportWrapper.hpp"
 #import "../Transport/ReceiveTransportListenerAdapter.hpp"
 
+//MARK: PeerConnectionOptions Updation imports
+#import <sdk/objc/api/peerconnection/RTCConfiguration.h>
+#import <sdk/objc/api/peerconnection/RTCIceServer.h>
+#import "sdk/objc/api/peerconnection/RTCMediaConstraints.h"
 
 @interface DeviceWrapper() {
 	mediasoupclient::Device *_device;
@@ -50,7 +54,6 @@
 
 		self.pcFactory = [pcFactoryBuilder createPeerConnectionFactory];
 		_pcOptions = new mediasoupclient::PeerConnection::Options();
-		_pcOptions->factory = self.pcFactory.nativeFactory.get();
 	}
 	return self;
 }
@@ -71,8 +74,22 @@
 	mediasoupTry(^{
 		auto routerRTPCapabilitiesString = std::string(routerRTPCapabilities.UTF8String);
 		auto routerRTPCapabilitiesJSON = nlohmann::json::parse(routerRTPCapabilitiesString);
+        [self createDefaultPeerConnectionOptions];
 		self->_device->Load(routerRTPCapabilitiesJSON, self->_pcOptions);
 	}, error);
+}
+
+- (void)loadWithRouterRTPCapabilities:(NSString *)routerRTPCapabilities peerConnectionOptions:(NSString *)peerConnectionOptions isRelayTransportPolicy:(BOOL)isRelayTransportPolicy  error:(out NSError *__autoreleasing  _Nullable *)error{
+    
+    mediasoupTry(^{
+        auto routerRTPCapabilitiesString = std::string(routerRTPCapabilities.UTF8String);
+        auto routerRTPCapabilitiesJSON = nlohmann::json::parse(routerRTPCapabilitiesString);
+        
+        //Updating Peerconnection options to set ICE servers.
+        [self setCustomPeerConnectionOptions:peerConnectionOptions isRelayTransportPolicy:isRelayTransportPolicy];
+        
+        self->_device->Load(routerRTPCapabilitiesJSON, self->_pcOptions);
+    }, error);
 }
 
 - (NSString *_Nullable)sctpCapabilitiesWithError:(out NSError *__autoreleasing _Nullable *_Nullable)error {
@@ -199,6 +216,76 @@
 		*error = mediasoupError(MediasoupClientErrorCodeInvalidParameters, &e);
 		return nil;
 	}
+}
+
+//MARK: PeerConnectionOptions Updation functions
+- (void)createDefaultPeerConnectionOptions {
+    _pcOptions->factory = self.pcFactory.nativeFactory.get();
+}
+
+- (void)setCustomPeerConnectionOptions: (NSString *) peerConnectionOptions isRelayTransportPolicy:(BOOL)isRelayTransportPolicy {
+        
+    // Create a C++ vector to store std::string elements
+    webrtc::PeerConnectionInterface::IceServers iceVector;
+
+    // Convert and populate the C++ vector from the NSArray
+    for (RTC_OBJC_TYPE(RTCIceServer) *iceServer in  [self getIceServerList:peerConnectionOptions]) {
+        
+        webrtc::PeerConnectionInterface::IceServer ice;
+        const char *cUserName = [iceServer.username UTF8String];
+        const char *cCredential = [iceServer.credential UTF8String];
+        std::string name(cUserName);
+        std::string password(cCredential);
+      
+        ice.username=name;
+        ice.password=password;
+        
+        std::vector<std::string> urlVector;
+        urlVector.push_back(std::string ([iceServer.urlStrings.firstObject UTF8String]));
+        ice.urls = urlVector;
+        
+        iceVector.push_back(ice);
+    }
+    
+    RTC_OBJC_TYPE(webrtc::PeerConnectionInterface::RTCConfiguration) config;
+    config.servers = iceVector;
+    if (isRelayTransportPolicy) {
+        config.type = webrtc::PeerConnectionInterface::kRelay;
+    }
+    _pcOptions->config.servers =  config.servers;
+}
+
+- (NSArray<RTC_OBJC_TYPE(RTCIceServer) *> *)getIceServerList:(NSString *)peerConnectionOptions {
+    NSMutableArray<RTC_OBJC_TYPE(RTCIceServer) *> *iceServersArray = [NSMutableArray array];
+
+    NSData *jsonData = [peerConnectionOptions dataUsingEncoding:NSUTF8StringEncoding];
+    if (jsonData) {
+        NSError *error = nil;
+        NSArray<NSDictionary *> *dictionariesArray = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+        if (!error) {
+            for (NSDictionary *serverDict in dictionariesArray) {
+                RTC_OBJC_TYPE(RTCIceServer) *iceServer = [self iceServerFromJSONDictionary:serverDict];
+                if (iceServer) {
+                    [iceServersArray addObject:iceServer];
+                }
+            }
+        } else {
+            NSLog(@"Error parsing JSON: %@", error);
+        }
+    }
+    return iceServersArray;
+}
+
+- (RTC_OBJC_TYPE(RTCIceServer *))iceServerFromJSONDictionary:(NSDictionary *)dictionary {
+    NSArray<NSString *> *urlStrings = @[dictionary[@"urls"]];
+    NSString *username = dictionary[@"username"];
+    NSString *credential = dictionary[@"credential"];
+
+    if (urlStrings.count == 0 || username.length == 0 || credential.length == 0) {
+        return nil;
+    }
+    RTC_OBJC_TYPE(RTCIceServer) *iceServer = [[RTC_OBJC_TYPE(RTCIceServer) alloc] initWithURLStrings:urlStrings username:username credential:credential];
+    return iceServer;
 }
 
 @end

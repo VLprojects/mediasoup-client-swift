@@ -18,6 +18,11 @@
 	__attribute__((swift_error(nonnull_error)))
 	NS_SWIFT_NAME (load(with:));
 
+- (void)loadWithRouterRTPCapabilities:(NSString *_Nonnull)routerRTPCapabilities peerConnectionOptions:(NSString *_Nonnull)peerConnectionOptions isRelayTransportPolicy:(BOOL)isRelayTransportPolicy
+    error:(out NSError *__autoreleasing  _Nullable *_Nullable)error
+    __attribute__((swift_error(nonnull_error)))
+    NS_SWIFT_NAME (load(routerRTPCapabilities:peerConnectionOptions:isRelayTransportPolicy:));
+
 - (NSString *_Nullable)sctpCapabilitiesWithError
 	:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 

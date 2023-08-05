@@ -18,6 +18,12 @@ public class Device {
 			try device.load(with: routerRTPCapabilities)
 		}
 	}
+    
+    public func load(with routerRTPCapabilities: String, peerConnectionOptions:String, isRelayTransportPolicy:Bool = false) throws {
+        try convertMediasoupErrors {
+            try device.load(routerRTPCapabilities: routerRTPCapabilities, peerConnectionOptions: peerConnectionOptions, isRelayTransportPolicy: isRelayTransportPolicy)
+        }
+    }
 
 	public func rtpCapabilities() throws -> String {
 		try convertMediasoupErrors {

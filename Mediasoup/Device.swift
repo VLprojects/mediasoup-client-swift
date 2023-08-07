@@ -38,25 +38,28 @@ public class Device {
 	}
 
 	public func createSendTransport(id: String, iceParameters: String, iceCandidates: String,
-		dtlsParameters: String, sctpParameters: String?, appData: String?) throws -> SendTransport {
+		dtlsParameters: String, sctpParameters: String?, iceServers: String? = nil,
+		iceTransportPolicy: ICETransportPolicy = .all, appData: String?) throws -> SendTransport {
 
 		return try convertMediasoupErrors {
 			let transport = try device.createSendTransport(withId: id, iceParameters: iceParameters,
-				iceCandidates: iceCandidates, dtlsParameters: dtlsParameters,
-				sctpParameters: sctpParameters, appData: appData)
+				iceCandidates: iceCandidates, dtlsParameters: dtlsParameters, sctpParameters: sctpParameters,
+				iceServers: iceServers, iceTransportPolicy: iceTransportPolicy.rtcICETransportPolicy,
+				appData: appData)
 
 			return SendTransport(transport: transport)
 		}
 	}
 
 	public func createReceiveTransport(id: String, iceParameters: String, iceCandidates: String,
-		dtlsParameters: String, sctpParameters: String? = nil, appData: String? = nil)
-		throws -> ReceiveTransport {
+		dtlsParameters: String, sctpParameters: String? = nil, iceServers: String? = nil,
+		iceTransportPolicy: ICETransportPolicy = .all, appData: String? = nil) throws -> ReceiveTransport {
 
 		return try convertMediasoupErrors {
 			let transport = try device.createReceiveTransport(withId: id, iceParameters: iceParameters,
-				iceCandidates: iceCandidates, dtlsParameters: dtlsParameters,
-				sctpParameters: sctpParameters, appData: appData)
+				iceCandidates: iceCandidates, dtlsParameters: dtlsParameters, sctpParameters: sctpParameters,
+				iceServers: iceServers, iceTransportPolicy: iceTransportPolicy.rtcICETransportPolicy,
+				appData: appData)
 
 			return ReceiveTransport(transport: transport)
 		}

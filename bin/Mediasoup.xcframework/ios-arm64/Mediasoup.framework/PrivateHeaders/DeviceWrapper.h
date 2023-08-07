@@ -7,6 +7,7 @@
 
 @class ReceiveTransportWrapper;
 @class SendTransportWrapper;
+typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 
 
 @interface DeviceWrapper : NSObject
@@ -33,6 +34,8 @@
 	iceCandidates:(NSString *_Nonnull)iceCandidates
 	dtlsParameters:(NSString *_Nonnull)dtlsParameters
 	sctpParameters:(NSString *_Nullable)sctpParameters
+	iceServers:(NSString *_Nullable)iceServers
+	iceTransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 
@@ -41,6 +44,8 @@
 	iceCandidates:(NSString *_Nonnull)iceCandidates
 	dtlsParameters:(NSString *_Nonnull)dtlsParameters
 	sctpParameters:(NSString *_Nullable)sctpParameters
+	iceServers:(NSString *_Nullable)iceServers
+	iceTransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 

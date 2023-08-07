@@ -586,34 +586,6 @@
           },
           {
             "kind": "Function",
-            "name": "updateICETransportPolicy",
-            "printedName": "updateICETransportPolicy(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "ICETransportPolicy",
-                "printedName": "Mediasoup.ICETransportPolicy",
-                "usr": "s:9Mediasoup18ICETransportPolicyO"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:9Mediasoup16ReceiveTransportC24updateICETransportPolicyyyAA0eF0OKF",
-            "mangledName": "$s9Mediasoup16ReceiveTransportC24updateICETransportPolicyyyAA0eF0OKF",
-            "moduleName": "Mediasoup",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "isFromExtension": true,
-            "throwing": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
             "name": "onConnect",
             "printedName": "onConnect(_:dtlsParameters:)",
             "children": [
@@ -1208,34 +1180,6 @@
             "declKind": "Func",
             "usr": "s:9Mediasoup9TransportP16updateICEServersyySSKF",
             "mangledName": "$s9Mediasoup9TransportP16updateICEServersyySSKF",
-            "moduleName": "Mediasoup",
-            "genericSig": "<τ_0_0 where τ_0_0 : Mediasoup.Transport>",
-            "sugared_genericSig": "<Self where Self : Mediasoup.Transport>",
-            "protocolReq": true,
-            "throwing": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "updateICETransportPolicy",
-            "printedName": "updateICETransportPolicy(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "ICETransportPolicy",
-                "printedName": "Mediasoup.ICETransportPolicy",
-                "usr": "s:9Mediasoup18ICETransportPolicyO"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:9Mediasoup9TransportP24updateICETransportPolicyyyAA0dE0OKF",
-            "mangledName": "$s9Mediasoup9TransportP24updateICETransportPolicyyyAA0dE0OKF",
             "moduleName": "Mediasoup",
             "genericSig": "<τ_0_0 where τ_0_0 : Mediasoup.Transport>",
             "sugared_genericSig": "<Self where Self : Mediasoup.Transport>",
@@ -2243,34 +2187,6 @@
             "declKind": "Func",
             "usr": "s:9Mediasoup13SendTransportC16updateICEServersyySSKF",
             "mangledName": "$s9Mediasoup13SendTransportC16updateICEServersyySSKF",
-            "moduleName": "Mediasoup",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "isFromExtension": true,
-            "throwing": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "updateICETransportPolicy",
-            "printedName": "updateICETransportPolicy(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "ICETransportPolicy",
-                "printedName": "Mediasoup.ICETransportPolicy",
-                "usr": "s:9Mediasoup18ICETransportPolicyO"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:9Mediasoup13SendTransportC24updateICETransportPolicyyyAA0eF0OKF",
-            "mangledName": "$s9Mediasoup13SendTransportC24updateICETransportPolicyyyAA0eF0OKF",
             "moduleName": "Mediasoup",
             "declAttributes": [
               "AccessControl"
@@ -5125,7 +5041,7 @@
           {
             "kind": "Function",
             "name": "createSendTransport",
-            "printedName": "createSendTransport(id:iceParameters:iceCandidates:dtlsParameters:sctpParameters:appData:)",
+            "printedName": "createSendTransport(id:iceParameters:iceCandidates:dtlsParameters:sctpParameters:iceServers:iceTransportPolicy:appData:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -5183,12 +5099,34 @@
                     "usr": "s:SS"
                   }
                 ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ICETransportPolicy",
+                "printedName": "Mediasoup.ICETransportPolicy",
+                "hasDefaultArg": true,
+                "usr": "s:9Mediasoup18ICETransportPolicyO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
                 "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:9Mediasoup6DeviceC19createSendTransport2id13iceParameters0G10Candidates04dtlsH004sctpH07appDataAA0dE0CSS_S4SSgAMtKF",
-            "mangledName": "$s9Mediasoup6DeviceC19createSendTransport2id13iceParameters0G10Candidates04dtlsH004sctpH07appDataAA0dE0CSS_S4SSgAMtKF",
+            "usr": "s:9Mediasoup6DeviceC19createSendTransport2id13iceParameters0G10Candidates04dtlsH004sctpH00G7Servers0gE6Policy7appDataAA0dE0CSS_S4SSgAoA012ICETransportM0OAOtKF",
+            "mangledName": "$s9Mediasoup6DeviceC19createSendTransport2id13iceParameters0G10Candidates04dtlsH004sctpH00G7Servers0gE6Policy7appDataAA0dE0CSS_S4SSgAoA012ICETransportM0OAOtKF",
             "moduleName": "Mediasoup",
             "declAttributes": [
               "AccessControl"
@@ -5199,7 +5137,7 @@
           {
             "kind": "Function",
             "name": "createReceiveTransport",
-            "printedName": "createReceiveTransport(id:iceParameters:iceCandidates:dtlsParameters:sctpParameters:appData:)",
+            "printedName": "createReceiveTransport(id:iceParameters:iceCandidates:dtlsParameters:sctpParameters:iceServers:iceTransportPolicy:appData:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -5260,11 +5198,33 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ICETransportPolicy",
+                "printedName": "Mediasoup.ICETransportPolicy",
+                "hasDefaultArg": true,
+                "usr": "s:9Mediasoup18ICETransportPolicyO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:9Mediasoup6DeviceC22createReceiveTransport2id13iceParameters0G10Candidates04dtlsH004sctpH07appDataAA0dE0CSS_S4SSgAMtKF",
-            "mangledName": "$s9Mediasoup6DeviceC22createReceiveTransport2id13iceParameters0G10Candidates04dtlsH004sctpH07appDataAA0dE0CSS_S4SSgAMtKF",
+            "usr": "s:9Mediasoup6DeviceC22createReceiveTransport2id13iceParameters0G10Candidates04dtlsH004sctpH00G7Servers0gE6Policy7appDataAA0dE0CSS_S4SSgAoA012ICETransportM0OAOtKF",
+            "mangledName": "$s9Mediasoup6DeviceC22createReceiveTransport2id13iceParameters0G10Candidates04dtlsH004sctpH00G7Servers0gE6Policy7appDataAA0dE0CSS_S4SSgAoA012ICETransportM0OAOtKF",
             "moduleName": "Mediasoup",
             "declAttributes": [
               "AccessControl"

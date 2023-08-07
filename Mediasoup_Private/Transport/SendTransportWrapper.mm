@@ -85,15 +85,6 @@
 	}, error);
 }
 
-- (void)updateICETransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
-	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
-	__attribute__((swift_error(nonnull_error))) {
-	mediasoupTry(^{
-		auto nativePolicy = [RTCConfiguration nativeTransportsTypeForTransportPolicy:iceTransportPolicy];
-		self->_transport->UpdateIceTransportType(nativePolicy);
-	}, error);
-}
-
 - (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
 	encodings:(NSArray<RTCRtpEncodingParameters *> *_Nullable)encodings
 	codecOptions:(NSString *_Nullable)codecOptions

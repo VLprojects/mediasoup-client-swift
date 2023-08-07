@@ -73,12 +73,6 @@ extension SendTransport: Transport {
 			try transport.updateICEServers(iceServers)
 		}
 	}
-
-	public func updateICETransportPolicy(_ transportPolicy: ICETransportPolicy) throws {
-		try convertMediasoupErrors {
-			try transport.update(transportPolicy.rtcICETransportPolicy)
-		}
-	}
 }
 
 extension SendTransport: SendTransportWrapperDelegate {

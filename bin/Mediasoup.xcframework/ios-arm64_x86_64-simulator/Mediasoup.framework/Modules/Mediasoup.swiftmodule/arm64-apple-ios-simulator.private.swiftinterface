@@ -36,7 +36,6 @@ extension Mediasoup.ReceiveTransport : Mediasoup.Transport {
   public func close()
   public func restartICE(with iceParameters: Swift.String) throws
   public func updateICEServers(_ iceServers: Swift.String) throws
-  public func updateICETransportPolicy(_ transportPolicy: Mediasoup.ICETransportPolicy) throws
 }
 extension Mediasoup.ReceiveTransport : Mediasoup_Private.ReceiveTransportWrapperDelegate {
   @objc dynamic public func onConnect(_ transport: Mediasoup_Private.ReceiveTransportWrapper, dtlsParameters: Swift.String)
@@ -60,7 +59,6 @@ public protocol Transport : AnyObject {
   func close()
   func restartICE(with iceParameters: Swift.String) throws
   func updateICEServers(_ iceServers: Swift.String) throws
-  func updateICETransportPolicy(_ transportPolicy: Mediasoup.ICETransportPolicy) throws
 }
 public protocol TransportDelegate : AnyObject {
   func onConnect(transport: Mediasoup.Transport, dtlsParameters: Swift.String)
@@ -104,7 +102,6 @@ extension Mediasoup.SendTransport : Mediasoup.Transport {
   public func close()
   public func restartICE(with iceParameters: Swift.String) throws
   public func updateICEServers(_ iceServers: Swift.String) throws
-  public func updateICETransportPolicy(_ transportPolicy: Mediasoup.ICETransportPolicy) throws
 }
 extension Mediasoup.SendTransport : Mediasoup_Private.SendTransportWrapperDelegate {
   @objc dynamic public func onConnect(_ transport: Mediasoup_Private.SendTransportWrapper, dtlsParameters: Swift.String)
@@ -233,8 +230,8 @@ public class Device {
   public func rtpCapabilities() throws -> Swift.String
   public func sctpCapabilities() throws -> Swift.String
   public func canProduce(_ mediaKind: Mediasoup.MediaKind) throws -> Swift.Bool
-  public func createSendTransport(id: Swift.String, iceParameters: Swift.String, iceCandidates: Swift.String, dtlsParameters: Swift.String, sctpParameters: Swift.String?, appData: Swift.String?) throws -> Mediasoup.SendTransport
-  public func createReceiveTransport(id: Swift.String, iceParameters: Swift.String, iceCandidates: Swift.String, dtlsParameters: Swift.String, sctpParameters: Swift.String? = nil, appData: Swift.String? = nil) throws -> Mediasoup.ReceiveTransport
+  public func createSendTransport(id: Swift.String, iceParameters: Swift.String, iceCandidates: Swift.String, dtlsParameters: Swift.String, sctpParameters: Swift.String?, iceServers: Swift.String? = nil, iceTransportPolicy: Mediasoup.ICETransportPolicy = .all, appData: Swift.String?) throws -> Mediasoup.SendTransport
+  public func createReceiveTransport(id: Swift.String, iceParameters: Swift.String, iceCandidates: Swift.String, dtlsParameters: Swift.String, sctpParameters: Swift.String? = nil, iceServers: Swift.String? = nil, iceTransportPolicy: Mediasoup.ICETransportPolicy = .all, appData: Swift.String? = nil) throws -> Mediasoup.ReceiveTransport
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class Consumer {

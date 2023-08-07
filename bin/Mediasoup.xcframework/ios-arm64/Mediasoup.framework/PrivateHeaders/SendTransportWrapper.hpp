@@ -14,7 +14,7 @@ class SendTransportListenerAdapter;
 @class RTCMediaStreamTrack;
 @class RTCRtpEncodingParameters;
 @protocol SendTransportWrapperDelegate;
-typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
+
 
 @interface SendTransportWrapper : NSObject
 
@@ -37,10 +37,6 @@ typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 	__attribute__((swift_error(nonnull_error)));
 
 - (void)updateICEServers:(NSString *_Nonnull)iceServers
-	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
-	__attribute__((swift_error(nonnull_error)));
-
-- (void)updateICETransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
 	__attribute__((swift_error(nonnull_error)));
 

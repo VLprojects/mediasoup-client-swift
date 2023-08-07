@@ -9,6 +9,7 @@
 #import <peerconnection/RTCPeerConnectionFactory.h>
 #import <peerconnection/RTCPeerConnectionFactoryBuilder.h>
 #import <peerconnection/RTCPeerConnectionFactory+Private.h>
+#import <peerconnection/RTCConfiguration+Private.h>
 #import "DeviceWrapper.h"
 #import "../MediasoupClientError/MediasoupClientErrorHandler.h"
 #import "../Transport/SendTransportWrapper.hpp"
@@ -102,6 +103,23 @@
 	iceCandidates:(NSString *_Nonnull)iceCandidates
 	dtlsParameters:(NSString *_Nonnull)dtlsParameters
 	sctpParameters:(NSString *_Nullable)sctpParameters
+	iceServers:(NSString *_Nullable)iceServers
+	iceTransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	auto pcOptions = [self pcOptionsWithICEServers:iceServers iceTransportPolicy:iceTransportPolicy];
+	return [self createSendTransportWithId:transportId iceParameters:iceParameters iceCandidates:iceCandidates
+		dtlsParameters:dtlsParameters sctpParameters:sctpParameters pcOptions:&pcOptions appData:appData
+		error:error];
+}
+
+- (SendTransportWrapper *_Nullable)createSendTransportWithId:(NSString *_Nonnull)transportId
+	iceParameters:(NSString *_Nonnull)iceParameters
+	iceCandidates:(NSString *_Nonnull)iceCandidates
+	dtlsParameters:(NSString *_Nonnull)dtlsParameters
+	sctpParameters:(NSString *_Nullable)sctpParameters
+	pcOptions:(mediasoupclient::PeerConnection::Options *_Nonnull)pcOptions
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 
@@ -135,7 +153,7 @@
 			iceCandidatesJSON,
 			dtlsParametersJSON,
 			sctpParametersJSON,
-			self->_pcOptions,
+			pcOptions,
 			appDataJSON
 		);
 		auto transportWrapper = [[SendTransportWrapper alloc] initWithTransport:transport listenerAdapter:listenerAdapter];
@@ -152,6 +170,22 @@
 	iceCandidates:(NSString *_Nonnull)iceCandidates
 	dtlsParameters:(NSString *_Nonnull)dtlsParameters
 	sctpParameters:(NSString *_Nullable)sctpParameters
+	iceServers:(NSString *_Nullable)iceServers
+	iceTransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	auto pcOptions = [self pcOptionsWithICEServers:iceServers iceTransportPolicy:iceTransportPolicy];
+	return [self createReceiveTransportWithId:transportId iceParameters:iceParameters iceCandidates:iceCandidates
+		dtlsParameters:dtlsParameters sctpParameters:sctpParameters pcOptions:&pcOptions appData:appData error:error];
+}
+
+- (ReceiveTransportWrapper *_Nullable)createReceiveTransportWithId:(NSString *_Nonnull)transportId
+	iceParameters:(NSString *_Nonnull)iceParameters
+	iceCandidates:(NSString *_Nonnull)iceCandidates
+	dtlsParameters:(NSString *_Nonnull)dtlsParameters
+	sctpParameters:(NSString *_Nullable)sctpParameters
+	pcOptions:(mediasoupclient::PeerConnection::Options *_Nonnull)pcOptions
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 
@@ -185,7 +219,7 @@
 			iceCandidatesJSON,
 			dtlsParametersJSON,
 			sctpParametersJSON,
-			self->_pcOptions,
+			pcOptions,
 			appDataJSON
 		);
 		auto transportWrapper = [[ReceiveTransportWrapper alloc]
@@ -199,6 +233,44 @@
 		*error = mediasoupError(MediasoupClientErrorCodeInvalidParameters, &e);
 		return nil;
 	}
+}
+
+#pragma MARK - Private methods
+
+- (mediasoupclient::PeerConnection::Options)pcOptionsWithICEServers:(NSString *_Nullable)iceServers
+	iceTransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy {
+
+	auto pcOptions = mediasoupclient::PeerConnection::Options(*_pcOptions);
+	pcOptions.config.type = [RTCConfiguration nativeTransportsTypeForTransportPolicy:iceTransportPolicy];
+	if (iceServers != nil) {
+		auto iceServersString = std::string(iceServers.UTF8String);
+		auto iceServersJSON = nlohmann::json::parse(iceServersString);
+		pcOptions.config.servers.clear();
+
+		// RTCIceServer format is described here: https://developer.mozilla.org/en-US/docs/Web/API/RTCIceServer.
+		for (const auto& iceServerDescription : iceServersJSON) {
+			webrtc::PeerConnectionInterface::IceServer iceServer;
+			if (!iceServerDescription.contains("urls")) {
+				continue;
+			}
+			if (iceServerDescription["urls"].is_string()) {
+				iceServer.urls = { iceServerDescription["urls"].get<std::string>() };
+			} else if (iceServerDescription["urls"].is_array()) {
+				iceServer.urls = iceServerDescription["urls"].get<std::vector<std::string>>();
+			} else {
+				continue;
+			}
+
+			if (iceServerDescription.contains("username")) {
+				iceServer.username = iceServerDescription["username"].get<std::string>();
+			}
+			if (iceServerDescription.contains("credential")) {
+				iceServer.password = iceServerDescription["credential"].get<std::string>();
+			}
+			pcOptions.config.servers.push_back(iceServer);
+		}
+	}
+	return pcOptions;
 }
 
 @end

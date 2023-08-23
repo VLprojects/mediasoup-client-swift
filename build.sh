@@ -112,6 +112,7 @@ else
 	refetchLibmediasoupclient
 fi
 
+# Depot tools are used to download, configure and build WebRTC and its dependencides.
 function refetchDepotTools() {
 	echo 'Cloning depot_tools'
 	cd $WORK_DIR
@@ -145,6 +146,10 @@ fi
 
 export PATH=$WORK_DIR/depot_tools:$PATH
 
+# There are BUILD.gn files in each WebRTC directory. These files declare which modules are included
+# for each target and may contain other target build options and rules.
+# Each public symbol is also marked in source files as such. We need to redefine some symbols visibility
+# to make WebRTC builable, usable and properly configurable for iOS platform.
 function patchWebRTC() {
 	echo 'Patching WebRTC for iOS platform support'
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_decoder_factory.patch
@@ -161,6 +166,9 @@ function patchWebRTC() {
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
 }
 
+# WebRTC sources are downloaded by git client from Depot tools.
+# You should configure target OS and WebRTC version before cloning.
+# WebRTC versions and their corresponding branch names can be found here: https://chromiumdash.appspot.com/branches.
 function refetchWebRTC() {
 	echo 'Cloning WebRTC'
 	rm -rf $WORK_DIR/webrtc
@@ -179,8 +187,6 @@ function refetchWebRTC() {
 }]
 target_os = ["ios"]'
 
-	# Fetch WebRTC m94 version.
-	# gclient sync --no-history --revision src@branch-heads/4606 
 	# Fetch WebRTC m112 version.
 	gclient sync --no-history --revision src@branch-heads/5615 
 
@@ -249,6 +255,8 @@ git restore rtc_base/byte_order.h
 echo 'Building WebRTC'
 cd $WEBRTC_DIR
 
+# In root dir of WebRTC sources there is webrtc.gni file.
+# It contains all available configuration flags with comprehensive comments for each.
 gn_arguments=(
 	'target_os="ios"'
 	'ios_deployment_target="14.0"'
@@ -282,6 +290,10 @@ platform_args='target_environment="simulator" target_cpu="x64"'
 gn gen $BUILD_DIR/WebRTC/simulator/x64 --ide=xcode --args="${platform_args}${gn_args}"
 platform_args='target_environment="simulator" target_cpu="arm64"'
 gn gen $BUILD_DIR/WebRTC/simulator/arm64 --ide=xcode --args="${platform_args}${gn_args}"
+
+# This command can be used to check which symbols will be included
+# in each target without waiting to perform actual build:
+# ninja -t browse webrtc
 
 cd $BUILD_DIR/WebRTC
 ninja -C device/arm64 sdk

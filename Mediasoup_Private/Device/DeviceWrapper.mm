@@ -28,30 +28,36 @@
 
 @implementation DeviceWrapper
 
-- (instancetype)init {
+- (instancetype _Nonnull)init {
+	auto audioEncoderFactory = webrtc::CreateBuiltinAudioEncoderFactory();
+	auto audioDecoderFactory = webrtc::CreateBuiltinAudioDecoderFactory();
+	auto videoEncoderFactory = std::make_unique<webrtc::ObjCVideoEncoderFactory>(
+		[[RTCDefaultVideoEncoderFactory alloc] init]
+	);
+	auto videoDecoderFactory = std::make_unique<webrtc::ObjCVideoDecoderFactory>(
+		[[RTCDefaultVideoDecoderFactory alloc] init]
+	);
+
+	auto pcFactoryBuilder = [[RTCPeerConnectionFactoryBuilder alloc] init];
+	[pcFactoryBuilder setAudioEncoderFactory:audioEncoderFactory];
+	[pcFactoryBuilder setAudioDecoderFactory:audioDecoderFactory];
+	[pcFactoryBuilder setVideoEncoderFactory:std::move(videoEncoderFactory)];
+	[pcFactoryBuilder setVideoDecoderFactory:std::move(videoDecoderFactory)];
+	[pcFactoryBuilder setAudioDeviceModule:webrtc::CreateAudioDeviceModule()];
+
+	auto pcFactory = [pcFactoryBuilder createPeerConnectionFactory];
+
+	self = [self initWithPCFactory:pcFactory];
+	return self;
+}
+
+- (instancetype _Nonnull)initWithPCFactory:(RTCPeerConnectionFactory *)pcFactory {
 	self = [super init];
 	if (self != nil) {
 		_device = new mediasoupclient::Device();
-
-		auto audioEncoderFactory = webrtc::CreateBuiltinAudioEncoderFactory();
-		auto audioDecoderFactory = webrtc::CreateBuiltinAudioDecoderFactory();
-		auto videoEncoderFactory = std::make_unique<webrtc::ObjCVideoEncoderFactory>(
-			[[RTCDefaultVideoEncoderFactory alloc] init]
-		);
-		auto videoDecoderFactory = std::make_unique<webrtc::ObjCVideoDecoderFactory>(
-			[[RTCDefaultVideoDecoderFactory alloc] init]
-		);
-
-		auto pcFactoryBuilder = [[RTCPeerConnectionFactoryBuilder alloc] init];
-		[pcFactoryBuilder setAudioEncoderFactory:audioEncoderFactory];
-		[pcFactoryBuilder setAudioDecoderFactory:audioDecoderFactory];
-		[pcFactoryBuilder setVideoEncoderFactory:std::move(videoEncoderFactory)];
-		[pcFactoryBuilder setVideoDecoderFactory:std::move(videoDecoderFactory)];
-		[pcFactoryBuilder setAudioDeviceModule:webrtc::CreateAudioDeviceModule()];
-
-		self.pcFactory = [pcFactoryBuilder createPeerConnectionFactory];
 		_pcOptions = new mediasoupclient::PeerConnection::Options();
-		_pcOptions->factory = self.pcFactory.nativeFactory.get();
+		_pcOptions->factory = _pcFactory.nativeFactory.get();
+		self.pcFactory = pcFactory;
 	}
 	return self;
 }

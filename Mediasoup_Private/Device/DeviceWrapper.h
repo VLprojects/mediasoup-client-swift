@@ -7,10 +7,14 @@
 
 @class ReceiveTransportWrapper;
 @class SendTransportWrapper;
+@class RTCPeerConnectionFactory;
 typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 
 
 @interface DeviceWrapper : NSObject
+
+- (instancetype _Nonnull)init;
+- (instancetype _Nonnull)initWithPCFactory:(RTCPeerConnectionFactory *_Nonnull)pcFactory NS_DESIGNATED_INITIALIZER;
 
 - (BOOL)isLoaded;
 

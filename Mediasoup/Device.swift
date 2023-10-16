@@ -1,5 +1,6 @@
 import Foundation
 import Mediasoup_Private
+import WebRTC
 
 
 public class Device {
@@ -7,6 +8,10 @@ public class Device {
 
 	public init() {
 		self.device = DeviceWrapper()
+	}
+
+	public init(pcFactory: RTCPeerConnectionFactory) {
+		self.device = DeviceWrapper(pcFactory: pcFactory)
 	}
 
 	public func isLoaded() -> Bool {

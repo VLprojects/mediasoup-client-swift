@@ -4893,6 +4893,13 @@
         "moduleName": "Mediasoup"
       },
       {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
         "kind": "TypeDecl",
         "name": "Device",
         "printedName": "Device",
@@ -4912,6 +4919,33 @@
             "declKind": "Constructor",
             "usr": "s:9Mediasoup6DeviceCACycfc",
             "mangledName": "$s9Mediasoup6DeviceCACycfc",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(pcFactory:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Device",
+                "printedName": "Mediasoup.Device",
+                "usr": "s:9Mediasoup6DeviceC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCPeerConnectionFactory",
+                "printedName": "WebRTC.RTCPeerConnectionFactory",
+                "usr": "c:objc(cs)RTCPeerConnectionFactory"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:9Mediasoup6DeviceC9pcFactoryACSo017RTCPeerConnectionD0C_tcfc",
+            "mangledName": "$s9Mediasoup6DeviceC9pcFactoryACSo017RTCPeerConnectionD0C_tcfc",
             "moduleName": "Mediasoup",
             "declAttributes": [
               "AccessControl"

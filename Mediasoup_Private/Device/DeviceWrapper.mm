@@ -51,12 +51,12 @@
 	return self;
 }
 
-- (instancetype _Nonnull)initWithPCFactory:(RTCPeerConnectionFactory *)pcFactory {
+- (instancetype _Nonnull)initWithPCFactory:(RTCPeerConnectionFactory *_Nonnull)pcFactory {
 	self = [super init];
 	if (self != nil) {
 		_device = new mediasoupclient::Device();
 		_pcOptions = new mediasoupclient::PeerConnection::Options();
-		_pcOptions->factory = _pcFactory.nativeFactory.get();
+		_pcOptions->factory = pcFactory.nativeFactory.get();
 		self.pcFactory = pcFactory;
 	}
 	return self;

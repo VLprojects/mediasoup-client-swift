@@ -175,7 +175,7 @@ function refetchWebRTC() {
 	mkdir -p $WORK_DIR/webrtc
 	cd $WORK_DIR/webrtc
 
-	export DEPOT_TOOLS_UPDATE=0
+	export DEPOT_TOOLS_UPDATE=1
 	gclient root
 	gclient config --spec \
 'solutions = [{
@@ -187,8 +187,8 @@ function refetchWebRTC() {
 }]
 target_os = ["ios"]'
 
-	# Fetch WebRTC m112 version.
-	gclient sync --no-history --revision src@branch-heads/5615 
+	# Fetch WebRTC m120 version.
+	gclient sync --no-history --revision src@branch-heads/6099
 
 	# Fetch all possible WebRTC versions so you can switch between them.
 	# Takes longer time and more disk space.
@@ -199,10 +199,13 @@ target_os = ["ios"]'
 	# git reset --hard
 	# cd $WORK_DIR/webrtc/src/third_party
 	# git reset --hard
+	# cd $WORK_DIR/webrtc/src
 	# git checkout -b m112 refs/remotes/branch-heads/5615
+	# git checkout -b m120 refs/remotes/branch-heads/6099
 
 	# Switch to WebRTC version that already was checked out previously.
 	# git checkout m112
+	# git checkout m120
 
 	# Run hooks after switching between WebRTC versions.
 	# cd $WORK_DIR/webrtc/src
@@ -275,7 +278,6 @@ gn_arguments=(
 	'rtc_include_pulse_audio=false'
 	'use_rtti=true'
 	'use_custom_libcxx=false'
-	'use_xcode_clang=true'
 	'enable_dsyms=true'
 	'enable_stripping=true'
 	'treat_warnings_as_errors=false'

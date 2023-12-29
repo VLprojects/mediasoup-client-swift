@@ -571,7 +571,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/Mediasoup/dependencies/libmediasoupclient/include",
-					"${SRCROOT}/Mediasoup/dependencies/libmediasoupclient/deps/libsdptransform/include",
+					"${SRCROOT}/build/libmediasoupclient/device/arm64/_deps/libsdptransform-src/include",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/third_party/abseil-cpp",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/api",
@@ -669,7 +669,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/Mediasoup/dependencies/libmediasoupclient/include",
-					"${SRCROOT}/Mediasoup/dependencies/libmediasoupclient/deps/libsdptransform/include",
+					"${SRCROOT}/build/libmediasoupclient/device/arm64/_deps/libsdptransform-src/include",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/third_party/abseil-cpp",
 					"$(SRCROOT)/Mediasoup/dependencies/webrtc/src/sdk/objc/api",

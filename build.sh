@@ -83,7 +83,7 @@ function refetchLibmediasoupclient() {
 	echo 'Cloning libmediasoupclient'
 	cd $WORK_DIR
 	rm -rf libmediasoupclient
-	git clone -b vl-m112.2 --depth 1 https://github.com/VLprojects/libmediasoupclient.git
+	git clone -b vl-3.4.1 --depth 1 https://github.com/VLprojects/libmediasoupclient.git
 }
 
 if [ -d $WORK_DIR/libmediasoupclient ]
@@ -375,15 +375,15 @@ function rebuildLMSC() {
 		$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libmediasoupclient.a \
 		-output $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a
 	lipo -create \
-		$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libsdptransform/libsdptransform.a \
-		$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+		$BUILD_DIR/libmediasoupclient/simulator/x64/_deps/libsdptransform-build/libsdptransform.a \
+		$BUILD_DIR/libmediasoupclient/simulator/arm64/_deps/libsdptransform-build/libsdptransform.a \
 		-output $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a
 	xcodebuild -create-xcframework \
 		-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libmediasoupclient.a \
 		-library $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a \
 		-output $OUTPUT_DIR/mediasoupclient.xcframework
 	xcodebuild -create-xcframework \
-		-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+		-library $BUILD_DIR/libmediasoupclient/device/arm64/_deps/libsdptransform-build/libsdptransform.a \
 		-library $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a \
 		-output $OUTPUT_DIR/sdptransform.xcframework
 }

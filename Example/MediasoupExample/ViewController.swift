@@ -64,7 +64,7 @@ final class ViewController: UIViewController {
 			print("transport is closed: \(sendTransport.closed)")
 
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-				if let producer = try? sendTransport.createProducer(for: audioTrack, encodings: nil, codecOptions: nil, appData: nil) {
+				if let producer = try? sendTransport.createProducer(for: audioTrack, encodings: nil, codecOptions: nil, codec: nil, appData: nil) {
 					self.producer = producer
 					producer.delegate = self
 					print("producer created")

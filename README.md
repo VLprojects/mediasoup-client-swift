@@ -17,7 +17,7 @@ Swift wrapper for libmediasoupclient with iOS support
 
 2. **Ease of integration**
 
-   If you don't need to customize Mediasoup-Client-Swift itself or its dependencies, just add a line to your Podfile:
+   If you don't need to customize Mediasoup-Client-Swift itself or its dependencies, just use Swift Package Manager or CocoaPods:
 
    ```Ruby
    pod 'Mediasoup-Client-Swift', '0.6.0'
@@ -152,7 +152,7 @@ Mediasoup-Client-Swift has almost no logic, it's only a convenient wrapper for o
 
 - [x] Add data channel support (consuming)
 
-- [ ] Support integration via SPM
+- [x] Support integration via SPM
 
 - [ ] Add documentation for Mediasoup-Client-Swift public interface
 

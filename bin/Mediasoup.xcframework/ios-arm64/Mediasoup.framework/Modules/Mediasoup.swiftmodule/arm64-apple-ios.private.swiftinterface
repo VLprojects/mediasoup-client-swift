@@ -83,6 +83,7 @@ public enum TransportConnectionState {
   weak public var delegate: (any Mediasoup.SendTransportDelegate)?
   @objc deinit
   public func createProducer(for track: WebRTC.RTCMediaStreamTrack, encodings: [WebRTC.RTCRtpEncodingParameters]?, codecOptions: Swift.String?, codec: Swift.String?, appData: Swift.String?) throws -> Mediasoup.Producer
+  public func createProducer(for track: WebRTC.RTCMediaStreamTrack, encoding: WebRTC.RTCRtpEncodingParameters, scalabilityMode: Swift.String, codecOptions: Swift.String?, codec: Swift.String?, appData: Swift.String?) throws -> Mediasoup.Producer
 }
 extension Mediasoup.SendTransport : Mediasoup.Transport {
   public var id: Swift.String {

@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
 	}
 	
 	spec.name = "Mediasoup-Client-Swift"
-	spec.version = "0.6.1"
+	spec.version = "0.7.0"
 	spec.platform = :ios, "14.0"
 	spec.module_name = "Mediasoup"
 	spec.module_map = "Mediasoup/Mediasoup.modulemap"

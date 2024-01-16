@@ -86,7 +86,31 @@
 }
 
 - (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
+	encoding:(RTCRtpEncodingParameters *_Nonnull)encoding
+	scalabilityMode:(NSString *_Nonnull)scalabilityMode
+	codecOptions:(NSString *_Nullable)codecOptions
+	codec:(NSString *_Nullable)codec
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	return [self createProducerForTrack:mediaTrack encodings:@[encoding] scalabilityMode:scalabilityMode
+		codecOptions:codecOptions codec:codec appData:appData error:error];
+}
+
+- (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
 	encodings:(NSArray<RTCRtpEncodingParameters *> *_Nullable)encodings
+	codecOptions:(NSString *_Nullable)codecOptions
+	codec:(NSString *_Nullable)codec
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error {
+
+	return [self createProducerForTrack:mediaTrack encodings:encodings scalabilityMode:nil
+		codecOptions:codecOptions codec:codec appData:appData error:error];
+}
+
+- (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
+	encodings:(NSArray<RTCRtpEncodingParameters *> *_Nullable)encodings
+	scalabilityMode:(NSString *_Nullable)scalabilityMode
 	codecOptions:(NSString *_Nullable)codecOptions
 	codec:(NSString *_Nullable)codec
 	appData:(NSString *_Nullable)appData
@@ -117,6 +141,10 @@
 				}
 				if (encoding.scaleResolutionDownBy != nil) {
 					nativeEncoding.scale_resolution_down_by = absl::make_optional(encoding.scaleResolutionDownBy.doubleValue);
+				}
+				if (scalabilityMode != nil) {
+					nativeEncoding.scalability_mode =
+						absl::make_optional(std::string(scalabilityMode.UTF8String));
 				}
 				encodingsVector.emplace_back(nativeEncoding);
 			}

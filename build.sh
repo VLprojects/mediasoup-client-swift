@@ -162,6 +162,7 @@ function patchWebRTC() {
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_mm.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_decoder_factory_h.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_mm.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_decoder_factory_h.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
 }
@@ -274,7 +275,6 @@ gn_arguments=(
 	'rtc_enable_protobuf=false'
 	'rtc_include_tests=false'
 	'rtc_include_builtin_audio_codecs=true'
-	'rtc_include_builtin_video_codecs=true'
 	'rtc_include_pulse_audio=false'
 	'use_rtti=true'
 	'use_custom_libcxx=false'

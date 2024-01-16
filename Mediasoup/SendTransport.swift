@@ -35,6 +35,26 @@ public class SendTransport {
 			return Producer(producer: producer, mediaKind: mediaKind)
 		}
 	}
+
+	public func createProducer(
+		for track: RTCMediaStreamTrack,
+		encoding: RTCRtpEncodingParameters,
+		scalabilityMode: String,
+		codecOptions: String?,
+		codec: String?,
+		appData: String?
+	) throws -> Producer {
+
+		guard let mediaKind = MediaKind(stringValue: track.kind) else {
+			throw MediasoupError.invalidParameters("Unknown media kind")
+		}
+
+		return try convertMediasoupErrors {
+			let producer = try self.transport.createProducer(for: track, encoding: encoding,
+				scalabilityMode: scalabilityMode, codecOptions: codecOptions, codec: codec, appData: appData)
+			return Producer(producer: producer, mediaKind: mediaKind)
+		}
+	}
 }
 
 extension SendTransport: Transport {

@@ -47,6 +47,14 @@ class SendTransportListenerAdapter;
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 
+- (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
+	encoding:(RTCRtpEncodingParameters *_Nonnull)encoding
+	scalabilityMode:(NSString *_Nonnull)scalabilityMode
+	codecOptions:(NSString *_Nullable)codecOptions
+	codec:(NSString *_Nullable)codec
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
+
 @end
 
 #endif /* SendTransportWrapper_h */

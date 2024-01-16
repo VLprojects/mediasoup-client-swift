@@ -1909,6 +1909,88 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Function",
+            "name": "createProducer",
+            "printedName": "createProducer(for:encoding:scalabilityMode:codecOptions:codec:appData:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Producer",
+                "printedName": "Mediasoup.Producer",
+                "usr": "s:9Mediasoup8ProducerC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCMediaStreamTrack",
+                "printedName": "WebRTC.RTCMediaStreamTrack",
+                "usr": "c:objc(cs)RTCMediaStreamTrack"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCRtpEncodingParameters",
+                "printedName": "WebRTC.RTCRtpEncodingParameters",
+                "usr": "c:objc(cs)RTCRtpEncodingParameters"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup13SendTransportC14createProducer3for8encoding15scalabilityMode12codecOptions0J07appDataAA0E0CSo19RTCMediaStreamTrackC_So24RTCRtpEncodingParametersCS2SSgA2QtKF",
+            "mangledName": "$s9Mediasoup13SendTransportC14createProducer3for8encoding15scalabilityMode12codecOptions0J07appDataAA0E0CSo19RTCMediaStreamTrackC_So24RTCRtpEncodingParametersCS2SSgA2QtKF",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
             "kind": "Var",
             "name": "id",
             "printedName": "id",

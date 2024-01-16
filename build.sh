@@ -274,7 +274,6 @@ gn_arguments=(
 	'rtc_enable_protobuf=false'
 	'rtc_include_tests=false'
 	'rtc_include_builtin_audio_codecs=true'
-	'rtc_include_builtin_video_codecs=true'
 	'rtc_include_pulse_audio=false'
 	'use_rtti=true'
 	'use_custom_libcxx=false'

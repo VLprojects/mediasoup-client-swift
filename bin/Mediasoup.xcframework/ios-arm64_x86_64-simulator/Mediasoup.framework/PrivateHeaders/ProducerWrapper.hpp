@@ -10,6 +10,7 @@ namespace mediasoupclient {
 class ProducerListenerAdapter;
 #endif
 
+@class WrappedRTPParameters;
 @class RTCMediaStreamTrack;
 @protocol ProducerWrapperDelegate;
 
@@ -44,6 +45,8 @@ class ProducerListenerAdapter;
 - (void)setMaxSpatialLayer:(UInt8)layer
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
 	__attribute__((swift_error(nonnull_error)));
+
+- (void)updateRTPParameters:(WrappedRTPParameters *_Nonnull(^_Nonnull)(WrappedRTPParameters *_Nonnull))updater;
 
 - (void)replaceTrack:(RTCMediaStreamTrack *_Nonnull)track
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error

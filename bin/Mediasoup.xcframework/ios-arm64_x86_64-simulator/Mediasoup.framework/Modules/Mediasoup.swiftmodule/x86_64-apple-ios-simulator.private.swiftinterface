@@ -10,6 +10,11 @@ import WebRTC
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+public struct ScalabilityMode {
+  public var spatialLayers: Swift.Int
+  public var temporalLayers: Swift.Int
+  public static func parse(_ scalabilityModeString: Swift.String) -> Mediasoup.ScalabilityMode
+}
 public protocol ReceiveTransportDelegate : Mediasoup.TransportDelegate {
 }
 @_hasMissingDesignatedInitializers public class ReceiveTransport {
@@ -64,6 +69,42 @@ public protocol Transport : AnyObject {
 public protocol TransportDelegate : AnyObject {
   func onConnect(transport: any Mediasoup.Transport, dtlsParameters: Swift.String)
   func onConnectionStateChange(transport: any Mediasoup.Transport, connectionState: Mediasoup.TransportConnectionState)
+}
+public struct RTPParameters {
+  public enum DegradationPreference {
+    case disabled
+    case maintainFramerate
+    case maintainResolution
+    case balanced
+    public static func == (a: Mediasoup.RTPParameters.DegradationPreference, b: Mediasoup.RTPParameters.DegradationPreference) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public struct RTPEncodingParameters {
+    public struct Resolution {
+      public var width: Swift.Int
+      public var height: Swift.Int
+      public var cgSizeValue: CoreFoundation.CGSize {
+        get
+      }
+      public init(width: Swift.Int, height: Swift.Int)
+      public init(from cgSize: CoreFoundation.CGSize)
+    }
+    public var scalabilityMode: Swift.String?
+    public var requestedResolution: Mediasoup.RTPParameters.RTPEncodingParameters.Resolution?
+    public var isActive: Swift.Bool
+    public var maxBitrateBps: Swift.Int?
+    public var minBitrateBps: Swift.Int?
+    public var maxFramerate: Swift.Double?
+    public var numTemporalLayers: Swift.Int?
+    public var scaleResolutionDownBy: Swift.Double?
+    public var bitratePriority: Swift.Double
+    public var adaptiveAudioPacketTime: Swift.Bool
+  }
+  public var degradationPreference: Mediasoup.RTPParameters.DegradationPreference?
+  public var encodings: [Mediasoup.RTPParameters.RTPEncodingParameters]?
 }
 public enum TransportConnectionState {
   case new
@@ -218,6 +259,7 @@ public enum ICETransportPolicy {
   public func resume()
   public func close()
   public func setMaxSpatialLayer(_ layer: Swift.Int) throws
+  public func updateSenderParameters(_ updater: @escaping (Mediasoup.RTPParameters) -> Mediasoup.RTPParameters)
   public func replaceTrack(_ track: WebRTC.RTCMediaStreamTrack) throws
   public func getStats() throws -> Swift.String
   @objc deinit
@@ -277,6 +319,8 @@ extension Mediasoup.Consumer : Mediasoup_Private.ConsumerWrapperDelegate {
 }
 extension Mediasoup.MediaKind : Swift.Equatable {}
 extension Mediasoup.MediaKind : Swift.Hashable {}
+extension Mediasoup.RTPParameters.DegradationPreference : Swift.Equatable {}
+extension Mediasoup.RTPParameters.DegradationPreference : Swift.Hashable {}
 extension Mediasoup.TransportConnectionState : Swift.Equatable {}
 extension Mediasoup.TransportConnectionState : Swift.Hashable {}
 extension Mediasoup.ICETransportPolicy : Swift.Equatable {}

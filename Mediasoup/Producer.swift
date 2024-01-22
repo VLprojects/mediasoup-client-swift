@@ -86,6 +86,13 @@ public class Producer {
 		try producer.setMaxSpatialLayer(typedLayer)
 	}
 
+	public func updateSenderParameters(_ updater: @escaping (RTPParameters) -> RTPParameters) {
+		producer.updateRTPParameters({ oldValue in
+			let updatedValue = updater(RTPParameters(from: oldValue))
+			return updatedValue.wrappedValue
+		})
+	}
+
 	/// Replaces the audio or video track being transmitted. No negotiation with the server is needed.
 	/// - Parameter track: An audio or video track.
 	public func replaceTrack(_ track: RTCMediaStreamTrack) throws {

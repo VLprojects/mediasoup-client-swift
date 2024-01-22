@@ -5,6 +5,8 @@ module Mediasoup_Private {
 	private header "PrivateHeaders/MediasoupClientTransportConnectionState.h"
 	private header "PrivateHeaders/SendTransportWrapper.hpp"
 	private header "PrivateHeaders/SendTransportWrapperDelegate.h"
+	private header "PrivateHeaders/WrappedRTPParameters.hpp"
+	private header "PrivateHeaders/RTPEncodingParameters.hpp"
 	private header "PrivateHeaders/ProducerWrapper.hpp"
 	private header "PrivateHeaders/ProducerWrapperDelegate.h"
 	private header "PrivateHeaders/ReceiveTransportWrapper.hpp"

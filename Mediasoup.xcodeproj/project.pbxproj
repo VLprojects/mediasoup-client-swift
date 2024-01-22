@@ -74,9 +74,16 @@
 		FFCD791827F419E800D26B4C /* mediasoupclient.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCD791727F419E800D26B4C /* mediasoupclient.xcframework */; };
 		FFCD791D27F41A0900D26B4C /* sdptransform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCD791B27F41A0900D26B4C /* sdptransform.xcframework */; };
 		FFCD791F27F41A0900D26B4C /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCD791C27F41A0900D26B4C /* WebRTC.xcframework */; };
+		FFF004F92B592424007BA500 /* RTPParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF004F82B592424007BA500 /* RTPParameters.swift */; };
 		FFF004FB2B5986F6007BA500 /* ScalabilityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF004FA2B5986F6007BA500 /* ScalabilityMode.swift */; };
 		FFF004FF2B598D59007BA500 /* ScalabilityMode.h in Headers */ = {isa = PBXBuildFile; fileRef = FFF004FE2B59881C007BA500 /* ScalabilityMode.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		FFF005002B599102007BA500 /* ScalabilityMode.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFF004FC2B598806007BA500 /* ScalabilityMode.mm */; };
+		FFF005022B5A2968007BA500 /* WrappedRTPParameters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FFF005012B5A2832007BA500 /* WrappedRTPParameters.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		FFF005042B5A29B6007BA500 /* WrappedRTPParameters.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFF005032B5A29B6007BA500 /* WrappedRTPParameters.mm */; };
+		FFF005072B5A4304007BA500 /* WrappedRTPParameters+Internal.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFF005062B5A4304007BA500 /* WrappedRTPParameters+Internal.mm */; };
+		FFF0050B2B5A62FD007BA500 /* RTPEncodingParameters.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFF0050A2B5A62FD007BA500 /* RTPEncodingParameters.mm */; };
+		FFF0050D2B5A631D007BA500 /* RTPEncodingParameters+Internal.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFF0050C2B5A631D007BA500 /* RTPEncodingParameters+Internal.mm */; };
+		FFF0050E2B5A641C007BA500 /* RTPEncodingParameters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FFF005082B5A6192007BA500 /* RTPEncodingParameters.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,9 +153,18 @@
 		FFCD791727F419E800D26B4C /* mediasoupclient.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = mediasoupclient.xcframework; path = bin/mediasoupclient.xcframework; sourceTree = "<group>"; };
 		FFCD791B27F41A0900D26B4C /* sdptransform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sdptransform.xcframework; path = bin/sdptransform.xcframework; sourceTree = "<group>"; };
 		FFCD791C27F41A0900D26B4C /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = bin/WebRTC.xcframework; sourceTree = "<group>"; };
+		FFF004F82B592424007BA500 /* RTPParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPParameters.swift; sourceTree = "<group>"; };
 		FFF004FA2B5986F6007BA500 /* ScalabilityMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalabilityMode.swift; sourceTree = "<group>"; };
 		FFF004FC2B598806007BA500 /* ScalabilityMode.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ScalabilityMode.mm; sourceTree = "<group>"; };
 		FFF004FE2B59881C007BA500 /* ScalabilityMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScalabilityMode.h; sourceTree = "<group>"; };
+		FFF005012B5A2832007BA500 /* WrappedRTPParameters.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WrappedRTPParameters.hpp; sourceTree = "<group>"; };
+		FFF005032B5A29B6007BA500 /* WrappedRTPParameters.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = WrappedRTPParameters.mm; sourceTree = "<group>"; };
+		FFF005052B5A332F007BA500 /* WrappedRTPParameters+Internal.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "WrappedRTPParameters+Internal.hpp"; sourceTree = "<group>"; };
+		FFF005062B5A4304007BA500 /* WrappedRTPParameters+Internal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "WrappedRTPParameters+Internal.mm"; sourceTree = "<group>"; };
+		FFF005082B5A6192007BA500 /* RTPEncodingParameters.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RTPEncodingParameters.hpp; sourceTree = "<group>"; };
+		FFF005092B5A62B0007BA500 /* RTPEncodingParameters+Internal.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "RTPEncodingParameters+Internal.hpp"; sourceTree = "<group>"; };
+		FFF0050A2B5A62FD007BA500 /* RTPEncodingParameters.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RTPEncodingParameters.mm; sourceTree = "<group>"; };
+		FFF0050C2B5A631D007BA500 /* RTPEncodingParameters+Internal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "RTPEncodingParameters+Internal.mm"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +236,7 @@
 				FF7FA6C327FD5ECD000B6470 /* Transport.swift */,
 				FFC5AC71282500A500C92A96 /* TransportConnectionState.swift */,
 				FF7FA6C127FD5EA5000B6470 /* TransportDelegate.swift */,
+				FFF004F82B592424007BA500 /* RTPParameters.swift */,
 				FFF004FA2B5986F6007BA500 /* ScalabilityMode.swift */,
 			);
 			path = Mediasoup;
@@ -253,6 +270,14 @@
 				FF7FA6CB27FE9681000B6470 /* ProducerWrapper.hpp */,
 				FF7FA6C927FE9674000B6470 /* ProducerWrapper.mm */,
 				FF7FA6D127FF1755000B6470 /* ProducerWrapperDelegate.h */,
+				FFF005082B5A6192007BA500 /* RTPEncodingParameters.hpp */,
+				FFF0050A2B5A62FD007BA500 /* RTPEncodingParameters.mm */,
+				FFF005092B5A62B0007BA500 /* RTPEncodingParameters+Internal.hpp */,
+				FFF0050C2B5A631D007BA500 /* RTPEncodingParameters+Internal.mm */,
+				FFF005012B5A2832007BA500 /* WrappedRTPParameters.hpp */,
+				FFF005032B5A29B6007BA500 /* WrappedRTPParameters.mm */,
+				FFF005052B5A332F007BA500 /* WrappedRTPParameters+Internal.hpp */,
+				FFF005062B5A4304007BA500 /* WrappedRTPParameters+Internal.mm */,
 			);
 			path = Producer;
 			sourceTree = "<group>";
@@ -339,7 +364,9 @@
 				FF7FA6A027FAAEF2000B6470 /* SendTransportWrapper.hpp in Headers */,
 				FF7FA6BD27FB0FB7000B6470 /* SendTransportWrapperDelegate.h in Headers */,
 				FF7FA6A427FAB838000B6470 /* SendTransportListenerAdapter.hpp in Headers */,
+				FFF0050E2B5A641C007BA500 /* RTPEncodingParameters.hpp in Headers */,
 				FF7FA6D427FF1A08000B6470 /* ProducerWrapperDelegate.h in Headers */,
+				FFF005022B5A2968007BA500 /* WrappedRTPParameters.hpp in Headers */,
 				FFB7DDBF28229BC100FE2CC2 /* ConsumerWrapperDelegate.h in Headers */,
 				FF7FA6CE27FE9A4B000B6470 /* ProducerWrapper.hpp in Headers */,
 				FF1E635B2A5655830022A44A /* DataConsumerWrapperDelegate.h in Headers */,
@@ -462,8 +489,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFF005042B5A29B6007BA500 /* WrappedRTPParameters.mm in Sources */,
 				FFF004FB2B5986F6007BA500 /* ScalabilityMode.swift in Sources */,
 				FFB7DDB32822893C00FE2CC2 /* ReceiveTransportDelegate.swift in Sources */,
+				FFF005072B5A4304007BA500 /* WrappedRTPParameters+Internal.mm in Sources */,
 				FFC5AC782825170500C92A96 /* ConsumerWrapper.mm in Sources */,
 				FFB7DDB12822891C00FE2CC2 /* ReceiveTransport.swift in Sources */,
 				FFC2452127F6E8DF008F61DE /* MediaKind.swift in Sources */,
@@ -474,7 +503,10 @@
 				FF7FA6A227FAB803000B6470 /* SendTransportListenerAdapter.mm in Sources */,
 				FFF005002B599102007BA500 /* ScalabilityMode.mm in Sources */,
 				FFC2452427F6E9DB008F61DE /* MediasoupClientMediaKind.mm in Sources */,
+				FFF004F92B592424007BA500 /* RTPParameters.swift in Sources */,
 				FF7FA6CA27FE9674000B6470 /* ProducerWrapper.mm in Sources */,
+				FFF0050D2B5A631D007BA500 /* RTPEncodingParameters+Internal.mm in Sources */,
+				FFF0050B2B5A62FD007BA500 /* RTPEncodingParameters.mm in Sources */,
 				FFC5AC72282500A500C92A96 /* TransportConnectionState.swift in Sources */,
 				FF7FA69A27FAACEE000B6470 /* SendTransportWrapper.mm in Sources */,
 				FF7FA69527FAA930000B6470 /* SendTransport.swift in Sources */,

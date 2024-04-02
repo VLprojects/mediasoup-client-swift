@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		22DEF8D22BBBCC900082149D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DEF8D12BBBCC900082149D /* Logger.swift */; };
+		22DEF8D52BBBCCAA0082149D /* LoggerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 22DEF8D32BBBCCAA0082149D /* LoggerWrapper.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		22DEF8D62BBBCCAA0082149D /* LoggerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22DEF8D42BBBCCAA0082149D /* LoggerWrapper.mm */; };
 		FF1E63582A5655830022A44A /* DataConsumerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FF1E63522A5655830022A44A /* DataConsumerWrapper.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 		FF1E635A2A5655830022A44A /* DataConsumerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF1E63542A5655830022A44A /* DataConsumerWrapper.mm */; };
 		FF1E635B2A5655830022A44A /* DataConsumerWrapperDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = FF1E63552A5655830022A44A /* DataConsumerWrapperDelegate.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -87,6 +90,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22DEF8D12BBBCC900082149D /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		22DEF8D32BBBCCAA0082149D /* LoggerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggerWrapper.h; sourceTree = "<group>"; };
+		22DEF8D42BBBCCAA0082149D /* LoggerWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoggerWrapper.mm; sourceTree = "<group>"; };
 		FF1E63522A5655830022A44A /* DataConsumerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataConsumerWrapper.hpp; sourceTree = "<group>"; };
 		FF1E63532A5655830022A44A /* DataConsumerListenerAdapterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataConsumerListenerAdapterDelegate.h; sourceTree = "<group>"; };
 		FF1E63542A5655830022A44A /* DataConsumerWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DataConsumerWrapper.mm; sourceTree = "<group>"; };
@@ -181,6 +187,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2269118E2BBBB35C007DB207 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				22DEF8D32BBBCCAA0082149D /* LoggerWrapper.h */,
+				22DEF8D42BBBCCAA0082149D /* LoggerWrapper.mm */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
 		FF1E63512A56555F0022A44A /* DataConsumer */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +232,7 @@
 		FF3AEE0227F2CDD1001A81AB /* Mediasoup */ = {
 			isa = PBXGroup;
 			children = (
+				22DEF8D12BBBCC900082149D /* Logger.swift */,
 				FF49F0E72804049300B64D36 /* Consumer.swift */,
 				FF49F0E9280404E400B64D36 /* ConsumerDelegate.swift */,
 				FF1E635E2A566C500022A44A /* DataConsumer.swift */,
@@ -285,6 +301,7 @@
 		FF89EFCF27F5C51500EEF5CD /* Mediasoup_Private */ = {
 			isa = PBXGroup;
 			children = (
+				2269118E2BBBB35C007DB207 /* Logger */,
 				FF1E63512A56555F0022A44A /* DataConsumer */,
 				FFB7DDB5282289AD00FE2CC2 /* Consumer */,
 				FF7FA6C827FE9661000B6470 /* Producer */,
@@ -371,6 +388,7 @@
 				FF7FA6CE27FE9A4B000B6470 /* ProducerWrapper.hpp in Headers */,
 				FF1E635B2A5655830022A44A /* DataConsumerWrapperDelegate.h in Headers */,
 				FFB7DDC22823989A00FE2CC2 /* ReceiveTransportListenerAdapter.hpp in Headers */,
+				22DEF8D52BBBCCAA0082149D /* LoggerWrapper.h in Headers */,
 				FF61457527F30FDC0067B2C4 /* DeviceWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,7 +526,9 @@
 				FFF0050D2B5A631D007BA500 /* RTPEncodingParameters+Internal.mm in Sources */,
 				FFF0050B2B5A62FD007BA500 /* RTPEncodingParameters.mm in Sources */,
 				FFC5AC72282500A500C92A96 /* TransportConnectionState.swift in Sources */,
+				22DEF8D62BBBCCAA0082149D /* LoggerWrapper.mm in Sources */,
 				FF7FA69A27FAACEE000B6470 /* SendTransportWrapper.mm in Sources */,
+				22DEF8D22BBBCC900082149D /* Logger.swift in Sources */,
 				FF7FA69527FAA930000B6470 /* SendTransport.swift in Sources */,
 				FF49F0EA280404E400B64D36 /* ConsumerDelegate.swift in Sources */,
 				FF7FA69127FAA8E9000B6470 /* SendTransportDelegate.swift in Sources */,

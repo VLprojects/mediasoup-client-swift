@@ -16,4 +16,5 @@ module Mediasoup_Private {
 	private header "PrivateHeaders/DataConsumerWrapper.hpp"
 	private header "PrivateHeaders/DataConsumerWrapperDelegate.h"
 	private header "PrivateHeaders/ScalabilityMode.h"
+	private header "PrivateHeaders/LoggerWrapper.h"
 }

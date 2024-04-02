@@ -17,6 +17,8 @@ final class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        // debug
+        Logger.setLogLevel(with: 3)
 
 		guard AVCaptureDevice.authorizationStatus(for: .audio) == .authorized else {
 			self.label.text = "accept all permission requests and restart the app"

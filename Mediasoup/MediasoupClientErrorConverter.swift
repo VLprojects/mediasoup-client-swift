@@ -22,12 +22,12 @@ internal func convertMediasoupErrors<T>(_ throwingClosure: () throws -> T) throw
 				if let underlyingError = error.errorUserInfo[NSUnderlyingErrorKey] as? NSError {
 					throw MediasoupError.mediasoup(underlyingError)
 				} else {
-                    throw MediasoupError.unknown(description(error))
+                    			throw MediasoupError.unknown(description(error))
 				}
 			@unknown default:
 				throw MediasoupError.unknown(description(error))
 		}
 	} catch {
-        throw MediasoupError.unknown(error.localizedDescription)
+        	throw MediasoupError.unknown(error.localizedDescription)
 	}
 }

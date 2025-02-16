@@ -10,7 +10,8 @@ let webrtcChecksum = "d6f5f751ca3aad5ba9e74896ba6e5a4869b3a50ac6def2a069357277d9
 let package = Package(
 	name: "Mediasoup-Client-Swift",
 	platforms: [
-		.iOS(.v14)
+		.iOS(.v17),
+		.tvOS(.v17)
 	],
 	products: [
 		.library(

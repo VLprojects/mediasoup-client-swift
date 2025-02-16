@@ -480,7 +480,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nFRAMEWORK_NAME=\"Mediasoup\"\nBUILD_DIR=\"${SRCROOT}/build/Mediasoup\"\nOUTPUT_DIR=\"${SRCROOT}/bin\"\n\n# Remove build directory if it exists\nif [ -d \"${BUILD_DIR}\" ]; then\n\trm -rf \"${BUILD_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch arm64 only_active_arch=no \\\n    -sdk \"iphoneos\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n\nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch x86_64 -arch arm64 only_active_arch=no \\\n    -sdk \"iphonesimulator\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n\n# Prepare output directory\nmkdir -p ${OUTPUT_DIR}\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\" ]; then\n\trm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\"\nfi\n\nxcodebuild -create-xcframework \\\n\t-framework ${BUILD_DIR}/Build/Products/Release-iphoneos/${FRAMEWORK_NAME}.framework \\\n\t-framework ${BUILD_DIR}/Build/Products/Release-iphonesimulator/${FRAMEWORK_NAME}.framework \\\n\t-output $OUTPUT_DIR/${FRAMEWORK_NAME}.xcframework\n";
+			shellScript = "set -e\n\nFRAMEWORK_NAME=\"Mediasoup\"\nBUILD_DIR=\"${SRCROOT}/build/Mediasoup\"\nOUTPUT_DIR=\"${SRCROOT}/bin\"\n\n# Remove build directory if it exists\nif [ -d \"${BUILD_DIR}\" ]; then\n\trm -rf \"${BUILD_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch arm64 only_active_arch=no \\\n    -sdk \"iphoneos\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n\nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch x86_64 -arch arm64 only_active_arch=no \\\n    -sdk \"iphonesimulator\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n    \nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch arm64 only_active_arch=no \\\n    -sdk \"appletvos\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n    \nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch arm64 only_active_arch=no \\\n    -sdk \"appletvsimulator\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n    \n# xcodebuild -project \"${PROJECT_NAME}.xcodeproj\" \\\n#     -scheme \"${FRAMEWORK_NAME}\" \\\n#     -configuration Release \\\n#     -arch x86_64 -arch arm64 only_active_arch=no \\\n#     -sdk \"appletvsimulator\" \\\n#     -derivedDataPath \"${BUILD_DIR}\"\n    \n# Prepare output directory\nmkdir -p ${OUTPUT_DIR}\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\" ]; then\n\trm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\"\nfi\n\nxcodebuild -create-xcframework \\\n\t-framework ${BUILD_DIR}/Build/Products/Release-appletvos/${FRAMEWORK_NAME}.framework \\\n\t-output $OUTPUT_DIR/${FRAMEWORK_NAME}.xcframework\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -640,12 +640,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -737,11 +737,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

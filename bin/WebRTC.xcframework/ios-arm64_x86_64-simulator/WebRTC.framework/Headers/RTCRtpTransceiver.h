@@ -14,6 +14,8 @@
 #import <WebRTC/RTCRtpReceiver.h>
 #import <WebRTC/RTCRtpSender.h>
 
+@class RTC_OBJC_TYPE(RTCRtpCodecCapability);
+
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString *const kRTCRtpTransceiverErrorDomain;
@@ -46,6 +48,7 @@ RTC_OBJC_EXPORT
 @end
 
 @class RTC_OBJC_TYPE(RTCRtpTransceiver);
+@class RTC_OBJC_TYPE(RTCRtpCodecCapability);
 
 /** The RTCRtpTransceiver maps to the RTCRtpTransceiver defined by the
  *  WebRTC specification. A transceiver represents a combination of an RTCRtpSender
@@ -104,6 +107,8 @@ RTC_OBJC_EXPORT
  */
 @property(nonatomic, readonly) RTCRtpTransceiverDirection direction;
 
+@property(nonatomic, copy) NSArray<RTC_OBJC_TYPE(RTCRtpCodecCapability) *> *codecPreferences;
+
 /** The currentDirection attribute indicates the current direction negotiated
  *  for this transceiver. If this transceiver has never been represented in an
  *  offer/answer exchange, or if the transceiver is stopped, the value is not
@@ -117,6 +122,12 @@ RTC_OBJC_EXPORT
  *  https://w3c.github.io/webrtc-pc/#dom-rtcrtptransceiver-stop
  */
 - (void)stopInternal;
+
+/** The setCodecPreferences method overrides the default codec preferences used
+ * by WebRTC for this transceiver.
+ * https://w3c.github.io/webrtc-pc/#dom-rtcrtptransceiver-setcodecpreferences
+ */
+- (void)setCodecPreferences:(NSArray<RTC_OBJC_TYPE(RTCRtpCodecCapability) *> *)codecs;
 
 /** An update of directionality does not take effect immediately. Instead,
  *  future calls to createOffer and createAnswer mark the corresponding media

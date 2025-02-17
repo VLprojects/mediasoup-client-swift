@@ -8445,6 +8445,32 @@
           },
           {
             "kind": "Function",
+            "name": "setJitterBufferMinimumDelay",
+            "printedName": "setJitterBufferMinimumDelay(seconds:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup8ConsumerC27setJitterBufferMinimumDelay7secondsySd_tF",
+            "mangledName": "$s9Mediasoup8ConsumerC27setJitterBufferMinimumDelay7secondsySd_tF",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "onTransportClose",
             "printedName": "onTransportClose(_:)",
             "children": [

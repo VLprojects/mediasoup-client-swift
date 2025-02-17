@@ -312,6 +312,7 @@ public class Device {
   public func pause()
   public func resume()
   public func close()
+  public func setJitterBufferMinimumDelay(seconds: Swift.Double)
   @objc deinit
 }
 extension Mediasoup.Consumer : Mediasoup_Private.ConsumerWrapperDelegate {

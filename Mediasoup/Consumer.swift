@@ -64,6 +64,10 @@ public class Consumer {
 		consumer.close()
 	}
 
+	public func setJitterBufferMinimumDelay(seconds: Double) {
+		consumer.setJitterBufferMinimumDelay(seconds)
+	}
+
 	func getStats() throws -> String {
 		return try consumer.getStats()
 	}

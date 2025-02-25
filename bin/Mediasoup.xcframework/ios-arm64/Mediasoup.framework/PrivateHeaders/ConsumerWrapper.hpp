@@ -41,6 +41,8 @@ class ConsumerListenerAdapter;
 
 - (void)close;
 
+- (void)setJitterBufferMinimumDelay:(double)seconds;
+
 - (NSString *_Nullable)getStatsWithError:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 
 @end

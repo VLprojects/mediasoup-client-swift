@@ -90,6 +90,10 @@
 	_consumer->Close();
 }
 
+- (void)setJitterBufferMinimumDelay:(double)seconds {
+	_consumer->GetRtpReceiver()->SetJitterBufferMinimumDelay(seconds);
+}
+
 - (NSString *_Nullable)getStatsWithError:(out NSError *__autoreleasing _Nullable *_Nullable)error {
 	return nil;
 }

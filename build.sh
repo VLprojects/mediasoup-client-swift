@@ -83,7 +83,10 @@ function refetchLibmediasoupclient() {
 	echo 'Cloning libmediasoupclient'
 	cd $WORK_DIR
 	rm -rf libmediasoupclient
-	git clone -b vl-3.4.1 --depth 1 https://github.com/VLprojects/libmediasoupclient.git
+	git clone -b vivi --depth 1 https://github.com/viviedu/libmediasoupclient
+	pushd libmediasoupclient
+	git checkout 050f3298324e5c9686753333550cce44ac012e07
+	popd
 }
 
 if [ -d $WORK_DIR/libmediasoupclient ]
@@ -165,6 +168,8 @@ function patchWebRTC() {
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_mm.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_decoder_factory_h.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/pc_BUILD.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/nasm_assemble.patch
 }
 
 # WebRTC sources are downloaded by git client from Depot tools.
@@ -181,15 +186,15 @@ function refetchWebRTC() {
 	gclient config --spec \
 'solutions = [{
 	"name": "src",
-	"url": "https://webrtc.googlesource.com/src.git",
+	"url": "https://github.com/webrtc-sdk/webrtc.git",
 	"deps_file": "DEPS",
 	"managed": False,
 	"custom_deps": {},
 }]
 target_os = ["ios"]'
 
-	# Fetch WebRTC m120 version.
-	gclient sync --no-history --revision src@branch-heads/6099
+	# Fetch WebRTC m125 version.
+	gclient sync --no-history --revision src@844bafa06d0b9088fd7fa4244832abf8e70a1d3d
 
 	# Fetch all possible WebRTC versions so you can switch between them.
 	# Takes longer time and more disk space.
@@ -216,8 +221,11 @@ target_os = ["ios"]'
 function resetWebRTC() {
 	cd $WORK_DIR/webrtc/src
 	git reset --hard
-	
+
 	cd $WORK_DIR/webrtc/src/third_party
+	git reset --hard
+
+	cd $WORK_DIR/webrtc/src/third_party/nasm
 	git reset --hard
 }
 
@@ -263,7 +271,7 @@ cd $WEBRTC_DIR
 # It contains all available configuration flags with comprehensive comments for each.
 gn_arguments=(
 	'target_os="ios"'
-	'ios_deployment_target="14.0"'
+	'ios_deployment_target="17.0"'
 	'ios_enable_code_signing=false'
 	'is_component_build=false'
 	#'is_debug=true'
@@ -286,12 +294,23 @@ gn_arguments=(
 for str in ${gn_arguments[@]}; do
 	gn_args+=" ${str}"
 done
+
+# iOS
 platform_args='target_environment="device" target_cpu="arm64"'
 gn gen $BUILD_DIR/WebRTC/device/arm64 --ide=xcode --args="${platform_args}${gn_args}"
+# tvOS
+platform_args='target_environment="appletv" target_cpu="arm64"'
+gn gen $BUILD_DIR/WebRTC/appletv/arm64 --ide=xcode --args="${platform_args}${gn_args}"
+# iOS Simulator
 platform_args='target_environment="simulator" target_cpu="x64"'
 gn gen $BUILD_DIR/WebRTC/simulator/x64 --ide=xcode --args="${platform_args}${gn_args}"
 platform_args='target_environment="simulator" target_cpu="arm64"'
 gn gen $BUILD_DIR/WebRTC/simulator/arm64 --ide=xcode --args="${platform_args}${gn_args}"
+# tvOS Simulator
+platform_args='target_environment="appletvsimulator" target_cpu="x64"'
+gn gen $BUILD_DIR/WebRTC/appletvsimulator/x64 --ide=xcode --args="${platform_args}${gn_args}"
+platform_args='target_environment="appletvsimulator" target_cpu="arm64"'
+gn gen $BUILD_DIR/WebRTC/appletvsimulator/arm64 --ide=xcode --args="${platform_args}${gn_args}"
 
 # This command can be used to check which symbols will be included
 # in each target without waiting to perform actual build:
@@ -299,8 +318,11 @@ gn gen $BUILD_DIR/WebRTC/simulator/arm64 --ide=xcode --args="${platform_args}${g
 
 cd $BUILD_DIR/WebRTC
 ninja -C device/arm64 sdk
+ninja -C appletv/arm64 sdk
 ninja -C simulator/x64 sdk
 ninja -C simulator/arm64 sdk
+ninja -C appletvsimulator/x64 sdk
+ninja -C appletvsimulator/arm64 sdk
 
 cd $BUILD_DIR/WebRTC
 rm -rf simulator/WebRTC.framework
@@ -310,12 +332,21 @@ lipo -create \
 	simulator/arm64/WebRTC.framework/WebRTC \
 	simulator/x64/WebRTC.framework/WebRTC \
 	-output simulator/WebRTC.framework/WebRTC
+rm -rf appletvsimulator/WebRTC.framework
+cp -R appletvsimulator/arm64/WebRTC.framework appletvsimulator/WebRTC.framework
+rm appletvsimulator/WebRTC.framework/WebRTC
+lipo -create \
+	appletvsimulator/arm64/WebRTC.framework/WebRTC \
+	appletvsimulator/x64/WebRTC.framework/WebRTC \
+	-output appletvsimulator/WebRTC.framework/WebRTC
 
 cd $BUILD_DIR/WebRTC
 rm -rf $OUTPUT_DIR/WebRTC.xcframework
 xcodebuild -create-xcframework \
 	-framework device/arm64/WebRTC.framework \
+	-framework appletv/arm64/WebRTC.framework \
 	-framework simulator/WebRTC.framework \
+	-framework appletvsimulator/WebRTC.framework \
 	-output $OUTPUT_DIR/WebRTC.xcframework
 
 cd $WORK_DIR
@@ -350,6 +381,15 @@ function rebuildLMSC() {
 		-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 	make -C $BUILD_DIR/libmediasoupclient/device/arm64
 
+	cmake . -B $BUILD_DIR/libmediasoupclient/appletv/arm64 \
+		${lmsc_cmake_args} \
+		-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/appletv/arm64/WebRTC.framework/WebRTC \
+		-DIOS_SDK=appletv \
+		-DIOS_ARCHS="arm64" \
+		-DPLATFORM=OS64 \
+		-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS.sdk"
+	make -C $BUILD_DIR/libmediasoupclient/appletv/arm64
+
 	cmake . -B $BUILD_DIR/libmediasoupclient/simulator/x64 \
 		${lmsc_cmake_args} \
 		-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/simulator/x64/WebRTC.framework/WebRTC \
@@ -368,8 +408,27 @@ function rebuildLMSC() {
 		-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
 	make -C $BUILD_DIR/libmediasoupclient/simulator/arm64
 
+	cmake . -B $BUILD_DIR/libmediasoupclient/appletvsimulator/x64 \
+		${lmsc_cmake_args} \
+		-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/appletvsimulator/x64/WebRTC.framework/WebRTC \
+		-DIOS_SDK=appletvsimulator \
+		-DIOS_ARCHS="x86_64" \
+		-DPLATFORM=SIMULATOR64 \
+		-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator.sdk"
+	make -C $BUILD_DIR/libmediasoupclient/appletvsimulator/x64
+
+	cmake . -B $BUILD_DIR/libmediasoupclient/appletvsimulator/arm64 \
+		${lmsc_cmake_args} \
+		-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/WebRTC/appletvsimulator/arm64/WebRTC.framework/WebRTC \
+		-DIOS_SDK=appletvsimulator \
+		-DIOS_ARCHS="arm64"\
+		-DPLATFORM=SIMULATORARM64 \
+		-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator.sdk"
+	make -C $BUILD_DIR/libmediasoupclient/appletvsimulator/arm64
+
 	# Create a FAT libmediasoup / libsdptransform library
 	mkdir -p $BUILD_DIR/libmediasoupclient/simulator/fat
+	mkdir -p $BUILD_DIR/libmediasoupclient/appletvsimulator/fat
 	lipo -create \
 		$BUILD_DIR/libmediasoupclient/simulator/x64/libmediasoupclient/libmediasoupclient.a \
 		$BUILD_DIR/libmediasoupclient/simulator/arm64/libmediasoupclient/libmediasoupclient.a \
@@ -378,13 +437,25 @@ function rebuildLMSC() {
 		$BUILD_DIR/libmediasoupclient/simulator/x64/_deps/libsdptransform-build/libsdptransform.a \
 		$BUILD_DIR/libmediasoupclient/simulator/arm64/_deps/libsdptransform-build/libsdptransform.a \
 		-output $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a
+	lipo -create \
+		$BUILD_DIR/libmediasoupclient/appletvsimulator/x64/libmediasoupclient/libmediasoupclient.a \
+		$BUILD_DIR/libmediasoupclient/appletvsimulator/arm64/libmediasoupclient/libmediasoupclient.a \
+		-output $BUILD_DIR/libmediasoupclient/appletvsimulator/fat/libmediasoupclient.a
+	lipo -create \
+		$BUILD_DIR/libmediasoupclient/appletvsimulator/x64/_deps/libsdptransform-build/libsdptransform.a \
+		$BUILD_DIR/libmediasoupclient/appletvsimulator/arm64/_deps/libsdptransform-build/libsdptransform.a \
+		-output $BUILD_DIR/libmediasoupclient/appletvsimulator/fat/libsdptransform.a
 	xcodebuild -create-xcframework \
 		-library $BUILD_DIR/libmediasoupclient/device/arm64/libmediasoupclient/libmediasoupclient.a \
+		-library $BUILD_DIR/libmediasoupclient/appletv/arm64/libmediasoupclient/libmediasoupclient.a \
 		-library $BUILD_DIR/libmediasoupclient/simulator/fat/libmediasoupclient.a \
+		-library $BUILD_DIR/libmediasoupclient/appletvsimulator/fat/libmediasoupclient.a \
 		-output $OUTPUT_DIR/mediasoupclient.xcframework
 	xcodebuild -create-xcframework \
 		-library $BUILD_DIR/libmediasoupclient/device/arm64/_deps/libsdptransform-build/libsdptransform.a \
+		-library $BUILD_DIR/libmediasoupclient/appletv/arm64/_deps/libsdptransform-build/libsdptransform.a \
 		-library $BUILD_DIR/libmediasoupclient/simulator/fat/libsdptransform.a \
+		-library $BUILD_DIR/libmediasoupclient/appletvsimulator/fat/libsdptransform.a \
 		-output $OUTPUT_DIR/sdptransform.xcframework
 }
 

@@ -1,0 +1,13 @@
+--- webrtc/src/third_party/nasm/nasm_assemble.gni
++++ webrtc/src/third_party/nasm/nasm_assemble.gni
+@@ -59,6 +59,10 @@ if ((is_mac || is_ios) && (current_cpu == "x86" || current_cpu == "x64")) {
+   } else if (is_ios) {
+     if (target_environment == "device") {
+       _nasm_flags += [ "--macho-min-os=ios$ios_deployment_target" ]
++    } else if (target_environment == "appletv") {
++      _nasm_flags += [ "--macho-min-os=tvos$ios_deployment_target" ]
++    } else if (target_environment == "appletvsimulator") {
++      _nasm_flags += [ "--macho-min-os=tvos$ios_deployment_target-simulator" ]
+     } else {
+       _nasm_flags +=
+           [ "--macho-min-os=ios$ios_deployment_target-$target_environment" ]

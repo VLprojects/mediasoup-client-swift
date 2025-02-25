@@ -6,59 +6,59 @@
 	<dict>
 		<key>Headers/Mediasoup-Swift.h</key>
 		<data>
-		otkEu7BP29rUVxtErAO6TRqwkEQ=
+		E6HTVtZqovWaZ0NcabX0Gehbis8=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		nRi2EjqFnDODwy09IKFHivrl7DA=
+		bsxAiwqTB8KbKl5m9VH1UMUxbhQ=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		ZSnoC3NsYHNe3/T+1nGuZb0cFI8=
+		/E58ea0dELn4mmyqs90yhFKyss8=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		wU5UMWPWPv7+LHY6Ko4g7TF1BvU=
+		Kwe6IYYQRmTUnYm/HIQbnvJH6qg=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		ulqvpZiQ1Dx7N68miiKrUslQRss=
+		83e7aY5l0AQytIGHM6+kb8IfbIQ=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		ypnNNjQKneHYIl/zzGJ9O0PHgCo=
+		zEbhFjA8egZBPY+37E1l9WNSE8A=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		6snYXyC3IwJ0BNtFvETV3ZW/rKk=
+		xhZzcJKRQjdgQxDp9w6bQV/yhNU=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		ypnNNjQKneHYIl/zzGJ9O0PHgCo=
+		zEbhFjA8egZBPY+37E1l9WNSE8A=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ZK46wfaf769+y5yOYArqr0aopXM=
+		jKHJ4Fe0q3SfyaDCTcoWQDkWMh4=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		ulqvpZiQ1Dx7N68miiKrUslQRss=
+		83e7aY5l0AQytIGHM6+kb8IfbIQ=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		yOUmMDoX0bFDri1m/0u29Vvf7iY=
+		b6Tmwmu+MmbCqFFNGA4y7xgoiMk=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		XIN5SnDb169AW0i3diaZm8Rgm+s=
+		CDymR7fyJT8FKOeEljPc7O1yeJ8=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		yOUmMDoX0bFDri1m/0u29Vvf7iY=
+		b6Tmwmu+MmbCqFFNGA4y7xgoiMk=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		GcIDQ/b+7giBJd8+NvVUHQR4aYw=
+		hZDpC/E43eDi/a0+0rzL4Kucwmw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>PrivateHeaders/ConsumerWrapper.hpp</key>
 		<data>
-		Lo0g3V8gRQK0P1FUuiWBF9UaCU4=
+		DMAzjhjWwqCa6FBouyfmFhDqrY4=
 		</data>
 		<key>PrivateHeaders/ConsumerWrapperDelegate.h</key>
 		<data>
@@ -155,91 +155,91 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kn+xFiyLN0pBKOY56UOU87yNSew0AZMUYeMlUR12kgQ=
+			A/QpL7sFFzAoOgftuHKTykbCXGy0CKo8kesgjSU/cP4=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NgBFl0peSUfxj+G3rieIjbK6J3XOIBy7hBgjLO9fJdk=
+			9gg5tu6GsVLVcauKk7UialP9Trk++uQs1+CRblwXtuA=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2xhuqvadOgV1gYuZMaJEUqhogxKoTwBXrWka6LXX+jk=
+			lK8H7BNU08ovp5YIEIpS7w3b93AU2iKT6LdF/d1mrwM=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/eZJ8aejtlokLXVHhAcAN2/Fqs2VGqG9THEEO4G1dIc=
+			XNwIAZRKbUiYFBrx/wfd/0SBOQA36ClwcsFw31AwskA=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rb5GcAST5vN0NSVBsxlQVMiyO7n/sBDk6e6Qa++0FJE=
+			nQihQFkEaCI9hFlEg82crxSnrmZQjz94/cMeHvV81DQ=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JCAvYXPkxpZ+RC9n/nLHrU7+6S9Kak8AjPGurm+jf1g=
+			z3n8zpdhYP9ltqeMl4eQd5q4HEakbQ6FH7NaRfh0PRE=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rb5GcAST5vN0NSVBsxlQVMiyO7n/sBDk6e6Qa++0FJE=
+			nQihQFkEaCI9hFlEg82crxSnrmZQjz94/cMeHvV81DQ=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			drIxrugjHI1rRsj+0B9gclKVIAAXjbQ1UJAx2NRxaig=
+			WZ1Z5jLUyTZ/K0ejSh134D7KBW41BD4RvenqLF+vuAk=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/eZJ8aejtlokLXVHhAcAN2/Fqs2VGqG9THEEO4G1dIc=
+			XNwIAZRKbUiYFBrx/wfd/0SBOQA36ClwcsFw31AwskA=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+bxIZNkO5P4Tz6WxGEIFs2LmdzQJV7tLmBIPMCyniCI=
+			HEYgYqHzh2vt1T/0Yf2Z0JNsclnI1lUW/zu8ErtZPqk=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VlKczFLOxiZoUkjTDMyvLW8R9YZa2HyPu7uIs8in/BE=
+			C/z8k1pMAxVMBVjyGbn6cvd1jlNVLDZBKcfHhl/6QCI=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+bxIZNkO5P4Tz6WxGEIFs2LmdzQJV7tLmBIPMCyniCI=
+			HEYgYqHzh2vt1T/0Yf2Z0JNsclnI1lUW/zu8ErtZPqk=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rk3F9vpgulJLXXSrnZWvxKmuGQ961x6RRV04x1P56V4=
+			gYUJCCacduZ3AimMxLW5Rfv8gDaa93RTm3x9hL+VLl0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -260,7 +260,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ShmzLmcehfSGBnFW18HlnwJBlH12VNMAPbXSWZoG5Wc=
+			LOcvI2q5B69Z1394hH7KWYGW0wLs8W+dKp+RkQUzjlg=
 			</data>
 		</dict>
 		<key>PrivateHeaders/ConsumerWrapperDelegate.h</key>

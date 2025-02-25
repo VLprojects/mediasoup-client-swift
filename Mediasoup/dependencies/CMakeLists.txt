@@ -24,8 +24,12 @@ if("${IOS_SDK}" STREQUAL "iphone")
   set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/")
 elseif("${IOS_SDK}" STREQUAL "iphonesimulator")
   set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk")
+elseif("${IOS_SDK}" STREQUAL "appletv")
+  set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS.sdk")
+elseif("${IOS_SDK}" STREQUAL "appletvsimulator")
+  set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator.sdk")
 else()
-  message(FATAL_ERROR "IOS_SDK must be set to iphone/iphonesimulator")  
+  message(FATAL_ERROR "IOS_SDK must be set to iphone/iphonesimulator/appletv/appletvsimulator")
 endif()
 
 # set the ios architectures

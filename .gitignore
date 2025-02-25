@@ -7,5 +7,6 @@ xcuserdata/
 timeline.xctimeline
 playground.xcworkspace
 .build/
+.swiftpm/
 build/
 Pods/

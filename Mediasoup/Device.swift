@@ -6,12 +6,20 @@ import WebRTC
 public class Device {
 	private let device: DeviceWrapper
 
-	public init() {
-		self.device = DeviceWrapper()
+	public init(captureAudioSession: Bool = false) {
+		self.device = DeviceWrapper(captureAudioSession: captureAudioSession)
 	}
 
 	public init(pcFactory: RTCPeerConnectionFactory) {
 		self.device = DeviceWrapper(pcFactory: pcFactory)
+	}
+
+	public func retainAudioSession() {
+		device.retainAudioSession()
+	}
+
+	public func releaseAudioSession() {
+		device.releaseAudioSession()
 	}
 
 	public func isLoaded() -> Bool {

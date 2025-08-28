@@ -1,8 +1,8 @@
 {
   "ABIRoot": {
     "kind": "Root",
-    "name": "TopLevel",
-    "printedName": "TopLevel",
+    "name": "Mediasoup",
+    "printedName": "Mediasoup",
     "children": [
       {
         "kind": "Import",
@@ -228,6 +228,22 @@
         "moduleName": "Mediasoup",
         "declAttributes": [
           "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
         ]
       },
       {
@@ -251,6 +267,20 @@
           "AccessControl"
         ],
         "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
           {
             "kind": "Conformance",
             "name": "TransportDelegate",
@@ -294,7 +324,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "WeakStorage",
-                "printedName": "Mediasoup.ReceiveTransportDelegate?"
+                "printedName": "(any Mediasoup.ReceiveTransportDelegate)?"
               }
             ],
             "declKind": "Var",
@@ -318,12 +348,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.ReceiveTransportDelegate?",
+                    "printedName": "(any Mediasoup.ReceiveTransportDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "ReceiveTransportDelegate",
-                        "printedName": "Mediasoup.ReceiveTransportDelegate",
+                        "printedName": "any Mediasoup.ReceiveTransportDelegate",
                         "usr": "s:9Mediasoup24ReceiveTransportDelegateP"
                       }
                     ],
@@ -350,12 +380,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.ReceiveTransportDelegate?",
+                    "printedName": "(any Mediasoup.ReceiveTransportDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "ReceiveTransportDelegate",
-                        "printedName": "Mediasoup.ReceiveTransportDelegate",
+                        "printedName": "any Mediasoup.ReceiveTransportDelegate",
                         "usr": "s:9Mediasoup24ReceiveTransportDelegateP"
                       }
                     ],
@@ -894,6 +924,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Transport",
             "printedName": "Transport",
             "usr": "s:9Mediasoup9TransportP",
@@ -1099,6 +1143,20 @@
           "AccessControl"
         ],
         "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
           {
             "kind": "Conformance",
             "name": "Equatable",
@@ -1423,6 +1481,22 @@
         "sugared_genericSig": "<Self : AnyObject>",
         "declAttributes": [
           "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
         ]
       },
       {
@@ -1450,7 +1524,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "Transport",
-                "printedName": "Mediasoup.Transport",
+                "printedName": "any Mediasoup.Transport",
                 "usr": "s:9Mediasoup9TransportP"
               },
               {
@@ -1483,7 +1557,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "Transport",
-                "printedName": "Mediasoup.Transport",
+                "printedName": "any Mediasoup.Transport",
                 "usr": "s:9Mediasoup9TransportP"
               },
               {
@@ -1512,6 +1586,22 @@
         "sugared_genericSig": "<Self : AnyObject>",
         "declAttributes": [
           "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
         ]
       },
       {
@@ -1803,6 +1893,20 @@
               "AccessControl"
             ],
             "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
               {
                 "kind": "Conformance",
                 "name": "Equatable",
@@ -2106,6 +2210,22 @@
                 "moduleName": "Mediasoup",
                 "declAttributes": [
                   "AccessControl"
+                ],
+                "conformances": [
+                  {
+                    "kind": "Conformance",
+                    "name": "Copyable",
+                    "printedName": "Copyable",
+                    "usr": "s:s8CopyableP",
+                    "mangledName": "$ss8CopyableP"
+                  },
+                  {
+                    "kind": "Conformance",
+                    "name": "Escapable",
+                    "printedName": "Escapable",
+                    "usr": "s:s9EscapableP",
+                    "mangledName": "$ss9EscapableP"
+                  }
                 ]
               },
               {
@@ -3149,6 +3269,22 @@
             "moduleName": "Mediasoup",
             "declAttributes": [
               "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              }
             ]
           },
           {
@@ -3402,6 +3538,22 @@
         "moduleName": "Mediasoup",
         "declAttributes": [
           "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
         ]
       },
       {
@@ -3789,6 +3941,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
@@ -3837,7 +4003,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "WeakStorage",
-                "printedName": "Mediasoup.SendTransportDelegate?"
+                "printedName": "(any Mediasoup.SendTransportDelegate)?"
               }
             ],
             "declKind": "Var",
@@ -3861,12 +4027,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.SendTransportDelegate?",
+                    "printedName": "(any Mediasoup.SendTransportDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "SendTransportDelegate",
-                        "printedName": "Mediasoup.SendTransportDelegate",
+                        "printedName": "any Mediasoup.SendTransportDelegate",
                         "usr": "s:9Mediasoup21SendTransportDelegateP"
                       }
                     ],
@@ -3893,12 +4059,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.SendTransportDelegate?",
+                    "printedName": "(any Mediasoup.SendTransportDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "SendTransportDelegate",
-                        "printedName": "Mediasoup.SendTransportDelegate",
+                        "printedName": "any Mediasoup.SendTransportDelegate",
                         "usr": "s:9Mediasoup21SendTransportDelegateP"
                       }
                     ],
@@ -4631,6 +4797,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Transport",
             "printedName": "Transport",
             "usr": "s:9Mediasoup9TransportP",
@@ -4686,6 +4866,22 @@
         "sugared_genericSig": "<Self : AnyObject>",
         "declAttributes": [
           "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
         ]
       },
       {
@@ -4713,7 +4909,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "Transport",
-                "printedName": "Mediasoup.Transport",
+                "printedName": "any Mediasoup.Transport",
                 "usr": "s:9Mediasoup9TransportP"
               },
               {
@@ -4784,7 +4980,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "Transport",
-                "printedName": "Mediasoup.Transport",
+                "printedName": "any Mediasoup.Transport",
                 "usr": "s:9Mediasoup9TransportP"
               },
               {
@@ -4859,6 +5055,20 @@
           "AccessControl"
         ],
         "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
           {
             "kind": "Conformance",
             "name": "TransportDelegate",
@@ -5088,12 +5298,12 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Mediasoup.MediasoupError.Type) -> (Swift.Error) -> Mediasoup.MediasoupError",
+                "printedName": "(Mediasoup.MediasoupError.Type) -> (any Swift.Error) -> Mediasoup.MediasoupError",
                 "children": [
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(Swift.Error) -> Mediasoup.MediasoupError",
+                    "printedName": "(any Swift.Error) -> Mediasoup.MediasoupError",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -5104,7 +5314,7 @@
                       {
                         "kind": "TypeNominal",
                         "name": "Error",
-                        "printedName": "Swift.Error",
+                        "printedName": "any Swift.Error",
                         "usr": "s:s5ErrorP"
                       }
                     ]
@@ -5139,6 +5349,20 @@
           "AccessControl"
         ],
         "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
           {
             "kind": "Conformance",
             "name": "Error",
@@ -5203,6 +5427,22 @@
         "sugared_genericSig": "<Self : AnyObject>",
         "declAttributes": [
           "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
         ]
       },
       {
@@ -5239,7 +5479,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "WeakStorage",
-                "printedName": "Mediasoup.DataConsumerDelegate?"
+                "printedName": "(any Mediasoup.DataConsumerDelegate)?"
               }
             ],
             "declKind": "Var",
@@ -5263,12 +5503,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.DataConsumerDelegate?",
+                    "printedName": "(any Mediasoup.DataConsumerDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "DataConsumerDelegate",
-                        "printedName": "Mediasoup.DataConsumerDelegate",
+                        "printedName": "any Mediasoup.DataConsumerDelegate",
                         "usr": "s:9Mediasoup20DataConsumerDelegateP"
                       }
                     ],
@@ -5295,12 +5535,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.DataConsumerDelegate?",
+                    "printedName": "(any Mediasoup.DataConsumerDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "DataConsumerDelegate",
-                        "printedName": "Mediasoup.DataConsumerDelegate",
+                        "printedName": "any Mediasoup.DataConsumerDelegate",
                         "usr": "s:9Mediasoup20DataConsumerDelegateP"
                       }
                     ],
@@ -5868,7 +6108,23 @@
         "declAttributes": [
           "AccessControl"
         ],
-        "hasMissingDesignatedInitializers": true
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       },
       {
         "kind": "Import",
@@ -6059,6 +6315,22 @@
         "sugared_genericSig": "<Self : AnyObject>",
         "declAttributes": [
           "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
         ]
       },
       {
@@ -6349,6 +6621,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
@@ -6397,7 +6683,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "WeakStorage",
-                "printedName": "Mediasoup.ProducerDelegate?"
+                "printedName": "(any Mediasoup.ProducerDelegate)?"
               }
             ],
             "declKind": "Var",
@@ -6421,12 +6707,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.ProducerDelegate?",
+                    "printedName": "(any Mediasoup.ProducerDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "ProducerDelegate",
-                        "printedName": "Mediasoup.ProducerDelegate",
+                        "printedName": "any Mediasoup.ProducerDelegate",
                         "usr": "s:9Mediasoup16ProducerDelegateP"
                       }
                     ],
@@ -6453,12 +6739,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.ProducerDelegate?",
+                    "printedName": "(any Mediasoup.ProducerDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "ProducerDelegate",
-                        "printedName": "Mediasoup.ProducerDelegate",
+                        "printedName": "any Mediasoup.ProducerDelegate",
                         "usr": "s:9Mediasoup16ProducerDelegateP"
                       }
                     ],
@@ -7129,7 +7415,23 @@
         "declAttributes": [
           "AccessControl"
         ],
-        "hasMissingDesignatedInitializers": true
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       },
       {
         "kind": "Import",
@@ -7160,21 +7462,29 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init()",
+            "printedName": "init(captureAudioSession:)",
             "children": [
               {
                 "kind": "TypeNominal",
                 "name": "Device",
                 "printedName": "Mediasoup.Device",
                 "usr": "s:9Mediasoup6DeviceC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:9Mediasoup6DeviceCACycfc",
-            "mangledName": "$s9Mediasoup6DeviceCACycfc",
+            "usr": "s:9Mediasoup6DeviceC19captureAudioSessionACSb_tcfc",
+            "mangledName": "$s9Mediasoup6DeviceC19captureAudioSessionACSb_tcfc",
             "moduleName": "Mediasoup",
             "declAttributes": [
-              "AccessControl"
+              "AccessControl",
+              "RawDocComment"
             ],
             "init_kind": "Designated"
           },
@@ -7204,6 +7514,48 @@
               "AccessControl"
             ],
             "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "retainAudioSession",
+            "printedName": "retainAudioSession()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup6DeviceC18retainAudioSessionyyF",
+            "mangledName": "$s9Mediasoup6DeviceC18retainAudioSessionyyF",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "releaseAudioSession",
+            "printedName": "releaseAudioSession()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup6DeviceC19releaseAudioSessionyyF",
+            "mangledName": "$s9Mediasoup6DeviceC19releaseAudioSessionyyF",
+            "moduleName": "Mediasoup",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Function",
@@ -7526,6 +7878,22 @@
         "moduleName": "Mediasoup",
         "declAttributes": [
           "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
         ]
       },
       {
@@ -7562,7 +7930,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "WeakStorage",
-                "printedName": "Mediasoup.ConsumerDelegate?"
+                "printedName": "(any Mediasoup.ConsumerDelegate)?"
               }
             ],
             "declKind": "Var",
@@ -7586,12 +7954,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.ConsumerDelegate?",
+                    "printedName": "(any Mediasoup.ConsumerDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "ConsumerDelegate",
-                        "printedName": "Mediasoup.ConsumerDelegate",
+                        "printedName": "any Mediasoup.ConsumerDelegate",
                         "usr": "s:9Mediasoup16ConsumerDelegateP"
                       }
                     ],
@@ -7618,12 +7986,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Mediasoup.ConsumerDelegate?",
+                    "printedName": "(any Mediasoup.ConsumerDelegate)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "ConsumerDelegate",
-                        "printedName": "Mediasoup.ConsumerDelegate",
+                        "printedName": "any Mediasoup.ConsumerDelegate",
                         "usr": "s:9Mediasoup16ConsumerDelegateP"
                       }
                     ],
@@ -8163,10 +8531,34 @@
         "declAttributes": [
           "AccessControl"
         ],
-        "hasMissingDesignatedInitializers": true
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       }
     ],
     "json_format_version": 8
   },
-  "ConstValues": []
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/neznajka\/vl\/projects\/mediasoup-client-swift\/Mediasoup\/Device.swift",
+      "kind": "BooleanLiteral",
+      "offset": 604,
+      "length": 5,
+      "value": "false"
+    }
+  ]
 }

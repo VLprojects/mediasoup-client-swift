@@ -6,6 +6,13 @@ import WebRTC
 public class Device {
 	private let device: DeviceWrapper
 
+	/// Initializes the instance with optional control over the audio session lifecycle.
+	///
+	/// - Parameter captureAudioSession: When `true`, the initializer immediately
+	///   retains the internally managed Audio Device Module (ADM), keeping the
+	///   audio session active for the object's lifetime. The session will be
+	///   automatically released in `deinit`. When `false`, audio session
+	///   management follows WebRTC's default behavior.
 	public init(captureAudioSession: Bool = false) {
 		self.device = DeviceWrapper(captureAudioSession: captureAudioSession)
 	}
@@ -14,10 +21,17 @@ public class Device {
 		self.device = DeviceWrapper(pcFactory: pcFactory)
 	}
 
+	/// Explicitly starts the internally managed Audio Device Module (ADM).
+	///
+	/// By default, WebRTC automatically starts and stops the RTCAudioSession and ADM
+	/// when audio tracks are created or removed from a channel. Calling this method
+	/// ensures the ADM remains active for the entire call duration, which often improves
+	/// the reliability of audio-related functionality.
 	public func retainAudioSession() {
 		device.retainAudioSession()
 	}
 
+	/// Explicitly stops the internally managed Audio Device Module (ADM).
 	public func releaseAudioSession() {
 		device.releaseAudioSession()
 	}

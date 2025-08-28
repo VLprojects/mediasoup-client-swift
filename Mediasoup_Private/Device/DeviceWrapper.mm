@@ -4,8 +4,10 @@
 #import <sdk/objc/native/api/audio_device_module.h>
 #import <sdk/objc/components/video_codec/RTCDefaultVideoDecoderFactory.h>
 #import <sdk/objc/components/video_codec/RTCDefaultVideoEncoderFactory.h>
+#import <sdk/objc/components/audio/RTCAudioSession+Private.h>
 #import <sdk/objc/native/src/objc_video_encoder_factory.h>
 #import <sdk/objc/native/src/objc_video_decoder_factory.h>
+#import <media/engine/adm_helpers.h>
 #import <peerconnection/RTCPeerConnectionFactory.h>
 #import <peerconnection/RTCPeerConnectionFactoryBuilder.h>
 #import <peerconnection/RTCPeerConnectionFactory+Private.h>
@@ -21,6 +23,10 @@
 @interface DeviceWrapper() {
 	mediasoupclient::Device *_device;
 	mediasoupclient::PeerConnection::Options *_pcOptions;
+
+	rtc::scoped_refptr<webrtc::AudioDeviceModule> _adm;
+
+	BOOL _captureAudioSession;
 }
 @property(nonatomic, strong) RTCPeerConnectionFactory *pcFactory;
 @end
@@ -29,6 +35,11 @@
 @implementation DeviceWrapper
 
 - (instancetype _Nonnull)init {
+	self = [self initCaptureAudioSession:false];
+	return self;
+}
+
+- (instancetype _Nonnull)initCaptureAudioSession:(BOOL)captureAudioSession {
 	auto audioEncoderFactory = webrtc::CreateBuiltinAudioEncoderFactory();
 	auto audioDecoderFactory = webrtc::CreateBuiltinAudioDecoderFactory();
 	auto videoEncoderFactory = std::make_unique<webrtc::ObjCVideoEncoderFactory>(
@@ -43,11 +54,17 @@
 	[pcFactoryBuilder setAudioDecoderFactory:audioDecoderFactory];
 	[pcFactoryBuilder setVideoEncoderFactory:std::move(videoEncoderFactory)];
 	[pcFactoryBuilder setVideoDecoderFactory:std::move(videoDecoderFactory)];
-	[pcFactoryBuilder setAudioDeviceModule:webrtc::CreateAudioDeviceModule()];
-
+	_adm = webrtc::CreateAudioDeviceModule();
+	_captureAudioSession = captureAudioSession;
+	[pcFactoryBuilder setAudioDeviceModule:_adm];
 	auto pcFactory = [pcFactoryBuilder createPeerConnectionFactory];
 
 	self = [self initWithPCFactory:pcFactory];
+
+	if (captureAudioSession) {
+		[self retainAudioSession];
+	}
+
 	return self;
 }
 
@@ -63,6 +80,9 @@
 }
 
 - (void)dealloc {
+	if (_captureAudioSession) {
+		[self releaseAudioSession];
+	}
 	self.pcFactory = nil;
 	delete _pcOptions;
 	delete _device;
@@ -70,6 +90,24 @@
 
 - (BOOL)isLoaded {
 	return _device->IsLoaded();
+}
+
+- (void)retainAudioSession {
+	self.pcFactory.workerThread->PostTask([self]{
+		self->_adm->Init();
+		self->_adm->InitPlayout();
+		self->_adm->InitRecording();
+		self->_adm->StartPlayout();
+		self->_adm->StartRecording();
+	});
+}
+
+- (void)releaseAudioSession {
+	self.pcFactory.workerThread->PostTask([self]{
+		self->_adm->StopPlayout();
+		self->_adm->StopRecording();
+		self->_adm->Terminate();
+	});
 }
 
 - (void)loadWithRouterRTPCapabilities:(NSString *)routerRTPCapabilities

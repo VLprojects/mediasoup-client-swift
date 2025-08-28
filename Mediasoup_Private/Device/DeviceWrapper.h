@@ -14,7 +14,11 @@ typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 @interface DeviceWrapper : NSObject
 
 - (instancetype _Nonnull)init;
+- (instancetype _Nonnull)initCaptureAudioSession:(BOOL)captureAudioSession;
 - (instancetype _Nonnull)initWithPCFactory:(RTCPeerConnectionFactory *_Nonnull)pcFactory NS_DESIGNATED_INITIALIZER;
+
+- (void)retainAudioSession;
+- (void)releaseAudioSession;
 
 - (BOOL)isLoaded;
 

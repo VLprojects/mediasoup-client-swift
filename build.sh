@@ -156,6 +156,7 @@ function patchWebRTC() {
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_encoder_factory.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdp_video_format_utils.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_BUILD.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/build_config_ios_BUILD.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/abseil_optional.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/RTCPeerConnectionFactoryBuilder.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_h.patch
@@ -216,7 +217,10 @@ target_os = ["ios"]'
 function resetWebRTC() {
 	cd $WORK_DIR/webrtc/src
 	git reset --hard
-	
+
+	cd $WORK_DIR/webrtc/src/build
+	git reset --hard
+
 	cd $WORK_DIR/webrtc/src/third_party
 	git reset --hard
 }

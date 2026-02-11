@@ -1,6 +1,6 @@
 --- webrtc/src/sdk/BUILD.gn
 +++ webrtc/src/sdk/BUILD.gn
-@@ -1359,7 +1359,41 @@ if (is_ios || is_mac) {
+@@ -1352,9 +1352,44 @@ if (is_ios || is_mac) {
            "@rpath/$output_name.framework/$output_name",
          ]
 
@@ -41,4 +41,7 @@
 +          "../stats",
            ":audio_objc",
            ":base_objc",
++          ":helpers_objc",
            ":default_codec_factory_objc",
+           ":metal_objc",
+           ":native_api",

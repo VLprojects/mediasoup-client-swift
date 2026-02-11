@@ -83,7 +83,7 @@ function refetchLibmediasoupclient() {
 	echo 'Cloning libmediasoupclient'
 	cd $WORK_DIR
 	rm -rf libmediasoupclient
-	git clone -b vl-3.4.1 --depth 1 https://github.com/VLprojects/libmediasoupclient.git
+	git clone -b vl-3.4.3 --depth 1 https://github.com/VLprojects/libmediasoupclient.git
 }
 
 if [ -d $WORK_DIR/libmediasoupclient ]

@@ -1,0 +1,10 @@
+--- webrtc/src/modules/video_coding/codecs/av1/dav1d_decoder.h
++++ webrtc/src/modules/video_coding/codecs/av1/dav1d_decoder.h
+@@ -16,7 +16,7 @@
+
+ namespace webrtc {
+
+-std::unique_ptr<VideoDecoder> CreateDav1dDecoder();
++RTC_EXPORT std::unique_ptr<VideoDecoder> CreateDav1dDecoder();
+
+ }  // namespace webrtc

@@ -1,0 +1,34 @@
+--- webrtc/src/sdk/objc/native/src/objc_video_encoder_factory.mm
++++ webrtc/src/sdk/objc/native/src/objc_video_encoder_factory.mm
+@@ -19,6 +19,7 @@
+ #import "sdk/objc/api/peerconnection/RTCEncodedImage+Private.h"
+ #import "sdk/objc/api/peerconnection/RTCVideoCodecInfo+Private.h"
+ #import "sdk/objc/api/peerconnection/RTCVideoEncoderSettings+Private.h"
++#import "sdk/objc/api/peerconnection/RTCRtpCodecParameters.h"
+ #import "sdk/objc/api/video_codec/RTCVideoCodecConstants.h"
+ #import "sdk/objc/api/video_codec/RTCWrappedNativeVideoEncoder.h"
+ #import "sdk/objc/helpers/NSString+StdString.h"
+@@ -30,6 +31,7 @@
+ #include "modules/video_coding/include/video_error_codes.h"
+ #include "rtc_base/logging.h"
+ #include "sdk/objc/native/src/objc_video_frame.h"
++#include "modules/video_coding/codecs/vp9/include/vp9.h"
+ 
+ namespace webrtc {
+ 
+@@ -164,8 +166,13 @@ void OnCurrentEncoder(const SdpVideoFormat &format) override {
+ std::vector<SdpVideoFormat> ObjCVideoEncoderFactory::GetSupportedFormats() const {
+   std::vector<SdpVideoFormat> supported_formats;
+   for (RTC_OBJC_TYPE(RTCVideoCodecInfo) * supportedCodec in [encoder_factory_ supportedCodecs]) {
+-    SdpVideoFormat format = [supportedCodec nativeSdpVideoFormat];
+-    supported_formats.push_back(format);
++    if ([supportedCodec.name isEqual:kRTCVp9CodecName]) {
++      std::vector<SdpVideoFormat> vp9codecs = webrtc::SupportedVP9Codecs(true);
++      supported_formats.insert( supported_formats.end(), vp9codecs.begin(), vp9codecs.end() );
++    } else {
++      SdpVideoFormat format = [supportedCodec nativeSdpVideoFormat];
++      supported_formats.push_back(format);
++    }
+   }
+ 
+   return supported_formats;

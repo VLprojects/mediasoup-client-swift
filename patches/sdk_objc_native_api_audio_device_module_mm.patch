@@ -1,0 +1,10 @@
+--- webrtc/src/sdk/objc/native/api/audio_device_module.mm
++++ webrtc/src/sdk/objc/native/api/audio_device_module.mm
+@@ -17,6 +17,7 @@
+ 
+ namespace webrtc {
+ 
++__attribute__((visibility("default")))
+ rtc::scoped_refptr<AudioDeviceModule> CreateAudioDeviceModule(bool bypass_voice_processing) {
+   RTC_DLOG(INFO) << __FUNCTION__;
+ #if defined(WEBRTC_IOS)

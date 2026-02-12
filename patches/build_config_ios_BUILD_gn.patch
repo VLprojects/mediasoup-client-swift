@@ -1,0 +1,10 @@
+--- webrtc/src/build/config/ios/BUILD.gn
++++ webrtc/src/build/config/ios/BUILD.gn
+@@ -108,6 +108,7 @@
+   common_flags = [
+     "-isysroot",
+     _sdk_root,
++    "-F$_sdk_root/System/Library/SubFrameworks",
+   ]
+   swiftflags = [
+     "-sdk",

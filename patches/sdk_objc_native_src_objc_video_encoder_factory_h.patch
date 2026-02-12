@@ -1,0 +1,11 @@
+--- webrtc/src/sdk/objc/native/src/objc_video_encoder_factory.h
++++ webrtc/src/sdk/objc/native/src/objc_video_encoder_factory.h
+@@ -24,7 +24,7 @@ namespace webrtc {
+ 
+ class ObjCVideoEncoderFactory : public VideoEncoderFactory {
+  public:
+-  explicit ObjCVideoEncoderFactory(id<RTC_OBJC_TYPE(RTCVideoEncoderFactory)>);
++  RTC_EXPORT explicit ObjCVideoEncoderFactory(id<RTC_OBJC_TYPE(RTCVideoEncoderFactory)>);
+   ~ObjCVideoEncoderFactory() override;
+ 
+   id<RTC_OBJC_TYPE(RTCVideoEncoderFactory)> wrapped_encoder_factory() const;

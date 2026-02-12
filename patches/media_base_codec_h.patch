@@ -1,0 +1,11 @@
+--- webrtc/src/media/base/codec.h
++++ webrtc/src/media/base/codec.h
+@@ -178,7 +178,7 @@ struct RTC_EXPORT Codec {
+   friend Codec CreateAudioRtxCodec(int rtx_payload_type,
+                                    int associated_payload_type);
+   friend Codec CreateVideoCodec(int id, const std::string& name);
+-  friend Codec CreateVideoCodec(const webrtc::SdpVideoFormat& c);
++  RTC_EXPORT friend Codec CreateVideoCodec(const webrtc::SdpVideoFormat& c);
+   friend Codec CreateVideoRtxCodec(int rtx_payload_type,
+                                    int associated_payload_type);
+ };

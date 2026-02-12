@@ -1,0 +1,15 @@
+--- webrtc/src/modules/video_coding/codecs/av1/av1_svc_config.h
++++ webrtc/src/modules/video_coding/codecs/av1/av1_svc_config.h
+@@ -17,10 +17,10 @@
+
+ namespace webrtc {
+
+-absl::InlinedVector<ScalabilityMode, kScalabilityModeCount>
++RTC_EXPORT absl::InlinedVector<ScalabilityMode, kScalabilityModeCount>
+ LibaomAv1EncoderSupportedScalabilityModes();
+
+-bool LibaomAv1EncoderSupportsScalabilityMode(ScalabilityMode scalability_mode);
++RTC_EXPORT bool LibaomAv1EncoderSupportsScalabilityMode(ScalabilityMode scalability_mode);
+
+ // Fills `video_codec.spatialLayers` using other members.
+ bool SetAv1SvcConfig(VideoCodec& video_codec,

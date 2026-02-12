@@ -1,0 +1,11 @@
+--- webrtc/src/api/video_codecs/video_encoder_factory_template.h
++++ webrtc/src/api/video_codecs/video_encoder_factory_template.h
+@@ -44,7 +44,7 @@ namespace webrtc {
+ // query/return the first encoder implementation supporting the given
+ // SdpVideoFormat.
+ template <typename... Ts>
+-class VideoEncoderFactoryTemplate : public VideoEncoderFactory {
++class RTC_EXPORT VideoEncoderFactoryTemplate : public VideoEncoderFactory {
+  public:
+   std::vector<SdpVideoFormat> GetSupportedFormats() const override {
+     return GetSupportedFormatsInternal<Ts...>();

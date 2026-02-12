@@ -144,7 +144,7 @@ Mediasoup-Client-Swift has almost no logic, it's only a convenient wrapper for o
 
 * [WebRTC (version m120 with patches applied locally)](https://groups.google.com/g/discuss-webrtc/c/ws0_MYHIBOw)
 
-* [libmediasoupclient (version 3.4.1 patched fork)](https://github.com/VLprojects/libmediasoupclient) 
+* [libmediasoupclient (version 3.4.3 patched fork)](https://github.com/VLprojects/libmediasoupclient) 
 
 ## Roadmap
 

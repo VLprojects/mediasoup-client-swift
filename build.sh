@@ -166,6 +166,7 @@ function patchWebRTC() {
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_codecs_vp8_vp8_scalability_h.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_codecs_vp9_include_vp9_h.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_svc_scalability_mode_util_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/rtc_base_system_gcd_helpers_h.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_BUILD_gn.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_api_peerconnection_RTCPeerConnectionFactoryBuilder_h.patch
 	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_native_api_audio_device_module_h.patch

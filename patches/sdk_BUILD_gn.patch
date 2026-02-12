@@ -21,12 +21,21 @@
            "objc/helpers/RTCCameraPreviewView.h",
            "objc/helpers/RTCDispatcher.h",
            "objc/helpers/UIDevice+RTCDevice.h",
-@@ -1352,7 +1359,42 @@ if (is_ios || is_mac) {
+@@ -1334,6 +1341,7 @@ if (is_ios || is_mac) {
+           "objc/api/video_codec/RTCVideoEncoderAV1.h",
+           "objc/api/video_frame_buffer/RTCNativeI420Buffer.h",
+           "objc/api/video_frame_buffer/RTCNativeMutableI420Buffer.h",
++          "../rtc_base/system/gcd_helpers.h",
+         ]
+
+         if (!build_with_chromium) {
+@@ -1352,7 +1360,43 @@ if (is_ios || is_mac) {
            "@rpath/$output_name.framework/$output_name",
          ]
 
 +        public_deps = [
 +          "../third_party/abseil-cpp/absl/types:bad_optional_access",
++          "../rtc_base/system:gcd_helpers",
 +          ":helpers_objc",
 +        ]
 +

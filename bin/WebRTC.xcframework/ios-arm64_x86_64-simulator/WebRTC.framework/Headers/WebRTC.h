@@ -46,6 +46,7 @@
 #import <WebRTC/RTCVideoEncoderFactoryH264.h>
 #import <WebRTC/RTCVideoEncoderH264.h>
 #import <WebRTC/RTCCVPixelBuffer.h>
+#import <WebRTC/AVCaptureSession+DevicePosition.h>
 #import <WebRTC/RTCCameraPreviewView.h>
 #import <WebRTC/RTCDispatcher.h>
 #import <WebRTC/UIDevice+RTCDevice.h>

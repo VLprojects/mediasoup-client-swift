@@ -152,20 +152,30 @@ export PATH=$WORK_DIR/depot_tools:$PATH
 # to make WebRTC builable, usable and properly configurable for iOS platform.
 function patchWebRTC() {
 	echo 'Patching WebRTC for iOS platform support'
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_decoder_factory.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_encoder_factory.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdp_video_format_utils.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_BUILD.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/build_config_ios_BUILD.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/abseil_optional.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/RTCPeerConnectionFactoryBuilder.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_h.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/audio_device_module_mm.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_decoder_factory_h.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_h.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/objc_video_encoder_factory_mm.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_decoder_factory_h.patch
-	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/video_encoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/api_audio_codecs_builtin_audio_decoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/api_audio_codecs_builtin_audio_encoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/api_video_codecs_sdp_video_format_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/api_video_codecs_video_encoder_factory_template_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/build_config_ios_BUILD_gn.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/media_base_codec_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/media_base_sdp_video_format_utils_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_codecs_av1_av1_svc_config_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_codecs_av1_dav1d_decoder_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_codecs_av1_libaom_av1_encoder_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_codecs_vp8_include_vp8_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_codecs_vp8_vp8_scalability_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_codecs_vp9_include_vp9_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/modules_video_coding_svc_scalability_mode_util_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_BUILD_gn.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_api_peerconnection_RTCPeerConnectionFactoryBuilder_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_native_api_audio_device_module_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_native_api_audio_device_module_mm.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_native_api_video_decoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_native_api_video_encoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_native_src_objc_video_decoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_native_src_objc_video_encoder_factory_h.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_objc_native_src_objc_video_encoder_factory_mm.patch
+	patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/third_party_abseil-cpp_absl_types_bad_optional_access_cc.patch
 }
 
 # WebRTC sources are downloaded by git client from Depot tools.

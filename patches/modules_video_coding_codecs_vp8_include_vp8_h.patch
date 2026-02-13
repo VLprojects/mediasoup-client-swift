@@ -1,19 +1,21 @@
---- webrtc/src/modules/video_coding/codecs/vp8/include/vp8.h
-+++ webrtc/src/modules/video_coding/codecs/vp8/include/vp8.h
+diff --git modules/video_coding/codecs/vp8/include/vp8.h modules/video_coding/codecs/vp8/include/vp8.h
+index 2fc647874f..1a04cddc54 100644
+--- modules/video_coding/codecs/vp8/include/vp8.h
++++ modules/video_coding/codecs/vp8/include/vp8.h
 @@ -36,13 +36,13 @@ class VP8Encoder {
          resolution_bitrate_limits = {};
    };
-
+ 
 -  static std::unique_ptr<VideoEncoder> Create();
 -  static std::unique_ptr<VideoEncoder> Create(Settings settings);
 +  RTC_EXPORT static std::unique_ptr<VideoEncoder> Create();
 +  RTC_EXPORT static std::unique_ptr<VideoEncoder> Create(Settings settings);
  };
-
+ 
  class VP8Decoder {
   public:
 -  static std::unique_ptr<VideoDecoder> Create();
 +  RTC_EXPORT static std::unique_ptr<VideoDecoder> Create();
  };
-
+ 
  }  // namespace webrtc

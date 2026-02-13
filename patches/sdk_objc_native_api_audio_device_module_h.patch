@@ -1,7 +1,9 @@
---- webrtc/src/sdk/objc/native/api/audio_device_module.h
-+++ webrtc/src/sdk/objc/native/api/audio_device_module.h
+diff --git sdk/objc/native/api/audio_device_module.h sdk/objc/native/api/audio_device_module.h
+index 3405469709..1fac129eea 100644
+--- sdk/objc/native/api/audio_device_module.h
++++ sdk/objc/native/api/audio_device_module.h
 @@ -22,7 +22,7 @@ namespace webrtc {
- // Warning: Setting |bypass_voice_processing| will have unpredictable
+ // Warning: Setting `bypass_voice_processing` will have unpredictable
  // consequences for the audio path in the device. It is not advisable to use in
  // most scenarios.
 -rtc::scoped_refptr<AudioDeviceModule> CreateAudioDeviceModule(

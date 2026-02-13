@@ -1,5 +1,7 @@
---- webrtc/src/media/base/sdp_video_format_utils.h
-+++ webrtc/src/media/base/sdp_video_format_utils.h
+diff --git media/base/sdp_video_format_utils.h media/base/sdp_video_format_utils.h
+index 80c1e4d501..2c5cf54650 100644
+--- media/base/sdp_video_format_utils.h
++++ media/base/sdp_video_format_utils.h
 @@ -31,7 +31,7 @@ namespace webrtc {
  // and `remote_offered_params` must be equal before calling this function. The
  // parameters that are used when negotiating are the level part of

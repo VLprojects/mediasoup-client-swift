@@ -1,0 +1,12 @@
+diff --git config/ios/BUILD.gn config/ios/BUILD.gn
+index 4360f328c..7b8d3c703 100644
+--- config/ios/BUILD.gn
++++ config/ios/BUILD.gn
+@@ -108,6 +108,7 @@ config("runtime_library") {
+   common_flags = [
+     "-isysroot",
+     _sdk_root,
++    "-F$_sdk_root/System/Library/SubFrameworks",
+   ]
+   swiftflags = [
+     "-sdk",

@@ -1,10 +1,13 @@
---- webrtc/src/modules/video_coding/codecs/vp8/vp8_scalability.h
-+++ webrtc/src/modules/video_coding/codecs/vp8/vp8_scalability.h
+diff --git modules/video_coding/codecs/vp8/vp8_scalability.h modules/video_coding/codecs/vp8/vp8_scalability.h
+index 923f159118..1563493782 100644
+--- modules/video_coding/codecs/vp8/vp8_scalability.h
++++ modules/video_coding/codecs/vp8/vp8_scalability.h
 @@ -17,7 +17,7 @@ namespace webrtc {
-
+ 
  inline constexpr ScalabilityMode kVP8SupportedScalabilityModes[] = {
      ScalabilityMode::kL1T1, ScalabilityMode::kL1T2, ScalabilityMode::kL1T3};
 -bool VP8SupportsScalabilityMode(ScalabilityMode scalability_mode);
 +RTC_EXPORT bool VP8SupportsScalabilityMode(ScalabilityMode scalability_mode);
-
+ 
  }  // namespace webrtc
+ 

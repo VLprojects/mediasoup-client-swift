@@ -1,5 +1,7 @@
---- webrtc/src/api/audio_codecs/builtin_audio_decoder_factory.h
-+++ webrtc/src/api/audio_codecs/builtin_audio_decoder_factory.h
+diff --git api/audio_codecs/builtin_audio_decoder_factory.h api/audio_codecs/builtin_audio_decoder_factory.h
+index 72e1e3d96e..70f12a89e6 100644
+--- api/audio_codecs/builtin_audio_decoder_factory.h
++++ api/audio_codecs/builtin_audio_decoder_factory.h
 @@ -21,7 +21,7 @@ namespace webrtc {
  // only need a subset of the codecs, consider using
  // CreateAudioDecoderFactory<...codecs listed here...>() or

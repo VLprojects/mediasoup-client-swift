@@ -1,5 +1,7 @@
---- webrtc/src/api/video_codecs/sdp_video_format.h
-+++ webrtc/src/api/video_codecs/sdp_video_format.h
+diff --git api/video_codecs/sdp_video_format.h api/video_codecs/sdp_video_format.h
+index faaa66c241..09dd575cbf 100644
+--- api/video_codecs/sdp_video_format.h
++++ api/video_codecs/sdp_video_format.h
 @@ -66,7 +66,7 @@ struct RTC_EXPORT SdpVideoFormat {
  // SdpVideoFormat, which makes instances that should compare equal to not match
  // anymore. Until we stop misusing SdpVideoFormats provide this convenience
@@ -8,3 +10,4 @@
 +RTC_EXPORT absl::optional<SdpVideoFormat> FuzzyMatchSdpVideoFormat(
      rtc::ArrayView<const SdpVideoFormat> supported_formats,
      const SdpVideoFormat& format);
+ 

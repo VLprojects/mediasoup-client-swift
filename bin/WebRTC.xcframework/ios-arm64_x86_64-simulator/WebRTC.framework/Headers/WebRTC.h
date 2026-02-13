@@ -96,5 +96,6 @@
 #import <WebRTC/RTCNativeI420Buffer.h>
 #import <WebRTC/RTCNativeMutableI420Buffer.h>
 #import <WebRTC/gcd_helpers.h>
+#import <WebRTC/rtc_export.h>
 #import <WebRTC/RTCCallbackLogger.h>
 #import <WebRTC/RTCFileLogger.h>

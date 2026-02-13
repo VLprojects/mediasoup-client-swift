@@ -1,8 +1,10 @@
---- webrtc/src/sdk/BUILD.gn
-+++ webrtc/src/sdk/BUILD.gn
+diff --git sdk/BUILD.gn sdk/BUILD.gn
+index 4f5ceb5ed3..b9663ce67c 100644
+--- sdk/BUILD.gn
++++ sdk/BUILD.gn
 @@ -135,6 +135,12 @@ if (is_ios || is_mac) {
    }
-
+ 
    rtc_library("helpers_objc") {
 +    visibility = [ "*" ]
 +
@@ -21,18 +23,19 @@
            "objc/helpers/RTCCameraPreviewView.h",
            "objc/helpers/RTCDispatcher.h",
            "objc/helpers/UIDevice+RTCDevice.h",
-@@ -1334,6 +1341,7 @@ if (is_ios || is_mac) {
+@@ -1334,6 +1341,8 @@ if (is_ios || is_mac) {
            "objc/api/video_codec/RTCVideoEncoderAV1.h",
            "objc/api/video_frame_buffer/RTCNativeI420Buffer.h",
            "objc/api/video_frame_buffer/RTCNativeMutableI420Buffer.h",
 +          "../rtc_base/system/gcd_helpers.h",
++          "../rtc_base/system/rtc_export.h",
          ]
-
+ 
          if (!build_with_chromium) {
-@@ -1352,7 +1360,43 @@ if (is_ios || is_mac) {
+@@ -1352,7 +1361,43 @@ if (is_ios || is_mac) {
            "@rpath/$output_name.framework/$output_name",
          ]
-
+ 
 +        public_deps = [
 +          "../third_party/abseil-cpp/absl/types:bad_optional_access",
 +          "../rtc_base/system:gcd_helpers",

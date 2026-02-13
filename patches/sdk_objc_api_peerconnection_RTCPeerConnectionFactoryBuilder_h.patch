@@ -1,5 +1,7 @@
---- webrtc/src/sdk/objc/api/peerconnection/RTCPeerConnectionFactoryBuilder.h
-+++ webrtc/src/sdk/objc/api/peerconnection/RTCPeerConnectionFactoryBuilder.h
+diff --git sdk/objc/api/peerconnection/RTCPeerConnectionFactoryBuilder.h sdk/objc/api/peerconnection/RTCPeerConnectionFactoryBuilder.h
+index f0b0de156a..a05d5aae56 100644
+--- sdk/objc/api/peerconnection/RTCPeerConnectionFactoryBuilder.h
++++ sdk/objc/api/peerconnection/RTCPeerConnectionFactoryBuilder.h
 @@ -25,6 +25,7 @@ class AudioProcessing;
  
  NS_ASSUME_NONNULL_BEGIN

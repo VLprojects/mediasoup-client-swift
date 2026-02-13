@@ -1,13 +1,15 @@
---- webrtc/src/modules/video_coding/codecs/av1/libaom_av1_encoder.h
-+++ webrtc/src/modules/video_coding/codecs/av1/libaom_av1_encoder.h
+diff --git modules/video_coding/codecs/av1/libaom_av1_encoder.h modules/video_coding/codecs/av1/libaom_av1_encoder.h
+index 2fd1d5a754..c27eebebc1 100644
+--- modules/video_coding/codecs/av1/libaom_av1_encoder.h
++++ modules/video_coding/codecs/av1/libaom_av1_encoder.h
 @@ -22,8 +22,8 @@ struct LibaomAv1EncoderAuxConfig {
    std::map<int, int> max_pixel_count_to_cpu_speed;
  };
-
+ 
 -std::unique_ptr<VideoEncoder> CreateLibaomAv1Encoder();
 -std::unique_ptr<VideoEncoder> CreateLibaomAv1Encoder(
 +RTC_EXPORT std::unique_ptr<VideoEncoder> CreateLibaomAv1Encoder();
 +RTC_EXPORT std::unique_ptr<VideoEncoder> CreateLibaomAv1Encoder(
      const LibaomAv1EncoderAuxConfig& aux_config);
-
+ 
  }  // namespace webrtc

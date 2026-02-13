@@ -12,7 +12,7 @@
 #define RTC_BASE_SYSTEM_GCD_HELPERS_H_
 
 #include <dispatch/dispatch.h>
-#include "rtc_base/system/rtc_export.h"
+#include "rtc_export.h"
 
 #ifdef __cplusplus
 extern "C" {

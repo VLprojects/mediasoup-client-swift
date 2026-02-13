@@ -1,5 +1,7 @@
---- webrtc/src/sdk/objc/native/src/objc_video_decoder_factory.h
-+++ webrtc/src/sdk/objc/native/src/objc_video_decoder_factory.h
+diff --git sdk/objc/native/src/objc_video_decoder_factory.h sdk/objc/native/src/objc_video_decoder_factory.h
+index 19c997e503..0b999696a5 100644
+--- sdk/objc/native/src/objc_video_decoder_factory.h
++++ sdk/objc/native/src/objc_video_decoder_factory.h
 @@ -23,7 +23,7 @@ namespace webrtc {
  
  class ObjCVideoDecoderFactory : public VideoDecoderFactory {

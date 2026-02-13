@@ -1,5 +1,7 @@
---- webrtc/src/sdk/objc/native/src/objc_video_encoder_factory.h
-+++ webrtc/src/sdk/objc/native/src/objc_video_encoder_factory.h
+diff --git sdk/objc/native/src/objc_video_encoder_factory.h sdk/objc/native/src/objc_video_encoder_factory.h
+index 85a1e5319d..458604d0f6 100644
+--- sdk/objc/native/src/objc_video_encoder_factory.h
++++ sdk/objc/native/src/objc_video_encoder_factory.h
 @@ -24,7 +24,7 @@ namespace webrtc {
  
  class ObjCVideoEncoderFactory : public VideoEncoderFactory {

@@ -1,6 +1,8 @@
---- webrtc/src/sdk/objc/native/api/video_decoder_factory.h
-+++ webrtc/src/sdk/objc/native/api/video_decoder_factory.h
-@@ -19,7 +19,7 @@
+diff --git sdk/objc/native/api/video_decoder_factory.h sdk/objc/native/api/video_decoder_factory.h
+index 9ba11d65a3..1636ffa0cd 100644
+--- sdk/objc/native/api/video_decoder_factory.h
++++ sdk/objc/native/api/video_decoder_factory.h
+@@ -18,7 +18,7 @@
  
  namespace webrtc {
  

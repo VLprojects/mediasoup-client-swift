@@ -20,7 +20,7 @@ Swift wrapper for libmediasoupclient with iOS support
    If you don't need to customize Mediasoup-Client-Swift itself or its dependencies, just use Swift Package Manager or CocoaPods:
 
    ```Ruby
-   pod 'Mediasoup-Client-Swift', '0.10.2'
+   pod 'Mediasoup-Client-Swift', '0.10.3'
    ```
 
 3. **Ease of building from scratch**
@@ -144,7 +144,7 @@ Mediasoup-Client-Swift has almost no logic, it's only a convenient wrapper for o
 
 * [WebRTC (version m120 with patches applied locally)](https://groups.google.com/g/discuss-webrtc/c/ws0_MYHIBOw)
 
-* [libmediasoupclient (version 3.4.1 patched fork)](https://github.com/VLprojects/libmediasoupclient) 
+* [libmediasoupclient (version 3.4.3 patched fork)](https://github.com/VLprojects/libmediasoupclient) 
 
 ## Roadmap
 

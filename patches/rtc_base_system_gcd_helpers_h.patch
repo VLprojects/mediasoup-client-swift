@@ -1,0 +1,17 @@
+--- webrtc/src/rtc_base/system/gcd_helpers.h
++++ webrtc/src/rtc_base/system/gcd_helpers.h
+@@ -12,12 +12,13 @@
+ #define RTC_BASE_SYSTEM_GCD_HELPERS_H_
+
+ #include <dispatch/dispatch.h>
++#include "rtc_base/system/rtc_export.h"
+
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+
+-DISPATCH_RETURNS_RETAINED DISPATCH_WARN_RESULT DISPATCH_NOTHROW dispatch_queue_t
++RTC_EXPORT DISPATCH_RETURNS_RETAINED DISPATCH_WARN_RESULT DISPATCH_NOTHROW dispatch_queue_t
+ RTCDispatchQueueCreateWithTarget(const char* label,
+                                  dispatch_queue_attr_t attr,
+                                  dispatch_queue_t target);

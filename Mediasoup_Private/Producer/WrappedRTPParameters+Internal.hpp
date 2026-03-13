@@ -1,5 +1,5 @@
-#ifndef RTPParametersWrapper_Internal_h
-#define RTPParametersWrapper_Internal_h
+#ifndef WrappedRTPParameters_Internal_h
+#define WrappedRTPParameters_Internal_h
 
 #import "WrappedRTPParameters.hpp"
 
@@ -22,4 +22,4 @@ namespace webrtc {
 #endif  /* __cplusplus */
 @end
 
-#endif /* RTPParametersWrapper_Internal_h */
+#endif /* WrappedRTPParameters_Internal_h */

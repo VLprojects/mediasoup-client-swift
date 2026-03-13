@@ -55,6 +55,27 @@ public class SendTransport {
 			return Producer(producer: producer, mediaKind: mediaKind)
 		}
 	}
+
+	public func produceData(
+		label: String = "",
+		protocol: String = "",
+		ordered: Bool = true,
+		maxRetransmits: Int32 = 0,
+		maxPacketLifeTime: Int32 = 0,
+		appData: String? = nil
+	) throws -> DataProducer {
+		return try convertMediasoupErrors {
+			let producer = try self.transport.createDataProducer(
+				withLabel: label,
+				protocol: `protocol`,
+				ordered: ordered,
+				maxRetransmits: maxRetransmits,
+				maxPacketLifeTime: maxPacketLifeTime,
+				appData: appData
+			)
+			return DataProducer(producer: producer)
+		}
+	}
 }
 
 extension SendTransport: Transport {

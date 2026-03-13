@@ -74,6 +74,17 @@
 		FFCD791827F419E800D26B4C /* mediasoupclient.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCD791727F419E800D26B4C /* mediasoupclient.xcframework */; };
 		FFCD791D27F41A0900D26B4C /* sdptransform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCD791B27F41A0900D26B4C /* sdptransform.xcframework */; };
 		FFCD791F27F41A0900D26B4C /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCD791C27F41A0900D26B4C /* WebRTC.xcframework */; };
+		FFEA9CE12F641DCD006167CB /* DataProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEA9CE02F641DC9006167CB /* DataProducer.swift */; };
+		FFEA9CE42F641E1B006167CB /* DataProducerWrapperDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = FFEA9CE32F641E10006167CB /* DataProducerWrapperDelegate.h */; };
+		FFEA9CE62F641E63006167CB /* DataProducerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFEA9CE52F641E56006167CB /* DataProducerWrapper.mm */; };
+		FFEA9CE92F641E7A006167CB /* DataProducerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FFEA9CE82F641E79006167CB /* DataProducerWrapper.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		FFEA9CEB2F641F42006167CB /* DataProducerListenerAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFEA9CEA2F641F36006167CB /* DataProducerListenerAdapter.mm */; };
+		FFEA9CED2F641F47006167CB /* DataProducerListenerAdapter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FFEA9CEC2F641F46006167CB /* DataProducerListenerAdapter.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		FFEA9CEF2F641FC8006167CB /* DataProducerListenerAdapterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = FFEA9CEE2F641FBC006167CB /* DataProducerListenerAdapterDelegate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		FFEA9CF12F6422FB006167CB /* DataProducerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEA9CF02F6422F6006167CB /* DataProducerDelegate.swift */; };
+		FFEA9CF32F64254E006167CB /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEA9CF22F642549006167CB /* DataState.swift */; };
+		FFEA9CF52F6427C6006167CB /* WrappedDataState.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FFEA9CF42F6427C2006167CB /* WrappedDataState.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		FFEA9CF62F643078006167CB /* DataProducerWrapperDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = FFEA9CE32F641E10006167CB /* DataProducerWrapperDelegate.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		FFF004F92B592424007BA500 /* RTPParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF004F82B592424007BA500 /* RTPParameters.swift */; };
 		FFF004FB2B5986F6007BA500 /* ScalabilityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF004FA2B5986F6007BA500 /* ScalabilityMode.swift */; };
 		FFF004FF2B598D59007BA500 /* ScalabilityMode.h in Headers */ = {isa = PBXBuildFile; fileRef = FFF004FE2B59881C007BA500 /* ScalabilityMode.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -153,6 +164,16 @@
 		FFCD791727F419E800D26B4C /* mediasoupclient.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = mediasoupclient.xcframework; path = bin/mediasoupclient.xcframework; sourceTree = "<group>"; };
 		FFCD791B27F41A0900D26B4C /* sdptransform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sdptransform.xcframework; path = bin/sdptransform.xcframework; sourceTree = "<group>"; };
 		FFCD791C27F41A0900D26B4C /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = bin/WebRTC.xcframework; sourceTree = "<group>"; };
+		FFEA9CE02F641DC9006167CB /* DataProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProducer.swift; sourceTree = "<group>"; };
+		FFEA9CE32F641E10006167CB /* DataProducerWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataProducerWrapperDelegate.h; sourceTree = "<group>"; };
+		FFEA9CE52F641E56006167CB /* DataProducerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DataProducerWrapper.mm; sourceTree = "<group>"; };
+		FFEA9CE82F641E79006167CB /* DataProducerWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DataProducerWrapper.hpp; sourceTree = "<group>"; };
+		FFEA9CEA2F641F36006167CB /* DataProducerListenerAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DataProducerListenerAdapter.mm; sourceTree = "<group>"; };
+		FFEA9CEC2F641F46006167CB /* DataProducerListenerAdapter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DataProducerListenerAdapter.hpp; sourceTree = "<group>"; };
+		FFEA9CEE2F641FBC006167CB /* DataProducerListenerAdapterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataProducerListenerAdapterDelegate.h; sourceTree = "<group>"; };
+		FFEA9CF02F6422F6006167CB /* DataProducerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProducerDelegate.swift; sourceTree = "<group>"; };
+		FFEA9CF22F642549006167CB /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
+		FFEA9CF42F6427C2006167CB /* WrappedDataState.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WrappedDataState.hpp; sourceTree = "<group>"; };
 		FFF004F82B592424007BA500 /* RTPParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPParameters.swift; sourceTree = "<group>"; };
 		FFF004FA2B5986F6007BA500 /* ScalabilityMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalabilityMode.swift; sourceTree = "<group>"; };
 		FFF004FC2B598806007BA500 /* ScalabilityMode.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ScalabilityMode.mm; sourceTree = "<group>"; };
@@ -217,6 +238,9 @@
 		FF3AEE0227F2CDD1001A81AB /* Mediasoup */ = {
 			isa = PBXGroup;
 			children = (
+				FFEA9CF22F642549006167CB /* DataState.swift */,
+				FFEA9CF02F6422F6006167CB /* DataProducerDelegate.swift */,
+				FFEA9CE02F641DC9006167CB /* DataProducer.swift */,
 				FF49F0E72804049300B64D36 /* Consumer.swift */,
 				FF49F0E9280404E400B64D36 /* ConsumerDelegate.swift */,
 				FF1E635E2A566C500022A44A /* DataConsumer.swift */,
@@ -285,6 +309,7 @@
 		FF89EFCF27F5C51500EEF5CD /* Mediasoup_Private */ = {
 			isa = PBXGroup;
 			children = (
+				FFEA9CE22F641E02006167CB /* DataProducer */,
 				FF1E63512A56555F0022A44A /* DataConsumer */,
 				FFB7DDB5282289AD00FE2CC2 /* Consumer */,
 				FF7FA6C827FE9661000B6470 /* Producer */,
@@ -345,6 +370,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FFEA9CE22F641E02006167CB /* DataProducer */ = {
+			isa = PBXGroup;
+			children = (
+				FFEA9CF42F6427C2006167CB /* WrappedDataState.hpp */,
+				FFEA9CEE2F641FBC006167CB /* DataProducerListenerAdapterDelegate.h */,
+				FFEA9CEC2F641F46006167CB /* DataProducerListenerAdapter.hpp */,
+				FFEA9CEA2F641F36006167CB /* DataProducerListenerAdapter.mm */,
+				FFEA9CE82F641E79006167CB /* DataProducerWrapper.hpp */,
+				FFEA9CE52F641E56006167CB /* DataProducerWrapper.mm */,
+				FFEA9CE32F641E10006167CB /* DataProducerWrapperDelegate.h */,
+			);
+			path = DataProducer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -368,9 +407,14 @@
 				FF7FA6D427FF1A08000B6470 /* ProducerWrapperDelegate.h in Headers */,
 				FFF005022B5A2968007BA500 /* WrappedRTPParameters.hpp in Headers */,
 				FFB7DDBF28229BC100FE2CC2 /* ConsumerWrapperDelegate.h in Headers */,
+				FFEA9CEF2F641FC8006167CB /* DataProducerListenerAdapterDelegate.h in Headers */,
 				FF7FA6CE27FE9A4B000B6470 /* ProducerWrapper.hpp in Headers */,
 				FF1E635B2A5655830022A44A /* DataConsumerWrapperDelegate.h in Headers */,
+				FFEA9CE92F641E7A006167CB /* DataProducerWrapper.hpp in Headers */,
 				FFB7DDC22823989A00FE2CC2 /* ReceiveTransportListenerAdapter.hpp in Headers */,
+				FFEA9CF62F643078006167CB /* DataProducerWrapperDelegate.h in Headers */,
+				FFEA9CED2F641F47006167CB /* DataProducerListenerAdapter.hpp in Headers */,
+				FFEA9CF52F6427C6006167CB /* WrappedDataState.hpp in Headers */,
 				FF61457527F30FDC0067B2C4 /* DeviceWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,11 +536,16 @@
 				FFF005042B5A29B6007BA500 /* WrappedRTPParameters.mm in Sources */,
 				FFF004FB2B5986F6007BA500 /* ScalabilityMode.swift in Sources */,
 				FFB7DDB32822893C00FE2CC2 /* ReceiveTransportDelegate.swift in Sources */,
+				FFEA9CEB2F641F42006167CB /* DataProducerListenerAdapter.mm in Sources */,
+				FFEA9CE12F641DCD006167CB /* DataProducer.swift in Sources */,
+				FFEA9CE42F641E1B006167CB /* DataProducerWrapperDelegate.h in Sources */,
+				FFEA9CF12F6422FB006167CB /* DataProducerDelegate.swift in Sources */,
 				FFF005072B5A4304007BA500 /* WrappedRTPParameters+Internal.mm in Sources */,
 				FFC5AC782825170500C92A96 /* ConsumerWrapper.mm in Sources */,
 				FFB7DDB12822891C00FE2CC2 /* ReceiveTransport.swift in Sources */,
 				FFC2452127F6E8DF008F61DE /* MediaKind.swift in Sources */,
 				FF7FA6C427FD5ECD000B6470 /* Transport.swift in Sources */,
+				FFEA9CE62F641E63006167CB /* DataProducerWrapper.mm in Sources */,
 				FF1E635D2A5655830022A44A /* DataConsumerListenerAdapter.mm in Sources */,
 				FF7FA6C227FD5EA5000B6470 /* TransportDelegate.swift in Sources */,
 				FFB7DDC3282398A500FE2CC2 /* ReceiveTransportListenerAdapter.mm in Sources */,
@@ -509,6 +558,7 @@
 				FFF0050B2B5A62FD007BA500 /* RTPEncodingParameters.mm in Sources */,
 				FFC5AC72282500A500C92A96 /* TransportConnectionState.swift in Sources */,
 				FF7FA69A27FAACEE000B6470 /* SendTransportWrapper.mm in Sources */,
+				FFEA9CF32F64254E006167CB /* DataState.swift in Sources */,
 				FF7FA69527FAA930000B6470 /* SendTransport.swift in Sources */,
 				FF49F0EA280404E400B64D36 /* ConsumerDelegate.swift in Sources */,
 				FF7FA69127FAA8E9000B6470 /* SendTransportDelegate.swift in Sources */,

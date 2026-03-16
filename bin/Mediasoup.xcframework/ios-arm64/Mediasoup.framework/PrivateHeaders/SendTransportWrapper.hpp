@@ -11,6 +11,7 @@ class SendTransportListenerAdapter;
 #endif
 
 @class ProducerWrapper;
+@class DataProducerWrapper;
 @class RTCMediaStreamTrack;
 @class RTCRtpEncodingParameters;
 @protocol SendTransportWrapperDelegate;
@@ -52,6 +53,14 @@ class SendTransportListenerAdapter;
 	scalabilityMode:(NSString *_Nonnull)scalabilityMode
 	codecOptions:(NSString *_Nullable)codecOptions
 	codec:(NSString *_Nullable)codec
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
+
+- (DataProducerWrapper *_Nullable)createDataProducerWithLabel:(NSString *_Nonnull)label
+	protocol:(NSString *_Nonnull)protocol
+	ordered:(BOOL)ordered
+	maxRetransmits:(SInt32)maxRetransmits
+	maxPacketLifeTime:(SInt32)maxPacketLifeTime
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 

@@ -9,6 +9,8 @@
 #import "../MediasoupClientError/MediasoupClientErrorHandler.h"
 #import "../Producer/ProducerListenerAdapter.hpp"
 #import "../Producer/ProducerWrapper.hpp"
+#import "../DataProducer/DataProducerListenerAdapter.hpp"
+#import "../DataProducer/DataProducerWrapper.hpp"
 
 
 @interface SendTransportWrapper () <SendTransportListenerAdapterDelegate> {
@@ -179,6 +181,40 @@
 			appDataJson
 		);
 		return [[ProducerWrapper alloc] initWithProducer:producer mediaStreamTrack:mediaTrack listenerAdapter:listenerAdapter];
+	}, ^ void {
+		delete listenerAdapter;
+	}, error);
+}
+
+- (DataProducerWrapper *_Nullable)createDataProducerWithLabel:(NSString *_Nonnull)label
+	protocol:(NSString *_Nonnull)protocol
+	ordered:(BOOL)ordered
+	maxRetransmits:(SInt32)maxRetransmits
+	maxPacketLifeTime:(SInt32)maxPacketLifeTime
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error; {
+
+	auto listenerAdapter = new DataProducerListenerAdapter();
+
+	return mediasoupTryWithResult(^ DataProducerWrapper * {
+		auto labelString = std::string(label.UTF8String);
+		auto protocolString = std::string(protocol.UTF8String);
+
+		nlohmann::json appDataJson = nlohmann::json::object();
+		if (appData != nullptr) {
+			appDataJson = nlohmann::json::parse(std::string(appData.UTF8String));
+		}
+
+		auto producer = self->_transport->ProduceData(
+			listenerAdapter,
+			labelString,
+			protocolString,
+			ordered,
+			maxRetransmits,
+			maxPacketLifeTime,
+			appDataJson
+		);
+		return [[DataProducerWrapper alloc] initWithDataProducer:producer listenerAdapter:listenerAdapter];
 	}, ^ void {
 		delete listenerAdapter;
 	}, error);

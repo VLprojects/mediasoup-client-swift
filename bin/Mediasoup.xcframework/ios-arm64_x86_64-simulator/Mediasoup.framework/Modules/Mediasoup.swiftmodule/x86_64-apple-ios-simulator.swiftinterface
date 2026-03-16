@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// swift-compiler-version: Apple Swift version 6.2.4 effective-5.10 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
 // swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name Mediasoup
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.4
 import Foundation
 @_exported import Mediasoup
 import Mediasoup_Private
@@ -16,6 +16,51 @@ public struct ScalabilityMode {
   public static func parse(_ scalabilityModeString: Swift.String) -> Mediasoup.ScalabilityMode
 }
 public protocol ReceiveTransportDelegate : Mediasoup.TransportDelegate {
+}
+@_hasMissingDesignatedInitializers public class DataProducer {
+  weak public var delegate: (any Mediasoup.DataProducerDelegate)?
+  public var id: Swift.String {
+    get
+  }
+  public var localId: Swift.String {
+    get
+  }
+  public var sctpStreamParameters: Swift.String {
+    get
+  }
+  public var readyState: Mediasoup.DataState {
+    get
+  }
+  public var label: Swift.String {
+    get
+  }
+  public var `protocol`: Swift.String {
+    get
+  }
+  public var bufferedAmount: Swift.UInt64 {
+    get
+  }
+  public var appData: Swift.String {
+    get
+  }
+  public var closed: Swift.Bool {
+    get
+  }
+  public func close()
+  public func send(_ buffer: Foundation.Data)
+  @objc deinit
+}
+extension Mediasoup.DataProducer : Mediasoup_Private.DataProducerWrapperDelegate {
+  @objc dynamic public func onOpen(_ producer: Mediasoup_Private.DataProducerWrapper)
+  @objc dynamic public func onClose(_ producer: Mediasoup_Private.DataProducerWrapper)
+  @objc dynamic public func onBufferedAmountChange(_ producer: Mediasoup_Private.DataProducerWrapper, dataSize: Swift.UInt64)
+  @objc dynamic public func onTransportClose(_ producer: Mediasoup_Private.DataProducerWrapper)
+}
+public protocol DataProducerDelegate : AnyObject {
+  func onOpen(in producer: Mediasoup.DataProducer)
+  func onClose(in producer: Mediasoup.DataProducer)
+  func onBufferedAmountChange(in producer: Mediasoup.DataProducer, dataSize: Swift.UInt64)
+  func onTransportClose(in producer: Mediasoup.DataProducer)
 }
 @_hasMissingDesignatedInitializers public class ReceiveTransport {
   weak public var delegate: (any Mediasoup.ReceiveTransportDelegate)?
@@ -124,6 +169,17 @@ public enum TransportConnectionState {
     get
   }
 }
+public enum DataState {
+  case connecting
+  case open
+  case closing
+  case closed
+  public static func == (a: Mediasoup.DataState, b: Mediasoup.DataState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers public class SendTransport {
   weak public var delegate: (any Mediasoup.SendTransportDelegate)?
   @objc deinit
@@ -132,6 +188,9 @@ public enum TransportConnectionState {
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   public func createProducer(for track: WebRTC.RTCMediaStreamTrack, encoding: WebRTC.RTCRtpEncodingParameters, scalabilityMode: Swift.String, codecOptions: Swift.String?, codec: Swift.String?, appData: Swift.String?) throws -> Mediasoup.Producer
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func produceData(label: Swift.String = "", protocol: Swift.String = "", ordered: Swift.Bool = true, maxRetransmits: Swift.Int32 = 0, maxPacketLifeTime: Swift.Int32 = 0, appData: Swift.String? = nil) throws -> Mediasoup.DataProducer
   #endif
 }
 extension Mediasoup.SendTransport : Mediasoup.Transport {
@@ -345,5 +404,7 @@ extension Mediasoup.RTPParameters.DegradationPreference : Swift.Equatable {}
 extension Mediasoup.RTPParameters.DegradationPreference : Swift.Hashable {}
 extension Mediasoup.TransportConnectionState : Swift.Equatable {}
 extension Mediasoup.TransportConnectionState : Swift.Hashable {}
+extension Mediasoup.DataState : Swift.Equatable {}
+extension Mediasoup.DataState : Swift.Hashable {}
 extension Mediasoup.ICETransportPolicy : Swift.Equatable {}
 extension Mediasoup.ICETransportPolicy : Swift.Hashable {}

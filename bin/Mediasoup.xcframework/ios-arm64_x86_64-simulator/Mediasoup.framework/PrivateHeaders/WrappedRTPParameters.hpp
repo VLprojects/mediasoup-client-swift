@@ -1,5 +1,5 @@
-#ifndef WrappedRTPParametersWrapper_h
-#define WrappedRTPParametersWrapper_h
+#ifndef WrappedRTPParameters_h
+#define WrappedRTPParameters_h
 
 #import <Foundation/Foundation.h>
 
@@ -18,4 +18,4 @@ typedef NS_ENUM(NSUInteger, WrappedDegradationPreference) {
 @property (nonatomic, nullable, copy) NSArray<RTPEncodingParameters *> *wrappedEncodings;
 @end
 
-#endif /* WrappedRTPParametersWrapper_h */
+#endif /* WrappedRTPParameters_h */

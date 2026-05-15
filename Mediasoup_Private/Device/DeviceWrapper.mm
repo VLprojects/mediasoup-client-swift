@@ -24,7 +24,7 @@
 	mediasoupclient::Device *_device;
 	mediasoupclient::PeerConnection::Options *_pcOptions;
 
-	rtc::scoped_refptr<webrtc::AudioDeviceModule> _adm;
+	webrtc::scoped_refptr<webrtc::AudioDeviceModule> _adm;
 
 	BOOL _captureAudioSession;
 }

@@ -123,7 +123,7 @@
 		);
 
 		auto nativeTrack = consumer->GetTrack();
-		rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> pTrack(nativeTrack);
+		webrtc::scoped_refptr<webrtc::MediaStreamTrackInterface> pTrack(nativeTrack);
 		auto track = [RTCMediaStreamTrack mediaTrackForNativeTrack:pTrack factory:self.pcFactory];
 
 		return [[ConsumerWrapper alloc]

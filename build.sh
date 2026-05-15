@@ -270,7 +270,6 @@ gn_arguments=(
 	#'is_debug=true'
 	'is_debug=false'
 	'rtc_libvpx_build_vp9=true'
-	'use_goma=false'
 	'rtc_enable_symbol_export=true'
 	'rtc_enable_objc_symbol_export=true'
 	'rtc_enable_protobuf=false'

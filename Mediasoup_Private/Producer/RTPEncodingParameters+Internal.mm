@@ -37,13 +37,13 @@
 		self.scaleResolutionDownBy = nil;
 	}
 
-	if (value.requested_resolution.has_value()) {
-		self.requestedResolution = {
-			.width = static_cast<CGFloat>(value.requested_resolution.value().width),
-			.height = static_cast<CGFloat>(value.requested_resolution.value().height),
+	if (value.scale_resolution_down_to.has_value()) {
+		self.scaleResolutionDownTo = {
+			.width = static_cast<CGFloat>(value.scale_resolution_down_to.value().width),
+			.height = static_cast<CGFloat>(value.scale_resolution_down_to.value().height),
 		};
 	} else {
-		self.requestedResolution = {0, 0};
+		self.scaleResolutionDownTo = {0, 0};
 	}
 
 	if (value.scalability_mode.has_value()) {

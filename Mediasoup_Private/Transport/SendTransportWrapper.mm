@@ -130,23 +130,23 @@
 				nativeEncoding.active = encoding.isActive;
 
 				if (encoding.maxBitrateBps != nil) {
-					nativeEncoding.max_bitrate_bps = absl::make_optional(encoding.maxBitrateBps.intValue);
+					nativeEncoding.max_bitrate_bps = std::make_optional(encoding.maxBitrateBps.intValue);
 				}
 				if (encoding.minBitrateBps != nil) {
-					nativeEncoding.min_bitrate_bps = absl::make_optional(encoding.minBitrateBps.intValue);
+					nativeEncoding.min_bitrate_bps = std::make_optional(encoding.minBitrateBps.intValue);
 				}
 				if (encoding.maxFramerate != nil) {
-					nativeEncoding.max_framerate = absl::make_optional(encoding.maxFramerate.doubleValue);
+					nativeEncoding.max_framerate = std::make_optional(encoding.maxFramerate.doubleValue);
 				}
 				if (encoding.numTemporalLayers != nil) {
-					nativeEncoding.num_temporal_layers = absl::make_optional(encoding.numTemporalLayers.intValue);
+					nativeEncoding.num_temporal_layers = std::make_optional(encoding.numTemporalLayers.intValue);
 				}
 				if (encoding.scaleResolutionDownBy != nil) {
-					nativeEncoding.scale_resolution_down_by = absl::make_optional(encoding.scaleResolutionDownBy.doubleValue);
+					nativeEncoding.scale_resolution_down_by = std::make_optional(encoding.scaleResolutionDownBy.doubleValue);
 				}
 				if (scalabilityMode != nil) {
 					nativeEncoding.scalability_mode =
-						absl::make_optional(std::string(scalabilityMode.UTF8String));
+						std::make_optional(std::string(scalabilityMode.UTF8String));
 				}
 				encodingsVector.emplace_back(nativeEncoding);
 			}

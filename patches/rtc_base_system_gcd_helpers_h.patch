@@ -1,5 +1,5 @@
 diff --git rtc_base/system/gcd_helpers.h rtc_base/system/gcd_helpers.h
-index a8df0a9d83..4b35e1ffc1 100644
+index a8df0a9..4b35e1f 100644
 --- rtc_base/system/gcd_helpers.h
 +++ rtc_base/system/gcd_helpers.h
 @@ -12,12 +12,13 @@

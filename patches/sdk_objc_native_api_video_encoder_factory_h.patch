@@ -1,5 +1,5 @@
 diff --git sdk/objc/native/api/video_encoder_factory.h sdk/objc/native/api/video_encoder_factory.h
-index ecd9ab090b..b735d07913 100644
+index ecd9ab0..b735d07 100644
 --- sdk/objc/native/api/video_encoder_factory.h
 +++ sdk/objc/native/api/video_encoder_factory.h
 @@ -18,7 +18,7 @@

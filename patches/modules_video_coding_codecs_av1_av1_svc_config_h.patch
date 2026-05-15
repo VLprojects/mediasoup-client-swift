@@ -1,5 +1,5 @@
 diff --git modules/video_coding/codecs/av1/av1_svc_config.h modules/video_coding/codecs/av1/av1_svc_config.h
-index 05b886b9f4..7bd207d80a 100644
+index 218712d..2333457 100644
 --- modules/video_coding/codecs/av1/av1_svc_config.h
 +++ modules/video_coding/codecs/av1/av1_svc_config.h
 @@ -17,10 +17,10 @@

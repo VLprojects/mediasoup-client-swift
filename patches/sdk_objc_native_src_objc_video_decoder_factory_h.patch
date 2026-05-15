@@ -1,5 +1,5 @@
 diff --git sdk/objc/native/src/objc_video_decoder_factory.h sdk/objc/native/src/objc_video_decoder_factory.h
-index 19c997e503..0b999696a5 100644
+index 26c6ea2..79c4064 100644
 --- sdk/objc/native/src/objc_video_decoder_factory.h
 +++ sdk/objc/native/src/objc_video_decoder_factory.h
 @@ -23,7 +23,7 @@ namespace webrtc {

@@ -165,7 +165,7 @@ function patchWebRTC() {
 function refetchWebRTC() {
 	echo 'Cloning WebRTC'
 	rm -rf $WORK_DIR/webrtc
-	mkdir -p $WORK_DIR/webrtc
+	mkdir -p $WORK_DIR/webrtc/src
 	cd $WORK_DIR/webrtc
 
 	export DEPOT_TOOLS_UPDATE=1
@@ -181,7 +181,11 @@ function refetchWebRTC() {
 target_os = ["ios"]'
 
 	# Fetch WebRTC m120 version.
-	gclient sync --no-history --revision src@branch-heads/6099
+	# gclient sync --no-history --revision src@branch-heads/6099
+
+	# Fetch WebRTC m140 version.
+	gclient sync --no-history --revision src@branch-heads/7339
+
 
 	# Fetch all possible WebRTC versions so you can switch between them.
 	# Takes longer time and more disk space.
@@ -195,10 +199,12 @@ target_os = ["ios"]'
 	# cd $WORK_DIR/webrtc/src
 	# git checkout -b m112 refs/remotes/branch-heads/5615
 	# git checkout -b m120 refs/remotes/branch-heads/6099
+	# git checkout -b m140 refs/remotes/branch-heads/7339
 
 	# Switch to WebRTC version that already was checked out previously.
 	# git checkout m112
 	# git checkout m120
+	# git checkout m140
 
 	# Run hooks after switching between WebRTC versions.
 	# cd $WORK_DIR/webrtc/src

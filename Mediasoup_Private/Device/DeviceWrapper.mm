@@ -24,7 +24,7 @@
 	mediasoupclient::Device *_device;
 	mediasoupclient::PeerConnection::Options *_pcOptions;
 
-	rtc::scoped_refptr<webrtc::AudioDeviceModule> _adm;
+	webrtc::scoped_refptr<webrtc::AudioDeviceModule> _adm;
 
 	BOOL _captureAudioSession;
 }
@@ -54,9 +54,16 @@
 	[pcFactoryBuilder setAudioDecoderFactory:audioDecoderFactory];
 	[pcFactoryBuilder setVideoEncoderFactory:std::move(videoEncoderFactory)];
 	[pcFactoryBuilder setVideoDecoderFactory:std::move(videoDecoderFactory)];
-	_adm = webrtc::CreateAudioDeviceModule();
+
 	_captureAudioSession = captureAudioSession;
-	[pcFactoryBuilder setAudioDeviceModule:_adm];
+
+	[pcFactoryBuilder
+		setAudioDeviceModuleBuilder:^ (const webrtc::Environment &env) {
+			self->_adm = webrtc::CreateAudioDeviceModule(env);
+			return self->_adm;
+		}
+	];
+
 	auto pcFactory = [pcFactoryBuilder createPeerConnectionFactory];
 
 	self = [self initWithPCFactory:pcFactory];

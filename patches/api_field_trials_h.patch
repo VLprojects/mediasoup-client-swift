@@ -1,0 +1,13 @@
+diff --git api/field_trials.h api/field_trials.h
+index 09aa1dc..63042b2 100644
+--- api/field_trials.h
++++ api/field_trials.h
+@@ -43,7 +43,7 @@ class FieldTrials : public FieldTrialsRegistry {
+   //
+   // E.g., invalid string:
+   //   "WebRTC-experiment1/Enabled"  (note missing / separator at the end).
+-  static absl_nullable std::unique_ptr<FieldTrials> Create(absl::string_view s);
++  RTC_EXPORT static absl_nullable std::unique_ptr<FieldTrials> Create(absl::string_view s);
+ 
+   // Creates field trials from a string.
+   // It is an error to call the constructor with an invalid field trial string.

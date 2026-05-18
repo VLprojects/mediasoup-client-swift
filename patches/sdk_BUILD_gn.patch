@@ -1,8 +1,8 @@
 diff --git sdk/BUILD.gn sdk/BUILD.gn
-index 4f5ceb5ed3..b9663ce67c 100644
+index cd90d6d..9bce41d 100644
 --- sdk/BUILD.gn
 +++ sdk/BUILD.gn
-@@ -135,6 +135,12 @@ if (is_ios || is_mac) {
+@@ -138,6 +138,12 @@ if (is_ios || is_mac) {
    }
  
    rtc_library("helpers_objc") {
@@ -15,7 +15,16 @@ index 4f5ceb5ed3..b9663ce67c 100644
      sources = [
        "objc/helpers/AVCaptureSession+DevicePosition.h",
        "objc/helpers/AVCaptureSession+DevicePosition.mm",
-@@ -1286,6 +1292,7 @@ if (is_ios || is_mac) {
+@@ -1111,7 +1117,7 @@ if (is_ios || is_mac) {
+         "../api:create_modular_peer_connection_factory",
+         "../api:dtmf_sender_interface",
+         "../api:enable_media",
+-        "../api:field_trials_view",
++        "../api:field_trials",
+         "../api:libjingle_peerconnection_api",
+         "../api:media_stream_interface",
+         "../api:rtc_event_log_output_file",
+@@ -1360,6 +1366,7 @@ if (is_ios || is_mac) {
            "objc/components/video_codec/RTCVideoEncoderFactoryH264.h",
            "objc/components/video_codec/RTCVideoEncoderH264.h",
            "objc/components/video_frame_buffer/RTCCVPixelBuffer.h",
@@ -23,7 +32,7 @@ index 4f5ceb5ed3..b9663ce67c 100644
            "objc/helpers/RTCCameraPreviewView.h",
            "objc/helpers/RTCDispatcher.h",
            "objc/helpers/UIDevice+RTCDevice.h",
-@@ -1334,6 +1341,8 @@ if (is_ios || is_mac) {
+@@ -1412,6 +1419,8 @@ if (is_ios || is_mac) {
            "objc/api/video_codec/RTCVideoEncoderAV1.h",
            "objc/api/video_frame_buffer/RTCNativeI420Buffer.h",
            "objc/api/video_frame_buffer/RTCNativeMutableI420Buffer.h",
@@ -32,12 +41,11 @@ index 4f5ceb5ed3..b9663ce67c 100644
          ]
  
          if (!build_with_chromium) {
-@@ -1352,7 +1361,43 @@ if (is_ios || is_mac) {
+@@ -1430,7 +1439,39 @@ if (is_ios || is_mac) {
            "@rpath/$output_name.framework/$output_name",
          ]
  
 +        public_deps = [
-+          "../third_party/abseil-cpp/absl/types:bad_optional_access",
 +          "../rtc_base/system:gcd_helpers",
 +          ":helpers_objc",
 +        ]
@@ -63,14 +71,11 @@ index 4f5ceb5ed3..b9663ce67c 100644
 +          "../media",
 +          "../modules",
 +          "../modules/video_capture:video_capture_internal_impl",
-+          "../p2p:rtc_p2p",
 +          "../pc:libjingle_peerconnection",
-+          "../pc:peerconnection",
 +          "../pc:rtc_pc",
 +          "../video",
 +          "../api",
 +          "../logging",
-+          "../p2p",
 +          "../pc",
 +          "../stats",
            ":audio_objc",

@@ -130,10 +130,10 @@
 			: absl::nullopt;
 
 		webrtc::Resolution resolution = {
-			.width = static_cast<int>(updatedEncoding.requestedResolution.width),
-			.height = static_cast<int>(updatedEncoding.requestedResolution.height)
+			.width = static_cast<int>(updatedEncoding.scaleResolutionDownTo.width),
+			.height = static_cast<int>(updatedEncoding.scaleResolutionDownTo.height)
 		};
-		parameters.encodings[i].requested_resolution = resolution.PixelCount() > 0
+		parameters.encodings[i].scale_resolution_down_to = resolution.PixelCount() > 0
 			? absl::make_optional(resolution)
 			: absl::nullopt;
 

@@ -1,21 +1,18 @@
 diff --git modules/video_coding/codecs/vp8/include/vp8.h modules/video_coding/codecs/vp8/include/vp8.h
-index 2fc647874f..1a04cddc54 100644
+index 3fdffa0..a234dc5 100644
 --- modules/video_coding/codecs/vp8/include/vp8.h
 +++ modules/video_coding/codecs/vp8/include/vp8.h
-@@ -36,13 +36,13 @@ class VP8Encoder {
-         resolution_bitrate_limits = {};
-   };
- 
--  static std::unique_ptr<VideoEncoder> Create();
--  static std::unique_ptr<VideoEncoder> Create(Settings settings);
-+  RTC_EXPORT static std::unique_ptr<VideoEncoder> Create();
-+  RTC_EXPORT static std::unique_ptr<VideoEncoder> Create(Settings settings);
+@@ -26,11 +26,11 @@ struct Vp8EncoderSettings {
+   // VideoEncoder::GetEncoderInfo(). No override is done if empty.
+   std::vector<VideoEncoder::ResolutionBitrateLimits> resolution_bitrate_limits;
  };
+-absl_nonnull std::unique_ptr<VideoEncoder> CreateVp8Encoder(
++RTC_EXPORT absl_nonnull std::unique_ptr<VideoEncoder> CreateVp8Encoder(
+     const Environment& env,
+     Vp8EncoderSettings settings = {});
  
- class VP8Decoder {
-  public:
--  static std::unique_ptr<VideoDecoder> Create();
-+  RTC_EXPORT static std::unique_ptr<VideoDecoder> Create();
- };
+-std::unique_ptr<VideoDecoder> CreateVp8Decoder(const Environment& env);
++RTC_EXPORT std::unique_ptr<VideoDecoder> CreateVp8Decoder(const Environment& env);
  
  }  // namespace webrtc
+ 

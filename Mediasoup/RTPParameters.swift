@@ -75,11 +75,9 @@ public struct RTPParameters {
 		/// This field provides an alternative to `scaleResolutionDownBy`
 		/// that is not dependent on the video source.
 		///
-		/// The `requestedResolution` is subject to resource adaptation.
-		///
-		/// It is an error to set both `requestedResolution` and
-		/// `scaleResolutionDownBy`.
-		public var requestedResolution: Resolution?
+		/// If both `scaleResolutionDownBy` and `scaleResolutionDownTo` are specified,
+		/// the "scale by" value is ignored.
+		public var scaleResolutionDownTo: Resolution?
 
 		/// Controls whether the encoding is currently transmitted.
 		public var isActive: Bool
@@ -135,7 +133,7 @@ public struct RTPParameters {
 				value.numTemporalLayers = nil
 			}
 
-			value.requestedResolution = requestedResolution?.cgSizeValue ?? .zero
+			value.scaleResolutionDownTo = scaleResolutionDownTo?.cgSizeValue ?? .zero
 
 			value.scalabilityMode = scalabilityMode
 
@@ -157,10 +155,10 @@ public struct RTPParameters {
 			self.bitratePriority = value.bitratePriority
 			self.numTemporalLayers = value.numTemporalLayers?.intValue
 
-			if value.requestedResolution == .zero {
-				self.requestedResolution = nil
+			if value.scaleResolutionDownTo == .zero {
+				self.scaleResolutionDownTo = nil
 			} else {
-				self.requestedResolution = Resolution(from: value.requestedResolution)
+				self.scaleResolutionDownTo = Resolution(from: value.scaleResolutionDownTo)
 			}
 
 			self.scalabilityMode = value.scalabilityMode

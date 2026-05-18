@@ -1787,6 +1787,13 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Transport",
+            "printedName": "Transport",
+            "usr": "s:9Mediasoup9TransportP",
+            "mangledName": "$s9Mediasoup9TransportP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Copyable",
             "printedName": "Copyable",
             "usr": "s:s8CopyableP",
@@ -1798,13 +1805,6 @@
             "printedName": "Escapable",
             "usr": "s:s9EscapableP",
             "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Transport",
-            "printedName": "Transport",
-            "usr": "s:9Mediasoup9TransportP",
-            "mangledName": "$s9Mediasoup9TransportP"
           }
         ]
       },
@@ -2015,17 +2015,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -2765,17 +2765,17 @@
               },
               {
                 "kind": "Conformance",
-                "name": "Escapable",
-                "printedName": "Escapable",
-                "usr": "s:s9EscapableP",
-                "mangledName": "$ss9EscapableP"
-              },
-              {
-                "kind": "Conformance",
                 "name": "Equatable",
                 "printedName": "Equatable",
                 "usr": "s:SQ",
                 "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
               },
               {
                 "kind": "Conformance",
@@ -3203,8 +3203,8 @@
               },
               {
                 "kind": "Var",
-                "name": "requestedResolution",
-                "printedName": "requestedResolution",
+                "name": "scaleResolutionDownTo",
+                "printedName": "scaleResolutionDownTo",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -3222,8 +3222,8 @@
                   }
                 ],
                 "declKind": "Var",
-                "usr": "s:9Mediasoup13RTPParametersV21RTPEncodingParametersV19requestedResolutionAE0F0VSgvp",
-                "mangledName": "$s9Mediasoup13RTPParametersV21RTPEncodingParametersV19requestedResolutionAE0F0VSgvp",
+                "usr": "s:9Mediasoup13RTPParametersV21RTPEncodingParametersV21scaleResolutionDownToAE0F0VSgvp",
+                "mangledName": "$s9Mediasoup13RTPParametersV21RTPEncodingParametersV21scaleResolutionDownToAE0F0VSgvp",
                 "moduleName": "Mediasoup",
                 "declAttributes": [
                   "HasInitialValue",
@@ -3254,8 +3254,8 @@
                       }
                     ],
                     "declKind": "Accessor",
-                    "usr": "s:9Mediasoup13RTPParametersV21RTPEncodingParametersV19requestedResolutionAE0F0VSgvg",
-                    "mangledName": "$s9Mediasoup13RTPParametersV21RTPEncodingParametersV19requestedResolutionAE0F0VSgvg",
+                    "usr": "s:9Mediasoup13RTPParametersV21RTPEncodingParametersV21scaleResolutionDownToAE0F0VSgvg",
+                    "mangledName": "$s9Mediasoup13RTPParametersV21RTPEncodingParametersV21scaleResolutionDownToAE0F0VSgvg",
                     "moduleName": "Mediasoup",
                     "implicit": true,
                     "accessorKind": "get"
@@ -3286,8 +3286,8 @@
                       }
                     ],
                     "declKind": "Accessor",
-                    "usr": "s:9Mediasoup13RTPParametersV21RTPEncodingParametersV19requestedResolutionAE0F0VSgvs",
-                    "mangledName": "$s9Mediasoup13RTPParametersV21RTPEncodingParametersV19requestedResolutionAE0F0VSgvs",
+                    "usr": "s:9Mediasoup13RTPParametersV21RTPEncodingParametersV21scaleResolutionDownToAE0F0VSgvs",
+                    "mangledName": "$s9Mediasoup13RTPParametersV21RTPEncodingParametersV21scaleResolutionDownToAE0F0VSgvs",
                     "moduleName": "Mediasoup",
                     "implicit": true,
                     "accessorKind": "set"
@@ -3304,8 +3304,8 @@
                       }
                     ],
                     "declKind": "Accessor",
-                    "usr": "s:9Mediasoup13RTPParametersV21RTPEncodingParametersV19requestedResolutionAE0F0VSgvM",
-                    "mangledName": "$s9Mediasoup13RTPParametersV21RTPEncodingParametersV19requestedResolutionAE0F0VSgvM",
+                    "usr": "s:9Mediasoup13RTPParametersV21RTPEncodingParametersV21scaleResolutionDownToAE0F0VSgvM",
+                    "mangledName": "$s9Mediasoup13RTPParametersV21RTPEncodingParametersV21scaleResolutionDownToAE0F0VSgvM",
                     "moduleName": "Mediasoup",
                     "implicit": true,
                     "accessorKind": "_modify"
@@ -4811,17 +4811,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -5119,17 +5119,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -6040,6 +6040,13 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Transport",
+            "printedName": "Transport",
+            "usr": "s:9Mediasoup9TransportP",
+            "mangledName": "$s9Mediasoup9TransportP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Copyable",
             "printedName": "Copyable",
             "usr": "s:s8CopyableP",
@@ -6051,13 +6058,6 @@
             "printedName": "Escapable",
             "usr": "s:s9EscapableP",
             "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Transport",
-            "printedName": "Transport",
-            "usr": "s:9Mediasoup9TransportP",
-            "mangledName": "$s9Mediasoup9TransportP"
           }
         ]
       },
@@ -6601,17 +6601,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Error",
             "printedName": "Error",
             "usr": "s:s5ErrorP",
             "mangledName": "$ss5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -7878,17 +7878,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",

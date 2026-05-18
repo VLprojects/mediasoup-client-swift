@@ -1,5 +1,5 @@
 diff --git modules/video_coding/codecs/vp8/vp8_scalability.h modules/video_coding/codecs/vp8/vp8_scalability.h
-index 923f159118..1563493782 100644
+index 923f159..1563493 100644
 --- modules/video_coding/codecs/vp8/vp8_scalability.h
 +++ modules/video_coding/codecs/vp8/vp8_scalability.h
 @@ -17,7 +17,7 @@ namespace webrtc {

@@ -1,0 +1,12 @@
+diff --git sdk/objc/native/api/audio_device_module.mm sdk/objc/native/api/audio_device_module.mm
+index 47fb20d..d31531a 100644
+--- sdk/objc/native/api/audio_device_module.mm
++++ sdk/objc/native/api/audio_device_module.mm
+@@ -21,6 +21,7 @@
+ 
+ namespace webrtc {
+ 
++__attribute__((visibility("default")))
+ scoped_refptr<AudioDeviceModule> CreateAudioDeviceModule(
+     const Environment& env, bool bypass_voice_processing) {
+   RTC_DLOG(LS_INFO) << __FUNCTION__;

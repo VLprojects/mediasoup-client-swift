@@ -1,0 +1,13 @@
+diff --git api/video_codecs/sdp_video_format.h api/video_codecs/sdp_video_format.h
+index 494d1df..0e01437 100644
+--- api/video_codecs/sdp_video_format.h
++++ api/video_codecs/sdp_video_format.h
+@@ -91,7 +91,7 @@ struct RTC_EXPORT SdpVideoFormat {
+ // SdpVideoFormat, which makes instances that should compare equal to not match
+ // anymore. Until we stop misusing SdpVideoFormats provide this convenience
+ // function to perform fuzzy matching.
+-std::optional<SdpVideoFormat> FuzzyMatchSdpVideoFormat(
++RTC_EXPORT std::optional<SdpVideoFormat> FuzzyMatchSdpVideoFormat(
+     ArrayView<const SdpVideoFormat> supported_formats,
+     const SdpVideoFormat& format);
+ 

@@ -1,0 +1,13 @@
+diff --git media/base/sdp_video_format_utils.h media/base/sdp_video_format_utils.h
+index 65e83ae..1eb8657 100644
+--- media/base/sdp_video_format_utils.h
++++ media/base/sdp_video_format_utils.h
+@@ -32,7 +32,7 @@ namespace webrtc {
+ // and `remote_offered_params` must be equal before calling this function. The
+ // parameters that are used when negotiating are the level part of
+ // profile-level-id and level-asymmetry-allowed.
+-void H264GenerateProfileLevelIdForAnswer(
++RTC_EXPORT void H264GenerateProfileLevelIdForAnswer(
+     const CodecParameterMap& local_supported_params,
+     const CodecParameterMap& remote_offered_params,
+     CodecParameterMap* answer_params);

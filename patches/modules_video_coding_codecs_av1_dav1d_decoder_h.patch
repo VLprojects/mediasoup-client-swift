@@ -1,0 +1,16 @@
+diff --git modules/video_coding/codecs/av1/dav1d_decoder.h modules/video_coding/codecs/av1/dav1d_decoder.h
+index 3761295..882ba58 100644
+--- modules/video_coding/codecs/av1/dav1d_decoder.h
++++ modules/video_coding/codecs/av1/dav1d_decoder.h
+@@ -19,9 +19,9 @@ namespace webrtc {
+ 
+ // TODO: b/405341160 - Delete after downstream projects switched to version with
+ // `Environment`.
+-std::unique_ptr<VideoDecoder> CreateDav1dDecoder();
++RTC_EXPORT std::unique_ptr<VideoDecoder> CreateDav1dDecoder();
+ 
+-std::unique_ptr<VideoDecoder> CreateDav1dDecoder(const Environment& env);
++RTC_EXPORT std::unique_ptr<VideoDecoder> CreateDav1dDecoder(const Environment& env);
+ 
+ }  // namespace webrtc
+ 

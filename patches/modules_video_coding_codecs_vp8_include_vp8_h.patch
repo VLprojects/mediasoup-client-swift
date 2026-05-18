@@ -1,0 +1,18 @@
+diff --git modules/video_coding/codecs/vp8/include/vp8.h modules/video_coding/codecs/vp8/include/vp8.h
+index 3fdffa0..a234dc5 100644
+--- modules/video_coding/codecs/vp8/include/vp8.h
++++ modules/video_coding/codecs/vp8/include/vp8.h
+@@ -26,11 +26,11 @@ struct Vp8EncoderSettings {
+   // VideoEncoder::GetEncoderInfo(). No override is done if empty.
+   std::vector<VideoEncoder::ResolutionBitrateLimits> resolution_bitrate_limits;
+ };
+-absl_nonnull std::unique_ptr<VideoEncoder> CreateVp8Encoder(
++RTC_EXPORT absl_nonnull std::unique_ptr<VideoEncoder> CreateVp8Encoder(
+     const Environment& env,
+     Vp8EncoderSettings settings = {});
+ 
+-std::unique_ptr<VideoDecoder> CreateVp8Decoder(const Environment& env);
++RTC_EXPORT std::unique_ptr<VideoDecoder> CreateVp8Decoder(const Environment& env);
+ 
+ }  // namespace webrtc
+ 

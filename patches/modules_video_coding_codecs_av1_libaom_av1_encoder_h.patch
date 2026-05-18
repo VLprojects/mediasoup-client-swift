@@ -1,0 +1,13 @@
+diff --git modules/video_coding/codecs/av1/libaom_av1_encoder.h modules/video_coding/codecs/av1/libaom_av1_encoder.h
+index e2becda..d9e6086 100644
+--- modules/video_coding/codecs/av1/libaom_av1_encoder.h
++++ modules/video_coding/codecs/av1/libaom_av1_encoder.h
+@@ -23,7 +23,7 @@ struct LibaomAv1EncoderSettings {
+   // A map of max pixel count --> cpu speed.
+   std::map<int, int> max_pixel_count_to_cpu_speed;
+ };
+-absl_nonnull std::unique_ptr<VideoEncoder> CreateLibaomAv1Encoder(
++RTC_EXPORT absl_nonnull std::unique_ptr<VideoEncoder> CreateLibaomAv1Encoder(
+     const Environment& env,
+     LibaomAv1EncoderSettings settings = {});
+ 

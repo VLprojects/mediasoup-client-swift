@@ -1,5 +1,5 @@
 diff --git sdk/BUILD.gn sdk/BUILD.gn
-index cd90d6d..b68326e 100644
+index cd90d6d..9bce41d 100644
 --- sdk/BUILD.gn
 +++ sdk/BUILD.gn
 @@ -138,6 +138,12 @@ if (is_ios || is_mac) {
@@ -15,6 +15,15 @@ index cd90d6d..b68326e 100644
      sources = [
        "objc/helpers/AVCaptureSession+DevicePosition.h",
        "objc/helpers/AVCaptureSession+DevicePosition.mm",
+@@ -1111,7 +1117,7 @@ if (is_ios || is_mac) {
+         "../api:create_modular_peer_connection_factory",
+         "../api:dtmf_sender_interface",
+         "../api:enable_media",
+-        "../api:field_trials_view",
++        "../api:field_trials",
+         "../api:libjingle_peerconnection_api",
+         "../api:media_stream_interface",
+         "../api:rtc_event_log_output_file",
 @@ -1360,6 +1366,7 @@ if (is_ios || is_mac) {
            "objc/components/video_codec/RTCVideoEncoderFactoryH264.h",
            "objc/components/video_codec/RTCVideoEncoderH264.h",

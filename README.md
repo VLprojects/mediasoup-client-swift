@@ -142,9 +142,9 @@ Swift wrapper for libmediasoupclient with iOS support
 
 Mediasoup-Client-Swift has almost no logic, it's only a convenient wrapper for other nice libraries. 
 
-* [WebRTC (version m120 with patches applied locally)](https://groups.google.com/g/discuss-webrtc/c/ws0_MYHIBOw)
+* [WebRTC (version m140 with patches applied locally)](https://webrtc.googlesource.com/src.git/+log/refs/branch-heads/7339/)
 
-* [libmediasoupclient (version 3.4.3 patched fork)](https://github.com/VLprojects/libmediasoupclient) 
+* [libmediasoupclient (version 3.5.0 patched fork)](https://github.com/VLprojects/libmediasoupclient) 
 
 ## Roadmap
 

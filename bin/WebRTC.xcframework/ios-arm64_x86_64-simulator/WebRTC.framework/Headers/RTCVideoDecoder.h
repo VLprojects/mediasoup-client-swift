@@ -12,9 +12,9 @@
 
 #import <WebRTC/RTCCodecSpecificInfo.h>
 #import <WebRTC/RTCEncodedImage.h>
-#import <WebRTC/RTCMacros.h>
 #import <WebRTC/RTCVideoEncoderSettings.h>
 #import <WebRTC/RTCVideoFrame.h>
+#import <WebRTC/RTCMacros.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

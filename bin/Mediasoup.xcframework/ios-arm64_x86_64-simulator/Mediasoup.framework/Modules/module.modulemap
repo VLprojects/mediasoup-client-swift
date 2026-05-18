@@ -4,5 +4,4 @@ framework module Mediasoup {
 
 module Mediasoup.Swift {
   header "Mediasoup-Swift.h"
-  requires objc
 }

@@ -212,14 +212,15 @@ target_os = ["ios"]'
 }
 
 function resetWebRTC() {
-	cd $WORK_DIR/webrtc/src
-	git reset --hard
-
 	cd $WORK_DIR/webrtc/src/build
 	git reset --hard
 
 	cd $WORK_DIR/webrtc/src/third_party
 	git reset --hard
+
+	cd $WORK_DIR/webrtc/src
+	git reset --hard
+	gclient sync --no-history -D
 }
 
 if [ -d $WORK_DIR/webrtc ]

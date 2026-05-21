@@ -6,6 +6,338 @@
     "children": [
       {
         "kind": "Import",
+        "name": "Mediasoup_Private",
+        "printedName": "Mediasoup_Private",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LogLevel",
+        "printedName": "LogLevel",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "none",
+            "printedName": "none",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Mediasoup.LogLevel.Type) -> Mediasoup.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "Mediasoup.LogLevel",
+                    "usr": "s:9Mediasoup8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Mediasoup.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "Mediasoup.LogLevel",
+                        "usr": "s:9Mediasoup8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9Mediasoup8LogLevelO4noneyA2CmF",
+            "mangledName": "$s9Mediasoup8LogLevelO4noneyA2CmF",
+            "moduleName": "Mediasoup"
+          },
+          {
+            "kind": "Var",
+            "name": "error",
+            "printedName": "error",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Mediasoup.LogLevel.Type) -> Mediasoup.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "Mediasoup.LogLevel",
+                    "usr": "s:9Mediasoup8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Mediasoup.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "Mediasoup.LogLevel",
+                        "usr": "s:9Mediasoup8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9Mediasoup8LogLevelO5erroryA2CmF",
+            "mangledName": "$s9Mediasoup8LogLevelO5erroryA2CmF",
+            "moduleName": "Mediasoup"
+          },
+          {
+            "kind": "Var",
+            "name": "warning",
+            "printedName": "warning",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Mediasoup.LogLevel.Type) -> Mediasoup.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "Mediasoup.LogLevel",
+                    "usr": "s:9Mediasoup8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Mediasoup.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "Mediasoup.LogLevel",
+                        "usr": "s:9Mediasoup8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9Mediasoup8LogLevelO7warningyA2CmF",
+            "mangledName": "$s9Mediasoup8LogLevelO7warningyA2CmF",
+            "moduleName": "Mediasoup"
+          },
+          {
+            "kind": "Var",
+            "name": "debug",
+            "printedName": "debug",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Mediasoup.LogLevel.Type) -> Mediasoup.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "Mediasoup.LogLevel",
+                    "usr": "s:9Mediasoup8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Mediasoup.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "Mediasoup.LogLevel",
+                        "usr": "s:9Mediasoup8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9Mediasoup8LogLevelO5debugyA2CmF",
+            "mangledName": "$s9Mediasoup8LogLevelO5debugyA2CmF",
+            "moduleName": "Mediasoup"
+          },
+          {
+            "kind": "Var",
+            "name": "trace",
+            "printedName": "trace",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Mediasoup.LogLevel.Type) -> Mediasoup.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "Mediasoup.LogLevel",
+                    "usr": "s:9Mediasoup8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Mediasoup.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "Mediasoup.LogLevel",
+                        "usr": "s:9Mediasoup8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9Mediasoup8LogLevelO5traceyA2CmF",
+            "mangledName": "$s9Mediasoup8LogLevelO5traceyA2CmF",
+            "moduleName": "Mediasoup"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogLevel",
+                "printedName": "Mediasoup.LogLevel",
+                "usr": "s:9Mediasoup8LogLevelO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogLevel",
+                "printedName": "Mediasoup.LogLevel",
+                "usr": "s:9Mediasoup8LogLevelO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup8LogLevelO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s9Mediasoup8LogLevelO2eeoiySbAC_ACtFZ",
+            "moduleName": "Mediasoup",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup8LogLevelO9hashValueSivp",
+            "mangledName": "$s9Mediasoup8LogLevelO9hashValueSivp",
+            "moduleName": "Mediasoup",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup8LogLevelO9hashValueSivg",
+                "mangledName": "$s9Mediasoup8LogLevelO9hashValueSivg",
+                "moduleName": "Mediasoup",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup8LogLevelO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s9Mediasoup8LogLevelO4hash4intoys6HasherVz_tF",
+            "moduleName": "Mediasoup",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:9Mediasoup8LogLevelO",
+        "mangledName": "$s9Mediasoup8LogLevelO",
+        "moduleName": "Mediasoup",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -4435,6 +4767,134 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "MediasoupClient",
+        "printedName": "MediasoupClient",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "initialize",
+            "printedName": "initialize()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup0A6ClientO10initializeyyFZ",
+            "mangledName": "$s9Mediasoup0A6ClientO10initializeyyFZ",
+            "moduleName": "Mediasoup",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "cleanup",
+            "printedName": "cleanup()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup0A6ClientO7cleanupyyFZ",
+            "mangledName": "$s9Mediasoup0A6ClientO7cleanupyyFZ",
+            "moduleName": "Mediasoup",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "version",
+            "printedName": "version",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup0A6ClientO7versionSSvpZ",
+            "mangledName": "$s9Mediasoup0A6ClientO7versionSSvpZ",
+            "moduleName": "Mediasoup",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup0A6ClientO7versionSSvgZ",
+                "mangledName": "$s9Mediasoup0A6ClientO7versionSSvgZ",
+                "moduleName": "Mediasoup",
+                "static": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:9Mediasoup0A6ClientO",
+        "mangledName": "$s9Mediasoup0A6ClientO",
+        "moduleName": "Mediasoup",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
+        "kind": "Import",
+        "name": "Mediasoup_Private",
+        "printedName": "Mediasoup_Private",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
+        "kind": "TypeDecl",
         "name": "TransportConnectionState",
         "printedName": "TransportConnectionState",
         "children": [
@@ -6318,6 +6778,69 @@
             "printedName": "TransportDelegate",
             "usr": "s:9Mediasoup17TransportDelegateP",
             "mangledName": "$s9Mediasoup17TransportDelegateP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LogHandler",
+        "printedName": "LogHandler",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "onLog",
+            "printedName": "onLog(level:payload:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogLevel",
+                "printedName": "Mediasoup.LogLevel",
+                "usr": "s:9Mediasoup8LogLevelO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup10LogHandlerP02onB05level7payloadyAA0B5LevelO_SStF",
+            "mangledName": "$s9Mediasoup10LogHandlerP02onB05level7payloadyAA0B5LevelO_SStF",
+            "moduleName": "Mediasoup",
+            "genericSig": "<τ_0_0 where τ_0_0 : Mediasoup.LogHandler>",
+            "sugared_genericSig": "<Self where Self : Mediasoup.LogHandler>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:9Mediasoup10LogHandlerP",
+        "mangledName": "$s9Mediasoup10LogHandlerP",
+        "moduleName": "Mediasoup",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
           }
         ]
       },
@@ -8666,6 +9189,183 @@
           "AccessControl"
         ],
         "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
+        "kind": "Import",
+        "name": "Mediasoup_Private",
+        "printedName": "Mediasoup_Private",
+        "declKind": "Import",
+        "moduleName": "Mediasoup"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Logger",
+        "printedName": "Logger",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "logLevel",
+            "printedName": "logLevel",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LogLevel",
+                "printedName": "Mediasoup.LogLevel",
+                "usr": "s:9Mediasoup8LogLevelO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9Mediasoup6LoggerO8logLevelAA03LogD0OvpZ",
+            "mangledName": "$s9Mediasoup6LoggerO8logLevelAA03LogD0OvpZ",
+            "moduleName": "Mediasoup",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "Mediasoup.LogLevel",
+                    "usr": "s:9Mediasoup8LogLevelO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup6LoggerO8logLevelAA03LogD0OvgZ",
+                "mangledName": "$s9Mediasoup6LoggerO8logLevelAA03LogD0OvgZ",
+                "moduleName": "Mediasoup",
+                "static": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "Mediasoup.LogLevel",
+                    "usr": "s:9Mediasoup8LogLevelO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup6LoggerO8logLevelAA03LogD0OvsZ",
+                "mangledName": "$s9Mediasoup6LoggerO8logLevelAA03LogD0OvsZ",
+                "moduleName": "Mediasoup",
+                "static": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9Mediasoup6LoggerO8logLevelAA03LogD0OvMZ",
+                "mangledName": "$s9Mediasoup6LoggerO8logLevelAA03LogD0OvMZ",
+                "moduleName": "Mediasoup",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "setHandler",
+            "printedName": "setHandler(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogHandler",
+                "printedName": "any Mediasoup.LogHandler",
+                "usr": "s:9Mediasoup10LogHandlerP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup6LoggerO10setHandleryyAA03LogD0_pFZ",
+            "mangledName": "$s9Mediasoup6LoggerO10setHandleryyAA03LogD0_pFZ",
+            "moduleName": "Mediasoup",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setDefaultHandler",
+            "printedName": "setDefaultHandler()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9Mediasoup6LoggerO17setDefaultHandleryyFZ",
+            "mangledName": "$s9Mediasoup6LoggerO17setDefaultHandleryyFZ",
+            "moduleName": "Mediasoup",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:9Mediasoup6LoggerO",
+        "mangledName": "$s9Mediasoup6LoggerO",
+        "moduleName": "Mediasoup",
+        "declAttributes": [
+          "AccessControl"
+        ],
         "conformances": [
           {
             "kind": "Conformance",

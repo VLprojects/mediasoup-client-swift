@@ -1,4 +1,7 @@
 module Mediasoup_Private {
+	private header "PrivateHeaders/MediasoupClientWrapper.hpp"
+	private header "PrivateHeaders/LoggerWrapper.hpp"
+	private header "PrivateHeaders/LogHandlerWrapper.h"
 	private header "PrivateHeaders/DeviceWrapper.h"
 	private header "PrivateHeaders/MediasoupClientError.h"
 	private header "PrivateHeaders/MediasoupClientMediaKind.h"

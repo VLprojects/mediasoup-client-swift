@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.3 effective-5.10 (swiftlang-6.3.0.123.5 clang-2100.0.123.102)
+// swift-compiler-version: Apple Swift version 6.3.2 effective-5.10 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
 // swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name Mediasoup
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.2
 import Foundation
 @_exported import Mediasoup
 import Mediasoup_Private
@@ -10,6 +10,18 @@ import WebRTC
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+public enum LogLevel {
+  case none
+  case error
+  case warning
+  case debug
+  case trace
+  public static func == (a: Mediasoup.LogLevel, b: Mediasoup.LogLevel) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 public struct ScalabilityMode {
   public var spatialLayers: Swift.Int
   public var temporalLayers: Swift.Int
@@ -151,6 +163,13 @@ public struct RTPParameters {
   public var degradationPreference: Mediasoup.RTPParameters.DegradationPreference?
   public var encodings: [Mediasoup.RTPParameters.RTPEncodingParameters]?
 }
+public enum MediasoupClient {
+  public static func initialize()
+  public static func cleanup()
+  public static var version: Swift.String {
+    get
+  }
+}
 public enum TransportConnectionState {
   case new
   case checking
@@ -215,6 +234,9 @@ public protocol ConsumerDelegate : AnyObject {
 public protocol SendTransportDelegate : Mediasoup.TransportDelegate {
   func onProduce(transport: any Mediasoup.Transport, kind: Mediasoup.MediaKind, rtpParameters: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
   func onProduceData(transport: any Mediasoup.Transport, sctpParameters: Swift.String, label: Swift.String, protocol dataProtocol: Swift.String, appData: Swift.String, callback: @escaping (Swift.String?) -> Swift.Void)
+}
+public protocol LogHandler {
+  func onLog(level: Mediasoup.LogLevel, payload: Swift.String)
 }
 public enum MediasoupError : Swift.Error {
   case unsupported(Swift.String)
@@ -324,6 +346,14 @@ public enum ICETransportPolicy {
 extension Mediasoup.Producer : Mediasoup_Private.ProducerWrapperDelegate {
   @objc dynamic public func onTransportClose(_ producer: Mediasoup_Private.ProducerWrapper)
 }
+public enum Logger {
+  public static var logLevel: Mediasoup.LogLevel {
+    get
+    set
+  }
+  public static func setHandler(_ handler: any Mediasoup.LogHandler)
+  public static func setDefaultHandler()
+}
 public class Device {
   public init(captureAudioSession: Swift.Bool = false)
   public init(pcFactory: WebRTC.RTCPeerConnectionFactory)
@@ -376,6 +406,8 @@ public class Device {
 extension Mediasoup.Consumer : Mediasoup_Private.ConsumerWrapperDelegate {
   @objc dynamic public func onTransportClose(_ consumer: Mediasoup_Private.ConsumerWrapper)
 }
+extension Mediasoup.LogLevel : Swift.Equatable {}
+extension Mediasoup.LogLevel : Swift.Hashable {}
 extension Mediasoup.MediaKind : Swift.Equatable {}
 extension Mediasoup.MediaKind : Swift.Hashable {}
 extension Mediasoup.RTPParameters.DegradationPreference : Swift.Equatable {}

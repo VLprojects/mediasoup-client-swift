@@ -31,6 +31,16 @@
 		FF422680282B9603004D9974 /* ConsumerListenerAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF42267E282B958C004D9974 /* ConsumerListenerAdapter.mm */; };
 		FF49F0E82804049300B64D36 /* Consumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49F0E72804049300B64D36 /* Consumer.swift */; };
 		FF49F0EA280404E400B64D36 /* ConsumerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49F0E9280404E400B64D36 /* ConsumerDelegate.swift */; };
+		FF570AC52FBD729A00DD6E8A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF570AC42FBD720900DD6E8A /* Logger.swift */; };
+		FF570AC72FBD741A00DD6E8A /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF570AC62FBD741600DD6E8A /* LogLevel.swift */; };
+		FF570AC92FBD743000DD6E8A /* LogHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF570AC82FBD742E00DD6E8A /* LogHandler.swift */; };
+		FF570ACC2FBD74D000DD6E8A /* LoggerWrapper.hpp in Sources */ = {isa = PBXBuildFile; fileRef = FF570ACB2FBD74B300DD6E8A /* LoggerWrapper.hpp */; };
+		FF570ACD2FBD74FA00DD6E8A /* LoggerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FF570ACB2FBD74B300DD6E8A /* LoggerWrapper.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		FF570ACF2FBD75C700DD6E8A /* LoggerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF570ACE2FBD75C100DD6E8A /* LoggerWrapper.mm */; };
+		FF570AD12FBD762900DD6E8A /* LogHandlerAdapter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FF570AD02FBD762500DD6E8A /* LogHandlerAdapter.hpp */; };
+		FF570AD32FBD766B00DD6E8A /* LogHandlerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = FF570AD22FBD766300DD6E8A /* LogHandlerWrapper.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		FF570AD52FBD772C00DD6E8A /* LogHandlerAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF570AD42FBD772700DD6E8A /* LogHandlerAdapter.mm */; };
+		FF570AD72FBD7A2900DD6E8A /* MediasoupClientLogLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = FF570AD62FBD7A1700DD6E8A /* MediasoupClientLogLevel.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		FF61457527F30FDC0067B2C4 /* DeviceWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = FF3AEE0D27F2D68B001A81AB /* DeviceWrapper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		FF7FA69127FAA8E9000B6470 /* SendTransportDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FA69027FAA8E9000B6470 /* SendTransportDelegate.swift */; };
 		FF7FA69527FAA930000B6470 /* SendTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FA69427FAA930000B6470 /* SendTransport.swift */; };
@@ -117,6 +127,15 @@
 		FF42267E282B958C004D9974 /* ConsumerListenerAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConsumerListenerAdapter.mm; sourceTree = "<group>"; };
 		FF49F0E72804049300B64D36 /* Consumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumer.swift; sourceTree = "<group>"; };
 		FF49F0E9280404E400B64D36 /* ConsumerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerDelegate.swift; sourceTree = "<group>"; };
+		FF570AC42FBD720900DD6E8A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		FF570AC62FBD741600DD6E8A /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		FF570AC82FBD742E00DD6E8A /* LogHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHandler.swift; sourceTree = "<group>"; };
+		FF570ACB2FBD74B300DD6E8A /* LoggerWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LoggerWrapper.hpp; sourceTree = "<group>"; };
+		FF570ACE2FBD75C100DD6E8A /* LoggerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LoggerWrapper.mm; sourceTree = "<group>"; };
+		FF570AD02FBD762500DD6E8A /* LogHandlerAdapter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogHandlerAdapter.hpp; sourceTree = "<group>"; };
+		FF570AD22FBD766300DD6E8A /* LogHandlerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHandlerWrapper.h; sourceTree = "<group>"; };
+		FF570AD42FBD772700DD6E8A /* LogHandlerAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LogHandlerAdapter.mm; sourceTree = "<group>"; };
+		FF570AD62FBD7A1700DD6E8A /* MediasoupClientLogLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupClientLogLevel.h; sourceTree = "<group>"; };
 		FF61456A27F2F5AD0067B2C4 /* Mediasoup.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = Mediasoup.modulemap; sourceTree = "<group>"; };
 		FF61457227F306BC0067B2C4 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		FF7FA69027FAA8E9000B6470 /* SendTransportDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransportDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +264,9 @@
 		FF3AEE0227F2CDD1001A81AB /* Mediasoup */ = {
 			isa = PBXGroup;
 			children = (
+				FF570AC82FBD742E00DD6E8A /* LogHandler.swift */,
+				FF570AC62FBD741600DD6E8A /* LogLevel.swift */,
+				FF570AC42FBD720900DD6E8A /* Logger.swift */,
 				FF49F0E72804049300B64D36 /* Consumer.swift */,
 				FF49F0E9280404E400B64D36 /* ConsumerDelegate.swift */,
 				FF1E635E2A566C500022A44A /* DataConsumer.swift */,
@@ -272,6 +294,19 @@
 				FF7FA6C127FD5EA5000B6470 /* TransportDelegate.swift */,
 			);
 			path = Mediasoup;
+			sourceTree = "<group>";
+		};
+		FF570ACA2FBD74AE00DD6E8A /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				FF570AD62FBD7A1700DD6E8A /* MediasoupClientLogLevel.h */,
+				FF570ACB2FBD74B300DD6E8A /* LoggerWrapper.hpp */,
+				FF570ACE2FBD75C100DD6E8A /* LoggerWrapper.mm */,
+				FF570AD02FBD762500DD6E8A /* LogHandlerAdapter.hpp */,
+				FF570AD42FBD772700DD6E8A /* LogHandlerAdapter.mm */,
+				FF570AD22FBD766300DD6E8A /* LogHandlerWrapper.h */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		FF7FA69827FAACB4000B6470 /* Transport */ = {
@@ -317,6 +352,7 @@
 		FF89EFCF27F5C51500EEF5CD /* Mediasoup_Private */ = {
 			isa = PBXGroup;
 			children = (
+				FF570ACA2FBD74AE00DD6E8A /* Logger */,
 				FF92D3522FBD59D00038C24E /* MediasoupClient */,
 				FFEA9CE22F641E02006167CB /* DataProducer */,
 				FF1E63512A56555F0022A44A /* DataConsumer */,
@@ -410,6 +446,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF92D3592FBD621D0038C24E /* MediasoupClientWrapper.hpp in Headers */,
+				FF570AD72FBD7A2900DD6E8A /* MediasoupClientLogLevel.h in Headers */,
+				FF570ACD2FBD74FA00DD6E8A /* LoggerWrapper.hpp in Headers */,
+				FF570AD32FBD766B00DD6E8A /* LogHandlerWrapper.h in Headers */,
 				FFB7DDBD28229BA400FE2CC2 /* ConsumerWrapper.hpp in Headers */,
 				FFC2452527F6EA1C008F61DE /* MediasoupClientMediaKind.h in Headers */,
 				FFC5AC762825025100C92A96 /* MediasoupClientTransportConnectionState.h in Headers */,
@@ -418,6 +457,7 @@
 				FFB7DDB828228ABA00FE2CC2 /* ReceiveTransportWrapper.hpp in Headers */,
 				FF1E63582A5655830022A44A /* DataConsumerWrapper.hpp in Headers */,
 				FFF004FF2B598D59007BA500 /* ScalabilityMode.h in Headers */,
+				FF570AD12FBD762900DD6E8A /* LogHandlerAdapter.hpp in Headers */,
 				FF89EFC027F462F200EEF5CD /* MediasoupClientError.h in Headers */,
 				FF7FA6A027FAAEF2000B6470 /* SendTransportWrapper.hpp in Headers */,
 				FF7FA6BD27FB0FB7000B6470 /* SendTransportWrapperDelegate.h in Headers */,
@@ -553,6 +593,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFF005042B5A29B6007BA500 /* WrappedRTPParameters.mm in Sources */,
+				FF570AC72FBD741A00DD6E8A /* LogLevel.swift in Sources */,
+				FF570ACC2FBD74D000DD6E8A /* LoggerWrapper.hpp in Sources */,
 				FFF004FB2B5986F6007BA500 /* ScalabilityMode.swift in Sources */,
 				FFB7DDB32822893C00FE2CC2 /* ReceiveTransportDelegate.swift in Sources */,
 				FFEA9CEB2F641F42006167CB /* DataProducerListenerAdapter.mm in Sources */,
@@ -578,14 +620,17 @@
 				FFF0050B2B5A62FD007BA500 /* RTPEncodingParameters.mm in Sources */,
 				FFC5AC72282500A500C92A96 /* TransportConnectionState.swift in Sources */,
 				FF7FA69A27FAACEE000B6470 /* SendTransportWrapper.mm in Sources */,
+				FF570AD52FBD772C00DD6E8A /* LogHandlerAdapter.mm in Sources */,
 				FFEA9CF32F64254E006167CB /* DataState.swift in Sources */,
 				FF7FA69527FAA930000B6470 /* SendTransport.swift in Sources */,
 				FF49F0EA280404E400B64D36 /* ConsumerDelegate.swift in Sources */,
 				FF7FA69127FAA8E9000B6470 /* SendTransportDelegate.swift in Sources */,
+				FF570AC92FBD743000DD6E8A /* LogHandler.swift in Sources */,
 				FF89EFBF27F461DB00EEF5CD /* MediasoupError.swift in Sources */,
 				FF92D3542FBD59DB0038C24E /* MediasoupClientWrapper.hpp in Sources */,
 				FFB7DDB728228A2100FE2CC2 /* ReceiveTransportWrapper.mm in Sources */,
 				FF7FA6D327FF18A5000B6470 /* ProducerDelegate.swift in Sources */,
+				FF570ACF2FBD75C700DD6E8A /* LoggerWrapper.mm in Sources */,
 				FF1E635F2A566C500022A44A /* DataConsumer.swift in Sources */,
 				FF1E63612A566C640022A44A /* DataConsumerDelegate.swift in Sources */,
 				FF3AEE0C27F2D67E001A81AB /* DeviceWrapper.mm in Sources */,
@@ -597,6 +642,7 @@
 				FF7FA6CD27FE985E000B6470 /* Producer.swift in Sources */,
 				FF89EFBD27F460F700EEF5CD /* MediasoupClientError.m in Sources */,
 				FFC5AC752825025100C92A96 /* MediasoupClientTransportConnectionState.mm in Sources */,
+				FF570AC52FBD729A00DD6E8A /* Logger.swift in Sources */,
 				FF89EFC827F5B5E600EEF5CD /* Device.swift in Sources */,
 				FF1E635A2A5655830022A44A /* DataConsumerWrapper.mm in Sources */,
 				FF49F0E82804049300B64D36 /* Consumer.swift in Sources */,

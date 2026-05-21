@@ -6,11 +6,10 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 project(Project)
 
 # C++ requirements
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD REQUIRED ON)
 
 # build for iphone or simulator
-# default is iphone
 if(NOT IOS_SDK)
   message(FATAL_ERROR "IOS_SDK not provided (iphone/iphonesimulator)")
 endif()
@@ -24,6 +23,8 @@ if("${IOS_SDK}" STREQUAL "iphone")
   set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/")
 elseif("${IOS_SDK}" STREQUAL "iphonesimulator")
   set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk")
+elseif("${IOS_SDK}" STREQUAL "macosx")
+  set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk")
 else()
   message(FATAL_ERROR "IOS_SDK must be set to iphone/iphonesimulator")  
 endif()

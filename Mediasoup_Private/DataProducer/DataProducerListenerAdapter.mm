@@ -5,10 +5,6 @@
 DataProducerListenerAdapter::DataProducerListenerAdapter() {
 }
 
-DataProducerListenerAdapter::~DataProducerListenerAdapter() {
-	this->delegate = nil;
-}
-
 void DataProducerListenerAdapter::OnOpen(mediasoupclient::DataProducer* dataProducer) {
 	[this->delegate onOpen:this];
 }

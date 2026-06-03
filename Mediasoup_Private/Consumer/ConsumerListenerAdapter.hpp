@@ -13,7 +13,7 @@ public:
 	__weak id<ConsumerListenerAdapterDelegate> delegate;
 
 	ConsumerListenerAdapter();
-	virtual ~ConsumerListenerAdapter();
+	~ConsumerListenerAdapter() override = default;
 
 	void OnTransportClose(mediasoupclient::Consumer *consumer) override;
 };

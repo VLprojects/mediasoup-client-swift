@@ -94,7 +94,7 @@
 	return nil;
 }
 
-#pragma mark - ProducerListenerAdapterDelegate methods
+#pragma mark - ConsumerListenerAdapterDelegate methods
 
 - (void)onTransportClose:(ConsumerListenerAdapter *_Nonnull)adapter {
 	if (adapter != _listenerAdapter) {

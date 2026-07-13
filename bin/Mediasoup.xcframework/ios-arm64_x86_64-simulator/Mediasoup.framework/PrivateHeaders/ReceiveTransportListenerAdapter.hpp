@@ -11,7 +11,7 @@ public:
 	__weak id<ReceiveTransportListenerAdapterDelegate> delegate;
 
 	ReceiveTransportListenerAdapter();
-	virtual ~ReceiveTransportListenerAdapter();
+	~ReceiveTransportListenerAdapter() override = default;
 
 	std::future<void> OnConnect(
 		mediasoupclient::Transport *nativeTransport,

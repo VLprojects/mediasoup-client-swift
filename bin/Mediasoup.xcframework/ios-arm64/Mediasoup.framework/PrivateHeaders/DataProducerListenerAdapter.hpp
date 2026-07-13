@@ -13,7 +13,7 @@ public:
 	__weak id<DataProducerListenerAdapterDelegate> delegate;
 
 	DataProducerListenerAdapter();
-	virtual ~DataProducerListenerAdapter();
+	~DataProducerListenerAdapter() override = default;
 
 	void OnOpen(mediasoupclient::DataProducer* dataProducer) override;
 	void OnClose(mediasoupclient::DataProducer* dataProducer) override;

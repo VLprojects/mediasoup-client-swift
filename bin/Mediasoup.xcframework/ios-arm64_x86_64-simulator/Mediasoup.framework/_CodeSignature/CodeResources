@@ -10,15 +10,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		h3IXPnZt/LgeqRMAOrVfUywgApc=
+		QppdItJkiwrks45rXZT75+wRfcI=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		iII3lMntXYMswPzOWZGn03PRZmM=
+		MaSM1sw+paMMBg5mAbf2ZdQgysI=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		RR1SskKz2MuNeQsIZGrSKCcRKBQ=
+		SLftp0AeQS/QjRE/9ljpJgkVVHc=
 		</data>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>PrivateHeaders/DataProducerListenerAdapter.hpp</key>
 		<data>
-		qKvZO4swjOic/tipOidKMke8NGI=
+		QB0NY9CxIgLuDWQU5H2QSKOE+UA=
 		</data>
 		<key>PrivateHeaders/DataProducerListenerAdapterDelegate.h</key>
 		<data>
@@ -150,7 +150,7 @@
 		</data>
 		<key>PrivateHeaders/ReceiveTransportListenerAdapter.hpp</key>
 		<data>
-		+1nn4iaKFZLQged4o3bdIywGJcQ=
+		fMJsAdZeAKDdG/icn3YPQjQ2su8=
 		</data>
 		<key>PrivateHeaders/ReceiveTransportWrapper.hpp</key>
 		<data>
@@ -166,11 +166,11 @@
 		</data>
 		<key>PrivateHeaders/SendTransportListenerAdapter.hpp</key>
 		<data>
-		5IY3Zz8C5czfCdkj7iYQzaV9AFo=
+		r1CxwBneQp72mlhZYMloMx7Lwq8=
 		</data>
 		<key>PrivateHeaders/SendTransportWrapper.hpp</key>
 		<data>
-		pvmTJIhiJekRLZiJH06Y7LwQ0/M=
+		uZYNVw30Bc/h3K4WcO/fDedD4hM=
 		</data>
 		<key>PrivateHeaders/SendTransportWrapperDelegate.h</key>
 		<data>
@@ -198,14 +198,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EiQ0Pyi3490iNDWS6+o+yP1fcHb/pbOYM0TNjGYc2YI=
+			9ZdYhLxiIAn1VKbMZcbJp9y5RDE+5OnwixWz91LosKU=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oIlyTAXTV6xD895i83tf7sPMn6vXNoQiDjsQ6hk3SVs=
+			PAtieTh8dJcJqjTgbcrG5Fv3sY58vvYWb4xKD1dz/xg=
 			</data>
 		</dict>
 		<key>Modules/Mediasoup.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -324,7 +324,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			R0s0VlCe7bC2YbNw86Aiiwk6tzGAvx+T1cKW7jBMaR4=
+			KlH3gyiaInPuvzxVzPHz62VIEvz1Cpfgd2BDamtuJVE=
 			</data>
 		</dict>
 		<key>PrivateHeaders/DataProducerListenerAdapterDelegate.h</key>
@@ -436,7 +436,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			O3UWvzRBtUW4V+sETN7Xkc0aZCTX9xeZVa/5Ooi8Wdw=
+			//TBPOUwajsoVEsrsVIDpBzjhjCEs59JAW8lmEs/6PA=
 			</data>
 		</dict>
 		<key>PrivateHeaders/ReceiveTransportWrapper.hpp</key>
@@ -464,14 +464,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EUJWZYnp+beHrvKoY1/1j0HHBFdnIoYdZFTwl4C+mkM=
+			HX354gI4806lSPkZN1e564yPwSQ5ewgT43o0JK/2cbM=
 			</data>
 		</dict>
 		<key>PrivateHeaders/SendTransportWrapper.hpp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ppSm1pGXuAHbQ0YpmArNeGI8my+zK/5u0bxQbubTBek=
+			E7MWfw2c5somwHEFN0kK3j9FKbpKc7ensC4f2XsivVk=
 			</data>
 		</dict>
 		<key>PrivateHeaders/SendTransportWrapperDelegate.h</key>

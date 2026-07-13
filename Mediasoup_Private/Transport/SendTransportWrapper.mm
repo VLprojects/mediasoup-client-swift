@@ -17,12 +17,17 @@
 	mediasoupclient::SendTransport *_transport;
 	SendTransportListenerAdapter *_listenerAdapter;
 }
+
+// Keep the peer connection factory alive for the lifetime of the send transport.
+@property(nonatomic, strong) RTCPeerConnectionFactory *pcFactory;
+
 @end
 
 
 @implementation SendTransportWrapper
 
 - (instancetype)initWithTransport:(mediasoupclient::SendTransport *_Nonnull)transport
+	pcFactory:(RTCPeerConnectionFactory *_Nonnull)pcFactory
 	listenerAdapter:(SendTransportListenerAdapter *_Nonnull)listenerAdapter {
 
 	self = [super init];
@@ -31,6 +36,8 @@
 		_transport = (mediasoupclient::SendTransport *)transport;
 		_listenerAdapter = listenerAdapter;
 		_listenerAdapter->delegate = self;
+
+		self.pcFactory = pcFactory;
 	}
 
 	return self;

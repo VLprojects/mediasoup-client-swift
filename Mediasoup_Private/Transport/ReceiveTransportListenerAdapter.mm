@@ -5,10 +5,6 @@
 ReceiveTransportListenerAdapter::ReceiveTransportListenerAdapter() {
 }
 
-ReceiveTransportListenerAdapter::~ReceiveTransportListenerAdapter() {
-	this->delegate = nil;
-}
-
 std::future<void> ReceiveTransportListenerAdapter::OnConnect(
 	mediasoupclient::Transport* nativeTransport,
 	const nlohmann::json& dtlsParameters) {

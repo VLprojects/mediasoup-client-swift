@@ -14,7 +14,7 @@ public:
 	__weak id<LogHandlerWrapper> delegate;
 
 	LogHandlerAdapter();
-	virtual ~LogHandlerAdapter();
+	~LogHandlerAdapter() override = default;
 	virtual void OnLog(mediasoupclient::Logger::LogLevel level, char* payload, size_t len) override;
 
 	static inline MediasoupClientLogLevel getWrappedLogLevel(mediasoupclient::Logger::LogLevel value);

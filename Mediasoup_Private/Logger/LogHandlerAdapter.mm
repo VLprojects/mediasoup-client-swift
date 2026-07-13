@@ -6,10 +6,6 @@
 LogHandlerAdapter::LogHandlerAdapter() {
 }
 
-LogHandlerAdapter::~LogHandlerAdapter() {
-	this->delegate = nil;
-}
-
 void LogHandlerAdapter::OnLog(mediasoupclient::Logger::LogLevel level, char* payload, size_t len) {
 	NSString *payloadString = [[NSString alloc] initWithBytes:payload length:len encoding:NSUTF8StringEncoding];
 	[this->delegate onLog:getWrappedLogLevel(level) payload:payloadString];

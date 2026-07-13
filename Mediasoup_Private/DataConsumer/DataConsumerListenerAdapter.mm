@@ -5,10 +5,6 @@
 DataConsumerListenerAdapter::DataConsumerListenerAdapter() {
 }
 
-DataConsumerListenerAdapter::~DataConsumerListenerAdapter() {
-	this->delegate = nil;
-}
-
 void DataConsumerListenerAdapter::OnMessage(
 	mediasoupclient::DataConsumer *dataConsumer,
 	const webrtc::DataBuffer &buffer

@@ -13,7 +13,7 @@ public:
 	__weak id<ProducerListenerAdapterDelegate> delegate;
 
 	ProducerListenerAdapter();
-	virtual ~ProducerListenerAdapter();
+	~ProducerListenerAdapter() override = default;
 
 	void OnTransportClose(mediasoupclient::Producer *producer) override;
 };

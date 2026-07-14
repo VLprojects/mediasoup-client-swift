@@ -39,8 +39,7 @@
 }
 
 - (void)dealloc {
-	delete _transport;
-	delete _listenerAdapter;
+	[self dispose];
 }
 
 #pragma mark - Public methods
@@ -50,7 +49,7 @@
 }
 
 - (BOOL)closed {
-	return _transport->IsClosed() == true;
+	return _transport == nullptr || _transport->IsClosed();
 }
 
 - (NSString *_Nonnull)connectionState {
@@ -67,6 +66,23 @@
 
 - (void)close {
 	_transport->Close();
+}
+
+- (void)dispose {
+	if (_transport == nullptr) {
+		return;
+	}
+
+	_listenerAdapter->delegate = nil;
+	
+	_transport->Close();
+
+	delete _transport;
+	_transport = nullptr;
+
+	// Delete only after Close and the transport destructor have finished.
+	delete _listenerAdapter;
+	_listenerAdapter = nullptr;
 }
 
 - (void)restartICE:(NSString *_Nonnull)iceParameters

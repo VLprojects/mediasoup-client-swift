@@ -90,7 +90,7 @@
 	if (_captureAudioSession) {
 		[self releaseAudioSession];
 	}
-	self.pcFactory = nil;
+
 	delete _pcOptions;
 	delete _device;
 }

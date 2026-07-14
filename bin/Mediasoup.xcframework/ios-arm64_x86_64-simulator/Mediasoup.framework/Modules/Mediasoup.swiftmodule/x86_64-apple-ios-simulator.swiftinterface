@@ -97,6 +97,7 @@ extension Mediasoup.ReceiveTransport : Mediasoup.Transport {
     get
   }
   public func close()
+  public func dispose()
   public func restartICE(with iceParameters: Swift.String) throws
   public func updateICEServers(_ iceServers: Swift.String) throws
 }
@@ -120,6 +121,7 @@ public protocol Transport : AnyObject {
   var appData: Swift.String { get }
   var stats: Swift.String { get }
   func close()
+  func dispose()
   func restartICE(with iceParameters: Swift.String) throws
   func updateICEServers(_ iceServers: Swift.String) throws
 }
@@ -219,6 +221,7 @@ extension Mediasoup.SendTransport : Mediasoup.Transport {
     get
   }
   public func close()
+  public func dispose()
   public func restartICE(with iceParameters: Swift.String) throws
   public func updateICEServers(_ iceServers: Swift.String) throws
 }

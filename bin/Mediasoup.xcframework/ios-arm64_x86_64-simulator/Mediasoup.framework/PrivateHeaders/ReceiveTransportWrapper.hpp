@@ -34,6 +34,8 @@ class ReceiveTransportListenerAdapter;
 
 - (void)close;
 
+- (void)dispose;
+
 - (void)restartICE:(NSString *_Nonnull)iceParameters
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
 	__attribute__((swift_error(nonnull_error)));

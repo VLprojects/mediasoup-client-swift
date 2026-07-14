@@ -103,6 +103,10 @@ extension SendTransport: Transport {
 		transport.close()
 	}
 
+	public func dispose() {
+		transport.dispose()
+	}
+
 	public func restartICE(with iceParameters: String) throws {
 		try convertMediasoupErrors {
 			try transport.restartICE(iceParameters)
